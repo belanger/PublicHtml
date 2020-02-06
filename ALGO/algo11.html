@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html >
+<head>
+<h1 id="sec104" class="chapter">Chapitre 11  Propriétés métriques des courbes.</h1><!--SEC END --><p> <a id="sec:courbes_m"></a>
+</p>
+<!--TOC section id="sec105" Longueur d’arc-->
+<h2 id="sec105" class="section">11.1  Longueur d’arc</h2><!--SEC END --><p>
+La longueur <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>d</mi><mi>s</mi></mrow><annotation encoding='application/x-tex'>ds</annotation></semantics></math> d’un morceau de courbe régulier parcouru
+pendant un petit intervalle de temps <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>d</mi><mi>t</mi></mrow><annotation encoding='application/x-tex'>dt</annotation></semantics></math> est égal
+au premier ordre à la longueur du segment tangent parcouru,
+ou encore au produit de la norme de la vitesse instantanée 
+par <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>d</mi><mi>t</mi></mrow><annotation encoding='application/x-tex'>dt</annotation></semantics></math>
+<math xmlns='http://www.w3.org/1998/Math/MathML' display='block'><semantics><mrow><mi>d</mi><mi>s</mi><mo>=</mo><msqrt><mrow><mi>x</mi><msup><mo>&prime;</mo> <mn>2</mn></msup><mo>+</mo><mi>y</mi><msup><mo>&prime;</mo> <mn>2</mn></msup></mrow></msqrt><mi>d</mi><mi>t</mi></mrow><annotation encoding='application/x-tex'>ds=\sqrt{x&apos;^2+y&apos;^2} dt </annotation></semantics></math>
+On remarque que cette quantité est invariante par changement de 
+paramétrage, si <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>t</mi><mo>=</mo><mi>t</mi><mo stretchy="false">(</mo><mi>&tau;</mi><mo stretchy="false">)</mo></mrow><annotation encoding='application/x-tex'>t=t(\tau)</annotation></semantics></math> alors
+<math xmlns='http://www.w3.org/1998/Math/MathML' display='block'><semantics><mrow><mrow><mtable displaystyle="false" rowspacing="0.5ex"><mtr><mtd><mi>d</mi><mi>s</mi></mtd> <mtd><mo>=</mo></mtd> <mtd><msqrt><mrow><msup><mfrac><mrow><mi>d</mi><mi>x</mi></mrow><mrow><mi>d</mi><mi>t</mi></mrow></mfrac> <mn>2</mn></msup><mo>+</mo><msup><mfrac><mrow><mi>d</mi><mi>y</mi></mrow><mrow><mi>d</mi><mi>t</mi></mrow></mfrac> <mn>2</mn></msup></mrow></msqrt><mi>d</mi><mi>t</mi></mtd></mtr> <mtr><mtd/> <mtd><mo>=</mo></mtd> <mtd><msqrt><mrow><mrow><mo>(</mo><msup><mfrac><mrow><mi>d</mi><mi>x</mi></mrow><mrow><mi>d</mi><mi>&tau;</mi></mrow></mfrac> <mn>2</mn></msup><mo>+</mo><msup><mfrac><mrow><mi>d</mi><mi>y</mi></mrow><mrow><mi>d</mi><mi>&tau;</mi></mrow></mfrac> <mn>2</mn></msup><mo>)</mo></mrow><msup><mrow><mo>(</mo><mfrac><mrow><mi>d</mi><mi>&tau;</mi></mrow><mrow><mi>d</mi><mi>t</mi></mrow></mfrac><mo>)</mo></mrow> <mn>2</mn></msup></mrow></msqrt><mo stretchy="false">&vert;</mo><mfrac><mrow><mi>d</mi><mi>t</mi></mrow><mrow><mi>d</mi><mi>&tau;</mi></mrow></mfrac><mo stretchy="false">&vert;</mo><mi>d</mi><mi>&tau;</mi></mtd></mtr> <mtr><mtd/> <mtd><mo>=</mo></mtd> <mtd><msqrt><mrow><msup><mfrac><mrow><mi>d</mi><mi>x</mi></mrow><mrow><mi>d</mi><mi>&tau;</mi></mrow></mfrac> <mn>2</mn></msup><mo>+</mo><msup><mfrac><mrow><mi>d</mi><mi>y</mi></mrow><mrow><mi>d</mi><mi>&tau;</mi></mrow></mfrac> <mn>2</mn></msup></mrow></msqrt><mi>d</mi><mi>&tau;</mi></mtd></mtr></mtable></mrow></mrow><annotation encoding='application/x-tex'> \begin{matrix} 
+ds &amp;= &amp; \sqrt{\frac{dx}{dt}^2+\frac{dy}{dt}^2} dt \\
+&amp;=&amp; \sqrt{ \left(\frac{dx}{d\tau}^2+\frac{dy}{d\tau}^2\right) 
+\left(\frac{d\tau}{dt}\right)^2} |\frac{dt}{d\tau}| d\tau \\
+&amp; = &amp; \sqrt{ \frac{dx}{d\tau}^2+\frac{dy}{d\tau}^2} d\tau
+ \end{matrix} </annotation></semantics></math>
+On en déduit
+</p><div class="theorem"><span style="font-weight:bold">Proposition 18</span>  <em> 
+La longueur d’un arc de courbe entre les points
+de paramètre </em><math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><msub><mi>t</mi> <mn>0</mn></msub></mrow><annotation encoding='application/x-tex'>t_0</annotation></semantics></math><em> et </em><math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><msub><mi>t</mi> <mn>1</mn></msub></mrow><annotation encoding='application/x-tex'>t_1</annotation></semantics></math><em> vaut
+</em><math xmlns='http://www.w3.org/1998/Math/MathML' display='block'><semantics><mrow><msubsup><mo>&Integral;</mo> <mrow><msub><mi>t</mi> <mn>0</mn></msub></mrow> <mrow><msub><mi>t</mi> <mn>1</mn></msub></mrow></msubsup><msqrt><mrow><mi>x</mi><msup><mo>&prime;</mo> <mn>2</mn></msup><mo>+</mo><mi>y</mi><msup><mo>&prime;</mo> <mn>2</mn></msup></mrow></msqrt><mi>d</mi><mi>t</mi></mrow><annotation encoding='application/x-tex'>\int_{t_0}^{t_1} \sqrt{x&apos;^2+y&apos;^2} dt </annotation></semantics></math><em><br>
+En coordonnées polaires :
+</em><math xmlns='http://www.w3.org/1998/Math/MathML' display='block'><semantics><mrow><msubsup><mo>&Integral;</mo> <mrow><msub><mi>&theta;</mi> <mn>0</mn></msub></mrow> <mrow><msub><mi>&theta;</mi> <mn>1</mn></msub></mrow></msubsup><msqrt><mrow><mi>r</mi><msup><mo>&prime;</mo> <mn>2</mn></msup><mo>+</mo><msup><mi>r</mi> <mn>2</mn></msup></mrow></msqrt><mi>d</mi><mi>&theta;</mi></mrow><annotation encoding='application/x-tex'>\int_{\theta_0}^{\theta_1} \sqrt{r&apos;^2+r^2} d\theta </annotation></semantics></math><em>
+</em></div><p><span style="font-weight:bold">Remarque</span> : il est très rare que l’on puisse effectuer
+le calcul explicite d’une primitive de <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><msqrt><mrow><mi>x</mi><msup><mo>&prime;</mo> <mn>2</mn></msup><mo>+</mo><mi>y</mi><msup><mo>&prime;</mo> <mn>2</mn></msup></mrow></msqrt></mrow><annotation encoding='application/x-tex'>\sqrt{x&apos;^2+y&apos;^2}</annotation></semantics></math>,
+il faut alors se contenter d’une valeur approchée de l’intégrale
+lorsque <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><msub><mi>t</mi> <mn>0</mn></msub></mrow><annotation encoding='application/x-tex'>t_0</annotation></semantics></math> et <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><msub><mi>t</mi> <mn>1</mn></msub></mrow><annotation encoding='application/x-tex'>t_1</annotation></semantics></math> ont des valeurs numériques, calculée
+par des méthodes numériques qui généralisent la méthode
+des rectangles (cf. le cours de mat249).
+Ce calcul se fait avec Xcas (ou une calculatrice formelle) en donnant
+une valeur approchée à l’une des bornes.
+Il y a quelques exceptions  par exemple la longueur d’un arc de 
+parabole se calcule avec une formule explicite (essayez la
+commande <code>int(sqrt(1+4t^2),t,t0,t1)</code> ou<br>
+<br><textarea onkeypress="UI.ckenter(event,this,2)" 
+style="width:400px;font-size:large">t:='t';arclen([t,t^2],t,t0,t1) 
+</textarea><button onclick="previousSibling.style.display='inherit';var tmp=UI.caseval(previousSibling.value); tmp=UI.latexeval(tmp);nextSibling.innerHTML='&nbsp;'+tmp; if (UI.usemathjax) MathJax.Hub.Queue(['Typeset',MathJax.Hub,nextSibling])">ok</button><span></span><br>
+<br>
+La cycloïde<a id="hevea_default103"></a><sup><a id="text17" href="#note17">1</a></sup> 
+<math xmlns='http://www.w3.org/1998/Math/MathML' display='block'><semantics><mrow><mi>x</mi><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo><mo>=</mo><mi>R</mi><mo stretchy="false">(</mo><mi>t</mi><mo>&minus;</mo><mi>sin</mi><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo><mo stretchy="false">)</mo><mo>,</mo><mi>y</mi><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo><mo>=</mo><mi>R</mi><mo stretchy="false">(</mo><mn>1</mn><mo>&minus;</mo><mi>cos</mi><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo><mo stretchy="false">)</mo></mrow><annotation encoding='application/x-tex'>x(t)=R(t&#x2d;\sin(t)), y(t)=R(1&#x2d;\cos(t)) </annotation></semantics></math>
+
+<textarea onkeypress="UI.ckenter(event,this,1)" 
+style="width:400px;font-size:large">plotparam([t-sin(t),1-cos(t)],t,0,2*pi)
+</textarea><button onclick="previousSibling.style.display='inherit';var tmp=UI.caseval(previousSibling.value);tmp=UI.rmquote(tmp); nextSibling.innerHTML='&nbsp;'+tmp;UI.render_canvas(nextSibling);">ok</button><span></span><br>
+ 
+admet aussi une formule simple pour sa longueur 
+
+<textarea onkeypress="UI.ckenter(event,this,1)" 
+style="width:400px;font-size:large">arclen([t-sin(t),1-cos(t)],t,0,2*pi)
+</textarea><button onclick="previousSibling.style.display='inherit';var tmp=UI.caseval(previousSibling.value);tmp=UI.rmquote(tmp); nextSibling.innerHTML='&nbsp;'+tmp;UI.render_canvas(nextSibling);">ok</button><span></span><br>
+<br>
+Par contre, la
+longueur d’un arc d’ellipse ne se calcule pas avec les fonctions
+usuelles (pour pouvoir le faire, il faut introduire des fonctions spéciales
+adaptées, appelées intégrales elliptiques) :<br>
+<div><textarea onkeypress="UI.ckenter(event,this,2)" 
+style="width:800px;font-size:large">a:=int(sqrt(sin(t)^2+4*cos(t)^2),t,0,2*pi); evalf(a) 
+</textarea><button onclick="previousSibling.style.display='inherit';var tmp=UI.caseval(previousSibling.value); tmp=UI.latexeval(tmp);nextSibling.innerHTML=tmp; if (UI.usemathjax) MathJax.Hub.Queue(['Typeset',MathJax.Hub,nextSibling])">ok</button><div style="width:800px;max-height:200px;overflow:auto;color:blue;text-align:center"></div></div>
+</p>
+<!--TOC section id="sec106" Courbure, repère de Frenet, accélération normale et
+tangentielle.-->
+<h2 id="sec106" class="section">11.2  Courbure, repère de Frenet, accélération normale et
+tangentielle.</h2><!--SEC END --><p> <a id="sec:courbure"></a>
+Si on choisit <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>s</mi></mrow><annotation encoding='application/x-tex'>s</annotation></semantics></math>, la longueur d’arc, comme nouveau paramètre de temps, 
+la longueur parcourue est égale au temps, donc la vitesse instantannée
+par rapport à <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>s</mi></mrow><annotation encoding='application/x-tex'>s</annotation></semantics></math> est de norme 1. On peut aussi le voir en notant <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>M</mi><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo><mo>=</mo><mo stretchy="false">(</mo><mi>x</mi><mo>,</mo><mi>y</mi><mo stretchy="false">)</mo></mrow><annotation encoding='application/x-tex'>M(t)=(x,y)</annotation></semantics></math> :
+<math xmlns='http://www.w3.org/1998/Math/MathML' display='block'><semantics><mrow><mfrac><mrow><mi>d</mi><mi>M</mi></mrow><mrow><mi>d</mi><mi>t</mi></mrow></mfrac><mo>=</mo><mfrac><mrow><mi>d</mi><mi>M</mi></mrow><mrow><mi>d</mi><mi>s</mi></mrow></mfrac><mfrac><mrow><mi>d</mi><mi>s</mi></mrow><mrow><mi>d</mi><mi>t</mi></mrow></mfrac><mspace width="mediummathspace"/><mo>&Rightarrow;</mo><mspace width="mediummathspace"/><mo stretchy="false">&Vert;</mo><mfrac><mrow><mi>d</mi><mi>M</mi></mrow><mrow><mi>d</mi><mi>t</mi></mrow></mfrac><mo stretchy="false">&Vert;</mo><mo>=</mo><mo stretchy="false">&Vert;</mo><mfrac><mrow><mi>d</mi><mi>M</mi></mrow><mrow><mi>d</mi><mi>s</mi></mrow></mfrac><mo stretchy="false">&Vert;</mo><mo stretchy="false">&vert;</mo><mfrac><mrow><mi>d</mi><mi>s</mi></mrow><mrow><mi>d</mi><mi>t</mi></mrow></mfrac><mo stretchy="false">&vert;</mo><mspace width="mediummathspace"/><mo>&Rightarrow;</mo><mspace width="mediummathspace"/><mi>v</mi><mo>=</mo><mo stretchy="false">&Vert;</mo><mfrac><mrow><mi>d</mi><mi>M</mi></mrow><mrow><mi>d</mi><mi>s</mi></mrow></mfrac><mo stretchy="false">&Vert;</mo><mi>v</mi></mrow><annotation encoding='application/x-tex'>\frac{dM}{dt} =\frac{dM}{ds} \frac{ds}{dt} 
+\ \Rightarrow \ \| \frac{dM}{dt} \| = \| \frac{dM}{ds} \| |\frac{ds}{dt}|
+\ \Rightarrow \ v = \| \frac{dM}{ds} \| v </annotation></semantics></math>
+où <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>v</mi></mrow><annotation encoding='application/x-tex'>v</annotation></semantics></math> est la norme de la vitesse avec <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>t</mi></mrow><annotation encoding='application/x-tex'>t</annotation></semantics></math> comme paramètre,
+donc <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mo stretchy="false">&Vert;</mo><mfrac><mrow><mi>d</mi><mi>M</mi></mrow><mrow><mi>d</mi><mi>s</mi></mrow></mfrac><mo stretchy="false">&Vert;</mo></mrow><annotation encoding='application/x-tex'>\| \frac{dM}{ds} \|</annotation></semantics></math> est bien égal à 1.</p><p>Calculons maintenant l’accélération avec ce nouveau paramètre <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>s</mi></mrow><annotation encoding='application/x-tex'>s</annotation></semantics></math>. Comme
+la vitesse est de norme constante égale à 1, donc de carré 1, 
+en dérivant <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mo stretchy="false">(</mo><mi>d</mi><mi>M</mi><mo stretchy="false">/</mo><mi>d</mi><mi>s</mi><msup><mo stretchy="false">)</mo> <mn>2</mn></msup></mrow><annotation encoding='application/x-tex'>(dM/ds)^2</annotation></semantics></math> par rapport à <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>s</mi></mrow><annotation encoding='application/x-tex'>s</annotation></semantics></math>,
+on vérifie que l’accélération est perpendiculaire à la vitesse
+pour ce paramétrage par la longueur d’arc <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>s</mi></mrow><annotation encoding='application/x-tex'>s</annotation></semantics></math>. 
+L’accélération par rapport à <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>s</mi></mrow><annotation encoding='application/x-tex'>s</annotation></semantics></math> est donc portée par la normale à la trajectoire,
+et sa mesure algébrique est appelé courbure (signée), notée <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>&kappa;</mi></mrow><annotation encoding='application/x-tex'>\kappa</annotation></semantics></math>,
+la valeur absolue de l’inverse de <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>&kappa;</mi></mrow><annotation encoding='application/x-tex'>\kappa</annotation></semantics></math> est appelé le rayon de courbure
+(la direction de l’accélération pointe vers le centre
+de courbure). 
+<math xmlns='http://www.w3.org/1998/Math/MathML' display='block'><semantics><mrow><mfrac><mrow><msup><mi>d</mi> <mn>2</mn></msup><mi>M</mi></mrow><mrow><mi>d</mi><msup><mi>s</mi> <mn>2</mn></msup></mrow></mfrac><mo>&perp;</mo><mover><mi>v</mi><mo stretchy="false">&RightVector;</mo></mover><mo>,</mo><mspace width="1em"/><mo stretchy="false">&Vert;</mo><mfrac><mrow><msup><mi>d</mi> <mn>2</mn></msup><mi>M</mi></mrow><mrow><mi>d</mi><msup><mi>s</mi> <mn>2</mn></msup></mrow></mfrac><mo stretchy="false">&Vert;</mo><mo>=</mo><mo stretchy="false">&vert;</mo><mi>&kappa;</mi><mo stretchy="false">&vert;</mo><mo>=</mo><mfrac><mn>1</mn><mi>R</mi></mfrac></mrow><annotation encoding='application/x-tex'>\frac{d^2M}{ds^2} \perp \vec{v}, \quad \| \frac{d^2M}{ds^2}\| =
+|\kappa| = \frac{1}{R}  </annotation></semantics></math>
+Si on se déplace sur un cercle de centre <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>O</mi></mrow><annotation encoding='application/x-tex'>O</annotation></semantics></math>
+et de rayon <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>R</mi></mrow><annotation encoding='application/x-tex'>R</annotation></semantics></math> à vitesse 1, alors <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>x</mi><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo><mo>+</mo><mi>i</mi><mi>y</mi><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo><mo>=</mo><mi>R</mi><msup><mi>e</mi> <mrow><mi>i</mi><mi>t</mi><mo stretchy="false">/</mo><mi>R</mi></mrow></msup></mrow><annotation encoding='application/x-tex'>x(t)+iy(t)=Re^{it/R}</annotation></semantics></math>, la vitesse
+est donnée par <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>x</mi><mo>&prime;</mo><mo lspace="verythinmathspace" rspace="0em">+</mo><mi>i</mi><mi>y</mi><mo>&prime;</mo><mo>=</mo><mi>i</mi><msup><mi>e</mi> <mrow><mi>i</mi><mi>t</mi><mo stretchy="false">/</mo><mi>R</mi></mrow></msup></mrow><annotation encoding='application/x-tex'>x&apos;+iy&apos;=ie^{it/R}</annotation></semantics></math> donc de norme 1, et l’accélération
+par <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>x</mi><mo>&Prime;</mo><mo lspace="verythinmathspace" rspace="0em">+</mo><mi>i</mi><mi>y</mi><mo>&Prime;</mo><mo>=</mo><mo lspace="verythinmathspace" rspace="0em">&minus;</mo><mfrac><mn>1</mn><mi>R</mi></mfrac><msup><mi>e</mi> <mrow><mi>i</mi><mi>t</mi><mo stretchy="false">/</mo><mi>R</mi></mrow></msup></mrow><annotation encoding='application/x-tex'>x&apos;&apos;+iy&apos;&apos;=&#x2d;\frac1R e^{it/R}</annotation></semantics></math>, sa norme vaut <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mn>1</mn><mo stretchy="false">/</mo><mi>R</mi></mrow><annotation encoding='application/x-tex'>1/R</annotation></semantics></math> et sa direction
+pointe vers le centre du cercle. Donc la courbe est, 
+à l’ordre 2 au point considéré, identique à un cercle de rayon <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>R</mi></mrow><annotation encoding='application/x-tex'>R</annotation></semantics></math>.</p><p>Revenons au paramètrage initial <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>t</mi></mrow><annotation encoding='application/x-tex'>t</annotation></semantics></math>. Dérivons par rapport à <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>t</mi></mrow><annotation encoding='application/x-tex'>t</annotation></semantics></math> la vitesse
+<math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mfrac><mrow><mi>d</mi><mi>M</mi></mrow><mrow><mi>d</mi><mi>t</mi></mrow></mfrac><mo>=</mo><mi>v</mi><mfrac><mrow><mi>d</mi><mi>M</mi></mrow><mrow><mi>d</mi><mi>s</mi></mrow></mfrac></mrow><annotation encoding='application/x-tex'>\frac{dM}{dt} = v \frac{dM}{ds}</annotation></semantics></math>, on obtient :
+<math xmlns='http://www.w3.org/1998/Math/MathML' display='block'><semantics><mrow><mrow><mtable displaystyle="false" rowspacing="0.5ex"><mtr><mtd><mover><mi>a</mi><mo stretchy="false">&RightVector;</mo></mover><mo>=</mo><mfrac><mrow><msup><mi>d</mi> <mn>2</mn></msup><mi>M</mi></mrow><mrow><mi>d</mi><msup><mi>t</mi> <mn>2</mn></msup></mrow></mfrac></mtd> <mtd><mo>=</mo></mtd> <mtd><mfrac><mrow><mi>d</mi><mi>v</mi></mrow><mrow><mi>d</mi><mi>t</mi></mrow></mfrac><mfrac><mrow><mi>d</mi><mi>M</mi></mrow><mrow><mi>d</mi><mi>s</mi></mrow></mfrac><mo>+</mo><mi>v</mi><mfrac><mi>d</mi><mrow><mi>d</mi><mi>t</mi></mrow></mfrac><mrow><mo>(</mo><mfrac><mrow><mi>d</mi><mi>M</mi></mrow><mrow><mi>d</mi><mi>s</mi></mrow></mfrac><mo>)</mo></mrow></mtd></mtr> <mtr><mtd/> <mtd><mo>=</mo></mtd> <mtd><mfrac><mrow><mi>d</mi><mi>v</mi></mrow><mrow><mi>d</mi><mi>t</mi></mrow></mfrac><mfrac><mrow><mi>d</mi><mi>M</mi></mrow><mrow><mi>d</mi><mi>s</mi></mrow></mfrac><mo>+</mo><mi>v</mi><mfrac><mrow><mi>d</mi><mi>s</mi></mrow><mrow><mi>d</mi><mi>t</mi></mrow></mfrac><mfrac><mrow><msup><mi>d</mi> <mn>2</mn></msup><mi>M</mi></mrow><mrow><mi>d</mi><msup><mi>s</mi> <mn>2</mn></msup></mrow></mfrac></mtd></mtr> <mtr><mtd/> <mtd><mo>=</mo></mtd> <mtd><mfrac><mrow><mi>d</mi><mi>v</mi></mrow><mrow><mi>d</mi><mi>t</mi></mrow></mfrac><mfrac><mrow><mi>d</mi><mi>M</mi></mrow><mrow><mi>d</mi><mi>s</mi></mrow></mfrac><mo>+</mo><msup><mi>v</mi> <mn>2</mn></msup><mfrac><mrow><msup><mi>d</mi> <mn>2</mn></msup><mi>M</mi></mrow><mrow><mi>d</mi><msup><mi>s</mi> <mn>2</mn></msup></mrow></mfrac></mtd></mtr></mtable></mrow></mrow><annotation encoding='application/x-tex'> \begin{matrix}
+ \vec{a} =\frac{d^2M}{dt^2} 
+&amp;=&amp;\frac{dv}{dt} \frac{dM}{ds} + v \frac{d}{dt} \left( \frac{dM}{ds} \right)\\
+&amp;=&amp;\frac{dv}{dt} \frac{dM}{ds} + v \frac{ds}{dt} \frac{d^2M}{ds^2}\\
+&amp;=&amp; \frac{dv}{dt} \frac{dM}{ds} + v^2 \frac{d^2M}{ds^2}
+ \end{matrix} </annotation></semantics></math>
+L’accélération se décompose donc en deux parties 
+</p><ul class="itemize"><li class="li-itemize">
+le premier
+terme colinéaire au vecteur tangent est l’accélération 
+tangentielle<a id="hevea_default104"></a>, 
+de norme <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>v</mi><mo>&prime;</mo></mrow><annotation encoding='application/x-tex'>v&apos;</annotation></semantics></math>, 
+</li><li class="li-itemize">le second terme perpendiculaire au vecteur tangent
+est l’accélération normale<a id="hevea_default105"></a>, 
+dont la norme est <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><msup><mi>v</mi> <mn>2</mn></msup><mo stretchy="false">/</mo><mi>R</mi></mrow><annotation encoding='application/x-tex'>v^2/R</annotation></semantics></math>,
+où <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>R</mi></mrow><annotation encoding='application/x-tex'>R</annotation></semantics></math> est le rayon de courbure<a id="hevea_default106"></a>
+</li></ul><p>Autre formule de calcul du rayon de courbure : l’accélération normale <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><msub><mi>a</mi> <mi>n</mi></msub></mrow><annotation encoding='application/x-tex'>a_n</annotation></semantics></math> vaut <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><msup><mi>v</mi> <mn>2</mn></msup><mo stretchy="false">/</mo><mi>R</mi></mrow><annotation encoding='application/x-tex'>v^2/R</annotation></semantics></math> donc
+<math xmlns='http://www.w3.org/1998/Math/MathML' display='block'><semantics><mrow><mo stretchy="false">&Vert;</mo><mover><mi>a</mi><mo stretchy="false">&RightVector;</mo></mover><mo>&wedge;</mo><mover><mi>v</mi><mo stretchy="false">&RightVector;</mo></mover><mo stretchy="false">&Vert;</mo><mo>=</mo><msub><mi>a</mi> <mi>n</mi></msub><mo stretchy="false">&Vert;</mo><mover><mi>v</mi><mo stretchy="false">&RightVector;</mo></mover><mo stretchy="false">&Vert;</mo><mo>=</mo><mfrac><mrow><msup><mi>v</mi> <mn>3</mn></msup></mrow><mi>R</mi></mfrac><mspace width="mediummathspace"/><mo>&Rightarrow;</mo><mspace width="mediummathspace"/><mi>R</mi><mo>=</mo><msup><mi>v</mi> <mn>3</mn></msup><mo stretchy="false">/</mo><mo stretchy="false">&Vert;</mo><mover><mi>a</mi><mo stretchy="false">&RightVector;</mo></mover><mo>&wedge;</mo><mover><mi>v</mi><mo stretchy="false">&RightVector;</mo></mover><mo stretchy="false">&Vert;</mo><mo>=</mo><mfrac><mrow><msup><msqrt><mrow><mi>x</mi><msup><mo>&prime;</mo> <mn>2</mn></msup><mo>+</mo><mi>y</mi><msup><mo>&prime;</mo> <mn>2</mn></msup></mrow></msqrt> <mn>3</mn></msup></mrow><mrow><mo stretchy="false">&vert;</mo><mi>x</mi><mo>&prime;</mo><mi>y</mi><mo>&prime;</mo><mo>&prime;</mo><mo>&minus;</mo><mi>y</mi><mo>&prime;</mo><mi>x</mi><mo>&prime;</mo><mo>&prime;</mo><mo stretchy="false">&vert;</mo></mrow></mfrac></mrow><annotation encoding='application/x-tex'>\| \vec{a} \wedge \vec{v} \|=
+a_n \|\vec{v}\|=\frac{v^3}{R} 
+\ \Rightarrow \ R =v^3/\|\vec{a} \wedge \vec{v}\|
+=\frac{\sqrt{x&apos;^2+y&apos;^2}^3}{|x&apos;y&apos;{&apos;}&#x2d;y&apos;x&apos;{&apos;}|}
+ </annotation></semantics></math></p><div class="theorem"><span style="font-weight:bold">Proposition 19</span>  <em>
+On appelle repère de Frenet</em><a id="hevea_default107"></a><em> 
+en un point </em><math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>M</mi></mrow><annotation encoding='application/x-tex'>M</annotation></semantics></math><em> régulier d’une courbe, 
+le repère orthonormé direct formé par
+le point de la courbe, le vecteur tangent </em><math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mover><mi>T</mi><mo stretchy="false">&RightVector;</mo></mover></mrow><annotation encoding='application/x-tex'>\vec{T}</annotation></semantics></math><em> 
+et le vecteur normal </em><math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mover><mi>N</mi><mo stretchy="false">&RightVector;</mo></mover></mrow><annotation encoding='application/x-tex'>\vec{N}</annotation></semantics></math><em>. On a alors
+</em><math xmlns='http://www.w3.org/1998/Math/MathML' display='block'><semantics><mrow><mover><mi>v</mi><mo stretchy="false">&RightVector;</mo></mover><mo>=</mo><mi>v</mi><mover><mi>T</mi><mo stretchy="false">&RightVector;</mo></mover><mo>=</mo><mfrac><mrow><mi>d</mi><mi>s</mi></mrow><mrow><mi>d</mi><mi>t</mi></mrow></mfrac><mover><mi>T</mi><mo stretchy="false">&RightVector;</mo></mover><mo>,</mo><mspace width="1em"/><mfrac><mi>d</mi><mrow><mi>d</mi><mi>s</mi></mrow></mfrac><mover><mi>T</mi><mo stretchy="false">&RightVector;</mo></mover><mo>=</mo><mi>&kappa;</mi><mover><mi>N</mi><mo stretchy="false">&RightVector;</mo></mover><mo>,</mo><mfrac><mi>d</mi><mrow><mi>d</mi><mi>s</mi></mrow></mfrac><mover><mi>N</mi><mo stretchy="false">&RightVector;</mo></mover><mo>=</mo><mo lspace="verythinmathspace" rspace="0em">&minus;</mo><mi>&kappa;</mi><mover><mi>T</mi><mo stretchy="false">&RightVector;</mo></mover><mo>,</mo><mspace width="1em"/><mi>R</mi><mo>=</mo><mo>&pm;</mo><mfrac><mn>1</mn><mi>&kappa;</mi></mfrac><mo>,</mo></mrow><annotation encoding='application/x-tex'>\vec{v}=v \vec{T}=\frac{ds}{dt}\vec{T}, \quad \frac{d}{ds}\vec{T}=\kappa \vec{N}, 
+\frac{d}{ds}\vec{N}=&#x2d;\kappa \vec{T},
+\quad R=\pm\frac1\kappa, 
+ </annotation></semantics></math><em>
+(l’avant-dernière formule vient du fait que </em><math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mo stretchy="false">{</mo><mover><mi>T</mi><mo stretchy="false">&RightVector;</mo></mover><mo>,</mo><mover><mi>N</mi><mo stretchy="false">&RightVector;</mo></mover><mo stretchy="false">}</mo></mrow><annotation encoding='application/x-tex'>\{ \vec{T}
+,\vec{N} \}</annotation></semantics></math><em> est une base orthonormée directe, le signe
+</em><math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mo>&pm;</mo></mrow><annotation encoding='application/x-tex'>\pm</annotation></semantics></math><em> est déterminé par la convexité de la courbe), et :
+</em><math xmlns='http://www.w3.org/1998/Math/MathML' display='block'><semantics><mrow><mover><mi>a</mi><mo stretchy="false">&RightVector;</mo></mover><mo>=</mo><mfrac><mi>d</mi><mrow><mi>d</mi><mi>t</mi></mrow></mfrac><mover><mi>v</mi><mo stretchy="false">&RightVector;</mo></mover><mo>=</mo><mfrac><mrow><mi>d</mi><mi>v</mi></mrow><mrow><mi>d</mi><mi>t</mi></mrow></mfrac><mover><mi>T</mi><mo stretchy="false">&RightVector;</mo></mover><mo>&pm;</mo><mfrac><mrow><msup><mi>v</mi> <mn>2</mn></msup></mrow><mi>R</mi></mfrac><mover><mi>N</mi><mo stretchy="false">&RightVector;</mo></mover><mo>,</mo><mspace width="1em"/><mi>R</mi><mo>=</mo><mfrac><mrow><msup><msqrt><mrow><mi>x</mi><msup><mo>&prime;</mo> <mn>2</mn></msup><mo>+</mo><mi>y</mi><msup><mo>&prime;</mo> <mn>2</mn></msup></mrow></msqrt> <mn>3</mn></msup></mrow><mrow><mo stretchy="false">&vert;</mo><mi>x</mi><mo>&prime;</mo><mi>y</mi><mo>&prime;</mo><mo>&prime;</mo><mo>&minus;</mo><mi>y</mi><mo>&prime;</mo><mi>x</mi><mo>&prime;</mo><mo>&prime;</mo><mo stretchy="false">&vert;</mo></mrow></mfrac></mrow><annotation encoding='application/x-tex'>\vec{a}=\frac{d}{dt}\vec{v}=\frac{dv}{dt} \vec{T} \pm
+\frac{v^2}{R} \vec{N}, \quad
+R=\frac{\sqrt{x&apos;^2+y&apos;^2}^3}{|x&apos;y&apos;{&apos;}&#x2d;y&apos;x&apos;{&apos;}|} </annotation></semantics></math><em>
+On appelle centre de courbure le point </em><math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>&Omega;</mi><mo>=</mo><mi>M</mi><mo>+</mo><mfrac><mn>1</mn><mi>&kappa;</mi></mfrac><mover><mi>N</mi><mo stretchy="false">&RightVector;</mo></mover></mrow><annotation encoding='application/x-tex'>\Omega=M+\frac1\kappa
+\vec{N}</annotation></semantics></math><em>. Le cercle de centre </em><math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>&Omega;</mi></mrow><annotation encoding='application/x-tex'>\Omega</annotation></semantics></math><em> passant par </em><math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>M</mi></mrow><annotation encoding='application/x-tex'>M</annotation></semantics></math><em>
+(de rayon </em><math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>R</mi></mrow><annotation encoding='application/x-tex'>R</annotation></semantics></math><em>)
+est appelé cercle osculateur</em><a id="hevea_default108"></a><em> en </em><math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>M</mi></mrow><annotation encoding='application/x-tex'>M</annotation></semantics></math><em> à la courbe.
+</em></div><p>
+<span style="font-weight:bold">Exemple</span> : calcul du cercle osculateur en un point d’une parabole
+<math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mo stretchy="false">(</mo><mi>t</mi><mo>,</mo><msup><mi>t</mi> <mn>2</mn></msup><mo stretchy="false">)</mo></mrow><annotation encoding='application/x-tex'>(t,t^2)</annotation></semantics></math>.
+<math xmlns='http://www.w3.org/1998/Math/MathML' display='block'><semantics><mrow><mi>x</mi><mo>&prime;</mo><mo>=</mo><mn>1</mn><mo>,</mo><mi>y</mi><mo>&prime;</mo><mo>=</mo><mn>2</mn><mi>t</mi><mo>,</mo><mspace width="mediummathspace"/><mover><mi>T</mi><mo stretchy="false">&RightVector;</mo></mover><mo>=</mo><mo stretchy="false">(</mo><mfrac><mn>1</mn><msqrt><mrow><mn>1</mn><mo>+</mo><mn>4</mn><msup><mi>t</mi> <mn>2</mn></msup></mrow></msqrt></mfrac><mo>,</mo><mfrac><mrow><mn>2</mn><mi>t</mi></mrow><msqrt><mrow><mn>1</mn><mo>+</mo><mn>4</mn><msup><mi>t</mi> <mn>2</mn></msup></mrow></msqrt></mfrac><mo stretchy="false">)</mo><mo>,</mo><mspace width="1em"/><mi>y</mi><mo>&prime;</mo><mo>&prime;</mo><mo>=</mo><mn>2</mn><mspace width="1em"/><mi>R</mi><mo>=</mo><mfrac><mrow><msup><msqrt><mrow><mn>1</mn><mo>+</mo><mn>4</mn><msup><mi>t</mi> <mn>2</mn></msup></mrow></msqrt> <mn>3</mn></msup></mrow><mn>2</mn></mfrac></mrow><annotation encoding='application/x-tex'>x&apos;=1, y&apos;=2t, \ 
+\vec{T}=(\frac1{\sqrt{1+4t^2}},\frac{2t}{\sqrt{1+4t^2}}), \quad
+y&apos;{&apos;}=2\quad R=\frac{\sqrt{1+4t^2}^3}{2} </annotation></semantics></math>
+
+
+<div><form onsubmit="setTimeout(function(){UI.eval_form(form);});return false;">
+<input type="text" name="name" size="1" value=
+
+"t0">
+
+=<input type="number" name="valname" onchange="UI.eval_form(form);" value=
+
+"0">
+
+<input type="button" value="-" onclick="valname.value -= stepname.value;UI.eval_form(form);">
+<input type="button" value="+" onclick="valname.value -= -stepname.value;UI.eval_form(form);">
+<input type="number" name="stepname" value=
+
+"0.1">
+
+<input type="range" name="rangename"
+onclick="valname.value=value;UI.eval_form(form);" value=
+
+"0" min="-5" max="5" step="0.1">
+
+<textarea name="prog" onchange="UI.eval_form(form)" style="width:400px;vertical-align:bottom;font-size:large">
+gl_x=-5..5; gl_y=0..6;G:=plotparam([t,t^2],t=-2.3..2.3,color=red);M:=point(evalf(t0),t0^2,affichage=point_croix+epaisseur_point_3);T:=tangent(G,evalf(t0));N:=normalize([-slope(T),1]); R:=(1+4t0^2)^(3/2)/2;C:=circle(M+R*N,R);
+
+</textarea>
+</form>
+<span>Not evaled</span></div>
+
+
+Avec Xcas version 1.1.1-18 ou supérieure, on peut taper directement :<br>
+<code>C:=cercle_osculateur(G,M)</code></p><p><span style="font-weight:bold">Remarques </span>: 
+</p><ul class="itemize"><li class="li-itemize">
+La courbure<a id="hevea_default109"></a> est aussi la dérivée par
+rapport à l’abscisse curviligne de 
+l’angle <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>&theta;</mi></mrow><annotation encoding='application/x-tex'>\theta</annotation></semantics></math> fait par la
+tangente avec une direction fixe, par exemple l’axe <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>O</mi><mi>x</mi></mrow><annotation encoding='application/x-tex'>Ox</annotation></semantics></math>.
+En effet <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mover><mi>T</mi><mo stretchy="false">&RightVector;</mo></mover><mo>=</mo><mo stretchy="false">(</mo><mi>cos</mi><mo stretchy="false">(</mo><mi>&theta;</mi><mo stretchy="false">)</mo><mo>,</mo><mi>sin</mi><mo stretchy="false">(</mo><mi>&theta;</mi><mo stretchy="false">)</mo><mo stretchy="false">)</mo></mrow><annotation encoding='application/x-tex'>\vec{T}=(\cos(\theta),\sin(\theta))</annotation></semantics></math>,
+dont la dérivée est le produit de <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>&theta;</mi><mo>&prime;</mo></mrow><annotation encoding='application/x-tex'>\theta&apos;</annotation></semantics></math> par le vecteur
+normal <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mover><mi>N</mi><mo stretchy="false">&RightVector;</mo></mover></mrow><annotation encoding='application/x-tex'>\vec{N}</annotation></semantics></math>.
+</li><li class="li-itemize">Génériquement, une courbe reste du même coté de
+sa tangente (car le terme suivant dans le développement est d’ordre
+2, de signe constant en 0), les exceptions sont les points
+d’inflexion. Par contre,
+génériquement une courbe traverse son cercle osculateur (en y
+rentrant ou en en sortant), car le terme suivant dans le
+développement de la différence entre les points des deux courbes 
+est d’ordre 3 et change donc de signe en 0. Les exceptions
+(tangeance courbe-cercle osculateur d’ordre 3 au lieu de 2)
+sont appelés sommets d’une courbe, par exemple le sommet d’une
+parabole.
+</li><li class="li-itemize">on peut calculer les coordonnées du centre du cercle
+osculateur de manière algébrique (i.e. sans introduire de racines
+carrées) à partir des
+coordonnées paramétriques de <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>M</mi></mrow><annotation encoding='application/x-tex'>M</annotation></semantics></math> et de ses dérivées
+</li><li class="li-itemize">la courbe <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>D</mi></mrow><annotation encoding='application/x-tex'>D</annotation></semantics></math> décrite par les <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>&Omega;</mi></mrow><annotation encoding='application/x-tex'>\Omega</annotation></semantics></math> lorsque <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>M</mi></mrow><annotation encoding='application/x-tex'>M</annotation></semantics></math> parcourt
+la courbe étudiée <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>C</mi></mrow><annotation encoding='application/x-tex'>C</annotation></semantics></math> est appelée
+<span style="font-weight:bold">développée</span><a id="hevea_default110"></a> 
+de la courbe <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>C</mi></mrow><annotation encoding='application/x-tex'>C</annotation></semantics></math>. 
+La vitesse de <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>&Omega;</mi></mrow><annotation encoding='application/x-tex'>\Omega</annotation></semantics></math> vaut
+<math xmlns='http://www.w3.org/1998/Math/MathML' display='block'><semantics><mrow><mfrac><mi>d</mi><mrow><mi>d</mi><mi>t</mi></mrow></mfrac><mo stretchy="false">(</mo><mi>M</mi><mo>+</mo><mfrac><mn>1</mn><mi>&kappa;</mi></mfrac><mover><mi>N</mi><mo stretchy="false">&RightVector;</mo></mover><mo stretchy="false">)</mo><mo>=</mo><mi>v</mi><mover><mi>T</mi><mo stretchy="false">&RightVector;</mo></mover><mo>+</mo><mfrac><mrow><mi>d</mi><mfrac><mn>1</mn><mi>&kappa;</mi></mfrac></mrow><mrow><mi>d</mi><mi>t</mi></mrow></mfrac><mover><mi>N</mi><mo stretchy="false">&RightVector;</mo></mover><mo>+</mo><mfrac><mn>1</mn><mi>&kappa;</mi></mfrac><mi>v</mi><mo stretchy="false">(</mo><mo lspace="verythinmathspace" rspace="0em">&minus;</mo><mi>&kappa;</mi><mover><mi>T</mi><mo stretchy="false">&RightVector;</mo></mover><mo stretchy="false">)</mo><mo>=</mo><mfrac><mrow><mi>d</mi><mfrac><mn>1</mn><mi>&kappa;</mi></mfrac></mrow><mrow><mi>d</mi><mi>t</mi></mrow></mfrac><mover><mi>N</mi><mo stretchy="false">&RightVector;</mo></mover></mrow><annotation encoding='application/x-tex'>\frac{d}{dt}(M+\frac1\kappa \vec{N})=v\vec{T} +
+\frac{d\frac1\kappa}{dt} \vec{N} + \frac1\kappa v(&#x2d;\kappa
+\vec{T})
+= \frac{d\frac1\kappa}{dt} \vec{N}  </annotation></semantics></math>
+on en déduit que la tangente à la développée en <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>&Omega;</mi></mrow><annotation encoding='application/x-tex'>\Omega</annotation></semantics></math> a
+pour direction la normale <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mover><mi>N</mi><mo stretchy="false">&RightVector;</mo></mover></mrow><annotation encoding='application/x-tex'>\vec{N}</annotation></semantics></math> (si <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>&kappa;</mi></mrow><annotation encoding='application/x-tex'>\kappa</annotation></semantics></math> admet un
+point critique, par exemple en un sommet de la courbe,
+la développée admet génériquement
+un point de rebroussement<sup><a id="text18" href="#note18">2</a></sup>). 
+<em>L’enveloppe</em><a id="hevea_default111"></a><sup><a id="text19" href="#note19"><em>3</em></a></sup><em> 
+des normales à une courbe est donc sa développée.</em><br>
+Exemple : développée de l’ellipse <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mo stretchy="false">(</mo><mn>2</mn><mi>cos</mi><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo><mo>,</mo><mi>sin</mi><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo><mo stretchy="false">)</mo></mrow><annotation encoding='application/x-tex'>(2\cos(t),\sin(t))</annotation></semantics></math><br>
+Initialiser la trace avec 
+<textarea onkeypress="UI.ckenter(event,this,1)" 
+style="width:400px;font-size:large">L:=[]
+</textarea><button onclick="previousSibling.style.display='inherit';var tmp=UI.caseval(previousSibling.value);tmp=UI.rmquote(tmp); nextSibling.innerHTML='&nbsp;'+tmp;UI.render_canvas(nextSibling);">ok</button><span></span><br>
+<br>
+puis faire varier <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>t</mi><mn>0</mn></mrow><annotation encoding='application/x-tex'>t0</annotation></semantics></math> :
+
+
+<div><form onsubmit="setTimeout(function(){UI.eval_form(form);});return false;">
+<input type="text" name="name" size="1" value=
+
+"t0">
+
+=<input type="number" name="valname" onchange="UI.eval_form(form);" value=
+
+"0.7">
+
+<input type="button" value="-" onclick="valname.value -= stepname.value;UI.eval_form(form);">
+<input type="button" value="+" onclick="valname.value -= -stepname.value;UI.eval_form(form);">
+<input type="number" name="stepname" value=
+
+"0.1">
+
+<input type="range" name="rangename"
+onclick="valname.value=value;UI.eval_form(form);" value=
+
+"0.7" min="-5" max="5" step="0.1">
+
+<textarea name="prog" onchange="UI.eval_form(form)" style="width:400px;vertical-align:bottom;font-size:large">
+gl_x=-6..6;gl_y=-4..4;G:=plotparam([2*cos(t),sin(t)],t=0..2*pi);M:=element(G,evalf(t0));T:=tangent(M);N:=perpendiculaire(M,T);L:=append(L,N);evolute(G,color=red)
+
+</textarea>
+</form>
+<span>Not evaled</span></div>
+
+
+On observe 4 sommets pour l’ellipse, situés sur les grands et
+petits axes, et donc 4 points de rebroussements pour la développée.
+Ouvrir un niveau de géométrie 2d dans Xcas, taper une commande
+par ligne<br>
+<code>G:=plotparam([2*cos(t),sin(t)],t=0..2*pi);</code><br>
+<code>M:=element(G);</code><br>
+<code>T:=tangent(M);</code><br>
+<code>N:=perpendiculaire(M,T);</code><br>
+<code>trace(N)</code><br>
+passer en mode pointeur (menu mode du niveau
+de géométrie) et faire bouger le point <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>M</mi></mrow><annotation encoding='application/x-tex'>M</annotation></semantics></math> le long
+d’un quart de l’ellipse, ceci trace un faisceau de normales
+à l’ellipse, dont on voit apparaitre l’enveloppe (limite
+entre la région couverte et non couverte par des points
+du faisceau de normales), cette enveloppe est
+la développée de l’ellipse (vous pouvez utiliser 
+le menu M à droite
+du dessin pour effacer les traces). Avec Xcas version 1.1.1-18
+ou ultérieure on peut tracer la développée avec
+la commande <code>developpee(G)</code>.<br>
+Cf. aussi les animations de l’article Développée de wikipedia.<br>
+<span style="font-weight:bold">Exercice</span> : calculer le repère de Frenet pour une ellipse <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>E</mi></mrow><annotation encoding='application/x-tex'>E</annotation></semantics></math>,
+par exemple <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>x</mi><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo><mo>=</mo><mn>4</mn><mi>cos</mi><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo><mo>,</mo><mi>y</mi><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo><mo>=</mo><mn>3</mn><mi>sin</mi><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo></mrow><annotation encoding='application/x-tex'>x(t)=4\cos(t), y(t)=3\sin(t)</annotation></semantics></math>
+puis le rayon de courbure, puis la développée <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>A</mi></mrow><annotation encoding='application/x-tex'>A</annotation></semantics></math>
+(on obtient une courbe image par affinité
+d’une astroïde<a id="hevea_default112"></a>). Donner une équation
+paramétrique simple de <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>A</mi></mrow><annotation encoding='application/x-tex'>A</annotation></semantics></math>.<br>
+Vérification avec Xcas (version à jour) :<br>
+
+<textarea onkeypress="UI.ckenter(event,this,1)" 
+style="width:400px;height:120px;font-size:large">E:=plotparam([4cos(t),3sin(t)],t,0,2pi); A:=evolute(E);
+</textarea><button onclick="previousSibling.style.display='inherit';var tmp=UI.caseval(previousSibling.value);tmp=UI.rmquote(tmp); nextSibling.innerHTML='&nbsp;'+tmp;UI.render_canvas(nextSibling);">ok</button><span></span><br>
+
+<div><textarea onkeypress="UI.ckenter(event,this,2)" 
+style="width:800px;font-size:large">eq:=simplify(parameq(A)); trigcos(re(eq)); im(eq) 
+</textarea><button onclick="previousSibling.style.display='inherit';var tmp=UI.caseval(previousSibling.value); tmp=UI.latexeval(tmp);nextSibling.innerHTML=tmp; if (UI.usemathjax) MathJax.Hub.Queue(['Typeset',MathJax.Hub,nextSibling])">ok</button><div style="width:800px;max-height:200px;overflow:auto;color:blue;text-align:center"></div></div>
+
+</li><li class="li-itemize">De plus, comme <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mover><mi>N</mi><mo stretchy="false">&RightVector;</mo></mover></mrow><annotation encoding='application/x-tex'>\vec{N}</annotation></semantics></math> est normé,
+la longueur d’arc de courbe de la développée est donnée par :
+<math xmlns='http://www.w3.org/1998/Math/MathML' display='block'><semantics><mrow><msubsup><mo>&Integral;</mo> <mrow><msub><mi>t</mi> <mn>0</mn></msub></mrow> <mrow><msub><mi>t</mi> <mn>1</mn></msub></mrow></msubsup><mrow><mo>&vert;</mo><mfrac><mrow><mi>d</mi><mfrac><mn>1</mn><mi>&kappa;</mi></mfrac></mrow><mrow><mi>d</mi><mi>t</mi></mrow></mfrac><mo>&vert;</mo></mrow><mspace width="mediummathspace"/><mi>d</mi><mi>t</mi><mo>=</mo><mrow><mo>&vert;</mo><msubsup><mrow><mo>[</mo><mfrac><mn>1</mn><mi>&kappa;</mi></mfrac><mo>]</mo></mrow> <mrow><msub><mi>t</mi> <mn>0</mn></msub></mrow> <mrow><msub><mi>t</mi> <mn>1</mn></msub></mrow></msubsup><mo>&vert;</mo></mrow><mo>=</mo><mo stretchy="false">&vert;</mo><mi>R</mi><mo stretchy="false">(</mo><msub><mi>t</mi> <mn>1</mn></msub><mo stretchy="false">)</mo><mo>&minus;</mo><mi>R</mi><mo stretchy="false">(</mo><msub><mi>t</mi> <mn>0</mn></msub><mo stretchy="false">)</mo><mo stretchy="false">&vert;</mo></mrow><annotation encoding='application/x-tex'>\int_{t_0}^{t_1} \left|\frac{d\frac{1}{\kappa}}{dt}\right| \ dt = 
+\left| \left[\frac{1}{\kappa}\right]_{t_0}^{t_1} \right|
+= |R(t_1)&#x2d;R(t_0)|
+ </annotation></semantics></math>
+<br>
+Conséquence : si on enroule un fil sur la développée <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>D</mi></mrow><annotation encoding='application/x-tex'>D</annotation></semantics></math>,
+que ce fil est tendu et que son extrémité coïncide, avant de
+commencer à le dérouler, avec un point de la courbe <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>C</mi></mrow><annotation encoding='application/x-tex'>C</annotation></semantics></math> 
+alors dans la suite du déroulé, l’extrémité parcoura la courbe
+<math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>C</mi></mrow><annotation encoding='application/x-tex'>C</annotation></semantics></math> (on dit que <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>C</mi></mrow><annotation encoding='application/x-tex'>C</annotation></semantics></math> est une développante de <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>D</mi></mrow><annotation encoding='application/x-tex'>D</annotation></semantics></math>).
+</li><li class="li-itemize">si la courbure est de signe constant, les cercles osculateurs
+sont inclus les uns dans les autres, c’est une conséquence
+de la remarque précédente, de l’inégalité triangulaire
+et du fait que la distance entre deux centres de cercles
+osculateurs est plus petite que la longueur d’arc sur la
+développée. Comme les points de la courbe sont
+sur des cercles osculateurs, il en résulte que la courbe
+entre ou sort définitivement du cercle osculateur au point
+de contact.
+</li><li class="li-itemize">La développée peut servir à calculer une caustique en
+optique. On envoie des rayons lumineux parallèle à une
+direction fixée vers un miroir ayant la forme de la courbe <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>C</mi></mrow><annotation encoding='application/x-tex'>C</annotation></semantics></math>
+la <span style="font-weight:bold">caustique</span><a id="hevea_default113"></a> 
+est l’enveloppe des rayons lumineux réfléchis
+(que l’on observe par une plus grande intensité lumineuse).
+On peut montrer que la caustique est la développée 
+de l’anticaustique de <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>C</mi></mrow><annotation encoding='application/x-tex'>C</annotation></semantics></math> par rapport à une droite perpendiculaire
+aux rayons lumineux (pour déterminer 
+l’anticaustique d’une courbe par rapport
+à une droite, on prend un point de la courbe, on le projète sur
+la droite puis on prend le symétrique du projeté par rapport à la
+tangente à la courbe au point choisi, 
+l’anticaustique est le lieu de ces symétriques). 
+Cf. dans Xcas la session exemple du
+menu <code>Exemple, geometrie, caustique</code>.
+Les développées peuvent aussi servir dans le calcul de caustiques
+par réfraction :
+<code>http://www.mathcurve.com/courbes2d/caustic/caustic.htm</code>
+</li><li class="li-itemize">On peut faire une étude analogue pour une courbe dans
+l’espace, dans ce cas la dérivée de <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mover><mi>N</mi><mo stretchy="false">&RightVector;</mo></mover></mrow><annotation encoding='application/x-tex'>\vec{N}</annotation></semantics></math>
+par rapport à l’abscisse curviligne <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>s</mi></mrow><annotation encoding='application/x-tex'>s</annotation></semantics></math> fait intervenir une
+composante sur le troisième vecteur du repère direct
+<math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mover><mi>T</mi><mo stretchy="false">&RightVector;</mo></mover><mo>&wedge;</mo><mover><mi>N</mi><mo stretchy="false">&RightVector;</mo></mover><mo>=</mo><mover><mi>B</mi><mo stretchy="false">&RightVector;</mo></mover></mrow><annotation encoding='application/x-tex'>\vec{T} \wedge\vec{N}=\vec{B}</annotation></semantics></math> 
+(<math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mover><mi>B</mi><mo stretchy="false">&RightVector;</mo></mover></mrow><annotation encoding='application/x-tex'>\vec{B}</annotation></semantics></math> comme binormal), appelé
+torsion.
+</li><li class="li-itemize"><span style="font-weight:bold">Équation intrinsèque d’une courbe :</span><br>
+Il s’agit de trouver une courbe vérifiant une relation entre la
+courbure (ou rayon de courbure) et l’abscisse curviligne, par exemple
+la relation <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>R</mi><mi>s</mi><mo>=</mo><msup><mi>b</mi> <mn>2</mn></msup></mrow><annotation encoding='application/x-tex'>Rs=b^2</annotation></semantics></math> avec <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>b</mi><mi>&gt;</mi><mn>0</mn></mrow><annotation encoding='application/x-tex'>b&amp;gt;0</annotation></semantics></math> fixé.<sup><a id="text20" href="#note20">4</a></sup>
+Pour trouver une telle courbe, on la paramètre par l’abscisse
+curviligne <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>s</mi></mrow><annotation encoding='application/x-tex'>s</annotation></semantics></math>, donc la vitesse <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>d</mi><mi>M</mi><mo stretchy="false">/</mo><mi>d</mi><mi>s</mi></mrow><annotation encoding='application/x-tex'>dM/ds</annotation></semantics></math> est de norme 1 et caractérisée
+par l’angle <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>&#x03D5;</mi><mo stretchy="false">(</mo><mi>s</mi><mo stretchy="false">)</mo></mrow><annotation encoding='application/x-tex'>\phi(s)</annotation></semantics></math> fait avec une direction fixe, on a alors
+<math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>&#x03D5;</mi><mo>&prime;</mo><mo stretchy="false">(</mo><mi>s</mi><mo stretchy="false">)</mo><mo>=</mo><mn>1</mn><mo stretchy="false">/</mo><mi>R</mi></mrow><annotation encoding='application/x-tex'>\phi&apos;(s)=1/R</annotation></semantics></math> et on en tire <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>&#x03D5;</mi><mo stretchy="false">(</mo><mi>s</mi><mo stretchy="false">)</mo></mrow><annotation encoding='application/x-tex'>\phi(s)</annotation></semantics></math> puis <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>M</mi><mo stretchy="false">(</mo><mi>s</mi><mo stretchy="false">)</mo></mrow><annotation encoding='application/x-tex'>M(s)</annotation></semantics></math>. 
+Dans l’exemple, on a <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>&#x03D5;</mi><mo>&prime;</mo><mo stretchy="false">(</mo><mi>s</mi><mo stretchy="false">)</mo><mo>=</mo><mi>s</mi><mo stretchy="false">/</mo><msup><mi>b</mi> <mn>2</mn></msup></mrow><annotation encoding='application/x-tex'>\phi&apos;(s)=s/b^2</annotation></semantics></math>, donc <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>&#x03D5;</mi><mo stretchy="false">(</mo><mi>s</mi><mo stretchy="false">)</mo><mo>=</mo><msup><mi>s</mi> <mn>2</mn></msup><mo stretchy="false">/</mo><mo stretchy="false">(</mo><mn>2</mn><msup><mi>b</mi> <mn>2</mn></msup><mo stretchy="false">)</mo></mrow><annotation encoding='application/x-tex'>\phi(s)=s^2/(2b^2)</annotation></semantics></math> (en
+choisissant la direction fixe pour annuler la constante
+d’intégration), puis :
+<math xmlns='http://www.w3.org/1998/Math/MathML' display='block'><semantics><mrow><mfrac><mrow><mi>d</mi><mi>M</mi></mrow><mrow><mi>d</mi><mi>s</mi></mrow></mfrac><mo>=</mo><mrow><mo>(</mo><mi>cos</mi><mrow><mo>(</mo><mfrac><mrow><msup><mi>s</mi> <mn>2</mn></msup></mrow><mrow><mn>2</mn><msup><mi>b</mi> <mn>2</mn></msup></mrow></mfrac><mo>)</mo></mrow><mo>,</mo><mi>sin</mi><mrow><mo>(</mo><mfrac><mrow><msup><mi>s</mi> <mn>2</mn></msup></mrow><mrow><mn>2</mn><msup><mi>b</mi> <mn>2</mn></msup></mrow></mfrac><mo>)</mo></mrow><mo>)</mo></mrow></mrow><annotation encoding='application/x-tex'>\frac{dM}{ds}=\left(\cos\left(\frac{s^2}{2b^2}\right),\sin\left(\frac{s^2}{2b^2}\right) \right)  </annotation></semantics></math>
+puis en choisissant l’origine du repère :
+<math xmlns='http://www.w3.org/1998/Math/MathML' display='block'><semantics><mrow><mi>M</mi><mo stretchy="false">(</mo><mi>s</mi><mo stretchy="false">)</mo><mo>=</mo><mrow><mo>(</mo><msubsup><mo>&Integral;</mo> <mn>0</mn> <mi>s</mi></msubsup><mi>cos</mi><mrow><mo>(</mo><mfrac><mrow><msup><mi>u</mi> <mn>2</mn></msup></mrow><mrow><mn>2</mn><msup><mi>b</mi> <mn>2</mn></msup></mrow></mfrac><mo>)</mo></mrow><mspace width="mediummathspace"/><mi>d</mi><mi>u</mi><mo>,</mo><msubsup><mo>&Integral;</mo> <mn>0</mn> <mi>s</mi></msubsup><mi>sin</mi><mrow><mo>(</mo><mfrac><mrow><msup><mi>u</mi> <mn>2</mn></msup></mrow><mrow><mn>2</mn><msup><mi>b</mi> <mn>2</mn></msup></mrow></mfrac><mo>)</mo></mrow><mspace width="mediummathspace"/><mi>d</mi><mi>u</mi><mo>)</mo></mrow></mrow><annotation encoding='application/x-tex'>M(s)=\left(
+\int_0^s \cos\left(\frac{u^2}{2b^2}\right) \ du ,
+\int_0^s \sin\left(\frac{u^2}{2b^2}\right)
+\ du
+\right) </annotation></semantics></math>
+en posant <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>u</mi><mo>=</mo><msqrt><mn>2</mn></msqrt><mi>b</mi><mi>v</mi></mrow><annotation encoding='application/x-tex'>u=\sqrt{2}b v</annotation></semantics></math> on a aussi
+<math xmlns='http://www.w3.org/1998/Math/MathML' display='block'><semantics><mrow><mi>M</mi><mo stretchy="false">(</mo><mi>s</mi><mo stretchy="false">)</mo><mo>=</mo><msqrt><mn>2</mn></msqrt><mi>b</mi><mrow><mo>(</mo><msubsup><mo>&Integral;</mo> <mn>0</mn> <mfrac><mi>s</mi><mrow><msqrt><mn>2</mn></msqrt><mi>b</mi></mrow></mfrac></msubsup><mi>cos</mi><mo stretchy="false">(</mo><msup><mi>v</mi> <mn>2</mn></msup><mo stretchy="false">)</mo><mspace width="mediummathspace"/><mi>d</mi><mi>v</mi><mo>,</mo><msubsup><mo>&Integral;</mo> <mn>0</mn> <mfrac><mi>s</mi><mrow><msqrt><mn>2</mn></msqrt><mi>b</mi></mrow></mfrac></msubsup><mi>sin</mi><mo stretchy="false">(</mo><msup><mi>v</mi> <mn>2</mn></msup><mo stretchy="false">)</mo><mspace width="mediummathspace"/><mi>d</mi><mi>v</mi><mo>)</mo></mrow></mrow><annotation encoding='application/x-tex'>M(s)=\sqrt{2}b \left(\int_0^{\frac{s}{\sqrt{2}b}} \cos(v^2) \ dv ,
+\int_0^{\frac{s}{\sqrt{2}b}} \sin(v^2) \ dv
+\right) </annotation></semantics></math>
+Pour <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>b</mi><mo>=</mo><mn>1</mn><mo stretchy="false">/</mo><msqrt><mn>2</mn></msqrt></mrow><annotation encoding='application/x-tex'>b=1/\sqrt{2}</annotation></semantics></math>, le tracé est obtenu par la commande<br>
+
+<textarea onkeypress="UI.ckenter(event,this,1)" 
+style="width:400px;font-size:large">plotparam(int(exp(i*t^2),t,0,s),s=-3..3,tstep=0.03)
+</textarea><button onclick="previousSibling.style.display='inherit';var tmp=UI.caseval(previousSibling.value);tmp=UI.rmquote(tmp); nextSibling.innerHTML='&nbsp;'+tmp;UI.render_canvas(nextSibling);">ok</button><span></span><br>
+
+</li></ul>
+<!--BEGIN NOTES chapter-->
+<hr class="footnoterule"><dl class="thefootnotes"><dt class="dt-thefootnotes">
+<a id="note17" href="#text17">1</a></dt><dd class="dd-thefootnotes"><div class="footnotetext">qui tire
+son nom de la trajectoire d’un point fixé à un cercle roulant
+sans glisser sur une droite, par exemple l’extrémité d’un rayon 
+sur une roue de vélo.</div></dd><dt class="dt-thefootnotes"><a id="note18" href="#text18">2</a></dt><dd class="dd-thefootnotes"><div class="footnotetext">On peut montrer qu’une courbe
+convexe admet au moins 4 sommets (théorème des quatre sommets), 
+sa développée admet donc
+au moins 4 points de rebroussements.</div></dd><dt class="dt-thefootnotes"><a id="note19" href="#text19">3</a></dt><dd class="dd-thefootnotes"><div class="footnotetext">L’enveloppe d’une famille
+de droites est une courbe dont l’ensemble des tangentes est la famille de droite</div></dd><dt class="dt-thefootnotes"><a id="note20" href="#text20">4</a></dt><dd class="dd-thefootnotes"><div class="footnotetext">Ce type de courbe, appelé
+spirale d’Euler<a id="hevea_default114"></a> ou de Fresnel<a id="hevea_default115"></a> ou clothoïde<a id="hevea_default116"></a>, est utilisée pour
+faire des raccordements de chemin de fer (ou de route) 
+entre une portion rectiligne, où l’accélération normale est
+nulle, et un arc de cercle, où l’accélération normale est
+constante, en effet si <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>R</mi><mi>s</mi><mo>=</mo><msup><mi>b</mi> <mn>2</mn></msup></mrow><annotation encoding='application/x-tex'>Rs=b^2</annotation></semantics></math> est constant alors l’accélération
+normale varie linéairement en fonction de l’abscisse curviligne
+donc du temps à vitesse constante. C’est plus agréable pour
+les passagers qui passent d’une accélération nulle à une
+accélération constante progressivement, mais aussi pour
+créer une pente progressive latérale sur les rails pour compenser
+la force centrifuge par la gravité et éviter une usure
+prématurée du rail.</div></dd></dl>
+<!--END NOTES-->
+<!--TOC chapter id="sec107" Représentation des courbes implicites.-->
+</html>

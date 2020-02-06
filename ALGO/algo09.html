@@ -1,0 +1,638 @@
+<!DOCTYPE html>
+<html >
+<head>
+<h1 id="sec78" class="chapter">Chapitre 9  Bases de Gröbner.</h1><!--SEC END --><p> <a id="sec:groebner"></a> <a id="hevea_default73"></a> <a id="hevea_default74"></a>
+</p>
+<!--TOC section id="sec79" Ordre et réduction-->
+<h2 id="sec79" class="section">9.1  Ordre et réduction</h2><!--SEC END --><p><a id="hevea_default75"></a> <a id="hevea_default76"></a>
+L’anneau des polynômes à plusieurs variables n’a pas de division
+euclidienne. On est donc obligé d’utiliser des outils moins
+performants.
+La première chose à faire est de choisir un ordre total sur les monomes,
+compatible avec la multiplication des monômes 
+(<math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>a</mi><mi>&lt;</mi><mi>b</mi></mrow><annotation encoding='application/x-tex'>a&amp;lt;b</annotation></semantics></math> doit entrainer <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>a</mi><mi>c</mi><mi>&lt;</mi><mi>b</mi><mi>c</mi></mrow><annotation encoding='application/x-tex'>a c&amp;lt;b c</annotation></semantics></math>) et tel que si un monôme <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>a</mi></mrow><annotation encoding='application/x-tex'>a</annotation></semantics></math> divise
+un autre monôme <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>b</mi></mrow><annotation encoding='application/x-tex'>b</annotation></semantics></math> alors <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>a</mi><mi>&lt;</mi><mi>b</mi></mrow><annotation encoding='application/x-tex'>a&amp;lt;b</annotation></semantics></math>. 
+Exemples d’ordres utilisés
+fréquemment (ce sont les 3 ordres proposés par les fonctions
+de Xcas) :
+</p><ul class="itemize"><li class="li-itemize">
+l’<span style="font-weight:bold">ordre lexicographique</span> <code>plex</code><a id="hevea_default77"></a>
+<math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mo stretchy="false">(</mo><msub><mi>a</mi> <mn>1</mn></msub><mo>,</mo><msub><mi>a</mi> <mn>2</mn></msub><mo>,</mo><mo>.</mo><mo>.</mo><mo>,</mo><msub><mi>a</mi> <mi>n</mi></msub><mo stretchy="false">)</mo><mi>&gt;</mi><mo stretchy="false">(</mo><msub><mi>b</mi> <mn>1</mn></msub><mo>,</mo><mo>.</mo><mo>.</mo><mo>.</mo><mo>,</mo><msub><mi>b</mi> <mi>n</mi></msub><mo stretchy="false">)</mo></mrow><annotation encoding='application/x-tex'>(a_1,a_2,..,a_n)&amp;gt;(b_1,...,b_n)</annotation></semantics></math> si <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><msub><mi>a</mi> <mn>1</mn></msub><mi>&gt;</mi><msub><mi>b</mi> <mn>1</mn></msub></mrow><annotation encoding='application/x-tex'>a_1&amp;gt;b_1</annotation></semantics></math> ou si <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><msub><mi>a</mi> <mn>1</mn></msub><mo>=</mo><msub><mi>b</mi> <mn>1</mn></msub></mrow><annotation encoding='application/x-tex'>a_1=b_1</annotation></semantics></math> et
+<math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><msub><mi>a</mi> <mn>2</mn></msub><mi>&gt;</mi><msub><mi>b</mi> <mn>2</mn></msub></mrow><annotation encoding='application/x-tex'>a_2&amp;gt;b_2</annotation></semantics></math> ou si <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><msub><mi>a</mi> <mn>1</mn></msub><mo>=</mo><msub><mi>b</mi> <mn>1</mn></msub><mo>,</mo><msub><mi>a</mi> <mn>2</mn></msub><mo>=</mo><msub><mi>b</mi> <mn>2</mn></msub></mrow><annotation encoding='application/x-tex'>a_1=b_1, a_2=b_2</annotation></semantics></math> et <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><msub><mi>a</mi> <mn>3</mn></msub><mi>&gt;</mi><msub><mi>b</mi> <mn>3</mn></msub></mrow><annotation encoding='application/x-tex'>a_3&amp;gt;b_3</annotation></semantics></math>, etc.
+</li><li class="li-itemize">le degré total <code>tdeg</code>: 
+on commence par comparer le degré
+total, et en cas d’égalité on utilise l’ordre lexicographique
+</li><li class="li-itemize"><code>revlex</code><a id="hevea_default78"></a>: on commence par comparer le degré
+total, et en cas d’égalité on renvoie le contraire
+de l’ordre lexicographique (attention, cela ne veut
+pas dire inverser l’ordre des variables!)
+</li></ul><p>
+On remarque sur ces 3 exemples qu’il ne peut exister de suite strictement
+décroissante infinie pour l’ordre <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>&gt;</mi></mrow><annotation encoding='application/x-tex'>&amp;gt;</annotation></semantics></math>. Lorsque le degré total est
+le premier critère, c’est évident, puisque le nombre de monomes <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>&lt;</mi></mrow><annotation encoding='application/x-tex'>&amp;lt;</annotation></semantics></math>
+à un monome donné est fini. Pour l’ordre lexicographique, on
+raisonne par l’absurde.
+On regarde d’abord le premier indice, comme la suite est décroissante,
+tous les monômes ont un indice inférieur ou égal au premier indice
+du premier monôme. On peut donc extraire une sous-suite strictement
+décroissante et infinie de monômes dont le 1er indice est constant. 
+On passe alors au 2ème indice, et ainsi de suite jusqu’au dernier indice
+qui donne une contradiction. On fait donc dans la suite l’hypothèse
+qu’il n’existe pas de suite strictement décroissante infinie pour 
+l’ordre <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>&gt;</mi></mrow><annotation encoding='application/x-tex'>&amp;gt;</annotation></semantics></math>.</p><p>On peut alors effectuer une sorte de remplacement de la division
+euclidienne de <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>A</mi></mrow><annotation encoding='application/x-tex'>A</annotation></semantics></math> par <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>B</mi></mrow><annotation encoding='application/x-tex'>B</annotation></semantics></math>, appelée réduction qui consiste à comparer le
+terme dominant de <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>B</mi></mrow><annotation encoding='application/x-tex'>B</annotation></semantics></math> au sens de l’ordre (noté <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>L</mi><mi>T</mi><mo stretchy="false">(</mo><mi>B</mi><mo stretchy="false">)</mo></mrow><annotation encoding='application/x-tex'>LT(B)</annotation></semantics></math>) aux monomes
+de <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>A</mi></mrow><annotation encoding='application/x-tex'>A</annotation></semantics></math> par ordre décroissant, si l’un
+des monomes de <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>A</mi></mrow><annotation encoding='application/x-tex'>A</annotation></semantics></math> a <span style="font-weight:bold">toutes</span> ses puissances
+plus grandes que <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>L</mi><mi>T</mi><mo stretchy="false">(</mo><mi>B</mi><mo stretchy="false">)</mo></mrow><annotation encoding='application/x-tex'>LT(B)</annotation></semantics></math>, alors on élimine ce terme, 
+disons <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><msub><mi>A</mi> <mi>k</mi></msub></mrow><annotation encoding='application/x-tex'>A_k</annotation></semantics></math>, en retranchant
+à <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>A</mi></mrow><annotation encoding='application/x-tex'>A</annotation></semantics></math> le polynôme <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><msub><mi>A</mi> <mi>k</mi></msub><mo stretchy="false">/</mo><mi>L</mi><mi>T</mi><mo stretchy="false">(</mo><mi>B</mi><mo stretchy="false">)</mo><mi>B</mi></mrow><annotation encoding='application/x-tex'>A_k/LT(B) B</annotation></semantics></math>. Ceci ne modifie pas le début
+de <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>A</mi></mrow><annotation encoding='application/x-tex'>A</annotation></semantics></math> jusqu’au monôme <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><msub><mi>A</mi> <mi>k</mi></msub></mrow><annotation encoding='application/x-tex'>A_k</annotation></semantics></math>. Les termes retranchés peuvent eux-même
+donner lieu à une réduction par <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>B</mi></mrow><annotation encoding='application/x-tex'>B</annotation></semantics></math>, par exemple <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><msub><mi>A</mi> <mi>k</mi></msub><mo stretchy="false">/</mo><mi>L</mi><mi>T</mi><mo stretchy="false">(</mo><mi>B</mi><mo stretchy="false">)</mo><msub><mi>B</mi> <mn>2</mn></msub></mrow><annotation encoding='application/x-tex'>A_k/LT(B) B_2</annotation></semantics></math> peut
+être divisible par <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>L</mi><mi>T</mi><mo stretchy="false">(</mo><mi>B</mi><mo stretchy="false">)</mo></mrow><annotation encoding='application/x-tex'>LT(B)</annotation></semantics></math>. Le procédé de réduction
+doit toutefois s’arrêter,
+sinon on pourrait construire une suite décroissante infinie pour
+l’ordre <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>&gt;</mi></mrow><annotation encoding='application/x-tex'>&amp;gt;</annotation></semantics></math> avec les <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><msub><mi>A</mi> <mi>k</mi></msub></mrow><annotation encoding='application/x-tex'>A_k</annotation></semantics></math>.
+On peut même diviser <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>A</mi></mrow><annotation encoding='application/x-tex'>A</annotation></semantics></math> par plusieurs polynômes <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>B</mi><mo>,</mo><mi>C</mi><mo>,</mo><mo>.</mo><mo>.</mo></mrow><annotation encoding='application/x-tex'>B,C,..</annotation></semantics></math> en utilisant
+cet algorithme.</p>
+<!--TOC section id="sec80" Idéaux-->
+<h2 id="sec80" class="section">9.2  Idéaux</h2><!--SEC END --><p><a id="hevea_default79"></a>
+En dimension 1, les idéaux sont engendrés par un polynôme <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>P</mi></mrow><annotation encoding='application/x-tex'>P</annotation></semantics></math> et
+c’est la division euclidienne par <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>P</mi></mrow><annotation encoding='application/x-tex'>P</annotation></semantics></math> qui permet de savoir si on est
+dans l’idéal. En dimension plus grande, l’analogue est la base
+de Gröbner de l’idéal (relativement à un ordre monomial <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>&lt;</mi></mrow><annotation encoding='application/x-tex'>&amp;lt;</annotation></semantics></math>)
+et on utilise la réduction par rapport aux polynômes de l’idéal
+pour savoir si on est dans l’idéal.
+On commence par montrer que les idéaux de monomes
+sont engendrés par 
+les monômes minimaux, qui ne sont divisibles par aucun
+autre monôme de l’idéal. Supposons qu’ils soient en nombre infini.
+Considérons le premier indice des monomes, s’il est borné, on 
+aura une infinité de monomes ayant le même indice, sinon on
+aura une suite infinie de monômes d’indice croissant, dans
+les deux cas on peut extraire une suite infinie dont la première
+composante est croissante au sens large. On fait le même
+raisonnement sur la suite extraite pour la 2ème composante, etc.
+et on aboutit à une suite infinie de monômes qui se divisent les
+uns les autres ce qui est absurde. Donc les monômes minimaux
+sont en nombre fini.</p><p>Une base de Gröbner s’obtient en prenant
+des polynômes correspondant aux monômes minimaux 
+de l’idéal de monômes <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>L</mi><mi>T</mi><mo stretchy="false">(</mo><mi>I</mi><mo stretchy="false">)</mo></mrow><annotation encoding='application/x-tex'>LT(I)</annotation></semantics></math> 
+des coefficients dominants de <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>I</mi></mrow><annotation encoding='application/x-tex'>I</annotation></semantics></math>. La réduction
+par rapport aux éléments de cette base donne alors 0
+pour tous les éléments de <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>I</mi></mrow><annotation encoding='application/x-tex'>I</annotation></semantics></math>, ce qui montre que
+<math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>I</mi></mrow><annotation encoding='application/x-tex'>I</annotation></semantics></math> est engendré par cette base.</p><p>On appelle <span style="font-weight:bold">“s-polynôme”</span><a id="hevea_default80"></a> d’une paire de polynômes
+<math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>A</mi></mrow><annotation encoding='application/x-tex'>A</annotation></semantics></math> et <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>B</mi></mrow><annotation encoding='application/x-tex'>B</annotation></semantics></math>
+le polynôme obtenu en calculant le monôme PPCM <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>L</mi></mrow><annotation encoding='application/x-tex'>L</annotation></semantics></math> de <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>L</mi><mi>T</mi><mo stretchy="false">(</mo><mi>A</mi><mo stretchy="false">)</mo></mrow><annotation encoding='application/x-tex'>LT(A)</annotation></semantics></math> 
+et <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>L</mi><mi>T</mi><mo stretchy="false">(</mo><mi>B</mi><mo stretchy="false">)</mo></mrow><annotation encoding='application/x-tex'>LT(B)</annotation></semantics></math> et en créant la différence
+qui annule ce monôme PPCM <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>L</mi><mo stretchy="false">/</mo><mi>L</mi><mi>T</mi><mo stretchy="false">(</mo><mi>A</mi><mo stretchy="false">)</mo><mi>A</mi><mo>&minus;</mo><mi>L</mi><mo stretchy="false">/</mo><mi>L</mi><mi>T</mi><mo stretchy="false">(</mo><mi>B</mi><mo stretchy="false">)</mo><mi>B</mi></mrow><annotation encoding='application/x-tex'>L/LT(A)A &#x2d;L/LT(B)B</annotation></semantics></math>.</p><p>On peut montrer que la base de Gröbner peut se calculer
+à partir d’une famille génératrice en effectuant
+la boucle suivante :
+on calcule tous les s-polynômes de la famille génératrice
+courante, on les réduit par rapport à la famille génératrice
+courante, si tous les s-polynomes sont nuls la famille
+courante est la base cherchée, sinon 
+on garde les s-polynômes réduits non nuls, on réduit
+la famille génératrice courante par rapport à ces s-polynômes réduits
+non nuls et on fusionne les polynômes non nuls en la famille
+génératrice courante pour l’itération suivante de la boucle.</p><p>Le problème est que cela devient très vite très long. Il existe
+des méthodes permettant d’accélérer l’algorithme, par exemple
+on peut savoir à l’avance qu’un s-polynôme se réduit à 0
+(règles de Gebauer-Möller) il est donc inutile de le calculer.
+On peut aussi précalculer tous les multiples des polynômes
+par rapport auxquels on réduit et réduire simultanément
+tous les polynômes à réduire en ramenant la réduction
+à un algorithme de pivot de Gauß (c’est la partie
+algèbre linéaire de l’algorithme F4). L’ordre choisi
+est aussi très important pour l’efficacité. Enfin, pour le cas des
+coefficients entiers, des méthodes modulaires permettent
+d’accélérer les calculs. Xcas implémente un algorithme modulaire
+très compétitif pour l’ordre <span style="font-family:monospace">revlex</span>, présenté
+dans l’article en anglais qui suit.</p><p>Les instructions Xcas correspondantes sont <span style="font-family:monospace">gbasis, greduce</span>.</p>
+<!--TOC section id="sec81" Introduction-->
+<h2 id="sec81" class="section">9.3  Introduction</h2><!--SEC END --><p>
+During the last decades, considerable improvements have been made 
+in CAS like Maple or specialized systems like Magma, Singular, 
+Cocoa, Macaulay... to compute Groebner basis. 
+They were driven by
+implementations of new algorithms speeding up the original Buchberger 
+([<a href="#buchberger1985grobner">3</a>])
+algorithm: Gebauer and Möller criterion ([<a href="#Gebauer1988275">6</a>]), F4 and F5
+algorithms from J.-C. Faugère ([<a href="#F99a">4</a>], [<a href="#Fau02a">5</a>]), and are widely described in the
+literature if the base field is a finite field.
+Much less was said about computing over <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>&Qopf;</mi></mrow><annotation encoding='application/x-tex'>\mathbb{Q}</annotation></semantics></math>. It seems that
+implementers are using the same algorithm as for finite fields,
+this time working with coefficients in <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>&Qopf;</mi></mrow><annotation encoding='application/x-tex'>\mathbb{Q}</annotation></semantics></math> or in <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>&Zopf;</mi></mrow><annotation encoding='application/x-tex'>\mathbb{Z}</annotation></semantics></math> (sometimes
+with fast integer linear algebra), 
+despite the fact that an efficient p-adic or Chinese remaindering
+algorithm were described as soon as in year 2000 by E. Arnold
+([<a href="#Arnold2003403">1</a>]). 
+The reason might well be that these modular algorithms suffer from a
+time-consuming step at the end: checking that the reconstructed
+Groebner basis is indeed the correct Groebner basis.</p><p>Section <a href="#sec%3Aprobagb">9.4</a>
+will show that if one accepts a small error probability, this check 
+may be fast, so we can let the user choose between a fast conjectural
+Groebner basis to make his own conjectures and a slower certified
+Groebner basis once he needs a mathematical proof.</p><p>Section <a href="#sec%3Alearning">9.5</a>
+will explain learning, a process that can accelerate the
+computation of a Groebner basis modulo a prime <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><msub><mi>p</mi> <mi>k</mi></msub></mrow><annotation encoding='application/x-tex'>p_k</annotation></semantics></math> once the
+same computation but modulo another prime <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>p</mi></mrow><annotation encoding='application/x-tex'>p</annotation></semantics></math> has already been
+done ; learning is an alternative to the F5 algorithm
+in order to avoid computing useless critical pairs that reduce to 0. The
+idea is similar to <span style="font-family:monospace">F4remake</span> by Joux-Vitse ([<a href="#joux2011variant">7</a>]) 
+used in the context of computing Groebner basis in large finite fields.</p><p>Section <a href="#sec%3Agiacf4">9.6</a> 
+will show in more details how the gbasis algorithm is implemented
+in Giac/Xcas ([<a href="#giac">9</a>]) and show that - at least for the classical academic
+benchmarks Cyclic and Katsura - the deterministic modular algorithm
+is competitive or faster than the best open-source implementations
+and the modular probabilistic algorithm is comparable to Maple
+and slower than Magma on one processor (at least for moderate integer coefficient
+size) and may be faster than Magma on multi-processors, 
+while computation modulo <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>p</mi></mrow><annotation encoding='application/x-tex'>p</annotation></semantics></math> are faster for characteristics in the
+24-31 bits range.
+Moreover the modular algorithm memory usage is essentially
+twice the memory required to store the basis on <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>&Qopf;</mi></mrow><annotation encoding='application/x-tex'>\mathbb{Q}</annotation></semantics></math>, sometimes
+much less than the memory required by other algorithms.</p>
+<!--TOC section id="sec82" Checking a reconstructed Groebner basis-->
+<h2 id="sec82" class="section">9.4  Checking a reconstructed Groebner basis</h2><!--SEC END --><p> <a id="sec:probagb"></a>
+Let <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><msub><mi>f</mi> <mn>1</mn></msub><mo>,</mo><mo>.</mo><mo>.</mo><mo>,</mo><msub><mi>f</mi> <mi>m</mi></msub></mrow><annotation encoding='application/x-tex'>f_1,..,f_m</annotation></semantics></math> be polynomials in <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>&Qopf;</mi><mo stretchy="false">[</mo><msub><mi>x</mi> <mn>1</mn></msub><mo>,</mo><mo>.</mo><mo>.</mo><mo>,</mo><msub><mi>x</mi> <mi>n</mi></msub><mo stretchy="false">]</mo></mrow><annotation encoding='application/x-tex'>\mathbb{Q}[x_1,..,x_n]</annotation></semantics></math>, <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>I</mi><mo>=</mo><mi>&lt;</mi><msub><mi>f</mi> <mn>1</mn></msub><mo>,</mo><mo>.</mo><mo>.</mo><mo>.</mo><mo>,</mo><msub><mi>f</mi> <mi>m</mi></msub><mi>&gt;</mi></mrow><annotation encoding='application/x-tex'>I=&amp;lt;f_1,...,f_m&amp;gt;</annotation></semantics></math>
+be the ideal generated by <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><msub><mi>f</mi> <mn>1</mn></msub><mo>,</mo><mo>.</mo><mo>.</mo><mo>.</mo><mo>,</mo><msub><mi>f</mi> <mi>n</mi></msub></mrow><annotation encoding='application/x-tex'>f_1,...,f_n</annotation></semantics></math>. Without loss of generality, we may
+assume that the <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><msub><mi>f</mi> <mi>i</mi></msub></mrow><annotation encoding='application/x-tex'>f_i</annotation></semantics></math> have coefficients in <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>&Zopf;</mi></mrow><annotation encoding='application/x-tex'>\mathbb{Z}</annotation></semantics></math> by multiplying
+by the least common multiple of the denominators of the coefficients
+of <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><msub><mi>f</mi> <mi>i</mi></msub></mrow><annotation encoding='application/x-tex'>f_i</annotation></semantics></math>. We may also assume that the <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><msub><mi>f</mi> <mi>i</mi></msub></mrow><annotation encoding='application/x-tex'>f_i</annotation></semantics></math> are primitive by dividing
+by their content.</p><p>Let <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>&lt;</mi></mrow><annotation encoding='application/x-tex'>&amp;lt;</annotation></semantics></math> be a total monomial ordering (for example <span style="font-family:monospace">revlex</span> the
+total degree reverse lexicographic ordering). We want to compute
+the Groebner basis <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>G</mi></mrow><annotation encoding='application/x-tex'>G</annotation></semantics></math> of <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>I</mi></mrow><annotation encoding='application/x-tex'>I</annotation></semantics></math> over <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>&Qopf;</mi></mrow><annotation encoding='application/x-tex'>\mathbb{Q}</annotation></semantics></math> (and more precisely
+the inter-reduced Groebner basis, sorted with respect to <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>&lt;</mi></mrow><annotation encoding='application/x-tex'>&amp;lt;</annotation></semantics></math>).
+Now consider the ideal <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><msub><mi>I</mi> <mi>p</mi></msub></mrow><annotation encoding='application/x-tex'>I_p</annotation></semantics></math> generated by the same <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><msub><mi>f</mi> <mi>i</mi></msub></mrow><annotation encoding='application/x-tex'>f_i</annotation></semantics></math> but with
+coefficients in <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>&Zopf;</mi><mo stretchy="false">/</mo><mi>p</mi><mi>&Zopf;</mi></mrow><annotation encoding='application/x-tex'>\mathbb{Z}/p\mathbb{Z}</annotation></semantics></math> for a prime <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>p</mi></mrow><annotation encoding='application/x-tex'>p</annotation></semantics></math>. Let <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><msub><mi>G</mi> <mi>p</mi></msub></mrow><annotation encoding='application/x-tex'>G_p</annotation></semantics></math> be the Groebner basis of <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><msub><mi>I</mi> <mi>p</mi></msub></mrow><annotation encoding='application/x-tex'>I_p</annotation></semantics></math>
+(also assumed to be inter-reduced, sorted with respect to <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>&lt;</mi></mrow><annotation encoding='application/x-tex'>&amp;lt;</annotation></semantics></math>, and with
+all leading coefficients equal to 1).</p><p>Assume we compute <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>G</mi></mrow><annotation encoding='application/x-tex'>G</annotation></semantics></math> by the Buchberger
+algorithm with Gebauer and Möller criterion, and we reduce in <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>&Zopf;</mi></mrow><annotation encoding='application/x-tex'>\mathbb{Z}</annotation></semantics></math>
+(by multiplying the s-poly to be reduced by appropriate leading
+coefficients), if no leading coefficient in the polynomials are
+divisible by <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>p</mi></mrow><annotation encoding='application/x-tex'>p</annotation></semantics></math>, we will get by the same process but computing modulo
+<math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>p</mi></mrow><annotation encoding='application/x-tex'>p</annotation></semantics></math> the <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><msub><mi>G</mi> <mi>p</mi></msub></mrow><annotation encoding='application/x-tex'>G_p</annotation></semantics></math> Groebner basis. Therefore the computation can be
+done in parallel in <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>&Zopf;</mi></mrow><annotation encoding='application/x-tex'>\mathbb{Z}</annotation></semantics></math> and in <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>&Zopf;</mi><mo stretchy="false">/</mo><mi>p</mi><mi>&Zopf;</mi></mrow><annotation encoding='application/x-tex'>\mathbb{Z}/p\mathbb{Z}</annotation></semantics></math> except for a finite 
+set of <em>unlucky</em> primes (since the number of intermediate polynomials
+generated in the algorithm is finite). If we are choosing our primes
+sufficiently large (e.g. about <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><msup><mn>2</mn> <mn>31</mn></msup></mrow><annotation encoding='application/x-tex'>2^{31}</annotation></semantics></math>), the probability to fall on
+an unlucky prime is very small (less than the number of generated
+polynomials divided by about <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><msup><mn>2</mn> <mn>31</mn></msup></mrow><annotation encoding='application/x-tex'>2^{31}</annotation></semantics></math>, even for really large 
+examples like Cyclic9 where there are a few <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><msup><mn>10</mn> <mn>4</mn></msup></mrow><annotation encoding='application/x-tex'>10^4</annotation></semantics></math> polynomials 
+involved, it would be about <span style="font-family:monospace">1e-5</span>).</p><p>The Chinese remaindering algorithm is as follow: compute <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><msub><mi>G</mi> <mi>p</mi></msub></mrow><annotation encoding='application/x-tex'>G_p</annotation></semantics></math> for
+several primes, for all primes that have the same leading monomials
+in <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><msub><mi>G</mi> <mi>p</mi></msub></mrow><annotation encoding='application/x-tex'>G_p</annotation></semantics></math> (i.e. if coefficient values are ignored), reconstruct
+<math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><msub><mi>G</mi> <mrow><mo lspace="thinmathspace" rspace="thinmathspace">&prod;</mo><msub><mi>p</mi> <mi>j</mi></msub></mrow></msub></mrow><annotation encoding='application/x-tex'>G_{\prod p_j}</annotation></semantics></math> by Chinese remaindering, then reconstruct a
+candidate Groebner basis <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><msub><mi>G</mi> <mi>c</mi></msub></mrow><annotation encoding='application/x-tex'>G_c</annotation></semantics></math> in <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>&Qopf;</mi></mrow><annotation encoding='application/x-tex'>\mathbb{Q}</annotation></semantics></math> by Farey reconstruction. Once it
+stabilizes, do the checking step described below, and return <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><msub><mi>G</mi> <mi>c</mi></msub></mrow><annotation encoding='application/x-tex'>G_c</annotation></semantics></math>
+on success.</p><p><span style="font-weight:bold">Checking step</span> : check that the original <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><msub><mi>f</mi> <mi>i</mi></msub></mrow><annotation encoding='application/x-tex'>f_i</annotation></semantics></math> polynomials reduce
+to 0 with respect to <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><msub><mi>G</mi> <mi>c</mi></msub></mrow><annotation encoding='application/x-tex'>G_c</annotation></semantics></math> and check that <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><msub><mi>G</mi> <mi>c</mi></msub></mrow><annotation encoding='application/x-tex'>G_c</annotation></semantics></math> is a Groebner basis.</p><div class="theorem"><span style="font-weight:bold">Théorème 14</span>  <em> (Arnold, Greuel and Pfister)
+If the checking step succeeds, then </em><math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><msub><mi>G</mi> <mi>c</mi></msub></mrow><annotation encoding='application/x-tex'>G_c</annotation></semantics></math><em> is the Groebner basis of </em><math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>I</mi></mrow><annotation encoding='application/x-tex'>I</annotation></semantics></math><em>.
+</em></div><p>This is a consequence of ideal inclusions (first check) and dimensions (second
+check), for a complete proof, see [<a href="#Arnold2003403">1</a>] and 
+theorem 7.5.1 in Greuel,G.-M., Pfister,G., 2007, A Singular
+Introduction to Commutative Algebra, Springer.</p><p><span style="font-weight:bold">Probabilistic checking algorithm</span>: instead of checking that s-polys
+of critical
+pairs of <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><msub><mi>G</mi> <mi>c</mi></msub></mrow><annotation encoding='application/x-tex'>G_c</annotation></semantics></math> reduce to 0, check that the s-polys reduce to 0 
+modulo several primes that do not divide the leading coefficients of
+<math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><msub><mi>G</mi> <mi>c</mi></msub></mrow><annotation encoding='application/x-tex'>G_c</annotation></semantics></math> and stop
+as soon as the inverse of the product of these primes is less than a
+fixed <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>&#x03B5;</mi><mi>&gt;</mi><mn>0</mn></mrow><annotation encoding='application/x-tex'>\varepsilon&amp;gt;0</annotation></semantics></math>.</p><p><span style="font-weight:bold">Deterministic checking algorithm</span>: check that all s-polys
+reduce to 0 over <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>&Qopf;</mi></mrow><annotation encoding='application/x-tex'>\mathbb{Q}</annotation></semantics></math>. This can be done either by integer computations
+(or even by rational computations, I have not tried that),
+or by reconstruction of the quotients using modular reduction to 0
+over <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>&Zopf;</mi><mo stretchy="false">/</mo><mi>p</mi><mi>&Zopf;</mi></mrow><annotation encoding='application/x-tex'>\mathbb{Z}/p\mathbb{Z}</annotation></semantics></math> for sufficiently many primes. Once the reconstructed
+quotients stabilize, we can check the 0-reduction identity, and this
+can be done without computing the products quotients by elements of <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><msub><mi>G</mi> <mi>c</mi></msub></mrow><annotation encoding='application/x-tex'>G_c</annotation></semantics></math>
+if we have enough primes (with appropriate bounds on
+the coefficients of <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><msub><mi>G</mi> <mi>c</mi></msub></mrow><annotation encoding='application/x-tex'>G_c</annotation></semantics></math> and the lcm of the denominators of the
+reconstructed quotients).</p>
+<!--TOC section id="sec83" Speeding up by learning from previous primes-->
+<h2 id="sec83" class="section">9.5  Speeding up by learning from previous primes</h2><!--SEC END --><p> <a id="sec:learning"></a>
+Once we have computed a Groebner basis modulo an initial prime <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>p</mi></mrow><annotation encoding='application/x-tex'>p</annotation></semantics></math>, if <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>p</mi></mrow><annotation encoding='application/x-tex'>p</annotation></semantics></math> is
+not an unlucky prime, then we can speedup computing Groebner basis
+modulo other lucky primes. Indeed, if one s-poly reduce to 0 modulo
+<math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>p</mi></mrow><annotation encoding='application/x-tex'>p</annotation></semantics></math>, then it reduces most certainly to 0 on <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>&Qopf;</mi></mrow><annotation encoding='application/x-tex'>\mathbb{Q}</annotation></semantics></math> (non zero s-poly have
+in general several terms, cancellation of one term mod <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>p</mi></mrow><annotation encoding='application/x-tex'>p</annotation></semantics></math> has
+probability <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mn>1</mn><mo stretchy="false">/</mo><mi>p</mi></mrow><annotation encoding='application/x-tex'>1/p</annotation></semantics></math>, simultaneous cancellation of several terms of a non-zero
+s-poly modulo <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>p</mi></mrow><annotation encoding='application/x-tex'>p</annotation></semantics></math> is highly improbable), and we discard this s-poly in the
+next primes computations. We name this speedup process <em>learning</em>. 
+It can also
+be applied on other parts of the Groebner basis computation, like the
+symbolic preprocessing of the F4 algorithm, where we can reuse the
+same collection of monomials that were used for the first prime <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>p</mi></mrow><annotation encoding='application/x-tex'>p</annotation></semantics></math> 
+to build matrices for next primes (see Buchberger Algorithm with F4 
+linear algebra in the next section).</p><p>If we use learning, we have no certification that the computation ends up
+with a Groebner basis modulo the new primes. But this is not a problem,
+since it is not required by the checking correctness proof, the only
+requirement is that the new generated ideal is contained in the
+initial ideal modulo all primes (which is still true) and 
+that the reconstructed <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><msub><mi>G</mi> <mi>c</mi></msub></mrow><annotation encoding='application/x-tex'>G_c</annotation></semantics></math> is a Groebner basis.</p>
+<!--TOC section id="sec84" Giac/Xcas implementation and experimentation-->
+<h2 id="sec84" class="section">9.6  Giac/Xcas implementation and experimentation</h2><!--SEC END --><p> <a id="sec:giacf4"></a>
+We describe here briefly some details of the Giac/Xcas gbasis implementation
+and give a few benchmarks.</p><p>The optimized algorithm runs with revlex as <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>&lt;</mi></mrow><annotation encoding='application/x-tex'>&amp;lt;</annotation></semantics></math> ordering
+if the polynomials have at most 15
+variables (it’s easy to modify for more variables, adding multiples of
+4, but this will increase a little memory required and
+slow down a little).
+Partial and total degrees are coded as 16 bits integers (hence the 15
+variables limit, since 1 slot of 16 bits is kept for total degree). 
+Modular coefficients are coded as 31 bit integers (or 24).</p><p>The Buchberger algorithm with linear algebra 
+from the F4 algorithm is implemented modulo primes smaller than <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><msup><mn>2</mn> <mn>31</mn></msup></mrow><annotation encoding='application/x-tex'>2^{31}</annotation></semantics></math>
+using total degree as selection criterion for critical pairs.<br>
+<span style="font-weight:bold">Buchberger algorithm with F4 linear algebra modulo a prime</span>
+</p><ol class="enumerate" type=1><li class="li-enumerate">
+Initialize the basis to the empty list, and a list of critical
+pairs to empty
+</li><li class="li-enumerate">Add one by one all the <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><msub><mi>f</mi> <mi>i</mi></msub></mrow><annotation encoding='application/x-tex'>f_i</annotation></semantics></math> to the basis and update
+the list of critical pairs with Gebauer and Möller criterion, 
+by calling the gbasis update procedure (described below step 9)
+</li><li class="li-enumerate">Begin of a new iteration:<br>
+All pairs of minimal total degree are
+collected to be reduced simultaneously, they are removed from
+the list of critical pairs.
+</li><li class="li-enumerate">The symbolic preprocessing step begins by creating 
+a list of monomials, gluing
+together all monomials of the corresponding s-polys (this
+is done with a heap data structure). 
+</li><li class="li-enumerate">The list of monomials is “reduced” by division with respect 
+to the current basis,
+using heap division (like Monagan-Pearce [<a href="#monagan2011sparse">8</a>]) 
+without taking care
+of the real value of coefficients. This gives a list of all possible remainder
+monomials and a list of all possible quotient monomials and a list
+of all quotient times corresponding basis element monomial products.
+This last list together with the remainder monomial list is the
+list of all possible monomials that may be generated reducing
+the list of critical pairs of maximal total degree, 
+it is ordered with respect to <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>&lt;</mi></mrow><annotation encoding='application/x-tex'>&amp;lt;</annotation></semantics></math>. We
+record these lists for further primes during the first prime computation.
+</li><li class="li-enumerate">The list
+of quotient monomials is multiplied by the corresponding elements of the current
+basis, this time doing the coefficient arithmetic.
+The result is recorded in a sparse matrix, each row has a pointer
+to a list of coefficients (the list of coefficients 
+is in general shared by many rows, the rows have the
+same reductor with a different monomial shift), 
+and a list of monomial indices (where the index 
+is relative to the ordered list of possible monomials). We sort
+the matrix by decreasing order of leading monomial.
+</li><li class="li-enumerate">Each s-polynomial is written as a dense vector with respect to the
+list of all possible monomials, and reduced with respect to the
+sparse matrix, by decreasing order with respect to <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>&lt;</mi></mrow><annotation encoding='application/x-tex'>&amp;lt;</annotation></semantics></math>.
+(To avoid reducing modulo <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>p</mi></mrow><annotation encoding='application/x-tex'>p</annotation></semantics></math> each time, we are using a dense
+vector of 128 bits integers on 64 bits architectures, 
+and we reduce mod <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>p</mi></mrow><annotation encoding='application/x-tex'>p</annotation></semantics></math> only at the end of the reduction. If
+we work on 24 bit signed integers, we can use a dense vector 
+of 63 bits signed integer and reduce the vector if the number
+of rows is greater than <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><msup><mn>2</mn> <mn>15</mn></msup></mrow><annotation encoding='application/x-tex'>2^{15}</annotation></semantics></math>).
+</li><li class="li-enumerate">Then inter-reduction happens on all the dense vectors representing
+the reduced s-polynomials, this is dense row
+reduction to echelon form (0 columns are removed first). 
+Care must be taken at this step
+to keep row ordering when learning is active.
+</li><li class="li-enumerate">gbasis update procedure<br>
+Each non zero row will bring a new entry in the current
+basis (we record zero reducing pairs during the first prime iteration,
+this information will be used during later iterations with other
+primes to avoid computing and reducing
+useless critical pairs). 
+New critical pairs are created with this new entry (discarding useless
+pairs by applying Gebauer-Möller criterion).
+An old entry in the basis may be removed if it’s leading monomial
+has all partial degrees greater or equal to the leading monomial
+corresponding degree of the new entry.
+Old entries may also be reduced with respect to the new entries 
+at this step or at the end of the main loop.
+</li><li class="li-enumerate">If there are new critical pairs remaining start a new iteration
+(step 3). Otherwise the current basis is the Groebner basis.
+</li></ol><p><span style="font-weight:bold">Modular algorithm</span>
+</p><ol class="enumerate" type=1><li class="li-enumerate">
+Set a list of reconstructed basis to empty.
+</li><li class="li-enumerate">Learning prime: Take a prime number of 31 bits 
+or 29 bits for pseudo division, run the Buchberger algorithm modulo this
+prime recording symbolic preprocessing data and the list of critical pairs
+reducing to 0.
+</li><li class="li-enumerate">Loop begin:
+Take a prime of 29 bits size or a list of <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>n</mi></mrow><annotation encoding='application/x-tex'>n</annotation></semantics></math> primes if <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>n</mi></mrow><annotation encoding='application/x-tex'>n</annotation></semantics></math> processors
+are available. Run the Buchberger algorithm.
+Check if the output has the same leading terms than one of the
+chinese remainder reconstructed outputs from previous primes,
+if so combine them by Chinese remaindering and go to step 4, otherwise add
+a new entry in the list of reconstructed basis and continue with
+next prime at step 3 (clearing all learning data is probably a good
+idea here).
+</li><li class="li-enumerate">If the Farey <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>&Qopf;</mi></mrow><annotation encoding='application/x-tex'>\mathbb{Q}</annotation></semantics></math>-reconstructed basis is not 
+identical to the previous one, go to the loop iteration step 3
+(a fast way to check that is to reconstruct with all primes
+but the last one, and check the value modulo the last prime).
+If they are identical, run the final check : the initial polynomials <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><msub><mi>f</mi> <mi>i</mi></msub></mrow><annotation encoding='application/x-tex'>f_i</annotation></semantics></math> must reduce
+to 0 modulo the reconstructed basis and
+the reconstructed basis s-polys must reduce to 0 (this is
+done on <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>&Qopf;</mi></mrow><annotation encoding='application/x-tex'>\mathbb{Q}</annotation></semantics></math> either directly or by modular reconstruction
+for the deterministic algorithm, or checked modulo several primes
+for the probabilistic algorithm). On success output the <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>&Qopf;</mi></mrow><annotation encoding='application/x-tex'>\mathbb{Q}</annotation></semantics></math>
+Groebner basis, otherwise continue with next prime at step 3.
+</li></ol><p><span style="font-weight:bold">Benchmarks</span><br>
+Comparison of giac (1.1.0-26) with Singular 3.1 from sage
+5.10<sup><a id="text8" href="#note8">1</a></sup>
+on Mac OS X.6, Dual Core i5 2.3Ghz, RAM 2*2Go:
+</p><ul class="itemize"><li class="li-itemize">
+Mod timings were computed modulo <code>nextprime(2^24)</code>
+and modulo 1073741827 (<code>nexprime(2^30)</code>).
+</li><li class="li-itemize">Probabilistic check on <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>&Qopf;</mi></mrow><annotation encoding='application/x-tex'>\mathbb{Q}</annotation></semantics></math> depends linearly on log of precision, two
+timings are reported, one with error probability less than <code>1e-7</code>, and
+the second one for <code>1e-16</code>.
+</li><li class="li-itemize">Check on <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>&Qopf;</mi></mrow><annotation encoding='application/x-tex'>\mathbb{Q}</annotation></semantics></math> in giac can be done with integer or modular computations
+hence two times are reported.
+</li><li class="li-itemize"><code>&gt;&gt;</code> means timeout (3/4h or more) or memory exhausted
+(Katsura12 modular <code>1e-16</code> check with giac) or test not done because
+it would obviously timeout (e.g. Cyclic8 or 9 on <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>&Qopf;</mi></mrow><annotation encoding='application/x-tex'>\mathbb{Q}</annotation></semantics></math> with Singular)
+</li></ul><table border=1  style="border-spacing:0;" class="cellpadding1"><tr><td style="text-align:center;border:solid 1px;white-space:nowrap" >&nbsp;</td><td style="text-align:center;border:solid 1px;white-space:nowrap" >giac mod <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>p</mi></mrow><annotation encoding='application/x-tex'>p</annotation></semantics></math></td><td style="text-align:center;border:solid 1px;white-space:nowrap" >giac</td><td style="text-align:center;border:solid 1px;white-space:nowrap" >singular</td><td style="text-align:center;border:solid 1px;white-space:nowrap" >giac <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>&Qopf;</mi></mrow><annotation encoding='application/x-tex'>\mathbb{Q}</annotation></semantics></math> prob.</td><td style="text-align:center;border:solid 1px;white-space:nowrap" >giac <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>&Qopf;</mi></mrow><annotation encoding='application/x-tex'>\mathbb{Q}</annotation></semantics></math></td><td style="text-align:center;border:solid 1px;white-space:nowrap" >singular </td></tr>
+<tr><td style="text-align:center;border:solid 1px;white-space:nowrap" >&nbsp;</td><td style="text-align:center;border:solid 1px;white-space:nowrap" >24, 31 bits</td><td style="text-align:center;border:solid 1px;white-space:nowrap" >run2</td><td style="text-align:center;border:solid 1px;white-space:nowrap" >mod <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>p</mi></mrow><annotation encoding='application/x-tex'>p</annotation></semantics></math></td><td style="text-align:center;border:solid 1px;white-space:nowrap" ><code>1e-7</code>, <code>1e-16</code></td><td style="text-align:center;border:solid 1px;white-space:nowrap" > certified</td><td style="text-align:center;border:solid 1px;white-space:nowrap" >std <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>&Qopf;</mi></mrow><annotation encoding='application/x-tex'>\mathbb{Q}</annotation></semantics></math> </td></tr>
+<tr><td style="text-align:center;border:solid 1px;white-space:nowrap" >Cyclic7</td><td style="text-align:center;border:solid 1px;white-space:nowrap" >0.5, 0.58</td><td style="text-align:center;border:solid 1px;white-space:nowrap" >0.1</td><td style="text-align:center;border:solid 1px;white-space:nowrap" >2.0</td><td style="text-align:center;border:solid 1px;white-space:nowrap" >3.5, 4.2</td><td style="text-align:center;border:solid 1px;white-space:nowrap" >21, 29.3</td><td style="text-align:center;border:solid 1px;white-space:nowrap" >&gt;2700 </td></tr>
+<tr><td style="text-align:center;border:solid 1px;white-space:nowrap" >Cyclic8</td><td style="text-align:center;border:solid 1px;white-space:nowrap" >7.2, 8.9</td><td style="text-align:center;border:solid 1px;white-space:nowrap" >1.8</td><td style="text-align:center;border:solid 1px;white-space:nowrap" >52.5</td><td style="text-align:center;border:solid 1px;white-space:nowrap" >103, 106</td><td style="text-align:center;border:solid 1px;white-space:nowrap" >258, 679</td><td style="text-align:center;border:solid 1px;white-space:nowrap" >&gt;&gt; </td></tr>
+<tr><td style="text-align:center;border:solid 1px;white-space:nowrap" >Cyclic9</td><td style="text-align:center;border:solid 1px;white-space:nowrap" >633, 1340</td><td style="text-align:center;border:solid 1px;white-space:nowrap" >200</td><td style="text-align:center;border:solid 1px;white-space:nowrap" >?</td><td style="text-align:center;border:solid 1px;white-space:nowrap" >1 day</td><td style="text-align:center;border:solid 1px;white-space:nowrap" >&gt;&gt;</td><td style="text-align:center;border:solid 1px;white-space:nowrap" >&gt;&gt; </td></tr>
+<tr><td style="text-align:center;border:solid 1px;white-space:nowrap" >Kat8</td><td style="text-align:center;border:solid 1px;white-space:nowrap" >0.063, 0.074</td><td style="text-align:center;border:solid 1px;white-space:nowrap" >0.009</td><td style="text-align:center;border:solid 1px;white-space:nowrap" >0.2</td><td style="text-align:center;border:solid 1px;white-space:nowrap" >0.33, 0.53</td><td style="text-align:center;border:solid 1px;white-space:nowrap" >6.55, 4.35</td><td style="text-align:center;border:solid 1px;white-space:nowrap" >4.9</td></tr>
+<tr><td style="text-align:center;border:solid 1px;white-space:nowrap" >Kat9</td><td style="text-align:center;border:solid 1px;white-space:nowrap" >0.29, 0.39</td><td style="text-align:center;border:solid 1px;white-space:nowrap" >0.05</td><td style="text-align:center;border:solid 1px;white-space:nowrap" >1.37</td><td style="text-align:center;border:solid 1px;white-space:nowrap" >2.1, 3.2</td><td style="text-align:center;border:solid 1px;white-space:nowrap" >54, 36</td><td style="text-align:center;border:solid 1px;white-space:nowrap" >41</td></tr>
+<tr><td style="text-align:center;border:solid 1px;white-space:nowrap" >Kat10</td><td style="text-align:center;border:solid 1px;white-space:nowrap" >1.53, 2.27</td><td style="text-align:center;border:solid 1px;white-space:nowrap" >0.3</td><td style="text-align:center;border:solid 1px;white-space:nowrap" >11.65</td><td style="text-align:center;border:solid 1px;white-space:nowrap" >14, 20.7</td><td style="text-align:center;border:solid 1px;white-space:nowrap" >441, 335</td><td style="text-align:center;border:solid 1px;white-space:nowrap" >480 </td></tr>
+<tr><td style="text-align:center;border:solid 1px;white-space:nowrap" >Kat11</td><td style="text-align:center;border:solid 1px;white-space:nowrap" >10.4, 13.8</td><td style="text-align:center;border:solid 1px;white-space:nowrap" >2.8</td><td style="text-align:center;border:solid 1px;white-space:nowrap" >86.8</td><td style="text-align:center;border:solid 1px;white-space:nowrap" >170, 210</td><td style="text-align:center;border:solid 1px;white-space:nowrap" >4610</td><td style="text-align:center;border:solid 1px;white-space:nowrap" >? </td></tr>
+<tr><td style="text-align:center;border:solid 1px;white-space:nowrap" >Kat12</td><td style="text-align:center;border:solid 1px;white-space:nowrap" >76, 103</td><td style="text-align:center;border:solid 1px;white-space:nowrap" >27</td><td style="text-align:center;border:solid 1px;white-space:nowrap" >885</td><td style="text-align:center;border:solid 1px;white-space:nowrap" >1950, RAM</td><td style="text-align:center;border:solid 1px;white-space:nowrap" >RAM</td><td style="text-align:center;border:solid 1px;white-space:nowrap" >&gt;&gt; </td></tr>
+<tr><td style="text-align:center;border:solid 1px;white-space:nowrap" >alea6</td><td style="text-align:center;border:solid 1px;white-space:nowrap" >0.83, 1.08</td><td style="text-align:center;border:solid 1px;white-space:nowrap" >.26</td><td style="text-align:center;border:solid 1px;white-space:nowrap" >4.18</td><td style="text-align:center;border:solid 1px;white-space:nowrap" >202, 204</td><td style="text-align:center;border:solid 1px;white-space:nowrap" >738, &gt;&gt;</td><td style="text-align:center;border:solid 1px;white-space:nowrap" >&gt;1h</td></tr>
+</table><p><br>
+This leads to the following observations :
+</p><ul class="itemize"><li class="li-itemize">
+Computation modulo <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>p</mi></mrow><annotation encoding='application/x-tex'>p</annotation></semantics></math> for 24 to 31 bits is faster that Singular, but seems also
+faster than magma (and maple). For smaller primes, magma is 2 to 3
+times faster.
+</li><li class="li-itemize">The probabilistic algorithm on <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>&Qopf;</mi></mrow><annotation encoding='application/x-tex'>\mathbb{Q}</annotation></semantics></math> is much faster than Singular on these examples.
+Compared to maple16, it is reported to be faster for Katsura10, 
+and as fast for Cyclic8. Compared to magma, it is about 3 to 4
+times slower. 
+</li><li class="li-itemize">If [<a href="#magma">10</a>] is up to date (except about giac), giac is the third software and first
+open-source software to solve Cyclic9 on <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>&Qopf;</mi></mrow><annotation encoding='application/x-tex'>\mathbb{Q}</annotation></semantics></math>. It requires 378
+primes of size 29 bits, takes a little more than 1 day, requires 5Gb
+of memory on 1 processor, while with 6 processors it takes
+8h30 (requires 16Gb). The answer has integer coefficients of about 1600 digits
+(and not 800 unlike in J.-C. Faugère F4 article), for a little
+more than 1 milliion monomials, that’s about 1.4Gb of RAM.
+</li><li class="li-itemize">The deterministic modular algorithm is much faster than Singular for Cyclic examples,
+and as fast for Katsura examples. 
+</li><li class="li-itemize">For the random last example, the speed is comparable between
+magma and giac. This is where there are less pairs reducing to
+0 (learning is not as efficient as for Cyclic or Katsura) and larger
+coefficients. This would suggest that advanced algorithms 
+like f4/f5/etc. are probably
+not much more efficient than Buchberger algorithm for these kind
+of inputs without symmetries.
+</li><li class="li-itemize">Certification is the most time-consuming part of the process (except
+for Cyclic8). Integer certification is significantly faster than modular certification
+for Cyclic examples, and almost as fast for Katsura.
+</li></ul><p>Example of Giac/Xcas code:
+</p><pre class="verbatim">alea6 := [5*x^2*t+37*y*t*u+32*y*t*v+21*t*v+55*u*v,
+39*x*y*v+23*y^2*u+57*y*z*u+56*y*u^2+10*z^2+52*t*u*v,
+33*x^2*t+51*x^2+42*x*t*v+51*y^2*u+32*y*t^2+v^3,
+44*x*t^2+42*y*t+47*y*u^2+12*z*t+2*z*u*v+43*t*u^2,
+49*x^2*z+11*x*y*z+39*x*t*u+44*x*t*u+54*x*t+45*y^2*u,
+48*x*z*t+2*z^2*t+59*z^2*v+17*z+36*t^3+45*u];
+l:=[x,y,z,t,u,v];
+p1:=prevprime(2^24); p2:=prevprime(2^29);
+time(G1:=gbasis(alea6 % p1,l,revlex));
+time(G2:=gbasis(alea6 % p2,l,revlex));
+threads:=2; // set the number of threads you want to use
+// debug_infolevel(1); // uncomment to show intermediate steps
+proba_epsilon:=1e-7; // probabilistic algorithm.
+time(H0:=gbasis(alea6,indets(cyclic5),revlex));
+proba_epsilon:=0; // deterministic
+time(H1:=gbasis(alea6,indets(cyclic5),revlex));
+time(H2:=gbasis(alea6,indets(cyclic5),revlex,modular_check));
+size(G1),size(G2),size(H0),size(H1),size(H2);
+write("Halea6",H0);
+</pre><p>
+Note that for small examples (like Cyclic5), the system performs always the deterministic
+check (this is the case if the number of elements of the reconstructed basis
+to 50).</p>
+<!--TOC section id="sec85" Conclusion-->
+<h2 id="sec85" class="section">9.7  Conclusion</h2><!--SEC END --><p>
+I have described some enhancements to a modular algorithm
+to compute Groebner basis over <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>&Qopf;</mi></mrow><annotation encoding='application/x-tex'>\mathbb{Q}</annotation></semantics></math> which, combined to 
+linear algebra from F4, gives
+a sometimes much faster open-source implementation 
+than state-of-the-art open-source implementations 
+for the deterministic algorithm. 
+The probabilistic algorithm is also not ridiculous
+compared to the best publicly available closed-source implementations,
+while being much easier to implement
+(about 10K lines of code, while Fgb is said to be 200K lines of code,
+no need to have highly optimized sparse linear algebra).</p><p>This should speed up conjectures with the probabilistic algorithm
+and automated proofs using the deterministic
+algorithm (e.g. for the Geogebra theorem prover
+[<a href="#botanaimplementing">2</a>]), 
+either using Giac/Xcas (or one of it’s interfaces
+to java and python) or adapting it’s implementation
+to other open-source systems.
+With fast closed-source implementations (like maple or magma), 
+there is no certification that the result is a Groebner basis :
+there might be some hidden probabilistic
+step somewhere, in integer linear system reduction for example. I have
+no indication that it’s the case but one can never know if the code is
+not public, and at least for my implementation, certification
+might take a lot more time than computation. </p><p>There is still room for additions and improvements
+</p><ul class="itemize"><li class="li-itemize">
+the checking step can certainly be improved using
+knowledge on how the basis element modulo <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>p</mi></mrow><annotation encoding='application/x-tex'>p</annotation></semantics></math> where
+built.
+</li><li class="li-itemize">checking could also benefit from parallelization.
+</li><li class="li-itemize">As an alternative to the modular algorithm,
+a first learning run could be done modulo a 24 bits prime, and
+the collected info used for f4 on <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>&Qopf;</mi></mrow><annotation encoding='application/x-tex'>\mathbb{Q}</annotation></semantics></math> as a probabilistic alternative
+to F5.
+</li><li class="li-itemize">FGLM conversion is still not optimized and therefore
+slow in Giac/Xcas, 
+</li></ul><p><span style="font-weight:bold">Acknowledgements</span> <br>
+Thanks to Frédéric Han for interfacing giac with Python.
+Thanks to Vanessa Vitse for insightfull discussions.</p><!--BEGIN NOTES chapter-->
+<hr class="footnoterule"><dl class="thefootnotes"><dt class="dt-thefootnotes">
+<a id="note8" href="#text8">1</a></dt><dd class="dd-thefootnotes"><div class="footnotetext">Singular has also a modular implementation in
+<span style="font-family:monospace">modstd.lib</span>, but it is not called by default.</div></dd></dl>
+<!--END NOTES-->
+<!--TOC chapter id="sec86" Références-->
+<h1 id="sec86" class="chapter">Références</h1><!--SEC END --><dl class="thebibliography"><dt class="dt-thebibliography">
+<a id="Arnold2003403">[1]</a></dt><dd class="dd-thebibliography">
+E. A. Arnold.
+Modular algorithms for computing Gröbner bases .
+<em>Journal of Symbolic Computation</em>, 35(4):403 – 419, 2003.</dd><dt class="dt-thebibliography"><a id="botanaimplementing">[2]</a></dt><dd class="dd-thebibliography">
+F. Botana, Z. Kovács, and S. Weitzhofer.
+Implementing theorem proving in geogebra by using a singular
+webservice.</dd><dt class="dt-thebibliography"><a id="buchberger1985grobner">[3]</a></dt><dd class="dd-thebibliography">
+B. Buchberger.
+Grobner bases: An algorithmic method in polynomial ideal theory.
+<em>Multidimensional systems theory</em>, pages 184–232, 1985.</dd><dt class="dt-thebibliography"><a id="F99a">[4]</a></dt><dd class="dd-thebibliography">
+J.-C. Faugère.
+A new efficient algorithm for computing Gröbner bases (F4).
+<em>Journal of Pure and Applied Algebra</em>, 139(1–3):61–88, June
+1999.</dd><dt class="dt-thebibliography"><a id="Fau02a">[5]</a></dt><dd class="dd-thebibliography">
+J.-C. Faugère.
+A new efficient algorithm for computing Gröbner bases without
+reduction to zero (F5).
+In <em>Proceedings of the 2002 international symposium on Symbolic
+and algebraic computation</em>, ISSAC ’02, pages 75–83, New York, NY, USA, 2002.
+ACM.</dd><dt class="dt-thebibliography"><a id="Gebauer1988275">[6]</a></dt><dd class="dd-thebibliography">
+R. Gebauer and H. M. Möller.
+On an installation of buchberger’s algorithm.
+<em>Journal of Symbolic Computation</em>, 6(2–3):275 – 286, 1988.</dd><dt class="dt-thebibliography"><a id="joux2011variant">[7]</a></dt><dd class="dd-thebibliography">
+A. Joux and V. Vitse.
+A variant of the F4 algorithm.
+In <em>Topics in Cryptology–CT-RSA 2011</em>, pages 356–375. Springer,
+2011.</dd><dt class="dt-thebibliography"><a id="monagan2011sparse">[8]</a></dt><dd class="dd-thebibliography">
+M. Monagan and R. Pearce.
+Sparse polynomial division using a heap.
+<em>Journal of Symbolic Computation</em>, 46(7):807–822, 2011.</dd><dt class="dt-thebibliography"><a id="giac">[9]</a></dt><dd class="dd-thebibliography">
+B. Parisse and R. D. Graeve.
+Giac/Xcas computer algebra system.
+<span style="font-family:monospace">http://www-fourier.ujf-grenoble.fr/ parisse/giac_fr.html</span>,
+2013.</dd><dt class="dt-thebibliography"><a id="magma">[10]</a></dt><dd class="dd-thebibliography">
+A. Steel.
+Gröbner Basis Timings Page.
+<span style="font-family:monospace">http://magma.maths.usyd.edu.au/ allan/gb/</span>, 2004.</dd></dl>
+<!--TOC section id="sec87" Représentation rationnelle univariée 
+(rur).-->
+<h2 id="sec87" class="section">9.8  Représentation rationnelle univariée 
+(rur<a id="hevea_default81"></a><a id="hevea_default82"></a><a id="hevea_default83"></a>).</h2><!--SEC END --><p>
+<a id="sec:rur"></a>
+Lorsqu’on résoud un système polynomial, on a (en général) autant
+d’équations que d’inconnues et en principe un nombre fini de solutions.
+On peut utiliser une base de Groebner dans l’ordre lexicographique,
+résoudre par rapport à la dernière variable, puis remonter, mais
+d’une part le calcul d’une base de Groebner dans l’ordre lexicographique
+est significativement plus long que dans l’ordre revlex, et d’autre
+part il faut calculer des PGCD et 
+factoriser des polynômes sur des extensions algébriques
+dont la taille peut augmenter au fur et à mesure que l’on remonte (ou faire
+des calculs approchés...). Il serait plus intéressant de calculer
+d’un seul coup une extension algébrique de <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>&Qopf;</mi></mrow><annotation encoding='application/x-tex'>\mathbb{Q}</annotation></semantics></math> qui permette
+d’exprimer toutes les variables. Ceci peut se faire si on arrive à
+trouver une forme linéaire en les variables qui sépare
+les solutions (la valeur de la forme est distincte si les points
+solutions sont distincts). On rajoute cette variable et on résoud
+l’équation obtenue en cette variable, pour chaque solution on aura
+une unique solution en remontant les autres variables. La représentation
+univariée rationnelle fait précisément cela, et donne même les
+autres variables comme polynôme en la forme linéaire séparante.</p><p>La présentation classique de la représentation univariée rationnelle 
+utilise des calculs de trace (cf. par exemple le rapport de l’Inria 1998
+de Fabrice Rouillier), l’algorithme
+implémenté dans Giac/Xcas (versions 1.1.1 et ultérieures)
+est un algorithme modulaire. On commence par se ramener
+au cas d’un idéal radical (c’est-à-dire que les
+points solutions du système sont de multiplicité 1)
+en ajoutant aux générateurs de l’idéal 
+les parties squarefree des polynômes
+minimaux de toutes les variables. Pour un idéal radical,
+on montre qu’il existe une forme linéaire séparante, le degré
+du polynôme minimal de cette forme linéaire séparante est
+exactement égal à la dimension du quotient de 
+l’anneau de polynômes par l’idéal radical. On peut donc tester si une forme
+linéaire est séparante en calculant son polynôme minimal. En pratique,
+on commence par calculer une base de Groebner pour l’ordre revlex 
+(le plus efficace). On génère la liste des monomes du quotient
+en commençant par majorer les degrés en chacune des variables,
+puis on élimine parmi les monomes possibles 
+ceux qui sont divisibles par le monome dominant d’un élément
+de la base de Groebner. On calcule ensuite la classe d’un polynôme
+dans le quotient en effectuant une réduction par la base
+de Groebner, on obtient un vecteur de coordonnées dans cette base de monome.
+Le calcul du polynôme minimal d’une forme linéaire
+devient ainsi un problème d’algèbre linéaire.
+Le calcul de chaque variable en fonction des puissances d’une forme linéaire
+séparante est également un problème d’algèbre linéaire (on le fait
+simultanément pour toutes les variables, si on veut optimiser on
+peut même faire une décomposition LU lors du calcul du polynôme minimal
+et la réutiliser). Pour éviter les problèmes de croissance de coefficients
+dans les calculs intermédiaires,
+ce calcul est effectué modulo plusieurs nombres premiers dans giac,
+jusqu’à pouvoir reconstruire par les restes chinois le polynôme minimal
+de la forme séparante sur <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>&Qopf;</mi></mrow><annotation encoding='application/x-tex'>\mathbb{Q}</annotation></semantics></math> et les expressions des variables comme
+polynôme de la forme séparante (on n’a alors pas besoin
+de reconstruire la base de Groebner sur <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>&Qopf;</mi></mrow><annotation encoding='application/x-tex'>\mathbb{Q}</annotation></semantics></math>). Bien entendu,
+il faut traiter le cas des mauvaises réductions, pour cela
+on regarde si les monomes de la base du quotient de l’anneau par l’idéal
+sont indépendants du nombre premier choisi, en cas de différence,
+il faut conserver le nombre premier correspondant à la liste
+de monômes la plus grande (l’autre nombre premier est de mauvaise
+réduction), ou rejeter les deux nombres premiers si aucune
+des deux listes de monomes ne contient l’autre.</p><p>Les fonctions <code>solve</code>, <code>fsolve</code> et <code>cfsolve</code> 
+utilisent cet algorithme
+pour des systèmes polynomiaux qui s’y prêtent (en cherchant une
+forme séparante d’abord parmi les variables puis avec des combinaisons
+linéaires aléatoires à petits coefficients entiers),
+<code>solve</code> essaie de renvoyer des solutions exactes
+si le polynome minimal de la forme linéaire séparante
+se factorise sur <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>&Qopf;</mi></mrow><annotation encoding='application/x-tex'>\mathbb{Q}</annotation></semantics></math>, <code>fsolve</code> (en mode réel)
+localise les racines réelles par la méthode d’Akritas,
+<code>cfsolve</code> localise les racines complexes par
+factorisation de Schur de la matrice companion. La fonction
+<code>gbasis(eqs,vars,rur)</code> avec comme paramètre optionnel <code>rur</code>
+effectue le calcul de la représentation univariée rationnelle
+et renvoie une liste contenant le polynôme minimal <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>P</mi></mrow><annotation encoding='application/x-tex'>P</annotation></semantics></math>
+(exprimée arbitrairement en fonction de la 1ère variable du système),
+sa dérivee <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>P</mi><mo>&prime;</mo></mrow><annotation encoding='application/x-tex'>P&apos;</annotation></semantics></math> et les <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><msub><mi>P</mi> <mn>1</mn></msub><mo>,</mo><mo>.</mo><mo>.</mo><mo>.</mo><mo>,</mo><msub><mi>P</mi> <mi>n</mi></msub></mrow><annotation encoding='application/x-tex'>P_1,...,P_n</annotation></semantics></math> qui permettent d’exprimer
+la <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>i</mi></mrow><annotation encoding='application/x-tex'>i</annotation></semantics></math>-ème variable d’une solution comme étant <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><msub><mi>P</mi> <mi>i</mi></msub><mo stretchy="false">(</mo><mi>r</mi><mo stretchy="false">)</mo><mo stretchy="false">/</mo><mi>P</mi><mo>&prime;</mo><mo stretchy="false">(</mo><mi>r</mi><mo stretchy="false">)</mo></mrow><annotation encoding='application/x-tex'>P_i(r)/P&apos;(r)</annotation></semantics></math>
+avec <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>r</mi></mrow><annotation encoding='application/x-tex'>r</annotation></semantics></math> racine de <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>P</mi></mrow><annotation encoding='application/x-tex'>P</annotation></semantics></math>. On peut alors
+vérifier que l’on a bien une solution en remplaçant la variable
+<math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><msub><mi>x</mi> <mi>i</mi></msub></mrow><annotation encoding='application/x-tex'>x_i</annotation></semantics></math> par <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><msub><mi>P</mi> <mi>i</mi></msub><mo stretchy="false">/</mo><mi>P</mi><mo>&prime;</mo></mrow><annotation encoding='application/x-tex'>P_i/P&apos;</annotation></semantics></math> dans les équations, le reste de la division
+euclidienne du numérateur de la fraction obtenue par le polynome 
+minimal <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>P</mi></mrow><annotation encoding='application/x-tex'>P</annotation></semantics></math> doit donner 0.</p><p>Exemple :
+<div><textarea onkeypress="UI.ckenter(event,this,2)" 
+style="width:800px;font-size:large">syst:=[x^2-y^2-1,x^3+y^3-x*y-5];fsolve(syst,[x,y]) 
+</textarea><button onclick="previousSibling.style.display='inherit';var tmp=UI.caseval(previousSibling.value); tmp=UI.latexeval(tmp);nextSibling.innerHTML=tmp; if (UI.usemathjax) MathJax.Hub.Queue(['Typeset',MathJax.Hub,nextSibling])">ok</button><div style="width:800px;max-height:200px;overflow:auto;color:blue;text-align:center"></div></div>
+
+Calcul en mode pas à pas :
+<div><textarea onkeypress="UI.ckenter(event,this,2)" 
+style="width:800px;font-size:large">G:=gbasis(syst,[x,y],rur) 
+</textarea><button onclick="previousSibling.style.display='inherit';var tmp=UI.caseval(previousSibling.value); tmp=UI.latexeval(tmp);nextSibling.innerHTML=tmp; if (UI.usemathjax) MathJax.Hub.Queue(['Typeset',MathJax.Hub,nextSibling])">ok</button><div style="width:800px;max-height:200px;overflow:auto;color:blue;text-align:center"></div></div>
+
+l’élément d’indice 1 est la forme linéaire séparante,
+en indice 2, le polynôme minimal de l’élément séparant
+exprimé en fonction de <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>x</mi></mrow><annotation encoding='application/x-tex'>x</annotation></semantics></math>, en indice 3 sa dérivée qui
+sera le dénominateur commun de la solution, en indices
+de 4 à la fin le numérateur de la solution en fonction de <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>x</mi></mrow><annotation encoding='application/x-tex'>x</annotation></semantics></math>
+<div><textarea onkeypress="UI.ckenter(event,this,2)" 
+style="width:800px;font-size:large">d:=G[3];[G[4]/d,G[5]/d]; G[2] 
+</textarea><button onclick="previousSibling.style.display='inherit';var tmp=UI.caseval(previousSibling.value); tmp=UI.latexeval(tmp);nextSibling.innerHTML=tmp; if (UI.usemathjax) MathJax.Hub.Queue(['Typeset',MathJax.Hub,nextSibling])">ok</button><div style="width:800px;max-height:200px;overflow:auto;color:blue;text-align:center"></div></div>
+
+On vérifie :
+<div><textarea onkeypress="UI.ckenter(event,this,2)" 
+style="width:800px;font-size:large">N:=numer(normal(subst(syst,[x,y],[G[4]/d,G[5]/d]))) 
+</textarea><button onclick="previousSibling.style.display='inherit';var tmp=UI.caseval(previousSibling.value); tmp=UI.latexeval(tmp);nextSibling.innerHTML=tmp; if (UI.usemathjax) MathJax.Hub.Queue(['Typeset',MathJax.Hub,nextSibling])">ok</button><div style="width:800px;max-height:200px;overflow:auto;color:blue;text-align:center"></div></div>
+
+<div><textarea onkeypress="UI.ckenter(event,this,2)" 
+style="width:800px;font-size:large">rem(N[0],G[2]); rem(N[1],G[2]) 
+</textarea><button onclick="previousSibling.style.display='inherit';var tmp=UI.caseval(previousSibling.value); tmp=UI.latexeval(tmp);nextSibling.innerHTML=tmp; if (UI.usemathjax) MathJax.Hub.Queue(['Typeset',MathJax.Hub,nextSibling])">ok</button><div style="width:800px;max-height:200px;overflow:auto;color:blue;text-align:center"></div></div>
+
+On trouve les solutions approchées
+<div><textarea onkeypress="UI.ckenter(event,this,2)" 
+style="width:800px;font-size:large">S:=proot(G[2]);subst([G[4]/d,G[5]/d],x=S[0]) 
+</textarea><button onclick="previousSibling.style.display='inherit';var tmp=UI.caseval(previousSibling.value); tmp=UI.latexeval(tmp);nextSibling.innerHTML=tmp; if (UI.usemathjax) MathJax.Hub.Queue(['Typeset',MathJax.Hub,nextSibling])">ok</button><div style="width:800px;max-height:200px;overflow:auto;color:blue;text-align:center"></div></div>
+</p><p>La représentation rationnelle univariée a des applications
+au-delà de la seule résolution de systèmes polynomiaux.
+On peut s’en servir pour trouver une extension algébrique unique de
+<math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>&Qopf;</mi></mrow><annotation encoding='application/x-tex'>\mathbb{Q}</annotation></semantics></math> permettant de calculer toutes les racines d’un polynôme, 
+il suffit de poser le système formé par les relations
+racines-coefficients de ce polynôme et d’en chercher la
+représentation rationnelle univariée, cf. la section 
+<a href="#sec%3Afactorisation_extension">18.6</a>.
+On peut également s’en servir pour trouver une 
+<span style="font-weight:bold">extension
+algébrique</span><a id="hevea_default84"></a><a id="hevea_default85"></a> 
+unique contenant plusieurs extensions de <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>&Qopf;</mi></mrow><annotation encoding='application/x-tex'>\mathbb{Q}</annotation></semantics></math>
+dont on a le polynôme minimal. Par exemple pour
+travailler dans <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>&Qopf;</mi><mo stretchy="false">[</mo><msqrt><mn>2</mn></msqrt><mo>,</mo><msqrt><mn>3</mn></msqrt><mo>,</mo><msqrt><mn>5</mn></msqrt><mo stretchy="false">]</mo></mrow><annotation encoding='application/x-tex'>\mathbb{Q}[\sqrt{2},\sqrt{3},\sqrt{5}]</annotation></semantics></math>, on pose <br>
+<code>G:=gbasis([a^2-2,b^2-3,c^2-5],[a,b,c],rur)</code>,<br>
+on a alors <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mo>&pm;</mo><msqrt><mn>2</mn></msqrt><mo>=</mo></mrow><annotation encoding='application/x-tex'>\pm \sqrt{2}=</annotation></semantics></math><code>rootof(G[4],G[2])/rootof(G[3],G[2])</code>,<br>
+<math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mo>&pm;</mo><msqrt><mn>3</mn></msqrt><mo>=</mo></mrow><annotation encoding='application/x-tex'>\pm \sqrt{3}=</annotation></semantics></math><code>rootof(G[5],G[2])/rootof(G[3],G[2])</code>,<br>
+<math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mo>&pm;</mo><msqrt><mn>5</mn></msqrt><mo>=</mo></mrow><annotation encoding='application/x-tex'>\pm \sqrt{5}=</annotation></semantics></math><code>rootof(G[6],G[2])/rootof(G[3],G[2])</code><br>
+(on peut utiliser <code>normal</code> ou <code>evalf</code> pour décider du signe).</p>
+<!--TOC chapter id="sec88" Courbes paramétriques et polaires-->
+</html>

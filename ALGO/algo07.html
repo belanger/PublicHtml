@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html >
+<head>
+<h1 id="sec64" class="chapter">Chapitre 7  Localisation des racines</h1><!--SEC END --><p> <a id="sec:racines"></a>
+</p>
+<!--TOC section id="sec65" Majoration-->
+<h2 id="sec65" class="section">7.1  Majoration</h2><!--SEC END --><p>
+On a vu au lemme <a href="#lemme%3Amajoration">5</a>, 
+que si <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>z</mi></mrow><annotation encoding='application/x-tex'>z</annotation></semantics></math> est une racine complexe d’un polynôme <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>P</mi></mrow><annotation encoding='application/x-tex'>P</annotation></semantics></math> 
+de coefficient dominant <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><msub><mi>p</mi> <mi>n</mi></msub></mrow><annotation encoding='application/x-tex'>p_n</annotation></semantics></math> alors
+<math xmlns='http://www.w3.org/1998/Math/MathML' display='block'><semantics><mrow><mo stretchy="false">&vert;</mo><mi>z</mi><mo stretchy="false">&vert;</mo><mo>&leq;</mo><mn>1</mn><mo>+</mo><mfrac><mrow><mo stretchy="false">&vert;</mo><mi>P</mi><msub><mo stretchy="false">&vert;</mo> <mn>&infin;</mn></msub></mrow><mrow><mo stretchy="false">&vert;</mo><msub><mi>p</mi> <mi>n</mi></msub><mo stretchy="false">&vert;</mo></mrow></mfrac></mrow><annotation encoding='application/x-tex'>|z| \leq 1 + \frac{|P|_\infty}{|p_n|} </annotation></semantics></math> </p>
+<!--TOC section id="sec66" Les suites de Sturm.-->
+<h2 id="sec66" class="section">7.2  Les suites de Sturm.</h2><!--SEC END --><p><a id="hevea_default66"></a>
+L’algorithme du sous-résultant appliqué à un polynôme sans
+racine multiple <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>P</mi></mrow><annotation encoding='application/x-tex'>P</annotation></semantics></math> et à sa dérivée
+permet, à condition de changer les signes dans la suite des restes, 
+de connaitre le nombre de racines réelles d’un polynôme 
+à coefficients réels dans un 
+intervalle. Ceci est trè utile pour par exemple simplifier des valeurs
+absolues de polynômes dans un intervalle.</p><p>On définit donc la suite de polynômes <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><msub><mi>A</mi> <mn>0</mn></msub><mo>=</mo><mi>P</mi><mo>,</mo><msub><mi>A</mi> <mn>1</mn></msub><mo>=</mo><mi>P</mi><mo>&prime;</mo><mo>,</mo><mo>.</mo><mo>.</mo><mo>.</mo><mo>,</mo><msub><mi>A</mi> <mi>k</mi></msub><mo>,</mo><mn>0</mn></mrow><annotation encoding='application/x-tex'>A_0=P, A_1=P&apos;, ..., A_k,0</annotation></semantics></math>
+par :
+<a id="eqref_11"></a><math xmlns='http://www.w3.org/1998/Math/MathML' display='block'><semantics><mrow><msub><mi>A</mi> <mi>i</mi></msub><mo>=</mo><msub><mi>A</mi> <mrow><mi>i</mi><mo>+</mo><mn>1</mn></mrow></msub><msub><mi>Q</mi> <mrow><mi>i</mi><mo>+</mo><mn>2</mn></mrow></msub><mo>&minus;</mo><msub><mi>A</mi> <mrow><mi>i</mi><mo>+</mo><mn>2</mn></mrow></msub><mspace width="2em"/><mo stretchy="false">(</mo><mn>11</mn><mo stretchy="false">)</mo></mrow><annotation encoding='application/x-tex'> 
+ A_{i} = A_{i+1} Q_{i+2} &#x2d; A_{i+2} 
+\qquad (11) </annotation></semantics></math>
+avec <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><msub><mi>A</mi> <mi>k</mi></msub></mrow><annotation encoding='application/x-tex'>A_k</annotation></semantics></math>, le dernier reste non nul, un polynôme constant puisque
+<math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>P</mi></mrow><annotation encoding='application/x-tex'>P</annotation></semantics></math> n’a pas de racine multiple. On utilise plutot l’algorithme du 
+sous-résultant que l’algorithme d’Euclide, il faut alors
+s’assurer que les signes de <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><msub><mi>A</mi> <mi>i</mi></msub></mrow><annotation encoding='application/x-tex'>A_i</annotation></semantics></math> et <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><msub><mi>A</mi> <mrow><mi>i</mi><mo>+</mo><mn>2</mn></mrow></msub></mrow><annotation encoding='application/x-tex'>A_{i+2}</annotation></semantics></math> sont opposés lorsque
+<math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><msub><mi>A</mi> <mrow><mi>i</mi><mo>+</mo><mn>1</mn></mrow></msub></mrow><annotation encoding='application/x-tex'>A_{i+1} </annotation></semantics></math> s’annule quitte à changer le signe de <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><msub><mi>A</mi> <mrow><mi>i</mi><mo>+</mo><mn>2</mn></mrow></msub></mrow><annotation encoding='application/x-tex'>A_{i+2}</annotation></semantics></math> en fonction
+du signe du coefficient dominant de <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><msub><mi>A</mi> <mrow><mi>i</mi><mo>+</mo><mn>1</mn></mrow></msub></mrow><annotation encoding='application/x-tex'>A_{i+1}</annotation></semantics></math>, de la parité de
+la différence des degrés et du signe du coefficient <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>g</mi><msup><mi>h</mi> <mrow><mn>1</mn><mo>&minus;</mo><mi>&delta;</mi></mrow></msup></mrow><annotation encoding='application/x-tex'>gh^{1&#x2d;\delta}</annotation></semantics></math>.</p><p>On définit <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>s</mi><mo stretchy="false">(</mo><mi>a</mi><mo stretchy="false">)</mo></mrow><annotation encoding='application/x-tex'>s(a)</annotation></semantics></math> comme étant le nombre de changements de signes
+de la suite <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><msub><mi>A</mi> <mi>i</mi></msub><mo stretchy="false">(</mo><mi>a</mi><mo stretchy="false">)</mo></mrow><annotation encoding='application/x-tex'>A_i(a)</annotation></semantics></math> en ignorant les 0.
+On a alors le 
+</p><div class="theorem"><span style="font-weight:bold">Théorème 11</span>  <em>
+Le nombre de racines réelles de </em><math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><msub><mi>A</mi> <mn>0</mn></msub><mo>=</mo><mi>P</mi></mrow><annotation encoding='application/x-tex'>A_0=P</annotation></semantics></math><em> sur l’intervalle
+</em><math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mo stretchy="false">]</mo><mi>a</mi><mo>,</mo><mi>b</mi><mo stretchy="false">]</mo></mrow><annotation encoding='application/x-tex'>]a,b]</annotation></semantics></math><em> est égal à </em><math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>s</mi><mo stretchy="false">(</mo><mi>a</mi><mo stretchy="false">)</mo><mo>&minus;</mo><mi>s</mi><mo stretchy="false">(</mo><mi>b</mi><mo stretchy="false">)</mo></mrow><annotation encoding='application/x-tex'>s(a)&#x2d;s(b)</annotation></semantics></math><em>.
+</em></div><p><span style="font-weight:bold">Preuve</span><br>
+Par continuité de la suite des polynômes, <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>s</mi></mrow><annotation encoding='application/x-tex'>s</annotation></semantics></math> ne peut varier que
+si l’un des polynômes s’annule.
+On considére la suite des signes en un point : elle ne peut contenir
+deux 0 successifs (sinon toute la suite vaudrait 0 en ce point en appliquant
+(<a href="#eqref_11">11</a>), or <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><msub><mi>A</mi> <mi>k</mi></msub></mrow><annotation encoding='application/x-tex'>A_k</annotation></semantics></math> est constant non nul). Elle ne peut pas
+non plus contenir +,0,+ ni -,0,- à cause de la convention de signe
+sur les restes de (<a href="#eqref_11">11</a>). Donc une racine <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>b</mi></mrow><annotation encoding='application/x-tex'>b</annotation></semantics></math>
+de <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><msub><mi>A</mi> <mi>i</mi></msub></mrow><annotation encoding='application/x-tex'>A_i</annotation></semantics></math> pour <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mn>0</mn><mi>&lt;</mi><mi>i</mi><mi>&lt;</mi><mi>k</mi></mrow><annotation encoding='application/x-tex'> 0 &amp;lt; i &amp;lt; k </annotation></semantics></math>, n’influe pas sur la valeur de <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>s</mi></mrow><annotation encoding='application/x-tex'>s</annotation></semantics></math> au voisinage
+de <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>b</mi></mrow><annotation encoding='application/x-tex'>b</annotation></semantics></math> (il y a toujours un changement de signe entre les positions
+<math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>i</mi><mo>&minus;</mo><mn>1</mn></mrow><annotation encoding='application/x-tex'>i&#x2d;1</annotation></semantics></math> et <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>i</mi><mo>+</mo><mn>1</mn></mrow><annotation encoding='application/x-tex'>i+1</annotation></semantics></math>). Comme <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><msub><mi>A</mi> <mi>k</mi></msub></mrow><annotation encoding='application/x-tex'>A_k</annotation></semantics></math> est constant, seules les racines de <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><msub><mi>A</mi> <mn>0</mn></msub><mo>=</mo><mi>P</mi></mrow><annotation encoding='application/x-tex'>A_0=P</annotation></semantics></math>
+sont susceptibles de faire varier <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>s</mi></mrow><annotation encoding='application/x-tex'>s</annotation></semantics></math>. Comme <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><msub><mi>A</mi> <mn>1</mn></msub><mo>=</mo><mi>P</mi><mo>&prime;</mo></mrow><annotation encoding='application/x-tex'>A_1=P&apos;</annotation></semantics></math>, le sens de
+variations de <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><msub><mi>A</mi> <mn>0</mn></msub></mrow><annotation encoding='application/x-tex'>A_0</annotation></semantics></math> au voisinage d’une racine de <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><msub><mi>A</mi> <mn>0</mn></msub></mrow><annotation encoding='application/x-tex'>A_0</annotation></semantics></math> est déterminé
+par le signe de <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><msub><mi>A</mi> <mn>1</mn></msub></mrow><annotation encoding='application/x-tex'>A_1</annotation></semantics></math>, donc les possibilités sont -,+ vers +,+
+ou +,- vers -,-, ce qui diminue <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>s</mi></mrow><annotation encoding='application/x-tex'>s</annotation></semantics></math> d’une unité.</p><p>
+<textarea onkeypress="UI.ckenter(event,this,1)" 
+style="width:800px;font-size:large">purge(x);sturmab(x^3+7x-5,0,1)
+</textarea><button onclick="previousSibling.style.display='inherit';var tmp=UI.caseval(previousSibling.value);tmp=UI.rmquote(tmp); nextSibling.innerHTML='&nbsp;'+tmp;UI.render_canvas(nextSibling);">ok</button><span></span><br>
+</p>
+<!--TOC section id="sec67" Autres algorithmes-->
+<h2 id="sec67" class="section">7.3  Autres algorithmes</h2><!--SEC END --><p> <a id="sec:autres_algorithmes"></a>
+</p><ul class="itemize"><li class="li-itemize">
+On peut localiser les racines réelles par dichotomie : on
+sait que toutes les racines sont situées dans l’intervalle
+<math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mo stretchy="false">[</mo><mo lspace="verythinmathspace" rspace="0em">&minus;</mo><mi>C</mi><mo>,</mo><mi>C</mi><mo stretchy="false">]</mo></mrow><annotation encoding='application/x-tex'>[&#x2d;C,C]</annotation></semantics></math> avec <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>C</mi><mo>=</mo><mo stretchy="false">&vert;</mo><mi>P</mi><msub><mo stretchy="false">&vert;</mo> <mn>&infin;</mn></msub><mo stretchy="false">/</mo><mo stretchy="false">&vert;</mo><mtext>lcoeff</mtext><mo stretchy="false">(</mo><mi>P</mi><mo stretchy="false">)</mo><mo stretchy="false">&vert;</mo></mrow><annotation encoding='application/x-tex'>C=|P|_{\infty}/|\mbox{lcoeff}(P)|</annotation></semantics></math>. On coupe
+l’intervalle en deux, on calcule le nombre de racines
+dans chaque partie, et on continue en conservant uniquement
+les intervalles contenant au moins une racine. Lorsqu’un
+intervalle contient une seule racine, on passe à la dichotomie
+classique (changement de signe), ou à la méthode de Newton
+(avec évaluation exacte du polymôme et arrondi du dénominateur
+à une puissance de 2). C’est ce qui est utilisé par
+l’instruction <code>realroot</code> de Giac si on donne en argument
+optionnel <code>sturm</code>.
+<br>
+
+<textarea onkeypress="UI.ckenter(event,this,1)" 
+style="width:400px;font-size:large">realroot(sturm,x^3+7x-5)
+</textarea><button onclick="previousSibling.style.display='inherit';var tmp=UI.caseval(previousSibling.value);tmp=UI.rmquote(tmp); nextSibling.innerHTML='&nbsp;'+tmp;UI.render_canvas(nextSibling);">ok</button><span></span><br>
+<br>
+</li><li class="li-itemize">Il existe un autre algorithme de localisation de racines
+réelles dû à <span style="font-weight:bold">Vincent, Akritas et 
+Strzebonski</span><a id="hevea_default67"></a><a id="hevea_default68"></a><a id="hevea_default69"></a>, cf. la
+commande <code>realroot</code> de Xcas qui renvoie des flottants de type intervalle.
+<br>
+
+<textarea onkeypress="UI.ckenter(event,this,1)" 
+style="width:400px;font-size:large">realroot(x^3+7x-5)
+</textarea><button onclick="previousSibling.style.display='inherit';var tmp=UI.caseval(previousSibling.value);tmp=UI.rmquote(tmp); nextSibling.innerHTML='&nbsp;'+tmp;UI.render_canvas(nextSibling);">ok</button><span></span><br>
+<br>
+Cet algorithme est très
+efficace pour donner des intervalles 
+d’<span style="font-weight:bold">isolation</span><a id="hevea_default70"></a> des racines
+(sur lesquels on peut ensuite faire de la dichotomie). 
+La base de cet algorithme utilise la règle des signes de
+Descartes<a id="hevea_default71"></a> <a id="hevea_default72"></a>
+<div class="theorem"><span style="font-weight:bold">Proposition 12</span>  <em>
+Soit </em><math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>P</mi><mo>=</mo><msub><mi>a</mi> <mi>n</mi></msub><msup><mi>x</mi> <mi>n</mi></msup><mo>+</mo><mo>.</mo><mo>.</mo><mo>.</mo><mo>+</mo><msub><mi>a</mi> <mn>1</mn></msub><mi>x</mi><mo>+</mo><msub><mi>a</mi> <mn>0</mn></msub><mo>&Element;</mo><mi>&Ropf;</mi><mo stretchy="false">[</mo><mi>x</mi><mo stretchy="false">]</mo></mrow><annotation encoding='application/x-tex'>P=a_nx^n+...+a_1x+a_0 \in \mathbb{R}[x]</annotation></semantics></math><em>, </em><math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>r</mi><mo stretchy="false">(</mo><mi>P</mi><mo stretchy="false">)</mo></mrow><annotation encoding='application/x-tex'>r(P)</annotation></semantics></math><em> le nombre de racines de
+</em><math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>P</mi></mrow><annotation encoding='application/x-tex'>P</annotation></semantics></math><em> sur </em><math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><msup><mi>&Ropf;</mi> <mrow><mo>*</mo><mo lspace="verythinmathspace" rspace="0em">+</mo></mrow></msup></mrow><annotation encoding='application/x-tex'>\mathbb{R}^{*+}</annotation></semantics></math><em>, et </em><math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>&sigma;</mi><mo stretchy="false">(</mo><mi>P</mi><mo stretchy="false">)</mo></mrow><annotation encoding='application/x-tex'>\sigma(P)</annotation></semantics></math><em> le nombre de changements de signe
+de la suite des coefficients </em><math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><msub><mi>a</mi> <mi>n</mi></msub><mo>,</mo><mo>.</mo><mo>.</mo><mo>.</mo><mo>,</mo><msub><mi>a</mi> <mn>0</mn></msub></mrow><annotation encoding='application/x-tex'>a_n,...,a_0</annotation></semantics></math><em> de </em><math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>P</mi></mrow><annotation encoding='application/x-tex'>P</annotation></semantics></math><em>. Alors </em><math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>r</mi><mo stretchy="false">(</mo><mi>P</mi><mo stretchy="false">)</mo><mo>&leq;</mo><mi>&sigma;</mi><mo stretchy="false">(</mo><mi>P</mi><mo stretchy="false">)</mo></mrow><annotation encoding='application/x-tex'>r(P) \leq \sigma(P)</annotation></semantics></math><em>.
+</em></div>
+La preuve se fait par récurrence. Pour <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>n</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding='application/x-tex'>n=0</annotation></semantics></math> on a bien <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mn>0</mn><mo>&leq;</mo><mn>0</mn></mrow><annotation encoding='application/x-tex'>0 \leq 0</annotation></semantics></math>.
+Pour <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>n</mi><mi>&gt;</mi><mn>0</mn></mrow><annotation encoding='application/x-tex'>n&amp;gt;0</annotation></semantics></math> on applique l’hypothèse de récurrence à <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>P</mi><mo>&prime;</mo></mrow><annotation encoding='application/x-tex'>P&apos;</annotation></semantics></math> et on
+utilise le fait que 1+le nombre de racines de <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>P</mi><mo>&prime;</mo></mrow><annotation encoding='application/x-tex'>P&apos;</annotation></semantics></math> sur un intervalle
+<math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mo stretchy="false">]</mo><mi>a</mi><mo>,</mo><mi>b</mi><mo stretchy="false">[</mo></mrow><annotation encoding='application/x-tex'>]a,b[</annotation></semantics></math> est supérieur ou égal au nombre de racines de <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>P</mi></mrow><annotation encoding='application/x-tex'>P</annotation></semantics></math> sur
+<math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mo stretchy="false">[</mo><mi>a</mi><mo>,</mo><mi>b</mi><mo stretchy="false">]</mo></mrow><annotation encoding='application/x-tex'>[a,b]</annotation></semantics></math>. Il y a deux cas possibles <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>&sigma;</mi><mo stretchy="false">(</mo><mi>P</mi><mo>&prime;</mo><mo stretchy="false">)</mo><mo>=</mo><mi>&sigma;</mi><mo stretchy="false">(</mo><mi>P</mi><mo stretchy="false">)</mo></mrow><annotation encoding='application/x-tex'>\sigma(P&apos;)=\sigma(P)</annotation></semantics></math> et
+<math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>&sigma;</mi><mo stretchy="false">(</mo><mi>P</mi><mo>&prime;</mo><mo stretchy="false">)</mo><mo>=</mo><mi>&sigma;</mi><mo stretchy="false">(</mo><mi>P</mi><mo stretchy="false">)</mo><mo>&minus;</mo><mn>1</mn></mrow><annotation encoding='application/x-tex'>\sigma(P&apos;)=\sigma(P)&#x2d;1</annotation></semantics></math>. Dans le deuxième cas, comme <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>r</mi><mo stretchy="false">(</mo><mi>P</mi><mo>&prime;</mo><mo stretchy="false">)</mo><mo>+</mo><mn>1</mn><mo>&geq;</mo><mi>r</mi><mo stretchy="false">(</mo><mi>P</mi><mo stretchy="false">)</mo></mrow><annotation encoding='application/x-tex'>r(P&apos;)+1\geq
+r(P)</annotation></semantics></math>, alors <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>r</mi><mo stretchy="false">(</mo><mi>P</mi><mo stretchy="false">)</mo><mo>&leq;</mo><mi>r</mi><mo stretchy="false">(</mo><mi>P</mi><mo>&prime;</mo><mo stretchy="false">)</mo><mo>+</mo><mn>1</mn><mo>&leq;</mo><mi>&sigma;</mi><mo stretchy="false">(</mo><mi>P</mi><mo>&prime;</mo><mo stretchy="false">)</mo><mo>+</mo><mn>1</mn><mo>=</mo><mi>&sigma;</mi><mo stretchy="false">(</mo><mi>P</mi><mo stretchy="false">)</mo></mrow><annotation encoding='application/x-tex'>r(P) \leq r(P&apos;)+1 \leq \sigma(P&apos;)+1=\sigma(P)</annotation></semantics></math>. Dans le
+premier cas, il faut trouver une racine supplémentaire pour
+<math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>P</mi><mo>&prime;</mo></mrow><annotation encoding='application/x-tex'>P&apos;</annotation></semantics></math>. Pour cela, on regarde ce qui se passe en <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><msup><mn>0</mn> <mo>+</mo></msup></mrow><annotation encoding='application/x-tex'>0^+</annotation></semantics></math>. Supposons que
+<math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><msub><mi>a</mi> <mn>0</mn></msub><mi>&gt;</mi><mn>0</mn></mrow><annotation encoding='application/x-tex'>a_0&amp;gt;0</annotation></semantics></math> pour fixer les idées, comme <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><msub><mi>a</mi> <mn>0</mn></msub></mrow><annotation encoding='application/x-tex'>a_0</annotation></semantics></math> est du même signe
+que <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><msub><mi>a</mi> <mn>1</mn></msub></mrow><annotation encoding='application/x-tex'>a_1</annotation></semantics></math> (ou que <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><msub><mi>a</mi> <mn>2</mn></msub></mrow><annotation encoding='application/x-tex'>a_2</annotation></semantics></math> si <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><msub><mi>a</mi> <mn>1</mn></msub><mo>=</mo><mn>0</mn></mrow><annotation encoding='application/x-tex'>a_1=0</annotation></semantics></math> etc.), <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>P</mi><mo>&prime;</mo></mrow><annotation encoding='application/x-tex'>P&apos;</annotation></semantics></math> est positif en <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><msup><mn>0</mn> <mo>+</mo></msup></mrow><annotation encoding='application/x-tex'>0^+</annotation></semantics></math>
+donc <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>P</mi></mrow><annotation encoding='application/x-tex'>P</annotation></semantics></math> croit en <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><msup><mn>0</mn> <mo>+</mo></msup></mrow><annotation encoding='application/x-tex'>0^+</annotation></semantics></math>, donc doit atteindre un maximum local avant
+la première racine de <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>P</mi></mrow><annotation encoding='application/x-tex'>P</annotation></semantics></math>, ce maximum local est une racine de <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>P</mi><mo>&prime;</mo></mrow><annotation encoding='application/x-tex'>P&apos;</annotation></semantics></math>.<p>On peut même montrer que <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>r</mi><mo stretchy="false">(</mo><mi>P</mi><mo stretchy="false">)</mo></mrow><annotation encoding='application/x-tex'>r(P)</annotation></semantics></math> et <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>&sigma;</mi><mo stretchy="false">(</mo><mi>P</mi><mo stretchy="false">)</mo></mrow><annotation encoding='application/x-tex'>\sigma(P)</annotation></semantics></math> sont de même
+parité. En particulier si <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>&sigma;</mi><mo stretchy="false">(</mo><mi>P</mi><mo stretchy="false">)</mo><mo>=</mo><mn>1</mn></mrow><annotation encoding='application/x-tex'>\sigma(P)=1</annotation></semantics></math>, on a <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>r</mi><mo stretchy="false">(</mo><mi>P</mi><mo stretchy="false">)</mo><mo>=</mo><mn>1</mn></mrow><annotation encoding='application/x-tex'>r(P)=1</annotation></semantics></math> car
+le coefficient dominant et de plus bas degré non nul de <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>P</mi></mrow><annotation encoding='application/x-tex'>P</annotation></semantics></math> sont
+de signes contraires, donc la valeur en 0 et la limite en <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mo lspace="verythinmathspace" rspace="0em">+</mo><mn>&infin;</mn></mrow><annotation encoding='application/x-tex'>+\infty</annotation></semantics></math>
+aussi.</p><p>On déduit de la règle des signes de Descartes
+un critère indiquant si un polynôme possède 0, 1 ou 
+plus de racines sur <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mo stretchy="false">]</mo><mn>0</mn><mo>,</mo><mn>1</mn><mo stretchy="false">[</mo></mrow><annotation encoding='application/x-tex'>]0,1[</annotation></semantics></math> en se ramenant par changement de variables 
+<math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>x</mi><mo>&leftarrow;</mo><mn>1</mn><mo stretchy="false">/</mo><mi>x</mi></mrow><annotation encoding='application/x-tex'>x \leftarrow 1/x</annotation></semantics></math> à <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mo stretchy="false">]</mo><mn>1</mn><mo>,</mo><mo lspace="verythinmathspace" rspace="0em">+</mo><mn>&infin;</mn><mo stretchy="false">[</mo></mrow><annotation encoding='application/x-tex'>]1,+\infty[</annotation></semantics></math> puis par <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>x</mi><mo>&leftarrow;</mo><mi>x</mi><mo>+</mo><mn>1</mn></mrow><annotation encoding='application/x-tex'>x \leftarrow x+1</annotation></semantics></math>
+à <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mo stretchy="false">]</mo><mn>0</mn><mo>,</mo><mo lspace="verythinmathspace" rspace="0em">+</mo><mn>&infin;</mn><mo stretchy="false">[</mo></mrow><annotation encoding='application/x-tex'>]0,+\infty[</annotation></semantics></math>. </p><p>On prend alors le polynôme de départ et une majoration
+sur les racines, par exemple <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>C</mi><mo>=</mo><mo stretchy="false">&vert;</mo><mi>P</mi><msub><mo stretchy="false">&vert;</mo> <mn>&infin;</mn></msub><mo stretchy="false">/</mo><mo stretchy="false">&vert;</mo><mtext>lcoeff</mtext><mo stretchy="false">(</mo><mi>P</mi><mo stretchy="false">)</mo><mo stretchy="false">&vert;</mo></mrow><annotation encoding='application/x-tex'>C=|P|_{\infty}/|\mbox{lcoeff}(P)|</annotation></semantics></math>. Si <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>z</mi></mrow><annotation encoding='application/x-tex'>z</annotation></semantics></math>
+est une racine positive de <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>P</mi></mrow><annotation encoding='application/x-tex'>P</annotation></semantics></math>, alors <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>z</mi><mo stretchy="false">/</mo><mi>C</mi></mrow><annotation encoding='application/x-tex'>z/C</annotation></semantics></math> est une racine positive
+de <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>Q</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo><mo>:</mo><mo>=</mo><mi>P</mi><mo stretchy="false">(</mo><mi>C</mi><mi>x</mi><mo stretchy="false">)</mo></mrow><annotation encoding='application/x-tex'>Q(x):=P(Cx)</annotation></semantics></math>, on est donc ramené a chercher des intervalles
+d’isolation de racines de <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>Q</mi></mrow><annotation encoding='application/x-tex'>Q</annotation></semantics></math> dans <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mo stretchy="false">]</mo><mn>0</mn><mo>,</mo><mn>1</mn><mo stretchy="false">[</mo></mrow><annotation encoding='application/x-tex'>]0,1[</annotation></semantics></math>. S’il y a 0 ou 1 changement
+de signe, on conclut. Sinon, on teste si <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mn>1</mn><mo stretchy="false">/</mo><mn>2</mn></mrow><annotation encoding='application/x-tex'>1/2</annotation></semantics></math> est racine
+puis on cherche dans <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mo stretchy="false">]</mo><mn>0</mn><mo>,</mo><mn>1</mn><mo stretchy="false">/</mo><mn>2</mn><mo stretchy="false">[</mo></mrow><annotation encoding='application/x-tex'>]0,1/2[</annotation></semantics></math> et dans <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mo stretchy="false">]</mo><mn>1</mn><mo stretchy="false">/</mo><mn>2</mn><mo>,</mo><mn>1</mn><mo stretchy="false">[</mo></mrow><annotation encoding='application/x-tex'>]1/2,1[</annotation></semantics></math>, ce qui
+revient au problème précédent sur <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mo stretchy="false">]</mo><mn>0</mn><mo>,</mo><mn>1</mn><mo stretchy="false">[</mo></mrow><annotation encoding='application/x-tex'>]0,1[</annotation></semantics></math>
+avec les polynômes <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>R</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo><mo>=</mo><mi>Q</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">/</mo><mn>2</mn><mo stretchy="false">)</mo></mrow><annotation encoding='application/x-tex'>R(x)=Q(x/2)</annotation></semantics></math> et <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>S</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo><mo>=</mo><mi>Q</mi><mo stretchy="false">(</mo><mo stretchy="false">(</mo><mi>x</mi><mo>+</mo><mn>1</mn><mo stretchy="false">)</mo><mo stretchy="false">/</mo><mn>2</mn><mo stretchy="false">)</mo></mrow><annotation encoding='application/x-tex'>S(x)=Q((x+1)/2)</annotation></semantics></math>.</p><p>On fait de même sur <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>P</mi><mo stretchy="false">(</mo><mi>x</mi><mo>=</mo><mo lspace="verythinmathspace" rspace="0em">&minus;</mo><mi>x</mi><mo stretchy="false">)</mo></mrow><annotation encoding='application/x-tex'>P(x=&#x2d;x)</annotation></semantics></math> pour les racines réelles négatives.
+
+</p><pre class="verbatim">fonction descartes(P)
+  local l,res,j;
+  l:=coeffs(P);
+  l:=remove(0,l);
+  res:=0;
+  pour j de 0 jusque dim(l)-2 faire
+    si l[j]*l[j+1]&lt;0 alors res++; fsi;
+  fpour;
+  return res;
+ffonction:;
+  
+fonction isole01(P,a,b)
+  // renvoie une liste d'intervalles d'isolation
+  local n,m,Q,R,res;
+  global x;
+  Q:=x^degree(P)*P(x=1/x);
+  R:=Q(x=x+1);
+  n:=descartes(R);
+  si n=0 alors return NULL; fsi;
+  si n=1 alors return [a,b]; fsi;
+  Q:=numer(P(x=x/2));
+  R:=numer(P(x=(x+1)/2));
+  m:=(a+b)/2;
+  si P(x=1/2)=0 alors res:=(a+b)/2; sinon res:=NULL; fsi;
+  res:=res,isole01(Q,a,m),isole01(R,m,b)
+  retourne res;
+ffonction:;
+
+fonction isole(P) // racines positives de P
+  local l,M;
+  l:=coeffs(P);
+  M:=ceil(maxnorm(l)/abs(l[0]))+1;
+  P:=P(x=M*x);
+  return isole01(P,0,M);
+ffonction:;
+</pre><p> 
+<button onclick="var field=parentNode.previousSibling; var tmp=field.innerHTML;if(tmp.length==0) tmp=field.value;var t=createElement('TEXTAREA');t.style.fontSize=16;t.cols=60;t.rows=10;var tmp1=UI.ltgt(tmp);t.value=tmp1[0];tmp=UI.caseval(tmp);tmp=UI.rmquote(tmp);nextSibling.innerHTML=tmp; UI.render_canvas(nextSibling.innerHTML); field.parentNode.insertBefore(t,field);field.parentNode.removeChild(field);">ok</button><span></span><br>
+
+
+Racines de <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>P</mi></mrow><annotation encoding='application/x-tex'>P</annotation></semantics></math> dans <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><msup><mi>&Ropf;</mi> <mrow><mo>*</mo><mo lspace="verythinmathspace" rspace="0em">+</mo></mrow></msup></mrow><annotation encoding='application/x-tex'>\mathbb{R}^{*+}</annotation></semantics></math>
+<br><textarea onkeypress="UI.ckenter(event,this,2)" 
+style="width:400px;font-size:large">P:=(x-1/3)*(x-3)*(x^2+1); descartes(P) 
+</textarea><button onclick="previousSibling.style.display='inherit';var tmp=UI.caseval(previousSibling.value); tmp=UI.latexeval(tmp);nextSibling.innerHTML='&nbsp;'+tmp; if (UI.usemathjax) MathJax.Hub.Queue(['Typeset',MathJax.Hub,nextSibling])">ok</button><span></span><br>
+
+il y a 2 racines positives au moins.
+Racines de <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>P</mi></mrow><annotation encoding='application/x-tex'>P</annotation></semantics></math> dans <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mo stretchy="false">]</mo><mn>0</mn><mo>,</mo><mn>1</mn><mo stretchy="false">[</mo></mrow><annotation encoding='application/x-tex'>]0,1[</annotation></semantics></math>
+<br><textarea onkeypress="UI.ckenter(event,this,2)" 
+style="width:400px;font-size:large">P1:=normal(x^degree(P)*P(x=1/x)); descartes(P1(x=x+1)) 
+</textarea><button onclick="previousSibling.style.display='inherit';var tmp=UI.caseval(previousSibling.value); tmp=UI.latexeval(tmp);nextSibling.innerHTML='&nbsp;'+tmp; if (UI.usemathjax) MathJax.Hub.Queue(['Typeset',MathJax.Hub,nextSibling])">ok</button><span></span><br>
+
+Donc une racine dans <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mo stretchy="false">]</mo><mn>0</mn><mo>,</mo><mn>1</mn><mo stretchy="false">[</mo></mrow><annotation encoding='application/x-tex'>]0,1[</annotation></semantics></math>.</p><p>Isolation des racines positives de <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>P</mi></mrow><annotation encoding='application/x-tex'>P</annotation></semantics></math>: 
+on commence par se ramener à chercher les racines
+de <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>Q</mi></mrow><annotation encoding='application/x-tex'>Q</annotation></semantics></math> sur <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mo stretchy="false">]</mo><mn>0</mn><mo>,</mo><mn>1</mn><mo stretchy="false">[</mo></mrow><annotation encoding='application/x-tex'>]0,1[</annotation></semantics></math> (il faudra les multiplier par <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>M</mi></mrow><annotation encoding='application/x-tex'>M</annotation></semantics></math> à la fin)
+<br><textarea onkeypress="UI.ckenter(event,this,2)" 
+style="width:400px;font-size:large">M:=ceil(maxnorm(coeffs(P))/abs(lcoeff(P)))+1;Q:=P(x=M*x) 
+</textarea><button onclick="previousSibling.style.display='inherit';var tmp=UI.caseval(previousSibling.value); tmp=UI.latexeval(tmp);nextSibling.innerHTML='&nbsp;'+tmp; if (UI.usemathjax) MathJax.Hub.Queue(['Typeset',MathJax.Hub,nextSibling])">ok</button><span></span><br>
+
+<br><textarea onkeypress="UI.ckenter(event,this,2)" 
+style="width:400px;font-size:large">P1:=normal(x^degree(Q)*Q(x=1/x)); descartes(P1(x=x+1)) 
+</textarea><button onclick="previousSibling.style.display='inherit';var tmp=UI.caseval(previousSibling.value); tmp=UI.latexeval(tmp);nextSibling.innerHTML='&nbsp;'+tmp; if (UI.usemathjax) MathJax.Hub.Queue(['Typeset',MathJax.Hub,nextSibling])">ok</button><span></span><br>
+
+Il y a plus que une racine, il faut découper en deux :
+<br><textarea onkeypress="UI.ckenter(event,this,2)" 
+style="width:400px;font-size:large">Q1:=Q(x=x/2); P1:=normal(x^degree(Q1)*Q1(x=1/x)); descartes(P1(x=x+1)) 
+</textarea><button onclick="previousSibling.style.display='inherit';var tmp=UI.caseval(previousSibling.value); tmp=UI.latexeval(tmp);nextSibling.innerHTML='&nbsp;'+tmp; if (UI.usemathjax) MathJax.Hub.Queue(['Typeset',MathJax.Hub,nextSibling])">ok</button><span></span><br>
+
+donc il y a une racine de <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>Q</mi></mrow><annotation encoding='application/x-tex'>Q</annotation></semantics></math> dans <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mo stretchy="false">]</mo><mn>0</mn><mo>,</mo><mn>1</mn><mo stretchy="false">/</mo><mn>2</mn><mo stretchy="false">[</mo></mrow><annotation encoding='application/x-tex'>]0,1/2[</annotation></semantics></math>, donc de <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>P</mi></mrow><annotation encoding='application/x-tex'>P</annotation></semantics></math> dans <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mo stretchy="false">]</mo><mn>0</mn><mo>,</mo><mn>5</mn><mo stretchy="false">/</mo><mn>2</mn><mo stretchy="false">[</mo></mrow><annotation encoding='application/x-tex'>]0,5/2[</annotation></semantics></math>
+<br><textarea onkeypress="UI.ckenter(event,this,2)" 
+style="width:400px;font-size:large">Q1:=Q(x=(x+1)/2); P1:=normal(x^degree(Q1)*Q1(x=1/x)); descartes(P1(x=x+1)) 
+</textarea><button onclick="previousSibling.style.display='inherit';var tmp=UI.caseval(previousSibling.value); tmp=UI.latexeval(tmp);nextSibling.innerHTML='&nbsp;'+tmp; if (UI.usemathjax) MathJax.Hub.Queue(['Typeset',MathJax.Hub,nextSibling])">ok</button><span></span><br>
+
+donc il y a une racine de <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>Q</mi></mrow><annotation encoding='application/x-tex'>Q</annotation></semantics></math> dans <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mo stretchy="false">]</mo><mn>1</mn><mo stretchy="false">/</mo><mn>2</mn><mo>,</mo><mn>1</mn><mo stretchy="false">[</mo></mrow><annotation encoding='application/x-tex'>]1/2,1[</annotation></semantics></math>, donc de <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>P</mi></mrow><annotation encoding='application/x-tex'>P</annotation></semantics></math> dans <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mo stretchy="false">]</mo><mn>5</mn><mo stretchy="false">/</mo><mn>2</mn><mo>,</mo><mn>5</mn><mo stretchy="false">[</mo></mrow><annotation encoding='application/x-tex'>]5/2,5[</annotation></semantics></math>.
+<br><textarea onkeypress="UI.ckenter(event,this,2)" 
+style="width:400px;font-size:large">normal(Q(x=1/2)) 
+</textarea><button onclick="previousSibling.style.display='inherit';var tmp=UI.caseval(previousSibling.value); tmp=UI.latexeval(tmp);nextSibling.innerHTML='&nbsp;'+tmp; if (UI.usemathjax) MathJax.Hub.Queue(['Typeset',MathJax.Hub,nextSibling])">ok</button><span></span><br>
+
+<math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>Q</mi></mrow><annotation encoding='application/x-tex'>Q</annotation></semantics></math> n’est pas nul en <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mn>1</mn><mo stretchy="false">/</mo><mn>2</mn></mrow><annotation encoding='application/x-tex'>1/2</annotation></semantics></math>, on conclut donc qu’il existe 2 racines positives
+pour <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>P</mi></mrow><annotation encoding='application/x-tex'>P</annotation></semantics></math>. Vérification avec <span style="font-family:monospace">isole</span> :
+<br><textarea onkeypress="UI.ckenter(event,this,2)" 
+style="width:400px;font-size:large">isole(P); 
+</textarea><button onclick="previousSibling.style.display='inherit';var tmp=UI.caseval(previousSibling.value); tmp=UI.latexeval(tmp);nextSibling.innerHTML='&nbsp;'+tmp; if (UI.usemathjax) MathJax.Hub.Queue(['Typeset',MathJax.Hub,nextSibling])">ok</button><span></span><br>
+</p><p>L’algorithme VAS utilise ce type de résultat et des changements de variable
+homographique <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>x</mi><mo>&rightarrow;</mo><mfrac><mrow><mi>a</mi><mi>x</mi><mo>+</mo><mi>b</mi></mrow><mrow><mi>c</mi><mi>x</mi><mo>+</mo><mi>d</mi></mrow></mfrac></mrow><annotation encoding='application/x-tex'>x \rightarrow \frac{ax+b}{cx+d}</annotation></semantics></math> pour isoler les racines.</p></li><li class="li-itemize">Les suites de Sturm se générallisent dans le plan complexe, on
+peut déterminer le nombre de racines contenues dans un
+rectangle du plan complexe (cf. par exemple l’article
+de Mickael Eiserman sur <code>www-fourier.ujf-grenoble.fr/~eiserm</code>). 
+Malheureusement, il faut calculer une nouvelle suite de Sturm
+pour chaque rectangle (alors que dans <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>&Ropf;</mi></mrow><annotation encoding='application/x-tex'>\mathbb{R}</annotation></semantics></math> on peut réutiliser la
+même suite de Sturm). Ce qui est donc beaucoup plus couteux,
+en pratique on ne peut guère aller au-delà du degré 10 avec
+l’instruction <code>sturm</code> dans <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>&Copf;</mi></mrow><annotation encoding='application/x-tex'>\mathbb{C}</annotation></semantics></math>
+(on peut montrer que la 
+complexité asymptotique pour déterminer les racines
+avec une précision relative de <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>b</mi></mrow><annotation encoding='application/x-tex'>b</annotation></semantics></math> bits 
+est en <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mover><mi>O</mi><mo stretchy="false">&tilde;</mo></mover><mo stretchy="false">(</mo><msup><mi>n</mi> <mn>4</mn></msup><msup><mi>b</mi> <mn>2</mn></msup><mo stretchy="false">)</mo></mrow><annotation encoding='application/x-tex'>\tilde{O}(n^4b^2)</annotation></semantics></math> mais ces complexités
+sont valides pour de grandes valeurs de <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>n</mi></mrow><annotation encoding='application/x-tex'>n</annotation></semantics></math>, pour des <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>n</mi></mrow><annotation encoding='application/x-tex'>n</annotation></semantics></math>
+de quelques dizaines, l’arithmétique sur les entiers de taille <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>n</mi></mrow><annotation encoding='application/x-tex'>n</annotation></semantics></math>
+est par exemple plus proche du cas naïf que de l’asymptotique).
+</li><li class="li-itemize">Une autre méthode dans le cas complexe, 
+consiste à utiliser
+un hybride numérique-exact. Les racines d’un polynôme <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>Q</mi></mrow><annotation encoding='application/x-tex'>Q</annotation></semantics></math>
+sont aussi les valeurs
+propres complexes de sa matrice companion <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>M</mi></mrow><annotation encoding='application/x-tex'>M</annotation></semantics></math>. On factorise cette matrice
+sous forme de Schur <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>M</mi><mo>=</mo><msup><mi>P</mi> <mrow><mo lspace="verythinmathspace" rspace="0em">&minus;</mo><mn>1</mn></mrow></msup><mi>S</mi><mi>P</mi></mrow><annotation encoding='application/x-tex'>M=P^{&#x2d;1} S P</annotation></semantics></math> où <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>P</mi></mrow><annotation encoding='application/x-tex'>P</annotation></semantics></math> est unitaire
+et S aux erreurs d’arrondis près diagonale supérieure 
+avec éventuellement des blocs de taille
+2 dans le cas réel correspondant à des couples de racines
+complexes conjuguées<sup><a id="text7" href="#note7">1</a></sup>. On lit alors des valeurs approchées des valeurs
+propres de <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>M</mi></mrow><annotation encoding='application/x-tex'>M</annotation></semantics></math> sur la diagonale de <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>S</mi></mrow><annotation encoding='application/x-tex'>S</annotation></semantics></math>. Puis on applique la
+<div class="theorem"><span style="font-weight:bold">Proposition 13</span>  <em>
+Le disque de centre </em><math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>z</mi></mrow><annotation encoding='application/x-tex'>z</annotation></semantics></math><em> et de rayon degre</em><math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mo stretchy="false">(</mo><mi>Q</mi><mo stretchy="false">)</mo><mo stretchy="false">&vert;</mo><mi>Q</mi><mo stretchy="false">(</mo><mi>z</mi><mo stretchy="false">)</mo><mo stretchy="false">/</mo><mi>Q</mi><mo>&prime;</mo><mo stretchy="false">(</mo><mi>z</mi><mo stretchy="false">)</mo><mo stretchy="false">&vert;</mo></mrow><annotation encoding='application/x-tex'>(Q) |Q(z)/Q&apos;(z)|</annotation></semantics></math><em>
+contient au moins une racine de </em><math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>Q</mi></mrow><annotation encoding='application/x-tex'>Q</annotation></semantics></math><em>.
+</em></div>
+En effet
+<math xmlns='http://www.w3.org/1998/Math/MathML' display='block'><semantics><mrow><mfrac><mrow><mi>Q</mi><mo>&prime;</mo></mrow><mi>Q</mi></mfrac><mo stretchy="false">(</mo><mi>z</mi><mo stretchy="false">)</mo><mo>=</mo><munder><mo lspace="thinmathspace" rspace="thinmathspace">&Sum;</mo> <mi>k</mi></munder><mfrac><mn>1</mn><mrow><mi>z</mi><mo>&minus;</mo><msub><mi>z</mi> <mi>k</mi></msub></mrow></mfrac></mrow><annotation encoding='application/x-tex'> \frac{Q&apos;}{Q}(z)= \sum_{k} \frac{1}{z&#x2d;z_k} </annotation></semantics></math>
+donc si <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mo stretchy="false">&vert;</mo><mi>z</mi><mo>&minus;</mo><msub><mi>z</mi> <mi>k</mi></msub><mo stretchy="false">&vert;</mo><mi>&gt;</mi></mrow><annotation encoding='application/x-tex'>|z&#x2d;z_k| &amp;gt; </annotation></semantics></math>degre<math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mo stretchy="false">(</mo><mi>Q</mi><mo stretchy="false">)</mo><mo stretchy="false">&vert;</mo><mi>Q</mi><mo stretchy="false">(</mo><mi>z</mi><mo stretchy="false">)</mo><mo stretchy="false">/</mo><mi>Q</mi><mo>&prime;</mo><mo stretchy="false">(</mo><mi>z</mi><mo stretchy="false">)</mo><mo stretchy="false">&vert;</mo></mrow><annotation encoding='application/x-tex'>(Q) |Q(z)/Q&apos;(z)|</annotation></semantics></math> pour toutes les racines <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><msub><mi>z</mi> <mi>k</mi></msub></mrow><annotation encoding='application/x-tex'>z_k</annotation></semantics></math> alors
+<math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mo stretchy="false">&vert;</mo><mfrac><mrow><mi>Q</mi><mo>&prime;</mo></mrow><mi>Q</mi></mfrac><mo stretchy="false">(</mo><mi>z</mi><mo stretchy="false">)</mo><mo stretchy="false">&vert;</mo><mi>&gt;</mi><mo stretchy="false">&vert;</mo><mi>Q</mi><mo>&prime;</mo><mo stretchy="false">(</mo><mi>z</mi><mo stretchy="false">)</mo><mo stretchy="false">/</mo><mi>Q</mi><mo stretchy="false">(</mo><mi>z</mi><mo stretchy="false">)</mo><mo stretchy="false">&vert;</mo></mrow><annotation encoding='application/x-tex'>|\frac{Q&apos;}{Q}(z)| &amp;gt; |Q&apos;(z)/Q(z)|</annotation></semantics></math> contradiction.<p>On prend pour <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>z</mi></mrow><annotation encoding='application/x-tex'>z</annotation></semantics></math> un rationnel complexe proche d’un coefficient
+diagonal de <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>M</mi></mrow><annotation encoding='application/x-tex'>M</annotation></semantics></math>, on calcule un minorant <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>m</mi></mrow><annotation encoding='application/x-tex'>m</annotation></semantics></math> de <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mo stretchy="false">&vert;</mo><mi>Q</mi><mo>&prime;</mo><mo stretchy="false">(</mo><mi>z</mi><mo stretchy="false">)</mo><mo stretchy="false">/</mo><mi>Q</mi><mo stretchy="false">(</mo><mi>z</mi><mo stretchy="false">)</mo><mo stretchy="false">&vert;</mo></mrow><annotation encoding='application/x-tex'>|Q&apos;(z)/Q(z)|</annotation></semantics></math> 
+pour <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>z</mi></mrow><annotation encoding='application/x-tex'>z</annotation></semantics></math> racine complexe approchée. On a alors au moins
+une racine de <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>Q</mi></mrow><annotation encoding='application/x-tex'>Q</annotation></semantics></math> dans le disque de centre <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>z</mi></mrow><annotation encoding='application/x-tex'>z</annotation></semantics></math> 
+et de rayon degre<math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mo stretchy="false">(</mo><mi>Q</mi><mo stretchy="false">)</mo><mo stretchy="false">/</mo><mi>m</mi></mrow><annotation encoding='application/x-tex'>(Q)/m</annotation></semantics></math>, Si les disques obtenus sont
+disjoints, on a ainsi une localisation certifiée des racines
+complexes.<br>
+<div><textarea onkeypress="UI.ckenter(event,this,2)" 
+style="width:800px;font-size:large">Q:=randpoly(5); M:=companion(Q); P,S:=schur(M):; S 
+</textarea><button onclick="previousSibling.style.display='inherit';var tmp=UI.caseval(previousSibling.value); tmp=UI.latexeval(tmp);nextSibling.innerHTML=tmp; if (UI.usemathjax) MathJax.Hub.Queue(['Typeset',MathJax.Hub,nextSibling])">ok</button><div style="width:800px;max-height:200px;overflow:auto;color:blue;text-align:center"></div></div>
+<br>
+<div><textarea onkeypress="UI.ckenter(event,this,2)" 
+style="width:800px;font-size:large">P*S*trn(P); P*trn(P); 
+</textarea><button onclick="previousSibling.style.display='inherit';var tmp=UI.caseval(previousSibling.value); tmp=UI.latexeval(tmp);nextSibling.innerHTML=tmp; if (UI.usemathjax) MathJax.Hub.Queue(['Typeset',MathJax.Hub,nextSibling])">ok</button><div style="width:800px;max-height:200px;overflow:auto;color:blue;text-align:center"></div></div>
+
+<div><textarea onkeypress="UI.ckenter(event,this,2)" 
+style="width:800px;font-size:large">l:=proot(Q); z:=exact(l[0]); evalf(degree(Q)*Q(x=z)/Q'(x=z),20) 
+</textarea><button onclick="previousSibling.style.display='inherit';var tmp=UI.caseval(previousSibling.value); tmp=UI.latexeval(tmp);nextSibling.innerHTML=tmp; if (UI.usemathjax) MathJax.Hub.Queue(['Typeset',MathJax.Hub,nextSibling])">ok</button><div style="width:800px;max-height:200px;overflow:auto;color:blue;text-align:center"></div></div>
+
+On peut aussi utiliser l’arithmétique d’intervalles pour
+essayer de trouver un petit rectangle autour d’une racine approchée
+qui est conservé par la méthode de Newton <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>g</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo><mo>=</mo><mi>x</mi><mo>&minus;</mo><mi>f</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo><mo stretchy="false">/</mo><mi>f</mi><mo>&prime;</mo><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow><annotation encoding='application/x-tex'>g(x)=x&#x2d;f(x)/f&apos;(x)</annotation></semantics></math>,
+le théorème du point fixe de Brouwer assure alors qu’il admet
+un point fixe qui n’est autre qu’une racine de <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>g</mi></mrow><annotation encoding='application/x-tex'>g</annotation></semantics></math>.
+</p></li></ul>
+<!--BEGIN NOTES chapter-->
+<hr class="footnoterule"><dl class="thefootnotes"><dt class="dt-thefootnotes">
+<a id="note7" href="#text7">1</a></dt><dd class="dd-thefootnotes"><div class="footnotetext">cela se fait
+par une méthode itérative appelée algorithme
+de Francis. On pose <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><msub><mi>A</mi> <mn>0</mn></msub></mrow><annotation encoding='application/x-tex'>A_0</annotation></semantics></math>, la forme
+de Hessenberg de <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>M</mi></mrow><annotation encoding='application/x-tex'>M</annotation></semantics></math>, puis on 
+factorise <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><msub><mi>A</mi> <mi>n</mi></msub><mo>=</mo><mi>Q</mi><mi>R</mi></mrow><annotation encoding='application/x-tex'>A_n=QR</annotation></semantics></math> par des symétries de Householder ou
+des rotations de Givens et on définit
+<math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><msub><mi>A</mi> <mrow><mi>n</mi><mo>+</mo><mn>1</mn></mrow></msub><mo>=</mo><mi>R</mi><mi>Q</mi></mrow><annotation encoding='application/x-tex'>A_{n+1}=RQ</annotation></semantics></math>, le calcul de <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><msub><mi>A</mi> <mrow><mi>n</mi><mo>+</mo><mn>1</mn></mrow></msub></mrow><annotation encoding='application/x-tex'>A_{n+1}</annotation></semantics></math> en fonction de <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><msub><mi>A</mi> <mi>n</mi></msub></mrow><annotation encoding='application/x-tex'>A_n</annotation></semantics></math>
+se fait sans expliciter la factorisation <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>Q</mi><mi>R</mi></mrow><annotation encoding='application/x-tex'>QR</annotation></semantics></math></div></dd></dl>
+<!--END NOTES-->
+<!--TOC chapter id="sec68" Exercices (PGCD, résultant, ...)-->
+</html>

@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html >
+<head>
+<h1 id="sec316" class="chapter">Annexe B  Quelques opinions.</h1><!--SEC END -->
+<!--TOC section id="sec317" Languages-->
+<h2 id="sec317" class="section">B.1  Languages</h2><!--SEC END --><p>
+La question du choix de langage en informatique est récurrente.
+J’ai choisi C++ pour Giac/Xcas, en fait c’est plutôt du C– (au
+sens où Giac définit très peu de classes lui-même, mais
+utilise les facilités de la bibliothèque C++).</p><p>Lorsque j’ai développé pour la HP48 dans les années 90, le langage
+était du RPL, un dérivé du Forth, sorte de Lisp restreint écrit
+en polonaise inversé, spécialement conçu pour créer
+des programmes compacts (le CAS de la HP49 occupe environ
+200K, l’ensemble du système environ 1M).
+C’était un langage où on pouvait
+tout manipuler, y compris la pile des retours de fonction.
+Mais c’était un langage difficile à maitriser et où le
+moindre changement nécessitait de reconcevoir complètement
+le programme. C’était aussi un langage interprété donc lent,
+et comme pour tout langage interprété, optimiser nécessite
+une longue pratique et rend le programme optimisé encore plus
+incompréhensible que dans d’autres langages.
+Et bien sur c’est un langage propriétaire, complètement
+inutilisable en-dehors des HP48/49/50.</p><p>C’est donc avec ces défauts en tête que j’ai choisi le
+langage de Giac : portabilité, facilités pour optimiser,
+mettre au point et modifier, vitesse. Ce qui excluait
+tout langage interprété. Le choix
+de C/C++ c’était aussi la possibilité d’utiliser des opérateurs
+sur le type générique de giac, pour pouvoir écrire
+<code>b*b-4*a*c</code> et pas <code>sub(mult(b,b),mult(4,mult(a,c)))</code>
+comme en Java.</p><p>Je ne regrette pas un instant ce choix. Si on regarde les logiciels
+de calcul formel, on a essentiellement 3 langages :
+</p><ul class="itemize"><li class="li-itemize">
+Lisp utilisé par Maxima. Cela affecte
+le nombre de développeurs potentiels du système,
+et nécessite d’avoir un interpréteur Lisp sur
+certaines plateformes (avec des problèmes de lenteur)
+</li><li class="li-itemize">C/C++ utilisé par Xcas, Maple, Mathematica
+mais aussi par de nombreux logiciels et librairies
+mathématiques : GMP, MPFR, NTL,
+Pari-GP, Singular...
+</li><li class="li-itemize">Python utilisé par Sage et Sympy. Sage doit toutefois
+être un peu mis à part, la plupart de ses fonctionnalités
+sont en fait héritées de bibliothèques C ou logiciels
+interfacés et les développeurs ont recours à une
+sorte de traducteur C (cython) pour optimiser certaines portions de code
+Python natif. Sympy se classe pour le moment encore dans les
+systèmes de calcul formel jouets,
+et est structurellement très lent comparé à giacpy.
+</li></ul><p>
+Je pense que le potentiel de portabilité
+et réutilisation de code est maximal en C/C++,
+on peut s’intégrer dans du Python (module giacpy
+et interface giac/sage de F. Han, l’inverse est beaucoup plus difficile et
+nécessite plus de ressources, essayez d’appeler
+du code sage depuis un programme C/C++!),
+du java (module natif javagiac utilisé par geogebra),
+du Javascript (le langage de base du web! Giac se compile en
+Javascript),
+du code natif pour le navigateur google-chrome,
+en embarqué (sur les HP Prime, mais aussi ailleurs,
+la plus petite version de giac existante à ce jour
+occupe moins de 5M et tourne sur calculatrices TI nspire) ou
+enfoui dans un autre programme (C/C++ ou avec
+un langage interfaçable, par exemple de la liste fournie par SWIG).
+La durée de vie de code C/C++ est aussi excellente, le
+langage C/C++ est au coeur de la très grande majorité
+des applications utilisées aujourd’hui. L’avenir de Javascript
+ou de Python parait aujourd’hui assuré, mais c’était
+la situation de Java il y a une dizaine d’années, alors
+qu’aujourd’hui on ne peut plus en dire autant.</p><p>Bien sur, écrire un programme en C/C++ nécessite
+un peu plus d’apprentissage qu’écrire un programme
+en Python ou en tout autre langage interprété,
+mais c’est je pense aussi plus formateur, on
+comprend mieux les avantages et inconvénients
+d’utiliser un conteneur, un type de donnée précis
+ou un algorithme avec un langage plus proche de la machine
+réelle qu’avec une machine abstraite filtrée par les
+possibilités mises à disposition par l’interpréteur
+(avec souvent un biais lorsqu’on optimise, on favorise
+l’instruction implémentée le plus efficacement par
+l’interpréteur au détriment de l’algorithme le plus
+efficace, ce qui conduit par exemple à choisir un style fonctionnel
+plus difficile à concevoir, relire et modifier et moins
+efficace dans un langage compilé).</p>
+<!--TOC section id="sec318" Le libre, la recherche et l’éducation-->
+<h2 id="sec318" class="section">B.2  Le libre, la recherche et l’éducation</h2><!--SEC END --><p>
+Le logiciel libre a fini par se faire une place au soleil,
+mais cela n’a pas été facile. Au sein de l’éducation
+nationale, c’est probablement les restrictions budgétaires qui ont été
+le meilleur allié du libre, et Open Office ou LIbre Office,
+Geogebra, Xcas sont maintenant bien présents dans
+les lycées et manuels, mais l’OS reste Windows et
+l’évolution dans le monde des calculatrices va dans le mauvais sens.</p><p>L’idée de mettre en place un mode examen en 2018 va à l’encontre
+de la possibilité pour l’acheteur de tirer parti de sa calculatrice
+comme il l’entend, il suffit de voir la guerre entre les
+développeurs de TI et la communauté Ndless, digne
+de la lutte menée par Apple contre les“jailbreaks”
+qui permettent d’utiliser l’Ipad avec des logiciels en-dehors
+du marché controlé par Apple ou avec d’autres opérateurs
+téléphoniques. L’institution devrait bien réfléchir avant de
+se lancer dans l’aventure. Certes, le mode examen évitera le
+recours parfois abusif aux anti-sèches, mais cela va décourager
+le développement de programmes par les élèves sur leurs
+calculatrices (car ces programmes seront effacés le jour de
+l’examen) et renforcer les inégalités, en particulier pour
+l’accès au calcul formel (qui est possible sur des modèles
+d’entrée de gamme aujourd’hui).</p><p>Je pense que si on veut vraiment des calculatrices avec mode examen,
+alors c’est à l’institution de les acheter, puis de les 
+prêter aux élèves. L’éducation nationale devrait aussi
+avoir plus de contrôle sur les logiciels
+embarqués, qui ne devraient pas tant
+dépendre des constructeurs
+et donc des programmes de l’enseignement US. Cela permettrait
+aussi de mettre fin à des rentes pour les constructeurs
+en situation de position dominante, que l’on songe par
+exemple au bénéfice sur les modèles de calculatrices les plus
+conseillées et vendues, calculatrices qui ne se sont
+guère améliorées depuis 20 ans.</p><p>Si ce sont les élèves qui sont propriétaires du matériel, alors
+ils doivent pouvoir y installer les logiciels de leur choix.
+En fait, avec la baisse du prix des tablettes et autres
+netbooks où chacun peut installer le logiciel de son
+choix, est-il raisonnable de continuer à utiliser
+des calculatrices graphiques (à plus de disons 20 euros) ? Il vaudrait
+peut-être mieux prévoir des dispositifs de brouillage
+des communications de type wifi, ou/et des sujets avec
+une partie sans outil informatique pour controler les questions
+de cours.</p><p>Coté recherche, l’esprit “libre” progresse mais il y a encore
+beaucoup de chemin à accomplir. L’édition scientifique
+est encore essentiellement basée sur le paradigme du 20ième
+siècle : revue papier vendue à prix d’or aux bibliothèques,
+droits d’auteurs cédés par les auteurs des articles sans aucune
+contrepartie, accès en ligne payant. Les éditeurs privés
+s’approprient ainsi la connaissance financée par les fonds publics,
+un comble!
+Heureusement les archives en ligne permettent la plupart
+du temps de contourner ces accès payants. Il reste
+que les crédits utilisés pour payer les abonnements seraient
+bien mieux utilisés à financer les journaux en ligne et en
+les rendant publics.</p><p>Concernant le dèveloppement logiciel,
+il y a beaucoup de logiciels scientifiques libres de qualité aujourd’hui, mais
+il y a des freins :
+</p><ul class="itemize"><li class="li-itemize">
+la publication de code source de logiciel scientifique n’est pas
+considéré comme équivalent à la publication d’un article :
+certains qualifient d’ailleurs cette activité par “pisser du
+code”. 
+Conséquence, l’auteur d’un morceau de code n’a pas intérêt
+à en diffuser le source car cela n’accélérera en rien
+sa carrière, il est souvent plus rentable
+de diffuser un article qui parle du code source,
+sans rentrer trop dans les
+détails qui rendent un algorithme efficace. Éventuellement
+on diffuse un exécutable,
+comme cela toute personne utilisant le code pour un autre
+travail de recherche devra collaborer
+ou remercier d’une autre manière. Dans certains
+domaines, on me dit que la situation en arrive au point
+où il faut communiquer
+les données à l’auteur du code qui renvoie le résultat.
+On est vraiment aux antipodes de la démarche scientifique,
+encore plus en maths où on attend de pouvoir consulter
+tous les détails d’une preuve.
+</li><li class="li-itemize">On peut sans doute dire la même chose concernant
+le développement de logiciels
+éducatifs. Il n’y a pas de reconnaissance de l’institution et
+les encouragements sont rares (en tout cas c’est le ressenti
+de notre visite de présentation de Xcas
+au ministère de l’Education Nationale
+il y a quelques années, peut-être que ce serait différent
+aujourd’hui).
+</li><li class="li-itemize">Un autre frein au libre, c’est le droit qui est différent pour les logiciels
+et pour les écrits scientifiques, la personne qui dispose des droits
+patrimomiaux sur un logiciel c’est l’employeur de l’auteur et
+pas l’auteur lui-même, or les responsables de projets,
+universités et autres organismes
+publics de recherche sont beaucoup plus réticentes au logiciel
+libre que les auteurs eux-mêmes ... surtout s’ils ont des organismes
+de valorisation. Ce n’est pas seulement une question financière
+mais tout simplement de qui controle quoi, une fois un logiciel
+libéré, le contrôle est dans les mains des personnes qui codent,
+et échappe aux services de valorisation ou aux scientifiques
+qui dirigent le projet (ainsi Allan Steel, le principal codeur du logiciel 
+Magma, dont l’attractivité doit tout au génie algorithmique de cet
+auteur, n’apparait même pas dans la citation recommendée
+du logiciel).
+</li><li class="li-itemize">Plus généralement, le financement de la recherche
+aujourd’hui n’est pas favorable aux projets de long terme.
+Le manque de confiance des décideurs envers les chercheurs
+est une cause majeure de perte d’efficacité des chercheurs,
+en raison de l’inflation du temps passé à chercher des crédits,
+à évaluer des projets, à évaluer les collègues
+(pour les nominations et promotions aujourd’hui, bientot peut-être pour les services
+d’enseignement!). Le système actuel favorise d’ailleurs la politique
+d’édition dénoncée plus haut, avec une floraison d’indices utilisant
+les publications dans les journaux prestigieux. Il serait bien plus
+rentable de faire confiance aux chercheurs avec des financements
+pérennes et la fin des contrôles systématiques, bien sur il y aura
+toujours quelques abus, mais globalement on gagnerait en efficacité.
+</li></ul>
+<!--TOC section id="sec319" Les maths et les outils de calcul.-->
+<h2 id="sec319" class="section">B.3  Les maths et les outils de calcul.</h2><!--SEC END --><p>
+En un demi-siècle les outils de calcul informatiques ont
+gagné en puissance de manière radicale. Aujourd’hui,
+pour une centaine d’euros, on a la puissance de calcul
+qui était réservée, il y a une vingtaine d’années, 
+aux centres de calculs spécialisés. </p><p>Cela a des conséquences
+visibles dans tous les domaines de la vie quotidienne, il
+est impossible de les ignorer en maths sauf peut-être
+dans certains domaines de recherche. En tout
+cas pas dans le domaine de l’enseignement. Bien entendu,
+les maths c’est pour partie du raisonnement, mais pour
+l’écrasante majorité des gens, y compris scientifiques,
+c’est surtout un outil et pas une fin en soi (sur une classe
+d’age, deux à trois pour mille vont
+être des professionnels des maths, en comptant tous les
+enseignants de maths). Je pense que si les matheux veulent survivre
+en tant que discipline, il faut qu’ils adaptent leur enseignement
+pour un usage <em>intelligent</em> des outils de calcul, sinon ils finiront
+comme les langues anciennes. On ne devrait par exemple 
+plus étudier les courbes sans utiliser un logiciel ou une
+calculatrice pour en avoir une représentation graphique : 
+avant on faisait l’étude complète pour aboutir au tracé 
+parce qu’on n’avait pas le choix de faire autrement, aujourd’hui il faut
+faire le tracé et l’étude simultanément, létude analytique
+servant à expliquer les particularités du tracé.</p><p>Utiliser des outils de calcul n’est pas contradictoire avec faire
+du calcul, en particulier faire suffisamment de calcul mental pour avoir
+une idée de la plausibilité d’un résultat obtenu par
+un logiciel (ordre de grandeur). C’est
+de l’hygiène intellectuelle, analogue à faire de l’exercice
+physique. Faire quelques calculs avec papier et stylo est aussi une
+façon de s’approprier de nouveaux concepts. Mais une fois
+cette étape franchie, je ne vois aucune raison de devoir
+continuer à apprendre à faire des calculs fastidieux
+ou techniques, alors que l’ordinateur fait cela beaucoup mieux
+que nous. Il est beaucoup plus judicieux de savoir diriger
+un logiciel pour cela, et donc de passer un peu de temps
+(le temps autrefois consacré à faire des calculs techniques)
+à connaitre leurs possibilités
+et limites (à la fois en termes de fonctionnalités et
+de temps de calcul).</p><p>Prenons l’exemple de la résolution des équations du second
+degré. Au moment où on enseigne cette technique, je pense
+qu’il est important de faire faire quelques calculs de racines 
+de trinômes (sans
+calculatrices), et d’expliquer comment ce genre de calculs peut
+se faire avec un logiciel de calcul formel (ce qui d’ailleurs
+permettra aux élèves de vérifier les résultats
+de leurs calculs faits à la main).
+Un an ou deux ans après, je ne vois pas l’intérêt de forcer
+des élèves à continuer à faire ces calculs à la main
+s’ils savent les faire avec un logiciel ou une calculatrice. En les
+bloquant sur un point technique, on ne fera
+que les braquer et on les empêchera de comprendre à quoi
+cela peut servir (par exemple faire un tableau de variations).
+Il faut arrêter de croire que tous les
+scientifiques fonctionnent comme les matheux qui veulent
+comprendre de A à Z, c’est d’ailleurs souvent devenu
+impossible en recherche en maths, les autres disciplines
+ont leurs propres règles (je pense par exemple qu’un
+bon physicien n’a pas forcément besoin de savoir
+démontrer rigoureusement quelque chose, l’essentiel
+est qu’il ait une bonne intuition des bonnes approximations
+à faire pour calculer correctement, calcul qu’il n’hésitera
+par à déléguer à la machine). Interdire les outils
+de calculs (ou les réserver à ceux qui savent déjà
+les faire à la main), c’est pour moi une pratique élitiste,
+on donne l’accès à certaines connaissances non pas
+à ceux qui sont capables de les comprendre, mais à
+ceux qui sont suffisamment virtuoses du calcul à la main.</p><p>Certains enseignants mettent sur le dos de l’usage des outils de
+calcul tous les maux du système actuel alors qu’à mon avis cela n’a rien
+à voir. Je pense que le problème principal des maths au lycée, 
+c’est que les maths de S sont à la fois dures pour des non matheux
+et inintéressantes pour des matheux (au sens large), conséquence
+de l’universalité des débouchés accessibles en sortant de S.
+Dans le supérieur (hors prépas), le problème principal c’est
+la multiplication des parcours, la semestrialisation 
+et l’atomisation des enseignements
+en unités beaucoup trop petites, qui augmentent les effets
+frontières, sont contradictoires avec les échelles de temps
+pour assimiler des notions, créent des casses-têtes pour faire
+les emplois du temps, multiplient les sessions d’examens. 
+A cela s’ajoute la perte d’attractivité des métiers de
+l’enseignement et de la recherche en maths, que ce soit
+dans le secondaire (conditions de travail, reconnaissance
+par la société) ou dans le supérieur (dégradation
+des conditions d’exercice de la recherche, mais aussi
+de l’enseignement). Rien d’étonnant à ce que les jurys
+du CAPES et de l’agrégation n’arrivent pas à
+pourvoir tous les postes.</p><p>Les programmes des classes préparatoires aux grandes écoles
+ont supprimé récemment l’apprentissage d’un logiciel de calcul
+formel, peut-être une victoire des enseignants qui sont contre
+l’usage des outils de calcul formel. Ce sont les mêmes qui conseillent
+à leurs élèves l’achat de calculatrices graphiques non formelles
+au lycée (ce qui arrange bien les constructeurs qui peuvent ainsi
+faire payer au prix fort le modèle formel). 
+Je pense que ce combat d’arrière-garde est voué à l’échec :
+les calculatrices graphiques de milieu de gamme commencent
+à avoir des logiciels de calcul formel jouets (comme
+par exemple Eigenmath sur Casio Graph 35+USB et 75/85/95),
+et à moyen terme (10 ans?), ces calculatrices 
+auront suffisamment de capacité mémoire pour
+permettre le portage de logiciels de calcul formel complets comme Giac.</p>
+<!--TOC section id="sec320" Calculatrices, tablettes ou PC ?-->
+<h2 id="sec320" class="section">B.4  Calculatrices, tablettes ou PC ?</h2><!--SEC END --><p>
+Si on est convaincu de l’intérêt d’utiliser un outil de calcul,
+se pose alors la question du choix de l’outil. Voici quelques
+éléments de réflexion.
+</p><ul class="itemize"><li class="li-itemize">
+Les calculatrices ont pour avantages : la disponibilité
+immédiate (on appuie sur ON, en 1 seconde on peut
+travailler), l’encombrement faible, la robustesse,
+le clavier scientifique
+dédié (avec sur les calculatrices graphiques haut
+de gamme une interface facilitant la saisie d’intégrales,
+limites, etc.), la consommation faible (des piles qui durent
+plusieurs mois ou des batteries dont la charge tient plusieurs
+semaines), l’absence de connection Internet (pour les examens).<br>
+Les inconvénients : prix élevé, taille d’écran trop petite
+pour faire des gros calculs (et puissance parfois insuffisante), 
+plus difficile de charger/sauvegarder
+des données dans des fichiers, pas de souris, l’utilisation du clavier peut
+être pénible pour programmer ou saisir une ligne de commandes
+un peu longue (le clavier des TI92 et des TI Nspire CX est
+un bon compromis, l’écran tactile des HP Prime permet
+de se passer de souris, il faudrait un hybride des deux!) <br>
+Bien adapté à l’enseignement (y compris dans le supérieur
+même si elles y sont souvent dénigrées par les enseignants).
+</li><li class="li-itemize">Les avantages des ordinateurs (portables) : clavier, écran,
+puissance de calcul, convient pour d’autres usages que le calcul.<br>
+Les inconvénients : poids/encombrement/fragilité, durée de charge
+des batteries (souvent 3-4h), connectivité Internet pour les
+examens.<br>
+Idéal en usage stationnaire.
+</li><li class="li-itemize">Les avantages des tablettes : disponibilité immédiate,
+écran large, convient pour d’autres usages que le calcul.<br>
+Les inconvénients : saisie de données fastidieuse, encombrement
+et fragilité, usage sans recharge limité à une (petite) 
+journée, connectivité Internet en examen.<br>
+Peut être intéressant en mobilité
+si on a beaucoup de documents à
+consulter en ligne avec de temps en temps un petit calcul à
+faire. Les tablettes avec possibilité de branchement
+de clavier ont un potentiel intéressant pour un usage
+en mobilité avec un peu plus de données à saisir.
+</li></ul><p>
+</body>
+</html>

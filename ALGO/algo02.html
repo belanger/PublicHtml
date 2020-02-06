@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html >
+<head>
+<h1 id="sec4" class="chapter">Chapitre 2  Trousse de survie Xcas</h1><!--SEC END --><p> <a id="sec:survie"></a>
+Cette section peut être vue comme un tutoriel très abrégé 
+pour rapidement
+prendre en main Xcas par des exemples au niveau fin de licence
+master de mathématique et préparation aux concours de recrutement
+d’enseignants. Le lecteur pourra consulter le tutoriel calcul
+formel (menu Xcas, Aide, Débuter en calcul formel, tutoriel) pour
+plus de détails ou/et à un niveau mathématique moins élevé.</p>
+<!--TOC section id="sec5" Utilisation comme super-calculatrice-->
+<h2 id="sec5" class="section">2.1  Utilisation comme super-calculatrice</h2><!--SEC END --><ul class="itemize"><li class="li-itemize">
+On saisit une ligne de commande, on tape sur la touche Entree pour
+l’évaluer. On peut saisir plusieurs commandes sur une même ligne
+en les séparant par <code>;</code> (affiche le résultat) ou
+<code>:;</code> (n’affiche pas le résultat).
+La syntaxe respecte les priorités usuelles des 
+opérateurs, attention il faut toujours saisir le signe <code>*</code>
+pour effectuer une multiplication (sauf raccourcis dans lécriture
+de monômes comme <code>2x</code>). Mettez des parenthèses en cas de doute.
+<br><textarea onkeypress="UI.ckenter(event,this,2)" 
+style="width:400px;font-size:large">2x^3; x/2/y; x/(2*y); 
+</textarea><button onclick="previousSibling.style.display='inherit';var tmp=UI.caseval(previousSibling.value); tmp=UI.latexeval(tmp);nextSibling.innerHTML='&nbsp;'+tmp; if (UI.usemathjax) MathJax.Hub.Queue(['Typeset',MathJax.Hub,nextSibling])">ok</button><span></span><br>
+
+</li><li class="li-itemize">Si on entre des données exactes, les calculs sont exacts
+<br><textarea onkeypress="UI.ckenter(event,this,2)" 
+style="width:400px;font-size:large">1/2-1/3 
+</textarea><button onclick="previousSibling.style.display='inherit';var tmp=UI.caseval(previousSibling.value); tmp=UI.latexeval(tmp);nextSibling.innerHTML='&nbsp;'+tmp; if (UI.usemathjax) MathJax.Hub.Queue(['Typeset',MathJax.Hub,nextSibling])">ok</button><span></span><br>
+
+on peut alors convertir en approché avec <code>evalf</code>
+<br><textarea onkeypress="UI.ckenter(event,this,2)" 
+style="width:400px;font-size:large">evalf(sin(1)) 
+</textarea><button onclick="previousSibling.style.display='inherit';var tmp=UI.caseval(previousSibling.value); tmp=UI.latexeval(tmp);nextSibling.innerHTML='&nbsp;'+tmp; if (UI.usemathjax) MathJax.Hub.Queue(['Typeset',MathJax.Hub,nextSibling])">ok</button><span></span><br>
+
+Si on entre au moins une donnée approchée (nombre avec point
+décimal), les calculs sont approchés
+<br><textarea onkeypress="UI.ckenter(event,this,2)" 
+style="width:400px;font-size:large">1/2.0-1/3 
+</textarea><button onclick="previousSibling.style.display='inherit';var tmp=UI.caseval(previousSibling.value); tmp=UI.latexeval(tmp);nextSibling.innerHTML='&nbsp;'+tmp; if (UI.usemathjax) MathJax.Hub.Queue(['Typeset',MathJax.Hub,nextSibling])">ok</button><span></span><br>
+
+Les nombres flottants peuvent être saisis avec lécriture standard
+mantisse/exposant séparés par <code>e</code>
+<br><textarea onkeypress="UI.ckenter(event,this,2)" 
+style="width:400px;font-size:large">Avogadro:=6.02e23; eps:=1e-10; 
+</textarea><button onclick="previousSibling.style.display='inherit';var tmp=UI.caseval(previousSibling.value); tmp=UI.latexeval(tmp);nextSibling.innerHTML='&nbsp;'+tmp; if (UI.usemathjax) MathJax.Hub.Queue(['Typeset',MathJax.Hub,nextSibling])">ok</button><span></span><br>
+
+</li><li class="li-itemize">On peut stocker des résultats dans des variables
+pour les réutiliser ensuite
+<br><textarea onkeypress="UI.ckenter(event,this,2)" 
+style="width:400px;font-size:large">a:=pi^2/6; evalf(a); 
+</textarea><button onclick="previousSibling.style.display='inherit';var tmp=UI.caseval(previousSibling.value); tmp=UI.latexeval(tmp);nextSibling.innerHTML='&nbsp;'+tmp; if (UI.usemathjax) MathJax.Hub.Queue(['Typeset',MathJax.Hub,nextSibling])">ok</button><span></span><br>
+
+On peut effacer le contenu d’une variable avec <code>purge</code>, elle
+redevient alors libre (elle s’évalue en elle-même)
+<br><textarea onkeypress="UI.ckenter(event,this,2)" 
+style="width:400px;font-size:large">purge(a); a; 
+</textarea><button onclick="previousSibling.style.display='inherit';var tmp=UI.caseval(previousSibling.value); tmp=UI.latexeval(tmp);nextSibling.innerHTML='&nbsp;'+tmp; if (UI.usemathjax) MathJax.Hub.Queue(['Typeset',MathJax.Hub,nextSibling])">ok</button><span></span><br>
+
+Les noms de variable peuvent contenir plusieurs lettres
+<br><textarea onkeypress="UI.ckenter(event,this,2)" 
+style="width:400px;font-size:large">xy/y; x*y/y; 
+</textarea><button onclick="previousSibling.style.display='inherit';var tmp=UI.caseval(previousSibling.value); tmp=UI.latexeval(tmp);nextSibling.innerHTML='&nbsp;'+tmp; if (UI.usemathjax) MathJax.Hub.Queue(['Typeset',MathJax.Hub,nextSibling])">ok</button><span></span><br>
+
+</li><li class="li-itemize">Les noms de commande et mots-clefs du logiciel sont en général
+affichés avec une couleur spécifique. Les menus permettent
+de trouver les commandes par thème (menus Outils dans Xcas pour
+les plus courantes, menu Graphe avec des assistants pour les 
+représentations graphiques les plus courantes, 
+menu Cmd pour un ensemble plus
+complet). La ligne de commande permet
+en général de compléter un début de nom de commande (touche
+tabulation). L’appui sur la touche tabulation après
+un nom de commande ou la sélection du menu Aide, Index dans
+Xcas ouvre l’aide en ligne
+courte, avec une description rapide de la commande et
+quelques exemples types que l’on peut copier-coller et adapter.
+On peut aussi obtenir une aide plus détaillée (boutons Details
+dans Xcas).
+</li><li class="li-itemize">Les listes sont délimitées par des crochets et servent
+à représenter des vecteurs. Les listes de listes de même taille
+servent à représenter des matrices. On accède à un élément
+d’une liste en donnant le nom de variable de la liste puis l’indice
+de l’élément entre crochet, en commençant à 0 (mettre deux crochets
+pour commencer à 1).
+<div><textarea onkeypress="UI.ckenter(event,this,2)" 
+style="width:800px;font-size:large">v:=[1,2]; M:=[[1,2],[3,4]]; w:=M*v; w[0]; w[[1]]; M[0,0]:=-1; M*v; 
+</textarea><button onclick="previousSibling.style.display='inherit';var tmp=UI.caseval(previousSibling.value); tmp=UI.latexeval(tmp);nextSibling.innerHTML=tmp; if (UI.usemathjax) MathJax.Hub.Queue(['Typeset',MathJax.Hub,nextSibling])">ok</button><div style="width:800px;max-height:200px;overflow:auto;color:blue;text-align:center"></div></div>
+
+</li><li class="li-itemize">Pour afficher les étapes intermédiaires de certains calculs, exécutez<br>
+
+<textarea onkeypress="UI.ckenter(event,this,1)" 
+style="width:400px;font-size:large">step_infolevel:=1
+</textarea><button onclick="previousSibling.style.display='inherit';var tmp=UI.caseval(previousSibling.value);tmp=UI.rmquote(tmp); nextSibling.innerHTML='&nbsp;'+tmp;UI.render_canvas(nextSibling);">ok</button><span></span><br>
+<br>
+pour ne pas les afficher<br>
+
+<textarea onkeypress="UI.ckenter(event,this,1)" 
+style="width:400px;font-size:large">step_infolevel:=0
+</textarea><button onclick="previousSibling.style.display='inherit';var tmp=UI.caseval(previousSibling.value);tmp=UI.rmquote(tmp); nextSibling.innerHTML='&nbsp;'+tmp;UI.render_canvas(nextSibling);">ok</button><span></span><br>
+
+</li></ul>
+<!--TOC section id="sec6" Calcul exact-->
+<h2 id="sec6" class="section">2.2  Calcul exact</h2><!--SEC END -->
+<!--TOC subsection id="sec7" Arithmétique-->
+<h3 id="sec7" class="subsection">2.2.1  Arithmétique</h3><!--SEC END --><ul class="itemize"><li class="li-itemize">
+division euclidienne des entiers
+
+<textarea onkeypress="UI.ckenter(event,this,1)" 
+style="width:800px;font-size:large">a:=25; b:=7; q:=iquo(25,7); r:=irem(25,7); b*q+r;
+</textarea><button onclick="previousSibling.style.display='inherit';var tmp=UI.caseval(previousSibling.value);tmp=UI.rmquote(tmp); nextSibling.innerHTML='&nbsp;'+tmp;UI.render_canvas(nextSibling);">ok</button><span></span><br>
+
+</li><li class="li-itemize">PGCD, identité de Bézout sur les entiers
+
+<textarea onkeypress="UI.ckenter(event,this,1)" 
+style="width:800px;font-size:large">a:=25; b:=7; gcd(a,b); u,v,d:=iegcd(a,b); a*u+b*v; u,v:=iabcuv(a,b,37); a*u+b*v
+</textarea><button onclick="previousSibling.style.display='inherit';var tmp=UI.caseval(previousSibling.value);tmp=UI.rmquote(tmp); nextSibling.innerHTML='&nbsp;'+tmp;UI.render_canvas(nextSibling);">ok</button><span></span><br>
+
+</li><li class="li-itemize">restes chinois entiers
+
+<textarea onkeypress="UI.ckenter(event,this,1)" 
+style="width:400px;font-size:large">ichinrem([2,13],[3,17])
+</textarea><button onclick="previousSibling.style.display='inherit';var tmp=UI.caseval(previousSibling.value);tmp=UI.rmquote(tmp); nextSibling.innerHTML='&nbsp;'+tmp;UI.render_canvas(nextSibling);">ok</button><span></span><br>
+
+</li><li class="li-itemize">primalité, décomposition en facteurs premiers
+
+<textarea onkeypress="UI.ckenter(event,this,1)" 
+style="width:400px;font-size:large">a:=2^64+1;isprime(a); ifactor(a);
+</textarea><button onclick="previousSibling.style.display='inherit';var tmp=UI.caseval(previousSibling.value);tmp=UI.rmquote(tmp); nextSibling.innerHTML='&nbsp;'+tmp;UI.render_canvas(nextSibling);">ok</button><span></span><br>
+
+</li><li class="li-itemize">puissance modulaire rapide
+
+<textarea onkeypress="UI.ckenter(event,this,1)" 
+style="width:800px;font-size:large">a:=256789; b:=1234567; m:=345678; powmod(a,b,m);
+</textarea><button onclick="previousSibling.style.display='inherit';var tmp=UI.caseval(previousSibling.value);tmp=UI.rmquote(tmp); nextSibling.innerHTML='&nbsp;'+tmp;UI.render_canvas(nextSibling);">ok</button><span></span><br>
+
+</li><li class="li-itemize">division euclidienne des polynômes, la variable par défaut est <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>x</mi></mrow><annotation encoding='application/x-tex'>x</annotation></semantics></math>,
+sinon il faut la spécifier en dernier argument
+<div><textarea onkeypress="UI.ckenter(event,this,2)" 
+style="width:800px;font-size:large">a:=x^4+5x^2+7x+1; b:=x^3+4x^2+x+1; q:=quo(a,b); r:=rem(a,b); quo(a,b,y) 
+</textarea><button onclick="previousSibling.style.display='inherit';var tmp=UI.caseval(previousSibling.value); tmp=UI.latexeval(tmp);nextSibling.innerHTML=tmp; if (UI.usemathjax) MathJax.Hub.Queue(['Typeset',MathJax.Hub,nextSibling])">ok</button><div style="width:800px;max-height:200px;overflow:auto;color:blue;text-align:center"></div></div>
+
+</li><li class="li-itemize">PGCD, identité de Bézout sur les polynômes
+<div><textarea onkeypress="UI.ckenter(event,this,2)" 
+style="width:800px;font-size:large">a:=x^4+5x^2+7x+1; b:=x^3+4x^2+x+1; gcd(a,b); u,v,d:=egcd(a,b); normal(a*u+b*v); u,v:=abcuv(a,b,x^2,x); normal(a*u+b*v) 
+</textarea><button onclick="previousSibling.style.display='inherit';var tmp=UI.caseval(previousSibling.value); tmp=UI.latexeval(tmp);nextSibling.innerHTML=tmp; if (UI.usemathjax) MathJax.Hub.Queue(['Typeset',MathJax.Hub,nextSibling])">ok</button><div style="width:800px;max-height:200px;overflow:auto;color:blue;text-align:center"></div></div>
+
+</li><li class="li-itemize">factorisation sur le corps des coefficients par défaut, sinon 
+ajouter l’extension algébrique souhaitée (éventuellement obtenue
+avec <code>solve</code>)
+<div><textarea onkeypress="UI.ckenter(event,this,2)" 
+style="width:800px;font-size:large">factor(x^4-2); solve(x^4-2=0); factor(x^4-2,2^(1/4)); cfactor(x^4-2,2^(1/4)); 
+</textarea><button onclick="previousSibling.style.display='inherit';var tmp=UI.caseval(previousSibling.value); tmp=UI.latexeval(tmp);nextSibling.innerHTML=tmp; if (UI.usemathjax) MathJax.Hub.Queue(['Typeset',MathJax.Hub,nextSibling])">ok</button><div style="width:800px;max-height:200px;overflow:auto;color:blue;text-align:center"></div></div>
+
+<code>sqrfree</code> permet d’effectuer une factorisation partielle
+en produit de facteurs premiers entre eux et sans racines multiples.
+</li><li class="li-itemize">évaluation d’un polynôme
+
+<textarea onkeypress="UI.ckenter(event,this,1)" 
+style="width:800px;font-size:large">p:=x^5+4x+7; horner(p,2); p(x=2); subst(p,x=2);
+</textarea><button onclick="previousSibling.style.display='inherit';var tmp=UI.caseval(previousSibling.value);tmp=UI.rmquote(tmp); nextSibling.innerHTML='&nbsp;'+tmp;UI.render_canvas(nextSibling);">ok</button><span></span><br>
+
+</li><li class="li-itemize">Résultant de 2 polynômes
+<div><textarea onkeypress="UI.ckenter(event,this,2)" 
+style="width:800px;font-size:large">p:=randpoly(7); q:=randpoly(7); resultant(p,q,x); 
+</textarea><button onclick="previousSibling.style.display='inherit';var tmp=UI.caseval(previousSibling.value); tmp=UI.latexeval(tmp);nextSibling.innerHTML=tmp; if (UI.usemathjax) MathJax.Hub.Queue(['Typeset',MathJax.Hub,nextSibling])">ok</button><div style="width:800px;max-height:200px;overflow:auto;color:blue;text-align:center"></div></div>
+
+<div><textarea onkeypress="UI.ckenter(event,this,2)" 
+style="width:800px;font-size:large">m:=sylvester(p,q); det(m); 
+</textarea><button onclick="previousSibling.style.display='inherit';var tmp=UI.caseval(previousSibling.value); tmp=UI.latexeval(tmp);nextSibling.innerHTML=tmp; if (UI.usemathjax) MathJax.Hub.Queue(['Typeset',MathJax.Hub,nextSibling])">ok</button><div style="width:800px;max-height:200px;overflow:auto;color:blue;text-align:center"></div></div>
+
+</li><li class="li-itemize">décomposition en éléments simples
+<div><textarea onkeypress="UI.ckenter(event,this,2)" 
+style="width:800px;font-size:large">partfrac(1/(x^4-1)) 
+</textarea><button onclick="previousSibling.style.display='inherit';var tmp=UI.caseval(previousSibling.value); tmp=UI.latexeval(tmp);nextSibling.innerHTML=tmp; if (UI.usemathjax) MathJax.Hub.Queue(['Typeset',MathJax.Hub,nextSibling])">ok</button><div style="width:800px;max-height:200px;overflow:auto;color:blue;text-align:center"></div></div>
+
+</li><li class="li-itemize">polynômes à coefficients dans <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>&Zopf;</mi><mo stretchy="false">/</mo><mi>p</mi><mi>&Zopf;</mi></mrow><annotation encoding='application/x-tex'>\mathbb{Z}/p\mathbb{Z}</annotation></semantics></math>
+
+<textarea onkeypress="UI.ckenter(event,this,1)" 
+style="width:400px;font-size:large">p:=(x^5+4x+7) % 11; gcd(p,p');
+</textarea><button onclick="previousSibling.style.display='inherit';var tmp=UI.caseval(previousSibling.value);tmp=UI.rmquote(tmp); nextSibling.innerHTML='&nbsp;'+tmp;UI.render_canvas(nextSibling);">ok</button><span></span><br>
+
+</li><li class="li-itemize">Corps fini non premier de caractéristique <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>p</mi></mrow><annotation encoding='application/x-tex'>p</annotation></semantics></math> :<br>
+<code>GF(p,n)</code> crée un corps fini <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>K</mi></mrow><annotation encoding='application/x-tex'>K</annotation></semantics></math> de cardinal <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><msup><mi>p</mi> <mi>n</mi></msup></mrow><annotation encoding='application/x-tex'>p^n</annotation></semantics></math>, 
+et affecte une variable
+pour le générateur du groupe multiplicatif <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><msup><mi>K</mi> <mo>*</mo></msup></mrow><annotation encoding='application/x-tex'>K^*</annotation></semantics></math>, par
+défaut <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>g</mi></mrow><annotation encoding='application/x-tex'>g</annotation></semantics></math>. Les éléments du corps sont alors représentés
+par des polynômes en le générateur
+
+<textarea onkeypress="UI.ckenter(event,this,1)" 
+style="width:400px;font-size:large">GF(3,5); g^10; g^(3^5);
+</textarea><button onclick="previousSibling.style.display='inherit';var tmp=UI.caseval(previousSibling.value);tmp=UI.rmquote(tmp); nextSibling.innerHTML='&nbsp;'+tmp;UI.render_canvas(nextSibling);">ok</button><span></span><br>
+
+on peut travailler avec des polynômes ou des matrices
+à coefficients dans <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>K</mi></mrow><annotation encoding='application/x-tex'>K</annotation></semantics></math>
+<div><textarea onkeypress="UI.ckenter(event,this,2)" 
+style="width:800px;font-size:large">p:=(g+x)^7; normal(p); quo(p,x^6+g*x^3+x+g^2-2) 
+</textarea><button onclick="previousSibling.style.display='inherit';var tmp=UI.caseval(previousSibling.value); tmp=UI.latexeval(tmp);nextSibling.innerHTML=tmp; if (UI.usemathjax) MathJax.Hub.Queue(['Typeset',MathJax.Hub,nextSibling])">ok</button><div style="width:800px;max-height:200px;overflow:auto;color:blue;text-align:center"></div></div>
+
+</li></ul>
+<!--TOC subsection id="sec8" Algèbre linéaire exacte-->
+<h3 id="sec8" class="subsection">2.2.2  Algèbre linéaire exacte</h3><!--SEC END --><ul class="itemize"><li class="li-itemize">
+Pivot de Gauss : <code>rref</code> crée des 0 de part et d’autre
+de la diaginale, <code>ref</code> en-dessous de la diagonale,
+<code>ker</code> renvoie une liste de vecteurs formant une 
+base du noyau d’une application linéaire
+<div><textarea onkeypress="UI.ckenter(event,this,2)" 
+style="width:800px;font-size:large">m:=[[1,2],[3,4]]; rref(m); ref(m); 
+</textarea><button onclick="previousSibling.style.display='inherit';var tmp=UI.caseval(previousSibling.value); tmp=UI.latexeval(tmp);nextSibling.innerHTML=tmp; if (UI.usemathjax) MathJax.Hub.Queue(['Typeset',MathJax.Hub,nextSibling])">ok</button><div style="width:800px;max-height:200px;overflow:auto;color:blue;text-align:center"></div></div>
+ 
+<div><textarea onkeypress="UI.ckenter(event,this,2)" 
+style="width:800px;font-size:large">m:=[[1,2,3],[4,5,6],[7,8,9]]; ker(m); 
+</textarea><button onclick="previousSibling.style.display='inherit';var tmp=UI.caseval(previousSibling.value); tmp=UI.latexeval(tmp);nextSibling.innerHTML=tmp; if (UI.usemathjax) MathJax.Hub.Queue(['Typeset',MathJax.Hub,nextSibling])">ok</button><div style="width:800px;max-height:200px;overflow:auto;color:blue;text-align:center"></div></div>
+
+</li><li class="li-itemize">Factorisation LU
+<div><textarea onkeypress="UI.ckenter(event,this,2)" 
+style="width:800px;font-size:large">m:=ranm(3,3); p,l,u:=lu(m); permu2mat(p)*m-l*u;linsolve(p,l,u,[1,2,3]); 
+</textarea><button onclick="previousSibling.style.display='inherit';var tmp=UI.caseval(previousSibling.value); tmp=UI.latexeval(tmp);nextSibling.innerHTML=tmp; if (UI.usemathjax) MathJax.Hub.Queue(['Typeset',MathJax.Hub,nextSibling])">ok</button><div style="width:800px;max-height:200px;overflow:auto;color:blue;text-align:center"></div></div>
+
+</li><li class="li-itemize">Déterminant
+
+<textarea onkeypress="UI.ckenter(event,this,1)" 
+style="width:400px;font-size:large">m:=ranm(100,100):; det(m);
+</textarea><button onclick="previousSibling.style.display='inherit';var tmp=UI.caseval(previousSibling.value);tmp=UI.rmquote(tmp); nextSibling.innerHTML='&nbsp;'+tmp;UI.render_canvas(nextSibling);">ok</button><span></span><br>
+
+On peut forcer l’utilisation d’un algorithme 
+(voir l’aide détaillée de <code>det</code>).
+</li><li class="li-itemize">Réduction des endomorphismes
+<div><textarea onkeypress="UI.ckenter(event,this,2)" 
+style="width:800px;font-size:large">m:=[[1,2],[3,4]]; p,d:=jordan(m); normal(inv(p)*m*p); pmin(m); 
+</textarea><button onclick="previousSibling.style.display='inherit';var tmp=UI.caseval(previousSibling.value); tmp=UI.latexeval(tmp);nextSibling.innerHTML=tmp; if (UI.usemathjax) MathJax.Hub.Queue(['Typeset',MathJax.Hub,nextSibling])">ok</button><div style="width:800px;max-height:200px;overflow:auto;color:blue;text-align:center"></div></div>
+
+</li><li class="li-itemize">Polynome d’endomorphisme
+<div><textarea onkeypress="UI.ckenter(event,this,2)" 
+style="width:800px;font-size:large">m:=[[1,2],[3,4]]; p:=charpoly(m); horner(p,m); 
+</textarea><button onclick="previousSibling.style.display='inherit';var tmp=UI.caseval(previousSibling.value); tmp=UI.latexeval(tmp);nextSibling.innerHTML=tmp; if (UI.usemathjax) MathJax.Hub.Queue(['Typeset',MathJax.Hub,nextSibling])">ok</button><div style="width:800px;max-height:200px;overflow:auto;color:blue;text-align:center"></div></div>
+
+</li><li class="li-itemize">Forme de Hermite et Smith d’une matrice à coefficients entiers
+<div><textarea onkeypress="UI.ckenter(event,this,2)" 
+style="width:800px;font-size:large">m:=ranm(3,3); ihermite(m); ismith(m); 
+</textarea><button onclick="previousSibling.style.display='inherit';var tmp=UI.caseval(previousSibling.value); tmp=UI.latexeval(tmp);nextSibling.innerHTML=tmp; if (UI.usemathjax) MathJax.Hub.Queue(['Typeset',MathJax.Hub,nextSibling])">ok</button><div style="width:800px;max-height:200px;overflow:auto;color:blue;text-align:center"></div></div>
+
+</li></ul>
+<!--TOC section id="sec9" Calcul scientifique-->
+<h2 id="sec9" class="section">2.3  Calcul scientifique</h2><!--SEC END -->
+<!--TOC subsection id="sec10" Analyse numérique-->
+<h3 id="sec10" class="subsection">2.3.1  Analyse numérique</h3><!--SEC END --><ul class="itemize"><li class="li-itemize">
+Résolution approché déquation par méthode itérative
+ou par bisection
+<div><textarea onkeypress="UI.ckenter(event,this,2)" 
+style="width:800px;font-size:large">fsolve(x=cos(x),x=0.3); fsolve(x=cos(x),x=-4..4) 
+</textarea><button onclick="previousSibling.style.display='inherit';var tmp=UI.caseval(previousSibling.value); tmp=UI.latexeval(tmp);nextSibling.innerHTML=tmp; if (UI.usemathjax) MathJax.Hub.Queue(['Typeset',MathJax.Hub,nextSibling])">ok</button><div style="width:800px;max-height:200px;overflow:auto;color:blue;text-align:center"></div></div>
+
+</li><li class="li-itemize">Approximation polynômiale : 
+<div><textarea onkeypress="UI.ckenter(event,this,2)" 
+style="width:800px;font-size:large">lagrange([1,2,3,4],[-3,5,2,7]) 
+</textarea><button onclick="previousSibling.style.display='inherit';var tmp=UI.caseval(previousSibling.value); tmp=UI.latexeval(tmp);nextSibling.innerHTML=tmp; if (UI.usemathjax) MathJax.Hub.Queue(['Typeset',MathJax.Hub,nextSibling])">ok</button><div style="width:800px;max-height:200px;overflow:auto;color:blue;text-align:center"></div></div>
+
+</li><li class="li-itemize">Intégration numérique
+<br><textarea onkeypress="UI.ckenter(event,this,2)" 
+style="width:400px;font-size:large">int(exp(-x^2),x,0.0,1.0); 
+</textarea><button onclick="previousSibling.style.display='inherit';var tmp=UI.caseval(previousSibling.value); tmp=UI.latexeval(tmp);nextSibling.innerHTML='&nbsp;'+tmp; if (UI.usemathjax) MathJax.Hub.Queue(['Typeset',MathJax.Hub,nextSibling])">ok</button><span></span><br>
+
+on peut forcer une méthode avec <code>gaussquad</code> ou <code>romberg</code>
+ou de petit ordre avec <code>plotarea</code>
+
+<textarea onkeypress="UI.ckenter(event,this,1)" 
+style="width:400px;font-size:large">plotarea(exp(-x^2),x=0..1.0,5,trapezes)
+</textarea><button onclick="previousSibling.style.display='inherit';var tmp=UI.caseval(previousSibling.value);tmp=UI.rmquote(tmp); nextSibling.innerHTML='&nbsp;'+tmp;UI.render_canvas(nextSibling);">ok</button><span></span><br>
+
+</li><li class="li-itemize">Équations différentielles ordinaires
+<math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>y</mi><mo>&prime;</mo><mo>=</mo><mi>f</mi><mo stretchy="false">(</mo><mi>t</mi><mo>,</mo><mi>y</mi><mo stretchy="false">)</mo><mo>=</mo><mi>sin</mi><mo stretchy="false">(</mo><mi>t</mi><mi>y</mi><mo stretchy="false">)</mo></mrow><annotation encoding='application/x-tex'>y&apos;=f(t,y)=\sin(ty)</annotation></semantics></math> 
+avec condition initiale <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mo stretchy="false">(</mo><msub><mi>t</mi> <mn>0</mn></msub><mo>,</mo><msub><mi>y</mi> <mn>0</mn></msub><mo stretchy="false">)</mo><mo>=</mo><mo stretchy="false">(</mo><mn>0</mn><mo>,</mo><mn>1</mn><mo stretchy="false">)</mo></mrow><annotation encoding='application/x-tex'>(t_0,y_0)=(0,1)</annotation></semantics></math>, valeur en <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>t</mi><mo>=</mo><mn>2</mn></mrow><annotation encoding='application/x-tex'>t=2</annotation></semantics></math>
+
+<textarea onkeypress="UI.ckenter(event,this,1)" 
+style="width:400px;font-size:large">odesolve(sin(t*y),[t,y],[0,1],2)
+</textarea><button onclick="previousSibling.style.display='inherit';var tmp=UI.caseval(previousSibling.value);tmp=UI.rmquote(tmp); nextSibling.innerHTML='&nbsp;'+tmp;UI.render_canvas(nextSibling);">ok</button><span></span><br>
+
+Tracé sur l’intervalle <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>t</mi><mo>&Element;</mo><mo stretchy="false">[</mo><mo lspace="verythinmathspace" rspace="0em">&minus;</mo><mn>10</mn><mo>,</mo><mn>10</mn><mo stretchy="false">]</mo></mrow><annotation encoding='application/x-tex'>t \in [&#x2d;10,10]</annotation></semantics></math>
+
+<textarea onkeypress="UI.ckenter(event,this,1)" 
+style="width:400px;font-size:large">odeplot(sin(t*y),[t=-10..10,y],[0,1])
+</textarea><button onclick="previousSibling.style.display='inherit';var tmp=UI.caseval(previousSibling.value);tmp=UI.rmquote(tmp); nextSibling.innerHTML='&nbsp;'+tmp;UI.render_canvas(nextSibling);">ok</button><span></span><br>
+
+</li></ul>
+<!--TOC subsection id="sec11" Algèbre linéaire numérique-->
+<h3 id="sec11" class="subsection">2.3.2  Algèbre linéaire numérique</h3><!--SEC END --><ul class="itemize"><li class="li-itemize">
+factorisation LU et résolution de système,
+<div><textarea onkeypress="UI.ckenter(event,this,2)" 
+style="width:800px;font-size:large">m:=ranm(3,3,uniformd,0,1); p,l,u:=lu(m); v:=[1,2,3]; linsolve(m,v); linsolve(p,l,u,v); 
+</textarea><button onclick="previousSibling.style.display='inherit';var tmp=UI.caseval(previousSibling.value); tmp=UI.latexeval(tmp);nextSibling.innerHTML=tmp; if (UI.usemathjax) MathJax.Hub.Queue(['Typeset',MathJax.Hub,nextSibling])">ok</button><div style="width:800px;max-height:200px;overflow:auto;color:blue;text-align:center"></div></div>
+
+</li><li class="li-itemize">factorisation QR
+<div><textarea onkeypress="UI.ckenter(event,this,2)" 
+style="width:800px;font-size:large">q,r:=qr(m); q*r-m; 
+</textarea><button onclick="previousSibling.style.display='inherit';var tmp=UI.caseval(previousSibling.value); tmp=UI.latexeval(tmp);nextSibling.innerHTML=tmp; if (UI.usemathjax) MathJax.Hub.Queue(['Typeset',MathJax.Hub,nextSibling])">ok</button><div style="width:800px;max-height:200px;overflow:auto;color:blue;text-align:center"></div></div>
+
+</li><li class="li-itemize">factorisation de Cholesky
+<div><textarea onkeypress="UI.ckenter(event,this,2)" 
+style="width:800px;font-size:large">m:=ranm(3,3);n:=trn(m)*m; cholesky(n); 
+</textarea><button onclick="previousSibling.style.display='inherit';var tmp=UI.caseval(previousSibling.value); tmp=UI.latexeval(tmp);nextSibling.innerHTML=tmp; if (UI.usemathjax) MathJax.Hub.Queue(['Typeset',MathJax.Hub,nextSibling])">ok</button><div style="width:800px;max-height:200px;overflow:auto;color:blue;text-align:center"></div></div>
+
+</li><li class="li-itemize">Conditionnement d’une matrice pour la norme 1, euclidienne ou infinie
+
+<textarea onkeypress="UI.ckenter(event,this,1)" 
+style="width:400px;font-size:large">cond(m,1); cond(m,2); cond(m,inf);
+</textarea><button onclick="previousSibling.style.display='inherit';var tmp=UI.caseval(previousSibling.value);tmp=UI.rmquote(tmp); nextSibling.innerHTML='&nbsp;'+tmp;UI.render_canvas(nextSibling);">ok</button><span></span><br>
+
+</li><li class="li-itemize">Réduction des endomorphismes
+<div><textarea onkeypress="UI.ckenter(event,this,2)" 
+style="width:800px;font-size:large">p,d:=jordan(evalf(m)); eigenvalues(m); eigenvects(m); 
+</textarea><button onclick="previousSibling.style.display='inherit';var tmp=UI.caseval(previousSibling.value); tmp=UI.latexeval(tmp);nextSibling.innerHTML=tmp; if (UI.usemathjax) MathJax.Hub.Queue(['Typeset',MathJax.Hub,nextSibling])">ok</button><div style="width:800px;max-height:200px;overflow:auto;color:blue;text-align:center"></div></div>
+
+</li><li class="li-itemize">Valeurs singulières
+<div><textarea onkeypress="UI.ckenter(event,this,2)" 
+style="width:800px;font-size:large">svl(m); u,s,q:=svd(m); u*diag(s)*trn(q); 
+</textarea><button onclick="previousSibling.style.display='inherit';var tmp=UI.caseval(previousSibling.value); tmp=UI.latexeval(tmp);nextSibling.innerHTML=tmp; if (UI.usemathjax) MathJax.Hub.Queue(['Typeset',MathJax.Hub,nextSibling])">ok</button><div style="width:800px;max-height:200px;overflow:auto;color:blue;text-align:center"></div></div>
+
+</li><li class="li-itemize">Factorisation de Schur
+<div><textarea onkeypress="UI.ckenter(event,this,2)" 
+style="width:800px;font-size:large">restart;p,u:=schur(m); trn(p)*m*p-u; 
+</textarea><button onclick="previousSibling.style.display='inherit';var tmp=UI.caseval(previousSibling.value); tmp=UI.latexeval(tmp);nextSibling.innerHTML=tmp; if (UI.usemathjax) MathJax.Hub.Queue(['Typeset',MathJax.Hub,nextSibling])">ok</button><div style="width:800px;max-height:200px;overflow:auto;color:blue;text-align:center"></div></div>
+
+</li></ul>
+<!--TOC chapter id="sec12" Calculer sur ordinateur-->
+</html>

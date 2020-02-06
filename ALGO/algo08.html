@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html >
+<head>
+<h1 id="sec68" class="chapter">Chapitre 8  Exercices (PGCD, résultant, ...)</h1><!--SEC END -->
+<!--TOC section id="sec69" Instructions-->
+<h2 id="sec69" class="section">8.1  Instructions</h2><!--SEC END --><p>
+Elles sont dans les menus
+Cmds-&gt;Integer et Cmds-&gt;Polynomes de <code>Xcas</code>.
+</p>
+<!--TOC subsection id="sec70" Entiers-->
+<h3 id="sec70" class="subsection">8.1.1  Entiers</h3><!--SEC END --><ul class="itemize"><li class="li-itemize">
+<code>chrem</code> :
+restes chinois (entier)
+</li><li class="li-itemize"><code>divisors</code>
+(en maple <code>numtheory::divisors</code> :
+liste des diviseurs d’un entier
+</li><li class="li-itemize"><code>gcd, lcm</code> : PGCD et PPCM
+</li><li class="li-itemize"><code>igcdex</code>: Bézout pour des entiers
+</li><li class="li-itemize"><code>iquo</code> et <code>irem</code> quotient et reste de la division 
+euclidienne de deux entiers
+</li><li class="li-itemize"><code>isprime</code> test de primalité. 
+Utiliser <code>is_pseudoprime</code> pour effectuer un test plus rapide
+de pseudo-primalité.
+</li><li class="li-itemize"><code>mods</code>: reste euclidien symétrique
+</li><li class="li-itemize"><code>nextprime</code> et <code>prevprime</code> 
+nombre premier suivant ou précédent
+</li><li class="li-itemize"><code>powmod(a,b,n)</code> calcul de <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><msup><mi>a</mi> <mi>b</mi></msup><mrow><mo lspace="mediummathspace">(</mo><mo rspace="thinmathspace">mod</mo><mi>n</mi><mo rspace="mediummathspace">)</mo></mrow></mrow><annotation encoding='application/x-tex'>a^b \pmod n</annotation></semantics></math> par
+l’algorithme de la puissance rapide
+</li></ul>
+<!--TOC subsection id="sec71" Polynômes-->
+<h3 id="sec71" class="subsection">8.1.2  Polynômes</h3><!--SEC END --><p>
+On peut représenter les polynômes par leur écriture symbolique
+(par exemple <code>x^2+1</code>), ou par des listes (représentation dense
+ou creuse, récursive ou distribuée). 
+Xcas propose deux types
+de représentation, dense à une variable (<code>poly1[ ]</code>), ou
+distribuée (<code>%%%{ }%%%</code>) et des instructions de conversion
+(<code>poly2symb</code> et <code>symb2poly</code>) entre représentations.
+L’intérêt d’une représentation
+non symbolique est l’efficacité des opérations polynomiales, (et la
+possibilité de chronométrer des opérations comme le produit
+de 2 polynômes).</p><p>Les instructions qui suivent
+utilisent la représentation symbolique, certaines acceptent
+les autres représentations.
+</p><ul class="itemize"><li class="li-itemize">
+<code>coeff</code> coefficient(s) d’un polynôme, 
+</li><li class="li-itemize"><code>coeffs</code> liste des coefficients d’un polynôme
+(à développer auparavant, en mupad on utilise <code>coeff</code>)
+</li><li class="li-itemize"><code>content</code> contenu (pgcd des coefficients)
+</li><li class="li-itemize"><code>degree</code> degré
+</li><li class="li-itemize"><code>divide</code> division euclidienne, 
+</li><li class="li-itemize"><code>gcd, lcm</code> PGCD et PPCM
+</li><li class="li-itemize"><code>gcdex</code> Bézout, 
+</li><li class="li-itemize"><code>genpoly</code> :
+crée un polynôme à partir de la
+représentation <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>z</mi></mrow><annotation encoding='application/x-tex'>z</annotation></semantics></math>-adique d’un entier (utile pour le PGCD heuristique) 
+</li><li class="li-itemize"><code>icontent</code>: contenu entier pour un polynôme à plusieurs
+variables
+</li><li class="li-itemize"><code>indets</code>: 
+liste des noms de variables d’une expression
+</li><li class="li-itemize"><code>lcoeff</code>: coefficient dominant d’un polynôme
+</li><li class="li-itemize"><code>ldegree</code>: valuation
+</li><li class="li-itemize"><code>primpart</code>: partie primitive d’un polynôme
+</li><li class="li-itemize"><code>quo</code>, <code>rem</code> quotient et reste euclidien
+</li><li class="li-itemize"><code>tcoeff</code>: coefficient de plus bas degré d’un polynôme
+</li><li class="li-itemize"><code>interp</code> 
+interpolation de Lagrange
+</li><li class="li-itemize"><code>convert(.,sqrfree)</code> 
+décomposition en facteurs n’ayant pas de racine multiples
+</li><li class="li-itemize"><code>convert(.,parfrac)</code> 
+décomposition en éléments simples
+</li><li class="li-itemize"><code>resultant</code> :
+calcule le résultant de 2 polynômes par rapport à une variable.
+</li><li class="li-itemize"><code>sturm~</code>: suites de Sturm, <code>sturmab</code> :
+nombre de racines dans un intervalle réel ou un rectangle
+du plan complexe.
+</li></ul><p>Notez aussi que le menu <code>Exemples-&gt;poly-&gt;pgcd.xws</code> de Xcas contient 
+des exemples de programmes de calcul de pgcd de type Euclide.</p>
+<!--TOC subsection id="sec72" Calculs modulo <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>n</mi></mrow><annotation encoding='application/x-tex'>n</annotation></semantics></math>-->
+<h3 id="sec72" class="subsection">8.1.3  Calculs modulo <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>n</mi></mrow><annotation encoding='application/x-tex'>n</annotation></semantics></math></h3><!--SEC END --><p>
+Pour travailler dans <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>&Zopf;</mi><mo stretchy="false">/</mo><mi>n</mi><mi>&Zopf;</mi><mo stretchy="false">[</mo><mi>X</mi><mo stretchy="false">]</mo></mrow><annotation encoding='application/x-tex'>\mathbb{Z}/n\mathbb{Z}[X]</annotation></semantics></math> :
+</p><ul class="itemize"><li class="li-itemize">
+avec <code>Xcas</code> on utilise la notation % comme en C, par
+exemple <span style="font-family:monospace">gcd(P % 3, Q % 3)</span>. On peut aussi utiliser la notation
+Maple en mode “syntaxe Maple” (cf. ci-dessous)
+</li><li class="li-itemize">en mode compatible Maple,
+on utilise les formes inertes des instructions (qui renvoient l’instruction
+non évaluée), dont le nom est le même que le nom de commande
+habituel mais précédé par une majuscule, puis on indique
+<code>mod n</code>, par exemple <code>Gcd(P,Q) mod 11</code>.
+</li></ul>
+<!--TOC section id="sec73" Exercices PGCD-->
+<h2 id="sec73" class="section">8.2  Exercices PGCD</h2><!--SEC END --><ol class="enumerate" type=1><li class="li-enumerate">Calculez le pgcd de <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><msup><mi>x</mi> <mn>202</mn></msup><mo>+</mo><msup><mi>x</mi> <mn>101</mn></msup><mo>+</mo><mn>1</mn></mrow><annotation encoding='application/x-tex'>x^{202}+x^{101}+1</annotation></semantics></math>
+et sa dérivée modulo 3 et modulo 5. Conclusion?</li><li class="li-enumerate"><math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>P</mi><mo>=</mo><mn>51</mn><msup><mi>x</mi> <mn>3</mn></msup><mo>&minus;</mo><mn>35</mn><msup><mi>x</mi> <mn>2</mn></msup><mo>+</mo><mn>39</mn><mi>x</mi><mo>&minus;</mo><mn>115</mn></mrow><annotation encoding='application/x-tex'>P=51x^3&#x2d;35x^2+39x&#x2d;115</annotation></semantics></math> et <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>Q</mi><mo>=</mo><mn>17</mn><msup><mi>x</mi> <mn>4</mn></msup><mo>&minus;</mo><mn>23</mn><msup><mi>x</mi> <mn>3</mn></msup><mo>+</mo><mn>34</mn><msup><mi>x</mi> <mn>2</mn></msup><mo>+</mo><mn>39</mn><mi>x</mi><mo>&minus;</mo><mn>115</mn></mrow><annotation encoding='application/x-tex'>Q=17x^4&#x2d;23x^3+34x^2+39x&#x2d;115</annotation></semantics></math>.
+Calculez le pgcd de <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>P</mi></mrow><annotation encoding='application/x-tex'>P</annotation></semantics></math> et <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>Q</mi></mrow><annotation encoding='application/x-tex'>Q</annotation></semantics></math> modulo 5, 7 et 11. En déduire
+le pgcd de <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>P</mi></mrow><annotation encoding='application/x-tex'>P</annotation></semantics></math> et <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>Q</mi></mrow><annotation encoding='application/x-tex'>Q</annotation></semantics></math> par le théorème des restes chinois. Pourquoi
+ne doit-on pas essayer modulo 17?</li><li class="li-enumerate">Écrire un programme qui détermine le degré probable
+du pgcd de 2 polynômes en une variable en utilisant le pgcd modulaire 
+(on considère le degré probable déterminé lorsqu’on trouve
+deux nombres premiers réalisant le minimum des degrés trouvés)</li><li class="li-enumerate">Détaillez l’algorithme du PGCD heuristique pour les
+polynômes <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>P</mi><mo>=</mo><mo stretchy="false">(</mo><mi>x</mi><mo>+</mo><mn>1</mn><msup><mo stretchy="false">)</mo> <mn>7</mn></msup><mo>&minus;</mo><mo stretchy="false">(</mo><mi>x</mi><mo>&minus;</mo><mn>1</mn><msup><mo stretchy="false">)</mo> <mn>6</mn></msup></mrow><annotation encoding='application/x-tex'>P=(x+1)^7&#x2d;(x&#x2d;1)^6</annotation></semantics></math> et sa dérivée. Comparez avec l’algorithme
+d’Euclide naïf.</li><li class="li-enumerate">Écrire un programme mettant en oeuvre le pgcd heuristique
+pour des polynômes à une variable.</li><li class="li-enumerate">On veut comprendre comment un logiciel de calcul formel calcule
+<math xmlns='http://www.w3.org/1998/Math/MathML' display='block'><semantics><mrow><mo>&Integral;</mo><mfrac><mrow><msup><mi>x</mi> <mn>6</mn></msup><mo>+</mo><mn>2</mn></mrow><mrow><mo stretchy="false">(</mo><msup><mi>x</mi> <mn>3</mn></msup><mo>+</mo><mn>1</mn><msup><mo stretchy="false">)</mo> <mn>2</mn></msup></mrow></mfrac><mspace width="mediummathspace"/><mi>d</mi><mi>x</mi></mrow><annotation encoding='application/x-tex'> \int \frac{x^6+2}{(x^3+1)^2} \ dx  </annotation></semantics></math>
+On se ramène d’abord à une fraction propre (numérateur <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>N</mi></mrow><annotation encoding='application/x-tex'>N</annotation></semantics></math> de degré 
+inférieur au dénominateur),
+Soit <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>P</mi><mo>=</mo><msup><mi>x</mi> <mn>3</mn></msup><mo>+</mo><mn>1</mn></mrow><annotation encoding='application/x-tex'>P=x^3+1</annotation></semantics></math>, calculez le PGCD de <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>P</mi></mrow><annotation encoding='application/x-tex'>P</annotation></semantics></math> et <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>P</mi><mo>&prime;</mo></mrow><annotation encoding='application/x-tex'>P&apos;</annotation></semantics></math>, puis
+deux polynômes <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>U</mi></mrow><annotation encoding='application/x-tex'>U</annotation></semantics></math> et <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>V</mi></mrow><annotation encoding='application/x-tex'>V</annotation></semantics></math> tels que <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>N</mi><mo>=</mo><mi>U</mi><mi>P</mi><mo>+</mo><mi>V</mi><mi>P</mi><mo>&prime;</mo></mrow><annotation encoding='application/x-tex'> N=UP+VP&apos; </annotation></semantics></math>.
+On décompose alors l’intégrale en deux morceaux :<br>
+<math xmlns='http://www.w3.org/1998/Math/MathML' display='block'><semantics><mrow><mo>&Integral;</mo><mfrac><mi>N</mi><mrow><msup><mi>P</mi> <mn>2</mn></msup></mrow></mfrac><mo>=</mo><mo>&Integral;</mo><mfrac><mi>U</mi><mi>P</mi></mfrac><mo>+</mo><mo>&Integral;</mo><mi>V</mi><mfrac><mrow><mi>P</mi><mo>&prime;</mo></mrow><mrow><msup><mi>P</mi> <mn>2</mn></msup></mrow></mfrac></mrow><annotation encoding='application/x-tex'> \int \frac{N}{P^2}=\int \frac{U}{P}  + \int V \frac{P&apos;}{P^2}   </annotation></semantics></math>
+Faites une intégration par parties sur le deuxième terme
+et en déduire la valeur de l’intégrale du départ.</li><li class="li-enumerate">Écrire un programme qui détermine le degré probable du PGCD 
+par rapport à toutes les
+variables de 2 polynôme à plusieurs variables
+en utilisant l’évaluation en toutes les variables
+sauf une.</li><li class="li-enumerate">Calculer le pgcd par une méthode modulaire de
+<math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mo stretchy="false">(</mo><mi>x</mi><mi>y</mi><mo>&minus;</mo><mi>x</mi><mo>+</mo><mn>1</mn><mo stretchy="false">)</mo><mo stretchy="false">(</mo><mi>x</mi><mi>y</mi><mo>+</mo><msup><mi>x</mi> <mn>2</mn></msup><mo>+</mo><mn>1</mn><mo stretchy="false">)</mo></mrow><annotation encoding='application/x-tex'>(xy&#x2d;x+1)(xy+x^2+1)</annotation></semantics></math> et <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mo stretchy="false">(</mo><mi>x</mi><mi>y</mi><mo>&minus;</mo><mi>x</mi><mo>&minus;</mo><mi>y</mi><mo stretchy="false">)</mo><mo stretchy="false">(</mo><mi>x</mi><mi>y</mi><mo>&minus;</mo><mi>x</mi><mo>+</mo><mn>1</mn><mo stretchy="false">)</mo></mrow><annotation encoding='application/x-tex'>(xy&#x2d;x&#x2d;y)(xy&#x2d;x+1)</annotation></semantics></math></li><li class="li-enumerate">En utilisant uniquement l’instruction de calcul de PGCD
+déterminer la multiplicité maximale d’un facteur irréductible
+de 
+<math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><msup><mi>x</mi> <mn>14</mn></msup><mo>&minus;</mo><msup><mi>x</mi> <mn>13</mn></msup><mo>&minus;</mo><mn>14</mn><msup><mi>x</mi> <mn>12</mn></msup><mo>+</mo><mn>12</mn><msup><mi>x</mi> <mn>11</mn></msup><mo>+</mo><mn>78</mn><msup><mi>x</mi> <mn>10</mn></msup><mo>&minus;</mo><mn>54</mn><msup><mi>x</mi> <mn>9</mn></msup><mo>&minus;</mo><mn>224</mn><msup><mi>x</mi> <mn>8</mn></msup><mo>+</mo><mn>116</mn><msup><mi>x</mi> <mn>7</mn></msup><mo>+</mo><mn>361</mn><msup><mi>x</mi> <mn>6</mn></msup><mo>&minus;</mo><mn>129</mn><msup><mi>x</mi> <mn>5</mn></msup><mo>&minus;</mo><mn>330</mn><msup><mi>x</mi> <mn>4</mn></msup><mo>+</mo><mn>72</mn><msup><mi>x</mi> <mn>3</mn></msup><mo>+</mo><mn>160</mn><msup><mi>x</mi> <mn>2</mn></msup><mo>&minus;</mo><mn>16</mn><mi>x</mi><mo>&minus;</mo><mn>32</mn></mrow><annotation encoding='application/x-tex'>x^{14}&#x2d;x^{13}&#x2d;14x^{12}+12x^{11}+78x^{10}&#x2d;54x^9&#x2d;224x^8+116x^7+361x^6&#x2d;129x^5&#x2d;330x^4+72x^3+160x^2&#x2d;16x&#x2d;32</annotation></semantics></math></li><li class="li-enumerate">Donner le détail des calculs avec Bézout de la décomposition
+en éléments simples de :
+<math xmlns='http://www.w3.org/1998/Math/MathML' display='block'><semantics><mrow><mfrac><mn>1</mn><mrow><mo stretchy="false">(</mo><msup><mi>x</mi> <mn>2</mn></msup><mo>&minus;</mo><mn>1</mn><msup><mo stretchy="false">)</mo> <mn>2</mn></msup><mo stretchy="false">(</mo><mi>x</mi><mo>+</mo><mn>2</mn><mo stretchy="false">)</mo></mrow></mfrac></mrow><annotation encoding='application/x-tex'> \frac{1}{(x^2&#x2d;1)^2(x+2)} </annotation></semantics></math>
+puis calculer le coefficient de <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><msup><mi>x</mi> <mi>n</mi></msup></mrow><annotation encoding='application/x-tex'>x^n</annotation></semantics></math> du développement en séries
+entières de cette fraction en 0.</li></ol>
+<!--TOC section id="sec74" Exercice (Bézout modulaire)-->
+<h2 id="sec74" class="section">8.3  Exercice (Bézout modulaire)</h2><!--SEC END --><p>
+Soit <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>A</mi></mrow><annotation encoding='application/x-tex'>A</annotation></semantics></math> et <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>B</mi></mrow><annotation encoding='application/x-tex'>B</annotation></semantics></math> deux polynômes à coefficients entiers et premiers
+entre eux. Soit <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>c</mi><mo>&Element;</mo><msup><mi>&Zopf;</mi> <mo>*</mo></msup></mrow><annotation encoding='application/x-tex'>c \in \mathbb{Z}^* </annotation></semantics></math> le résultant de <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>A</mi></mrow><annotation encoding='application/x-tex'>A</annotation></semantics></math> et <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>B</mi></mrow><annotation encoding='application/x-tex'>B</annotation></semantics></math>,
+on va calculer les polynômes <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>U</mi></mrow><annotation encoding='application/x-tex'>U</annotation></semantics></math> et <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>V</mi></mrow><annotation encoding='application/x-tex'>V</annotation></semantics></math> de l’identité de Bézout 
+<a id="eqref_12"></a><math xmlns='http://www.w3.org/1998/Math/MathML' display='block'><semantics><mrow><mi>A</mi><mi>U</mi><mo>+</mo><mi>B</mi><mi>V</mi><mo>=</mo><mi>c</mi><mo>,</mo><mspace width="1em"/><mtext>deg</mtext><mo stretchy="false">(</mo><mi>U</mi><mo stretchy="false">)</mo><mi>&lt;</mi><mtext>deg</mtext><mo stretchy="false">(</mo><mi>B</mi><mo stretchy="false">)</mo><mo>,</mo><mtext>deg</mtext><mo stretchy="false">(</mo><mi>V</mi><mo stretchy="false">)</mo><mi>&lt;</mi><mtext>deg</mtext><mo stretchy="false">(</mo><mi>A</mi><mo stretchy="false">)</mo><mspace width="2em"/><mo stretchy="false">(</mo><mn>12</mn><mo stretchy="false">)</mo></mrow><annotation encoding='application/x-tex'> 
+ A U + B V = c , \quad \mbox{deg}(U)&amp;lt;\mbox{deg}(B), \mbox{deg}(V)&amp;lt;\mbox{deg}(A)
+\qquad (12) </annotation></semantics></math>
+par une méthode modulaire.
+</p><ol class="enumerate" type=1><li class="li-enumerate">
+Montrer, en utilisant les formules de Cramer,
+que les coefficients de <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>U</mi></mrow><annotation encoding='application/x-tex'>U</annotation></semantics></math> et <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>V</mi></mrow><annotation encoding='application/x-tex'>V</annotation></semantics></math> sont des entiers de
+valeur absolue inférieure ou égale à la borne de Hadamard <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>h</mi></mrow><annotation encoding='application/x-tex'>h</annotation></semantics></math> de
+la matrice de Sylvester de <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>A</mi></mrow><annotation encoding='application/x-tex'>A</annotation></semantics></math> et <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>B</mi></mrow><annotation encoding='application/x-tex'>B</annotation></semantics></math> (dont le déterminant est <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>c</mi></mrow><annotation encoding='application/x-tex'>c</annotation></semantics></math>,
+le résultant de <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>A</mi></mrow><annotation encoding='application/x-tex'>A</annotation></semantics></math> et <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>B</mi></mrow><annotation encoding='application/x-tex'>B</annotation></semantics></math>). Calculer <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>h</mi></mrow><annotation encoding='application/x-tex'>h</annotation></semantics></math> en fonction
+de la norme euclidienne de <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>A</mi></mrow><annotation encoding='application/x-tex'>A</annotation></semantics></math>, <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>B</mi></mrow><annotation encoding='application/x-tex'>B</annotation></semantics></math> et de leurs degrés. 
+</li><li class="li-enumerate">On calcule <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>c</mi><mo>&Element;</mo><msup><mi>&Zopf;</mi> <mo>*</mo></msup></mrow><annotation encoding='application/x-tex'>c \in \mathbb{Z}^*</annotation></semantics></math> puis on
+résoud (<a href="#eqref_12">12</a>) dans <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>&Zopf;</mi><mo stretchy="false">/</mo><msub><mi>p</mi> <mi>i</mi></msub><mi>Z</mi><mo stretchy="false">[</mo><mi>X</mi><mo stretchy="false">]</mo></mrow><annotation encoding='application/x-tex'>\mathbb{Z}/p_i Z[X]</annotation></semantics></math> pour
+plusieurs nombres premiers <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><msub><mi>p</mi> <mi>i</mi></msub></mrow><annotation encoding='application/x-tex'>p_i</annotation></semantics></math> (choisis si possible inférieurs 
+à <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><msqrt><mrow><msup><mn>2</mn> <mn>31</mn></msup></mrow></msqrt></mrow><annotation encoding='application/x-tex'>\sqrt{2^{31}}</annotation></semantics></math> pour des raisons d’efficacité), puis on calcule par le
+théorème des restes chinois (<a href="#eqref_12">12</a>) 
+dans <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>&Zopf;</mi><mo stretchy="false">/</mo><mo lspace="thinmathspace" rspace="thinmathspace">&prod;</mo><msub><mi>p</mi> <mi>i</mi></msub><mi>Z</mi><mo stretchy="false">[</mo><mi>X</mi><mo stretchy="false">]</mo></mrow><annotation encoding='application/x-tex'>\mathbb{Z}/\prod p_i Z[X]</annotation></semantics></math>. Donner une minoration de 
+<math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><msub><mo lspace="thinmathspace" rspace="thinmathspace">&prod;</mo> <mi>i</mi></msub><msub><mi>p</mi> <mi>i</mi></msub></mrow><annotation encoding='application/x-tex'>\prod_i p_i</annotation></semantics></math> faisant intervenir <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>h</mi></mrow><annotation encoding='application/x-tex'>h</annotation></semantics></math> qui permette de garantir
+que l’écriture en représentation symétrique de (<a href="#eqref_12">12</a>)
+dans <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>&Zopf;</mi><mo stretchy="false">/</mo><mo lspace="thinmathspace" rspace="thinmathspace">&prod;</mo><msub><mi>p</mi> <mi>i</mi></msub><mi>Z</mi><mo stretchy="false">[</mo><mi>X</mi><mo stretchy="false">]</mo></mrow><annotation encoding='application/x-tex'>\mathbb{Z}/\prod p_i Z[X]</annotation></semantics></math> est identique à (<a href="#eqref_12">12</a>) dans <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>&Zopf;</mi><mo stretchy="false">[</mo><mi>X</mi><mo stretchy="false">]</mo></mrow><annotation encoding='application/x-tex'>\mathbb{Z}[X]</annotation></semantics></math>.
+</li><li class="li-enumerate">Application : résoudre de cette manière l’équation de
+Bézout pour 
+<math xmlns='http://www.w3.org/1998/Math/MathML' display='block'><semantics><mrow><mi>A</mi><mo>=</mo><mo stretchy="false">(</mo><mi>X</mi><mo>+</mo><mn>1</mn><msup><mo stretchy="false">)</mo> <mn>4</mn></msup><mo stretchy="false">(</mo><mi>X</mi><mo>&minus;</mo><mn>3</mn><mo stretchy="false">)</mo><mo>,</mo><mspace width="1em"/><mi>B</mi><mo>=</mo><mo stretchy="false">(</mo><mi>X</mi><mo>&minus;</mo><mn>1</mn><msup><mo stretchy="false">)</mo> <mn>4</mn></msup><mo stretchy="false">(</mo><mi>X</mi><mo>+</mo><mn>2</mn><mo stretchy="false">)</mo></mrow><annotation encoding='application/x-tex'> A=(X+1)^4(X&#x2d;3), \quad B=(X&#x2d;1)^4(X+2) </annotation></semantics></math> 
+(vous pouvez utiliser
+sans justifications l’instruction de calcul de résultant,
+des coefficients de Bézout dans <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>&Zopf;</mi><mo stretchy="false">/</mo><msub><mi>p</mi> <mi>i</mi></msub><mi>Z</mi><mo stretchy="false">[</mo><mi>X</mi><mo stretchy="false">]</mo></mrow><annotation encoding='application/x-tex'>\mathbb{Z}/p_iZ[X]</annotation></semantics></math> et 
+de reste chinois de votre logiciel).
+</li><li class="li-enumerate">Écrire une fonction mettant en oeuvre cet algorithme.
+</li><li class="li-enumerate">Que pensez-vous de l’intérêt de cet algorithme par rapport à
+l’algorithme d’Euclide étendu dans <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>&Zopf;</mi><mo stretchy="false">[</mo><mi>X</mi><mo stretchy="false">]</mo></mrow><annotation encoding='application/x-tex'>\mathbb{Z}[X]</annotation></semantics></math>?
+</li></ol>
+<!--TOC section id="sec75" Exercices (résultant)-->
+<h2 id="sec75" class="section">8.4  Exercices (résultant)</h2><!--SEC END --><ol class="enumerate" type=1><li class="li-enumerate">
+Pour quelles valeurs de <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>p</mi></mrow><annotation encoding='application/x-tex'>p</annotation></semantics></math> le polynôme <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><msup><mi>X</mi> <mn>5</mn></msup><mo>+</mo><msup><mi>X</mi> <mn>3</mn></msup><mo>&minus;</mo><mi>p</mi><mi>X</mi><mo>+</mo><mn>1</mn></mrow><annotation encoding='application/x-tex'>X^5+X^3&#x2d;pX+1</annotation></semantics></math> admet-il
+une racine multiple? Factoriser le polynôme pour cette valeur de <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>p</mi></mrow><annotation encoding='application/x-tex'>p</annotation></semantics></math>.
+</li><li class="li-enumerate">Résoudre le système en éliminant successivement les
+variables grâce au résultant :
+<math xmlns='http://www.w3.org/1998/Math/MathML' display='block'><semantics><mrow><mrow><mo>{</mo><mtable displaystyle="false" rowspacing="0.5ex" columnalign="right center left"><mtr><mtd><msup><mi>a</mi> <mn>3</mn></msup><mo>+</mo><msup><mi>b</mi> <mn>3</mn></msup><mo>+</mo><msup><mi>c</mi> <mn>3</mn></msup></mtd> <mtd><mo>=</mo></mtd> <mtd><mn>8</mn></mtd></mtr> <mtr><mtd><msup><mi>a</mi> <mn>2</mn></msup><mo>+</mo><msup><mi>b</mi> <mn>2</mn></msup><mo>+</mo><msup><mi>c</mi> <mn>2</mn></msup></mtd> <mtd><mo>=</mo></mtd> <mtd><mn>6</mn></mtd></mtr> <mtr><mtd><mi>a</mi><mo>+</mo><mi>b</mi><mo>+</mo><mn>2</mn><mi>c</mi></mtd> <mtd><mo>=</mo></mtd> <mtd><mn>4</mn></mtd></mtr></mtable></mrow></mrow><annotation encoding='application/x-tex'>
+\left\{\begin{array}{rcl}
+a^{3}+b^{3}+c^{3} &amp; = &amp; 8 \\
+a^{2}+b^{2}+c^{2} &amp; = &amp; 6 \\
+a+b+2c &amp; = &amp; 4
+\end{array}\right.
+ </annotation></semantics></math>
+</li><li class="li-enumerate">Déterminer l’intersection de <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>x</mi><mi>y</mi><mo>=</mo><mn>4</mn></mrow><annotation encoding='application/x-tex'>xy=4</annotation></semantics></math> et <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><msup><mi>y</mi> <mn>2</mn></msup><mo>=</mo><mo stretchy="false">(</mo><mi>x</mi><mo>&minus;</mo><mn>3</mn><mo stretchy="false">)</mo><mo stretchy="false">(</mo><msup><mi>x</mi> <mn>2</mn></msup><mo>&minus;</mo><mn>16</mn><mo stretchy="false">)</mo></mrow><annotation encoding='application/x-tex'> y^2=(x&#x2d;3)(x^2&#x2d;16)</annotation></semantics></math>,
+repésenter graphiquement les courbes. Discuter la multiplicité
+et le nombre d’intersections.<br>
+Même question pour <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mo stretchy="false">(</mo><mi>x</mi><mo>&minus;</mo><mn>2</mn><msup><mo stretchy="false">)</mo> <mn>2</mn></msup><mo>+</mo><msup><mi>y</mi> <mn>2</mn></msup><mo>=</mo><mn>4</mn></mrow><annotation encoding='application/x-tex'>(x&#x2d;2)^2+y^2=4</annotation></semantics></math> et <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><msup><mi>y</mi> <mn>2</mn></msup><mo>=</mo><mo stretchy="false">(</mo><mi>x</mi><mo>&minus;</mo><mn>3</mn><mo stretchy="false">)</mo><mo stretchy="false">(</mo><msup><mi>x</mi> <mn>2</mn></msup><mo>&minus;</mo><mn>16</mn><mo stretchy="false">)</mo></mrow><annotation encoding='application/x-tex'>y^2=(x&#x2d;3)(x^2&#x2d;16)</annotation></semantics></math>.
+</li><li class="li-enumerate">Courbe paramétrique dépendant d’un paramètre :
+on considère la courbe <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><msub><mi>C</mi> <mi>m</mi></msub></mrow><annotation encoding='application/x-tex'>C_m</annotation></semantics></math> dépendant du réel <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>m</mi></mrow><annotation encoding='application/x-tex'>m</annotation></semantics></math> :
+<math xmlns='http://www.w3.org/1998/Math/MathML' display='block'><semantics><mrow><mi>x</mi><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo><mo>=</mo><mfrac><mrow><mi>t</mi><mo>+</mo><mi>m</mi></mrow><mrow><msup><mi>t</mi> <mn>2</mn></msup><mo>+</mo><mn>1</mn><mo>+</mo><msup><mi>m</mi> <mn>2</mn></msup></mrow></mfrac><mo>,</mo><mspace width="1em"/><mi>y</mi><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo><mo>=</mo><mfrac><mrow><msup><mi>t</mi> <mn>2</mn></msup></mrow><mrow><mi>t</mi><mo>&minus;</mo><mi>m</mi></mrow></mfrac></mrow><annotation encoding='application/x-tex'>x(t)=\frac{t+m}{t^2+1+m^2}, \quad y(t)=\frac{t^2}{t&#x2d;m} </annotation></semantics></math>
+Représenter la courbe pour quelques valeurs de <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>m</mi></mrow><annotation encoding='application/x-tex'>m</annotation></semantics></math> (on pourra
+utiliser dans un niveau de géométrie, le menu Edit, Ajouter un
+paramètre pour créer un curseur représentant <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>m</mi></mrow><annotation encoding='application/x-tex'>m</annotation></semantics></math>, puis 
+<code>plotparam</code>). Donner l’équation cartésienne de <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><msub><mi>C</mi> <mi>m</mi></msub></mrow><annotation encoding='application/x-tex'>C_m</annotation></semantics></math>.
+Déterminer les valeurs de <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>m</mi></mrow><annotation encoding='application/x-tex'>m</annotation></semantics></math> pour lesquelles
+la courbe admet un point singulier, représenter le graphe dans ce(s)
+cas et faire l’étude de la courbe.
+</li><li class="li-enumerate">Calculer 
+<math xmlns='http://www.w3.org/1998/Math/MathML' display='block'><semantics><mrow><mo>&Integral;</mo><mfrac><mrow><mn>1</mn><mo>&minus;</mo><msup><mi>x</mi> <mn>2</mn></msup></mrow><mrow><mn>1</mn><mo>+</mo><msup><mi>x</mi> <mn>4</mn></msup></mrow></mfrac><mspace width="mediummathspace"/><mi>d</mi><mi>x</mi></mrow><annotation encoding='application/x-tex'> \int \frac{1&#x2d;x^2}{1+x^4} \ dx  </annotation></semantics></math>
+en utilisant le résultant pour calculer les logarithmes.
+</li><li class="li-enumerate">On cherche une relation algébrique entre les coordonnées de 4 points
+<math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>A</mi><mo>,</mo><mi>B</mi><mo>,</mo><mi>C</mi><mo>,</mo><mi>D</mi></mrow><annotation encoding='application/x-tex'>A,B,C,D</annotation></semantics></math> qui traduise le fait que ces 4 points sont cocycliques. Cette
+condition étant invariante par translation, on cherche une
+relation entre les 6 coordonnées des 3 vecteurs <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><msub><mi>v</mi> <mn>1</mn></msub><mo>=</mo><mo stretchy="false">(</mo><msub><mi>x</mi> <mn>1</mn></msub><mo>,</mo><msub><mi>y</mi> <mn>1</mn></msub><mo stretchy="false">)</mo></mrow><annotation encoding='application/x-tex'>v_1=(x_1,y_1)</annotation></semantics></math>, 
+<math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><msub><mi>v</mi> <mn>2</mn></msub><mo>=</mo><mo stretchy="false">(</mo><msub><mi>x</mi> <mn>2</mn></msub><mo>,</mo><msub><mi>y</mi> <mn>2</mn></msub><mo stretchy="false">)</mo></mrow><annotation encoding='application/x-tex'>v_2=(x_2,y_2)</annotation></semantics></math> et <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><msub><mi>v</mi> <mn>3</mn></msub><mo>=</mo><mo stretchy="false">(</mo><msub><mi>x</mi> <mn>3</mn></msub><mo>,</mo><msub><mi>y</mi> <mn>3</mn></msub><mo stretchy="false">)</mo></mrow><annotation encoding='application/x-tex'>v_3=(x_3,y_3)</annotation></semantics></math> 
+d’origine <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>A</mi></mrow><annotation encoding='application/x-tex'>A</annotation></semantics></math> et d’extrémité <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>B</mi></mrow><annotation encoding='application/x-tex'>B</annotation></semantics></math>, <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>C</mi></mrow><annotation encoding='application/x-tex'>C</annotation></semantics></math> et <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>D</mi></mrow><annotation encoding='application/x-tex'>D</annotation></semantics></math>.
+On peut supposer quitte à translater que le centre du cercle est
+l’origine, on a donc 5 paramètres : le rayon du cercle <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>R</mi></mrow><annotation encoding='application/x-tex'>R</annotation></semantics></math> et les
+4 angles des points sur le cercle <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><msub><mi>&theta;</mi> <mn>0</mn></msub></mrow><annotation encoding='application/x-tex'>\theta_0</annotation></semantics></math>, <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><msub><mi>&theta;</mi> <mn>1</mn></msub></mrow><annotation encoding='application/x-tex'>\theta_1</annotation></semantics></math>, <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><msub><mi>&theta;</mi> <mn>2</mn></msub></mrow><annotation encoding='application/x-tex'>\theta_2</annotation></semantics></math> et
+<math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><msub><mi>&theta;</mi> <mn>3</mn></msub></mrow><annotation encoding='application/x-tex'>\theta_3</annotation></semantics></math>. La relation cherchée va s’obtenir en éliminant les
+5 paramètres des expressions des 6 coordonnées en fonction de
+ces paramètres.
+<ol class="enumerate" type=a><li class="li-enumerate">
+Exprimer les 6 coordonnées en fonction de 
+<math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>R</mi></mrow><annotation encoding='application/x-tex'>R</annotation></semantics></math> et <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>a</mi><mo>=</mo><mi>tan</mi><mo stretchy="false">(</mo><msub><mi>&theta;</mi> <mn>0</mn></msub><mo stretchy="false">/</mo><mn>2</mn><mo stretchy="false">)</mo></mrow><annotation encoding='application/x-tex'>a=\tan(\theta_0/2)</annotation></semantics></math>, <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>b</mi><mo>=</mo><mi>tan</mi><mo stretchy="false">(</mo><msub><mi>&theta;</mi> <mn>1</mn></msub><mo stretchy="false">/</mo><mn>2</mn><mo stretchy="false">)</mo></mrow><annotation encoding='application/x-tex'>b=\tan(\theta_1/2)</annotation></semantics></math>, <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>c</mi><mo>=</mo><mi>tan</mi><mo stretchy="false">(</mo><msub><mi>&theta;</mi> <mn>2</mn></msub><mo stretchy="false">/</mo><mn>2</mn><mo stretchy="false">)</mo></mrow><annotation encoding='application/x-tex'>c=\tan(\theta_2/2)</annotation></semantics></math>
+et <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>d</mi><mo>=</mo><mi>tan</mi><mo stretchy="false">(</mo><msub><mi>&theta;</mi> <mn>3</mn></msub><mo stretchy="false">/</mo><mn>2</mn><mo stretchy="false">)</mo></mrow><annotation encoding='application/x-tex'>d=\tan(\theta_3/2)</annotation></semantics></math>. On obtient ainsi 6 équations, par exemple les
+deux premières sont de la forme
+<math xmlns='http://www.w3.org/1998/Math/MathML' display='block'><semantics><mrow><msub><mi>x</mi> <mn>1</mn></msub><mo>&minus;</mo><mi>F</mi><mo stretchy="false">(</mo><mi>R</mi><mo>,</mo><mi>a</mi><mo>,</mo><mi>b</mi><mo stretchy="false">)</mo><mo>=</mo><mn>0</mn><mo>,</mo><mspace width="1em"/><msub><mi>y</mi> <mn>1</mn></msub><mo>&minus;</mo><mi>G</mi><mo stretchy="false">(</mo><mi>R</mi><mo>,</mo><mi>a</mi><mo>,</mo><mi>b</mi><mo stretchy="false">)</mo><mo>=</mo><mn>0</mn></mrow><annotation encoding='application/x-tex'> x_1&#x2d; F(R,a,b)= 0, \quad y_1&#x2d; G(R,a,b)= 0  </annotation></semantics></math>
+où <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>F</mi></mrow><annotation encoding='application/x-tex'>F</annotation></semantics></math> et <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>G</mi></mrow><annotation encoding='application/x-tex'>G</annotation></semantics></math> sont deux fractions rationnelles.
+</li><li class="li-enumerate">En réduisant au même dénominateur, calculer 6 
+polynômes, fonction de
+<math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><msub><mi>x</mi> <mn>1</mn></msub><mo>,</mo><msub><mi>y</mi> <mn>1</mn></msub><mo>,</mo><msub><mi>x</mi> <mn>2</mn></msub><mo>,</mo><msub><mi>y</mi> <mn>2</mn></msub><mo>,</mo><msub><mi>x</mi> <mn>3</mn></msub><mo>,</mo><msub><mi>y</mi> <mn>3</mn></msub><mo>,</mo><mi>R</mi><mo>,</mo><mi>a</mi><mo>,</mo><mi>b</mi><mo>,</mo><mi>c</mi><mo>,</mo><mi>d</mi></mrow><annotation encoding='application/x-tex'>x_1,y_1,x_2,y_2,x_3,y_3,R,a,b,c,d</annotation></semantics></math>, qui doivent s’annuler
+pour que les points soient cocycliques
+(Vous pouvez utiliser l’instruction <code>numer</code> pour obtenir le
+numérateur d’une fraction rationnelle).
+</li><li class="li-enumerate">Éliminer <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>b</mi></mrow><annotation encoding='application/x-tex'>b</annotation></semantics></math> des polynômes
+contenant <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><msub><mi>x</mi> <mn>1</mn></msub></mrow><annotation encoding='application/x-tex'>x_1</annotation></semantics></math> et <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><msub><mi>y</mi> <mn>1</mn></msub></mrow><annotation encoding='application/x-tex'>y_1</annotation></semantics></math> et factoriser
+le polynôme obtenu, faire de même avec <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>c</mi></mrow><annotation encoding='application/x-tex'>c</annotation></semantics></math>, <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><msub><mi>x</mi> <mn>2</mn></msub></mrow><annotation encoding='application/x-tex'>x_2</annotation></semantics></math> et <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><msub><mi>y</mi> <mn>2</mn></msub></mrow><annotation encoding='application/x-tex'>y_2</annotation></semantics></math>
+et <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>d</mi></mrow><annotation encoding='application/x-tex'>d</annotation></semantics></math>, <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><msub><mi>x</mi> <mn>3</mn></msub></mrow><annotation encoding='application/x-tex'>x_3</annotation></semantics></math> et <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><msub><mi>y</mi> <mn>3</mn></msub></mrow><annotation encoding='application/x-tex'>y_3</annotation></semantics></math>, en déduire (en supposant que les points sont
+tous distincts) 3 polynômes en <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><msub><mi>x</mi> <mn>1</mn></msub><mo>,</mo><msub><mi>y</mi> <mn>1</mn></msub><mo>,</mo><msub><mi>x</mi> <mn>2</mn></msub><mo>,</mo><msub><mi>y</mi> <mn>2</mn></msub><mo>,</mo><msub><mi>x</mi> <mn>3</mn></msub><mo>,</mo><msub><mi>y</mi> <mn>3</mn></msub><mo>,</mo><mi>R</mi><mo>,</mo><mi>a</mi></mrow><annotation encoding='application/x-tex'>x_1,y_1,x_2,y_2,x_3,y_3,R,a</annotation></semantics></math> qui
+s’annulent.
+</li><li class="li-enumerate">Éliminer <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>R</mi></mrow><annotation encoding='application/x-tex'>R</annotation></semantics></math> et <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>a</mi></mrow><annotation encoding='application/x-tex'>a</annotation></semantics></math>, en déduire la relation cherchée.
+</li><li class="li-enumerate">Vérifier que cette relation est équivalente à la nullité
+de la partie imaginaire du birapport des affixes <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>&alpha;</mi><mo>,</mo><mi>&beta;</mi><mo>,</mo><mi>&gamma;</mi><mo>,</mo><mi>&delta;</mi></mrow><annotation encoding='application/x-tex'>\alpha, \beta, \gamma,
+\delta</annotation></semantics></math> des 4 points :
+<math xmlns='http://www.w3.org/1998/Math/MathML' display='block'><semantics><mrow><mi>&Im;</mi><mrow><mo>(</mo><mfrac><mrow><mi>&alpha;</mi><mo>&minus;</mo><mi>&beta;</mi></mrow><mrow><mi>&alpha;</mi><mo>&minus;</mo><mi>&gamma;</mi></mrow></mfrac><mfrac><mrow><mi>&delta;</mi><mo>&minus;</mo><mi>&gamma;</mi></mrow><mrow><mi>&delta;</mi><mo>&minus;</mo><mi>&beta;</mi></mrow></mfrac><mo>)</mo></mrow><mo>=</mo><mn>0</mn></mrow><annotation encoding='application/x-tex'> \Im \left( \frac{\alpha&#x2d;\beta}{\alpha&#x2d;\gamma}
+\frac{\delta&#x2d;\gamma}{\delta&#x2d;\beta} \right) = 0 </annotation></semantics></math>
+</li></ol>
+</li></ol>
+<!--TOC section id="sec76" Décalage entier entre racines.-->
+<h2 id="sec76" class="section">8.5  Décalage entier entre racines.</h2><!--SEC END --><p>
+Soit <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>P</mi></mrow><annotation encoding='application/x-tex'>P</annotation></semantics></math> un polynôme à coefficients entiers sans racines multiples. 
+On dira que <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>P</mi></mrow><annotation encoding='application/x-tex'>P</annotation></semantics></math> a la propriété <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>&Iscr;</mi></mrow><annotation encoding='application/x-tex'>\mathcal{I}</annotation></semantics></math> si
+deux des racines de <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>P</mi></mrow><annotation encoding='application/x-tex'>P</annotation></semantics></math> sont décalées d’un entier. 
+En d’autres termes, si <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><msub><mi>r</mi> <mn>1</mn></msub><mo>,</mo><mo>.</mo><mo>.</mo><mo>.</mo><mo>,</mo><msub><mi>r</mi> <mi>n</mi></msub></mrow><annotation encoding='application/x-tex'>r_1,...,r_n</annotation></semantics></math> désignent
+les racines complexes distinctes de <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>P</mi></mrow><annotation encoding='application/x-tex'>P</annotation></semantics></math>, <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>P</mi></mrow><annotation encoding='application/x-tex'>P</annotation></semantics></math> possède la
+propriété <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>&Iscr;</mi></mrow><annotation encoding='application/x-tex'>\mathcal{I}</annotation></semantics></math>
+s’il existe 
+au moins un entier parmi les différences <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><msub><mi>r</mi> <mi>i</mi></msub><mo>&minus;</mo><msub><mi>r</mi> <mi>j</mi></msub></mrow><annotation encoding='application/x-tex'>r_i&#x2d;r_j</annotation></semantics></math> pour <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>i</mi><mo>&ne;</mo><mi>j</mi></mrow><annotation encoding='application/x-tex'>i \neq j</annotation></semantics></math>. 
+</p><ol class="enumerate" type=1><li class="li-enumerate">
+Soit
+<math xmlns='http://www.w3.org/1998/Math/MathML' display='block'><semantics><mrow><mi>R</mi><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo><mo>=</mo><msub><mtext>resultant</mtext> <mi>x</mi></msub><mo stretchy="false">(</mo><mi>P</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo><mo>,</mo><mi>P</mi><mo stretchy="false">(</mo><mi>x</mi><mo>+</mo><mi>t</mi><mo stretchy="false">)</mo><mo stretchy="false">)</mo></mrow><annotation encoding='application/x-tex'> R(t)=\mbox{resultant}_x(P(x),P(x+t))  </annotation></semantics></math>
+Montrer que <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>R</mi></mrow><annotation encoding='application/x-tex'>R</annotation></semantics></math> est à coefficients entiers.
+Montrer que la propriété <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>&Iscr;</mi></mrow><annotation encoding='application/x-tex'>\mathcal{I}</annotation></semantics></math> est équivalente à
+la propriété “<math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>R</mi></mrow><annotation encoding='application/x-tex'>R</annotation></semantics></math> possède une racine entière non nulle”.
+On va maintenant construire un algorithme déterminant les racines
+entières du polynôme <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>R</mi></mrow><annotation encoding='application/x-tex'>R</annotation></semantics></math>.
+</li><li class="li-enumerate">Après division de <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>R</mi></mrow><annotation encoding='application/x-tex'>R</annotation></semantics></math> par une puissance de <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>t</mi></mrow><annotation encoding='application/x-tex'>t</annotation></semantics></math>, on peut
+supposer que <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>R</mi></mrow><annotation encoding='application/x-tex'>R</annotation></semantics></math> a un coefficient constant non nul. Après division de
+<math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>R</mi></mrow><annotation encoding='application/x-tex'>R</annotation></semantics></math> par son contenu, on peut aussi supposer
+que le contenu de <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>R</mi></mrow><annotation encoding='application/x-tex'>R</annotation></semantics></math> est 1. En effectuant ensuite une factorisation
+square-free de <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>R</mi></mrow><annotation encoding='application/x-tex'>R</annotation></semantics></math>, on peut se ramener au cas où <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>R</mi></mrow><annotation encoding='application/x-tex'>R</annotation></semantics></math> et <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>R</mi><mo>&prime;</mo></mrow><annotation encoding='application/x-tex'>R&apos;</annotation></semantics></math> sont
+premiers entre eux.
+Soit <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>a</mi></mrow><annotation encoding='application/x-tex'>a</annotation></semantics></math> une racine de <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>R</mi></mrow><annotation encoding='application/x-tex'>R</annotation></semantics></math>.
+<ol class="enumerate" type=a><li class="li-enumerate">
+Donner une majoration de <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mo stretchy="false">&vert;</mo><mi>a</mi><mo stretchy="false">&vert;</mo></mrow><annotation encoding='application/x-tex'>|a|</annotation></semantics></math> 
+en fonction du coefficient constant de <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>R</mi></mrow><annotation encoding='application/x-tex'>R</annotation></semantics></math>.
+</li><li class="li-enumerate">Soit <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>p</mi></mrow><annotation encoding='application/x-tex'>p</annotation></semantics></math> un nombre premier ne divisant pas le coefficient dominant
+de <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>R</mi></mrow><annotation encoding='application/x-tex'>R</annotation></semantics></math> et tel que <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>R</mi></mrow><annotation encoding='application/x-tex'>R</annotation></semantics></math> et <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>R</mi><mo>&prime;</mo></mrow><annotation encoding='application/x-tex'>R&apos;</annotation></semantics></math> soient premiers entre eux modulo <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>p</mi></mrow><annotation encoding='application/x-tex'>p</annotation></semantics></math>. 
+On peut calculer <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>a</mi></mrow><annotation encoding='application/x-tex'>a</annotation></semantics></math> à partir d’une racine
+de <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>R</mi></mrow><annotation encoding='application/x-tex'>R</annotation></semantics></math> modulo <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>p</mi></mrow><annotation encoding='application/x-tex'>p</annotation></semantics></math> en la “remontant” modulo <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><msup><mi>p</mi> <mi>k</mi></msup></mrow><annotation encoding='application/x-tex'>p^k</annotation></semantics></math> pour <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>k</mi></mrow><annotation encoding='application/x-tex'>k</annotation></semantics></math>
+assez grand (algorithme p-adique). Pour quelle valeur de <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>k</mi></mrow><annotation encoding='application/x-tex'>k</annotation></semantics></math> peut-on
+reconstruire toutes les racines entières de <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>R</mi></mrow><annotation encoding='application/x-tex'>R</annotation></semantics></math> ? 
+</li><li class="li-enumerate">Comparer l’algorithme ci-dessus avec les algorithmes suivants :
+la factorisation de <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>R</mi></mrow><annotation encoding='application/x-tex'>R</annotation></semantics></math> sur <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>&Zopf;</mi></mrow><annotation encoding='application/x-tex'>\mathbb{Z}</annotation></semantics></math>, 
+la recherche numérique des racines complexes de <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>R</mi></mrow><annotation encoding='application/x-tex'>R</annotation></semantics></math>,
+la recherche des racines entières de <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>R</mi></mrow><annotation encoding='application/x-tex'>R</annotation></semantics></math> parmi les diviseurs 
+entiers du coefficient constant de <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>R</mi></mrow><annotation encoding='application/x-tex'>R</annotation></semantics></math> et leurs opposés.
+</li></ol>
+</li><li class="li-enumerate">Une fois les racines entières de <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>R</mi></mrow><annotation encoding='application/x-tex'>R</annotation></semantics></math> connues, comment
+peut-on en déduire les facteurs de <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>P</mi></mrow><annotation encoding='application/x-tex'>P</annotation></semantics></math> dont les racines diffèrent
+de cet(ces) entier(s)?
+</li><li class="li-enumerate">Soit 
+<math xmlns='http://www.w3.org/1998/Math/MathML' display='block'><semantics><mrow><mi>P</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo><mo>=</mo><msup><mi>x</mi> <mn>6</mn></msup><mo>+</mo><mn>9</mn><msup><mi>x</mi> <mn>5</mn></msup><mo>+</mo><mn>29</mn><msup><mi>x</mi> <mn>4</mn></msup><mo>+</mo><mn>41</mn><msup><mi>x</mi> <mn>3</mn></msup><mo>+</mo><mn>37</mn><msup><mi>x</mi> <mn>2</mn></msup><mo>+</mo><mn>59</mn><mi>x</mi><mo>+</mo><mn>31</mn></mrow><annotation encoding='application/x-tex'>P(x)=x^6+9x^5+29x^4+41x^3+37 x^2+59x+31 </annotation></semantics></math>
+Montrer que <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>P</mi></mrow><annotation encoding='application/x-tex'>P</annotation></semantics></math> a la propriété <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>&Iscr;</mi></mrow><annotation encoding='application/x-tex'>\mathcal{I}</annotation></semantics></math>. Calculer
+la ou les racines entières de <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>R</mi></mrow><annotation encoding='application/x-tex'>R</annotation></semantics></math> et donner la factorisation
+correspondante de <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>P</mi></mrow><annotation encoding='application/x-tex'>P</annotation></semantics></math>. 
+</li><li class="li-enumerate">Écrire un programme qui effectue cet algorithme sur un
+polynôme quelconque. On pourra utiliser la fonction 
+<code>rationalroot</code> de Xcas pour déterminer les racines
+entières de <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>R</mi></mrow><annotation encoding='application/x-tex'>R</annotation></semantics></math>.
+</li><li class="li-enumerate">Application : on cherche à calculer
+<a id="eqref_13"></a><math xmlns='http://www.w3.org/1998/Math/MathML' display='block'><semantics><mrow><munderover><mo lspace="thinmathspace" rspace="thinmathspace">&Sum;</mo> <mrow><mi>k</mi><mo>=</mo><mn>1</mn></mrow> <mi>n</mi></munderover><mfrac><mrow><mo lspace="verythinmathspace" rspace="0em">&minus;</mo><mn>9</mn><msup><mi>x</mi> <mn>2</mn></msup><mo>&minus;</mo><mn>27</mn><mi>x</mi><mo>&minus;</mo><mn>30</mn></mrow><mrow><mi>P</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow></mfrac><mspace width="2em"/><mo stretchy="false">(</mo><mn>13</mn><mo stretchy="false">)</mo></mrow><annotation encoding='application/x-tex'> 
+ \sum_{k=1}^n \frac{&#x2d;9x^2&#x2d;27x&#x2d;30}{P(x)}
+\qquad (13) </annotation></semantics></math>
+Décomposer cette fraction
+en éléments simples (donner le détail des calculs en utilisant
+la factorisation précédente et l’identité de Bezout 
+<code>abcuv</code> en Xcas). 
+</li><li class="li-enumerate">Calculer la somme précédente (<a href="#eqref_13">13</a>).
+On pourra remarquer que pour <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>k</mi></mrow><annotation encoding='application/x-tex'>k</annotation></semantics></math> entier strictement positif,
+<math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mfrac><mn>1</mn><mrow><mi>f</mi><mo stretchy="false">(</mo><mi>x</mi><mo>+</mo><mi>k</mi><mo stretchy="false">)</mo></mrow></mfrac><mo>&minus;</mo><mfrac><mn>1</mn><mrow><mi>f</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow></mfrac></mrow><annotation encoding='application/x-tex'>\frac{1}{f(x+k)}&#x2d;\frac{1}{f(x)}</annotation></semantics></math>
+s’exprime comme une somme de différences 
+<math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mfrac><mn>1</mn><mrow><mi>f</mi><mo stretchy="false">(</mo><mi>x</mi><mo>+</mo><mi>j</mi><mo>+</mo><mn>1</mn><mo stretchy="false">)</mo></mrow></mfrac><mo>&minus;</mo><mfrac><mn>1</mn><mrow><mi>f</mi><mo stretchy="false">(</mo><mi>x</mi><mo>+</mo><mi>j</mi><mo stretchy="false">)</mo></mrow></mfrac></mrow><annotation encoding='application/x-tex'>\frac{1}{f(x+j+1)}&#x2d;\frac{1}{f(x+j)}</annotation></semantics></math>.
+</li><li class="li-enumerate">Écrire un programme effectuant ce calcul avec une fraction
+quelconque, lorsque cela est possible.
+</li></ol>
+<!--TOC section id="sec77" Exemple de correction de géométrie et résultant-->
+<h2 id="sec77" class="section">8.6  Exemple de correction de géométrie et résultant</h2><!--SEC END --><pre class="verbatim">e1:=x1-R*((1-b^2)/(1+b^2)-(1-a^2)/(1+a^2));
+e2:=y1-R*(2b/(1+b^2)-2*a/(1+a^2));
+e3:=x2-R*((1-c^2)/(1+c^2)-(1-a^2)/(1+a^2));
+e4:=y2-R*(2c/(1+c^2)-2*a/(1+a^2));
+e5:=x3-R*((1-d^2)/(1+d^2)-(1-a^2)/(1+a^2));
+e6:=y3-R*(2d/(1+d^2)-2*a/(1+a^2));
+f1:=factor(resultant(numer(e1),numer(e2),b)/
+ (-4)/(a^2+1)^3/R^2);
+f2:=factor(resultant(numer(e3),numer(e4),c)/
+ (-4)/(a^2+1)^3/R^2);
+f3:=factor(resultant(numer(e5),numer(e6),d)/
+ (-4)/(a^2+1)^3/R^2);
+g1:=factor(resultant(f1,f2,R));
+g2:=resultant(f1,f3,R);
+r:=factor(resultant(g1/(a^2+1),g2/(a^2+1),a));
+eq1:=r[1,3,1];
+eq2:=numer(im((-x1-i*y1)/(-x2-i*y2)*
+ (x3-x2+i*(y3-y2))/(x3-x1+i*(y3-y1))));
+normal(eq1-eq2);
+</pre>
+<!--TOC chapter id="sec78" Bases de Gröbner.-->
+</html>

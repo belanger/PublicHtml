@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html >
+<head>
+<h1 id="sec309" class="chapter">Annexe A  Bonus : le “making of” de Giac/Xcas</h1><!--SEC END -->
+<!--TOC section id="sec310" Comment le projet Giac/Xcas est né.-->
+<h2 id="sec310" class="section">A.1  Comment le projet Giac/Xcas est né.</h2><!--SEC END --><p>
+Lorsque j’étais au lycée au début des années 80,
+nous avions des calculatrices
+scientifiques mais les calculatrices graphiques n’existaient pas
+encore, et les
+particuliers n’avaient pas d’ordinateurs ni de téléphone
+portable (cela doit paraitre incroyable à un lycéen actuel,
+pourtant cela fait à peine plus de 30 ans!). On pouvait
+programmer le calcul d’une fonction pour faire un tableau
+de valeurs, par une suite d’opérations ressemblant un peu
+à de la programmation en langage assembleur,
+avec quelques régistres pour stocker des résultats
+intermédiaires et un nombre très
+limité de mémoires et de pas de programmes (environ
+50 instructions).
+J’ai ensuite appris à programmer sur un Apple II en Basic puis en
+assembleur, puis en Pascal sur un PC compatible IBM (avec 512K de RAM,
+pour plus de 10kg),
+mais sans jamais essayer de logiciels de maths, tout cela
+en amateur, puisque je faisais mes études de maths, conclues
+en 1992 par un doctorat en physique mathématique à Orsay :
+je n’ai donc jamais suivi un seul cours d’informatique ni
+même de cours où
+on utilise l’outil informatique, j’ai sans doute perdu quelques
+enseignements utiles, mais je n’ai pas été déformé par
+l’enseignement de certains, je pense par exemple
+à ceux qui n’ont jamais écrit de
+gros programmes et préconisent de ne pas
+utiliser <code>break</code> ou <code>return</code> dans une boucle
+alors que cela rend le code beaucoup plus lisible que
+d’ajouter un booléen artificiel, ou qui
+sont incapables de mettre au point un programme.</p><p>Je n’avais donc jamais entendu parler de calcul formel
+avant 1993, et c’est Gilles, un de mes étudiants de Deug (on
+dirait licence 1ère année aujourd’hui) qui m’a montré
+le calcul d’une dérivée symbolique et d’un inverse
+de matrice sur une calculatrice HP (qui était le leader du marché
+haut de gamme avant que TI ne sorte la TI92 puis la TI89).
+L’idée de pouvoir faire ce type de calculs sur calculatrices
+m’a séduit, j’étais assez insatisfait des exercices
+que l’on donnait en examen aux étudiants où la
+différence entre un 8 et un 12 se fait souvent sur une petite
+étourderie dans une résolution de système linéaire
+et pas du tout sur la compréhension des notions au programme.
+J’ai donc décidé de rattraper mon retard dans le domaine,
+d’acheter une calculatrice et de la documentation pour la
+programmer l’été suivant. C’était indispensable, car le moteur
+de calcul formel fourni sur les HP48 était très limité. D’un
+certain point de vue, c’était une chance, puisqu’il y avait
+tout à faire donc tout à apprendre.
+Au cours des années qui ont suivi, j’ai amélioré ces programmes,
+et je les ai mis à disposition de la communauté des utilisateurs
+de calculatrices HP sous le nom d’Erable (en clin d’oeil à Maple).
+Erable fait partie de ce que l’on peut qualifier de système de
+calcul formel “jouets”, j’entends par là capable de résoudre
+les exercices calculatoires donnés du lycée à la licence de maths.
+En même temps, j’enseignais
+l’algorithmique en licence (avec toute
+une équipe très sympathique : Renée, Roland,
+Gérard, Frédéric). On programmait en Pascal au début, puis
+rapidement on a basculé les enseignements en C/C++.
+Renée s’intéressait
+aussi aux calculatrices et pensait qu’il fallait contacter HP (il
+y a un centre HP en banlieue de Grenoble),
+ce qui ne fut pas évident mais finit par déboucher sur
+la création d’un module optionnel calculatrices en Deug
+(avec des calculatrices prêtées par HP),
+puis en 1997 des contacts avec la nouvelle équipe calculatrices
+de HP en Australie. En 1998/99, j’ai effectué une délégation
+pour mettre au point la HP49 avec l’équipe australienne,
+afin d’y intégrer Erable.
+Un an plus tard nous sortons
+la HP40, version lycée simplifiée et moins chère de la HP49,
+projet porté par Jean Tavenas chez HP Grenoble.
+Mais HP décide alors que les calculatrices graphiques
+ne sont pas assez rentables, les efforts de Jean pour
+faire la publicité de la HP40 sont stoppés juste au
+moment où ils commençaient à porter leurs fruits
+(avec une calculatrice formelle au prix de la TI83,
+la HP40 avait pourtant toutes ses chances, c’était
+d’ailleurs encore vrai en 2014,
+la HP40GS était la calculatrice formelle
+la moins chère du marché, 
+à un prix équivalent aux graphiques d’entrée de gamme de TI et Casio.</p><p>C’est cette expérience avec HP
+qui m’a fait prendre conscience qu’il était possible d’écrire un logiciel
+de calcul formel compétitif. Ma décision
+d’abandonner le développement sur HP49/40 fut alors
+la conséquence d’une part de la mise en retrait de HP du marché,
+d’autre part de la modification de l’épreuve d’option de l’agrégation
+de maths, qui devenait un oral de modélisation avec utilisation
+de logiciels. À l’époque seuls les logiciels propriétaires
+“leaders du marché” étaient autorisés (Maple et Mathematica
+pour ne pas les nommer), il n’y avait pas
+un seul logiciel libre de calcul formel et
+cela m’avait beaucoup choqué. Au début
+j’argumentais pour l’ajout de Mupad qui était sinon libre au moins
+gratuit (Mupad n’existe plus isolément aujourd’hui).
+Quelques années plus tard, Maxima et d’autres logiciels libres
+ont été rajoutés à la liste des logiciels, mais sans connaitre beaucoup
+de succès parmi les candidats. Au lancement du projet Giac/Xcas en 2000,
+j’avais comme objectif que Xcas soit un jour intégré dans la liste des
+logiciels de l’oral de modélisation (ce fut le cas en 2005, mais
+les premiers candidats à l’utiliser ne l’ont fait que vers 2007 ou
+2008...).</p>
+<!--TOC section id="sec311" L’enfance d’Xcas: 2000-2006-->
+<h2 id="sec311" class="section">A.2  L’enfance d’Xcas: 2000-2006</h2><!--SEC END --><p>
+L’année 2000 marque sans doute un tournant dans ma carrière,
+je viens d’achever l’année de délégation pour mettre au point
+la HP49, et le travail se poursuit pour sortir la HP40 à la
+rentrée scolaire. Le tandem se met en place avec Renée qui
+rédige le manuel de calcul formel de la HP40G.
+C’est la dernière année où je travaille activement en recherche sur
+des thèmes de physique mathématique.
+Au moment où nous avions décider de basculer l’enseignement
+d’algorithmique du Pascal au C (fin des années 90),
+j’avais regardé les possibilités
+de bibliothèque pour faire un peu de calcul en précision
+arbitraire à défaut de faire du calcul formel
+(on a essayé LiDiA, PARI, mais sans vraiment être satisfait).
+En mai 2000, alors que le projet HP40 s’achève,
+je me lance dans un projet d’extension de la librairie C++
+de calcul symbolique GiNaC,
+il s’agissait dans un premier temps d’améliorer les fonctions
+polynômiales avec des représentations non symboliques,
+pour avoir de la simplification et de la factorisation. Après
+plusieurs mois, je me rends compte que la philosophie de GiNaC
+ne me convient pas, je bascule vers un projet complètement
+indépendant, que je nomme Giac, en référence à GiNaC
+<sup><a id="text39" href="#note39">1</a></sup>. Au début il s’agissait juste
+d’avoir une librairie C++ capable de faire des opérations
+sur les polynômes de manière efficace. Pendant 2 ans,
+j’implémente les algorithmes de base d’un CAS pour la
+licence de maths (pgcd, factorisation, intégration, limites...),
+puis je crée une petite interface pour pouvoir tester le tout
+sans avoir à écrire un programme C++ à chaque fois.
+La première version publique de Xcas est disponible en 2002,
+elle est très influencée par les interfaces de calculatrices.
+En 2003/2004, premier contact avec le milieu de la recherche
+en calcul formel, dont certains membres veulent créer une
+alternative aux grands logiciels propriétaires du domaine, soit
+par conviction, soit tout simplement pour des raisons de budget.
+Une conférence a lieu à Lyon puis une école d’été,
+où sont présents
+de mombreux développeurs de logiciels libres
+(Axiom, Fricas, Maxima, texmacs, pari, gap,
+MPFR... mais aussi des gens de Mupad même s’il n’est pas libre). Cette
+conférence n’a de mon point de vue abouti à rien de concret,
+chacun tirant pour sa chapelle. La présentation des objectifs du projet 
+Giac/Xcas n’a pas du tout attiré les autres participants,
+d’une part à cause de mes déficiences en anglais,
+d’autre part parce que l’objectif prioritaire de Xcas (pour l’enseignement)
+est souvent assez éloigné des objectifs d’un logiciel
+pour la recherche en calcul formel, sans parler de l’orientation
+calculatrice de l’interface de Xcas à l’époque.
+C’est plutôt vers le projet Sage que la
+communauté recherche de calcul formel “libre” se tournera un peu
+plus tard. Les deux projets Giac/Xcas et Sage coopèrent aujourd’hui
+au sens où Giac est un paquet standard de Sage, mais restent concurrents 
+voir plus bas section <a href="#sec%3Aconcurrents">A.6</a>.</p><p>Parallèlement, Renée a lancé à l’IREM de Grenoble
+un groupe de travail sur l’utilisation des calculatrices
+formelles au lycée, à l’automne 2000 :
+HP mettait à disposition
+des profs de lycée participants des valises de HP40G
+prêtées aux élèves. Peu après, HP se désintéresse
+des calculatrices, l’idée de tester le Xcas (d’alors) en classe
+est venue tout naturellement. Ce sont Michèle Gandit et
+Christianne Serret qui se lancent dans l’aventure, c’est bien
+le mot, parce qu’il fallait y croire avec les très nombreux
+bugs et manques de l’interface de l’époque. C’est
+l’observation des problèmes rencontrés par les élèves
+qui m’a fait prendre conscience qu’une révision complète
+de l’interface s’imposait, et j’y ai consacré une bonne année
+de travail, aboutissant à une interface proche de l’actuelle.
+C’est cette nouvelle interface qui a permis le
+décollage de Xcas, que l’on peut juger
+au nombre de téléchargements, ainsi que par
+les interactions avec des utilisateurs inconnus.</p>
+<!--TOC section id="sec312" La montée en puissance: 2007-2013-->
+<h2 id="sec312" class="section">A.3  La montée en puissance: 2007-2013</h2><!--SEC END --><p>
+En 2007, Xcas participe aux Trophées du Libre, (concours
+de logiciels libres qui n’existe plus aujourd’hui), et obtient
+la 3ième place dans la catégorie logiciels scientifiques.
+J’espérais que cela marquerait une étape
+décisive dans la montée en puissance,
+par exemple en faisant entrer Xcas dans
+des distributions Linux, mais cela n’a pas servi (et encore
+aujourd’hui Giac n’a pas réussi à entrer dans les distributions
+Linux majeures, même si l’entrée dans Fedora semble
+imminente). En fait la montée en puissance s’est faite
+progressivement, avec environ une dizaine de % d’utilisateurs
+en plus chaque année, grâce aux améliorations
+implémentées par l’interaction avec les profs
+de maths sur le forum de Xcas ou par email. C’est aussi
+vers 2008 que l’interface est devenue suffisamment
+intuitive pour que les étudiants de la préparation
+à l’agrégation de Grenoble option calcul formel
+basculent de Maple vers Xcas
+(avec une période de transition où certains travaillaient
+avec Maple en même temps que d’autres avec Xcas). Suivis
+peu de temps après par Jussieu (F. Han). Puis progressivement
+dans certains enseignements de licence à Grenoble et
+sans doute ailleurs.</p><p>Le projet Giac va aussi prendre en 2011 une direction un peu
+imprévue, c’est la valorisation. Le noyau de Giac va
+en effet pour la première fois être intégré
+à une application commerciale, PocketCAS. Ce qui nécessitera
+de contacter les services de valorisation de l’université, 
+début d’un épisode
+difficile que je ne peux pas commenter plus pour des
+raisons de confidentialité.</p>
+<!--TOC section id="sec313" 2013-2017-->
+<h2 id="sec313" class="section">A.4  2013-2017</h2><!--SEC END --><p>
+Le nombre de téléchargements de Xcas dépasse maintenant
+les 50 000 par an avec des pointes mensuelles en septembre et octobre
+à plus de 12 000 (principalement sous Windows). Xcas est
+présent dans la grande majorité des livres de maths de Terminale
+S, on en parle aussi en ES (une copie d’écran de Xcas se trouve
+d’ailleurs dans le sujet du bac ES 2014).
+La couverture en France est donc plutôt bonne, c’est
+vers l’étranger qu’il faut maintenant gagner des parts de marché
+(ce qui nécessitera une amélioration de la documentation
+en anglais).</p><p>Au concours de l’agrégation externe,
+Xcas est choisi par une fraction
+significative des candidats en modélisation option C
+(un tiers environ en 2012).
+Parallèlement à la montée en
+puissance de Xcas, l’arrivée de Sage, la fin de Maple (et
+Mathematica) en classes préparatoires
+et le succès de Scilab en calcul numérique et probabilités, ont
+fait que la situation s’est renversée, en 2015,
+seuls les logiciels libres sont autorisés
+à cette épreuve de modélisation, on peut
+dire que c’est un beau succès pour les logiciels libres,
+auquel Xcas a contribué.
+En 2013/14, j’ai retravaillé pour les candidats
+aux options A et surtout B : refonte de
+la page agrégation externe, ajout de fonctionnalités,
+testées dans un cours de méthodes numériques
+niveau licence 3ième année. Il y a en effet une part de marché
+à conquérir parmi tous les candidats qui utilisaient auparavant
+Maple, en particulier pour tous les certifiés qui
+ne sont pas inscrits à une préparation, Xcas est un choix
+qui semble rationnel : ceux qui ont appris Maple peuvent
+utiliser leurs connaissances, Xcas est aussi proposé
+à l’agrégation interne et les professeurs peuvent utiliser Xcas avec
+leurs élèves ce qui est certainement un excellent entrainement
+pour la mise au point d’un petit programme le jour du concours.
+Xcas est aussi présent pour les oraux du Capes, mais je n’ai
+pas de retour sur son utilisation réelle par les candidats,
+même si plusieurs préparations semblent utiliser Xcas.</p><p>La collaboration entamée avec Geogebra en 2013
+se concrétise avec la version 4.4 sortie en décembre 2013
+qui interface Giac (module natif java et version
+web) avec la fenêtre CAS de Geogebra.
+Les interfaces vers d’autres langages s’améliorent,
+module Python, interface avec Sage (F. Han),
+utilisation depuis Javascript. Plusieurs projets
+libres utilisent Giac comme moteur de calcul : Qcas (interface
+alternative, qui pourrait remplacer Xcas un jour),
+Smartcas (calculatrice CAS dans votre navigateur),
+Xcas Pad (sur tablettes)...</p><p>Coté valorisation, Giac fait aujourd’hui l’objet de
+plusieurs contrats de
+commercialisation (en dual-licensing), le plus important avec HP
+pour le CAS des calculatrices HP-Prime.</p>
+<!--TOC section id="sec314" Le présent et le futur proche-->
+<h2 id="sec314" class="section">A.5  Le présent et le futur proche</h2><!--SEC END --><p>
+La collaboration avec Geogebra m’ayant fait développer une version 
+compilée en Javascript de Giac, j’avais écrit 
+une petite interface web pour la tester. Décidé à pouvoir
+utiliser Xcas sur mon smartphone, je l’avais amélioré petit à
+petit. En mars 2018 elle commence à être une alternative envisageable à la
+version native de Xcas. On y retrouve l’essentiel des fonctionnalités
+de Xcas (il manque certaines fonctionnalités, mais dans des domaines
+comme la géométrie interactive où les utilisateurs 
+travaillent avec des logiciels concurrents), en bien plus transparent
+pour l’utilisateur qui n’a pas besoin
+d’installer quoi que ce soit, et qui peut
+échanger bien plus facilement des sessions de calculs par email.
+Toujours avec le moteur Javscript de Giac, j’implémente un
+jeu de commandes utilisables dans un fichier L<sup>A</sup>T<sub>E</sub>X pour en
+avoir une sortie HTML+Mathml consultable depuis un navigateur, ce
+qui permet de faire des documents mathématiques interactifs où
+le lecteur peut exécuter des commandes du document 
+après les avoir éventuellement modifiés.</p><p>En 2017, les programmes d’algorithmique de seconde changent, en introduisant
+la notion de fonction en algorithmique, ce qui donne une nouvelle
+opportunité d’utiliser Xcas au lycée. Mais même si les programmes
+officiels n’imposent aucun langage, la hiérarchie de l’Éducation
+Nationale veut imposer Python
+ce qui va fatalement empêcher l’adoption de Xcas. À la rentrée 2017,
+une nouvelle calculatrice graphique sort, la Numworks, avec micro-Python
+comme langage de programmation, elle sera d’ailleurs
+suivie par Casio en mars 2018. 
+Il devient donc stratégiquement 
+important de faciliter le passage de Python à Xcas, je décide
+de créer un traducteur. Six mois plus tard, il permet de faire
+fonctionner de nombreux scripts niveau lycée avec
+des modifications mineures, voire tels quels dans les cas favorables.
+Combiné avec l’interface Xcas pour Firefox, on peut imaginer
+dans un futur proche que des élèves de lycée programment
+directement sur leur smartphone ou tablette
+avec Xcas en mode compatible Python. La compatibilité Python
+devrait également être appréciée par les possesseurs
+de calculatrices HP Prime.</p>
+<!--TOC section id="sec315" Les concurrents open-source.-->
+<h2 id="sec315" class="section">A.6  Les concurrents open-source.</h2><!--SEC END --><p> <a id="sec:concurrents"></a>
+Les principaux concurrents open-source de Giac/Xcas sont Maxima et
+Sage. Il existe d’autres logiciels libres de calcul formel 
+généralistes, mais ils
+ne semblent pas avoir beaucoup d’utilisateurs.</p><p>L’utilisation de Giac et de Maxima est assez proche, ce sont
+tous deux des logiciels qui fonctionnent localement (sans
+avoir besoin de connexion Internet),
+installables facilement sous Windows, Linux
+et Mac OS, avec une prise en main rapide
+aidée par un typage faible et par l’interface
+(Xcas ou Wxmaxima). Maxima est plus connu dans le monde anglo-saxon
+car il est plus ancien, alors que Xcas est maintenant bien
+implanté en France (et sans doute dans d’autres pays francophones)
+grace à la documentation en français. Xcas évolue plus vite.
+Giac dispose d’algorithmes beaucoup plus
+performants pour de (gros) calculs polynomiaux pour la recherche
+(meilleur moteur open-source de calcul de bases de Groebner 
+à l’heure actuelle par exemple)
+et est bien adapté à un usage
+en enseignement dès le lycée (en particulier 
+par son intégration comme CAS de geogebra). Un challenge pour Xcas
+pour les années à venir va être d’augmenter la part
+de marché dans le monde anglo-saxon, il nous faudrait
+un amateur motivé parlant nativement anglais prêt à consacrer
+du temps pour améliorer la documentation en anglais.</p><p>Sage est très différent de Xcas et Maxima. On peut certes l’utiliser
+comme un logiciel local en ligne de commande, mais
+pour une interface plus conviviale il faut utiliser le modèle
+client-serveur, l’interface étant alors dans le navigateur. Les
+ressources nécessaires sont significativement plus importantes
+si on l’installe localement, et l’accès Internet est indispensable
+sinon<sup><a id="text40" href="#note40">2</a></sup>. Le langage de 
+Sage est beaucoup plus typé que celui de Giac, il est
+philosophiquement
+plus proche de Magma que de Maple ou Mathematica,
+donc plus difficile à apprendre pour qui n’a pas la fibre 
+algébriste : il faut commencer par déclarer dans quel
+ensemble on travaille, est-ce un anneau, un corps, un anneau
+de polynômes par rapport à quelle(s) variable(s)<sup><a id="text41" href="#note41">3</a></sup>.
+Sage se fonde sur un énorme corpus de logiciels et
+bibliothèques (dont Maxima, appelé pour les calculs symboliques,
+Giac en est aussi un composant mais peu utilisé par défaut), 
+qu’il fait communiquer entre eux, un peu à la
+manière d’une distribution linux qui fait cohabiter des composants
+logiciels, mais de manière plus intime, Python servant
+de colle entre les briques logicielles écrits en différents
+langages (c’est aussi là une différence importante avec Giac
+qui utilise C/C++ pour dialoguer avec d’autres bibliothèques
+ou logiciels, tout en restant utilisable comme module
+Python). C’est la force et la
+faiblesse de Sage, car on bénéficie de certains composants très
+performants, mais le code propre de Sage est très dépendant
+de l’évolution de ces composants :
+</p><ul class="itemize"><li class="li-itemize">
+son composant d’infrastructure le plus fondamental, 
+la version de Python utilisée est
+figée depuis plusieurs années en 2.7 (alors que le module
+giacpy pour accéder à giac depuis Python fonctionne
+en versions 2.7 et 3.x),
+</li><li class="li-itemize">toutes les opérations de calcul formel non
+spécialisé font très souvent appel à Maxima,
+si une intégrale rend un résultat incorrect, il faut en informer
+les développeurs de Maxima
+</li><li class="li-itemize">les opérations polynomiales rapides font appel à des
+bibliothèques C/C++ et dépendent donc des performances
+de ces bibliothèques : par exemple le calcul de base
+de Groebner sur les entiers utilise Singular, dont la version
+actuelle est très inefficace sur <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>&Zopf;</mi></mrow><annotation encoding='application/x-tex'>\mathbb{Z}</annotation></semantics></math>
+</li></ul><p> 
+De ce fait, le portage est difficile : sans même parler des OS de tablettes
+et smartphones, ce n’est que fin 2016 qu’apparait une version 
+Windows, sinon il faut faire communiquer le navigateur sous Windows 
+avec un serveur sage dans une machine virtuelle sous linux, ce qui nécessite
+significativement plus de ressources<sup><a id="text42" href="#note42">4</a></sup> que pour Giac, 
+qui peut même tourner sur des calculatrices.</p><p>Les deux stratégies de développement de Giac et Sage
+sont assez opposées<sup><a id="text43" href="#note43">5</a></sup> : Giac se contente de peu de ressources et cible le 
+public enseignement dès le lycée (calculatrices, geogebra) alors
+que W. Stein, le fondateur de Sage se tourne vers le cloud computing :
+“Measured by the mission statement, Sage has overall failed. The core
+goal is to provide similar functionality to Magma (and [Maple,
+Mathematica Matlab]) across the board, and the Sage development model
+and community has failed to do this across the board, since after 9
+years, based on our current progress, we will never get there. There
+are numerous core areas of research mathematics that I’m personally
+familiar with (in arithmetic geometry), where Sage has barely moved in
+years and Sage does only a few percent of what Magma does.”
+“The longterm plan is to start a separate for-profit company if we
+build a sufficient customer base. If this company is successful, it
+would also support fulltime development of Sage (e.g., via teaching
+buyouts for faculty, support of students, etc.), similar to how Magma
+(and Mathematica, etc.) development is funded.” (<span style="font-family:monospace"><span style="font-size:xx-small">http://sagemath.blogspot.co.uk/2014/08/what-is-sagemathcloud-lets-clear-some.html</span></span>).</p>
+<!--BEGIN NOTES chapter-->
+<hr class="footnoterule"><dl class="thefootnotes"><dt class="dt-thefootnotes">
+<a id="note39" href="#text39">1</a></dt><dd class="dd-thefootnotes"><div class="footnotetext">acronyme récursif de GiNac Is Not A Cas,
+jeu de mot identique à Gnu is Not Unix, alors que Giac est
+l’acronyme de Giac Is A Cas</div></dd><dt class="dt-thefootnotes"><a id="note40" href="#text40">2</a></dt><dd class="dd-thefootnotes"><div class="footnotetext">Il serait d’ailleurs intéressant de calculer le 
+cout énergétique d’un même calcul fait par Sage, Maxima, 
+Xcas et une calculatrice formelle! Pour avoir un ordre
+de grandeur, une recherche sur google émettrait 7g de CO2, 
+soit environ 16Wh, de quoi faire fonctionner un ordinateur 
+portable un quart d’heure et une calculatrice haut de gamme
+pendant une journée</div></dd><dt class="dt-thefootnotes"><a id="note41" href="#text41">3</a></dt><dd class="dd-thefootnotes"><div class="footnotetext">sauf si
+on utilise l’anneau symbolique, analogue à ce qui se passe
+dans Xcas, Maple ou Mathematica</div></dd><dt class="dt-thefootnotes"><a id="note42" href="#text42">4</a></dt><dd class="dd-thefootnotes"><div class="footnotetext">512M de RAM pour la
+machine virtuelle linux, à quoi il faut ajouter 
+le logiciel VirtualBox et le navigateur. De plus la taille des
+calculs possibles est limitée par la RAM allouée à
+la machine virtuelle.</div></dd><dt class="dt-thefootnotes"><a id="note43" href="#text43">5</a></dt><dd class="dd-thefootnotes"><div class="footnotetext">Ce qui est peut-être une bonne chose,
+on peut le voir comme deux stratégies complémentaires pour le
+calcul formel libre</div></dd></dl>
+<!--END NOTES-->
+<!--TOC chapter id="sec316" Quelques opinions.-->
+</html>

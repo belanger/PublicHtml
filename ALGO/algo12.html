@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html >
+<head>
+<h1 id="sec107" class="chapter">Chapitre 12  Représentation des courbes implicites.</h1><!--SEC END --><p> <a id="sec:implicite"></a>
+Certaines représentations graphiques nécessitent peu d’outillage
+mathématique, ainsi les fonctions, les courbes paramétrique
+et polaires peuvent être représentées en échantillonant 
+une ou plusieurs expressions
+selon une discrétisation donnée explicitement par l’utilisateur
+ou par des paramètres par défaut, les points obtenus
+étant ensuite reliés par des segments.
+On pourrait bien sur automatiser avec le calcul
+formel l’étude de la courbe (tableaux de variations,
+asymptotes, points singuliers, etc.).</p><p>Par contre les courbes données par une équation implicite
+font intervenir des algorithmes et des mathématiques
+plus intéressantes. En dimension 2, on se donne donc
+une équation <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>f</mi><mo stretchy="false">(</mo><mi>x</mi><mo>,</mo><mi>y</mi><mo stretchy="false">)</mo><mo>=</mo><mn>0</mn></mrow><annotation encoding='application/x-tex'>f(x,y)=0</annotation></semantics></math> et on suppose <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>f</mi></mrow><annotation encoding='application/x-tex'>f</annotation></semantics></math> suffisamment
+régulière. Supposons la courbe non vide, soit <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mo stretchy="false">(</mo><msub><mi>x</mi> <mn>0</mn></msub><mo>,</mo><msub><mi>y</mi> <mn>0</mn></msub><mo stretchy="false">)</mo></mrow><annotation encoding='application/x-tex'>(x_0,y_0)</annotation></semantics></math>
+un point de cette courbe, si <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mo stretchy="false">(</mo><msub><mo>&PartialD;</mo> <mi>x</mi></msub><mi>f</mi><mo>,</mo><msub><mo>&PartialD;</mo> <mi>y</mi></msub><mi>f</mi><mo stretchy="false">)</mo><mo stretchy="false">(</mo><msub><mi>x</mi> <mn>0</mn></msub><mo>,</mo><msub><mi>y</mi> <mn>0</mn></msub><mo stretchy="false">)</mo><mo>&ne;</mo><mn>0</mn></mrow><annotation encoding='application/x-tex'>(\partial_x f,\partial_y f)(x_0,y_0) \neq
+0</annotation></semantics></math> on peut appliquer le théorème des fonctions implicites
+et la courbe est localement comme une courbe de fonction (en <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>x</mi></mrow><annotation encoding='application/x-tex'>x</annotation></semantics></math> ou
+en <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>y</mi></mrow><annotation encoding='application/x-tex'>y</annotation></semantics></math>). On en calcule la tangente et on peut suivre cette tangente
+un pas de discrétisation puis utiliser une méthode numérique
+de recherche de solution près de la tangente. Ces points
+sont appelés <span style="font-weight:bold">points réguliers</span><a id="hevea_default117"></a><a id="hevea_default118"></a></p><p>Les points où <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mo stretchy="false">(</mo><msub><mo>&PartialD;</mo> <mi>x</mi></msub><mi>f</mi><mo>,</mo><msub><mo>&PartialD;</mo> <mi>y</mi></msub><mi>f</mi><mo stretchy="false">)</mo><mo>=</mo><mn>0</mn></mrow><annotation encoding='application/x-tex'>(\partial_x f,\partial_y f)=0</annotation></semantics></math> sont
+les <span style="font-weight:bold">points singuliers</span><a id="hevea_default119"></a><a id="hevea_default120"></a>. 
+Génériquement, il n’y en a pas puisque
+cela donne 3 équations à 2 inconnues, par contre si on
+s’intéresse à une famille de courbes dépendant d’un
+paramètre, il en apparait. En ces points, on calcule le
+développement de Taylor et on recherche le premier
+terme homogène non nul (homogène après translation bien sur), 
+par exemple
+<math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><msub><mi>P</mi> <mn>2</mn></msub><mo>=</mo><msup><mi>x</mi> <mn>2</mn></msup><mo>&minus;</mo><msup><mi>y</mi> <mn>2</mn></msup></mrow><annotation encoding='application/x-tex'>P_2=x^2&#x2d;y^2</annotation></semantics></math> pour <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><msup><mi>x</mi> <mn>3</mn></msup><mo>+</mo><msup><mi>x</mi> <mn>2</mn></msup><mo>&minus;</mo><msup><mi>y</mi> <mn>2</mn></msup></mrow><annotation encoding='application/x-tex'>x^3+x^2&#x2d;y^2</annotation></semantics></math> en <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mo stretchy="false">(</mo><mn>0</mn><mo>,</mo><mn>0</mn><mo stretchy="false">)</mo></mrow><annotation encoding='application/x-tex'>(0,0)</annotation></semantics></math>. 
+Supposons que le polynôme
+correspondant <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><msub><mi>P</mi> <mi>m</mi></msub></mrow><annotation encoding='application/x-tex'>P_m</annotation></semantics></math> est sans racines multiples, et (quitte
+à faire une rotation) que le coefficient de <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><msup><mi>y</mi> <mi>m</mi></msup></mrow><annotation encoding='application/x-tex'>y^m</annotation></semantics></math> est non nul.
+<math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><msub><mi>P</mi> <mi>m</mi></msub></mrow><annotation encoding='application/x-tex'>P_m</annotation></semantics></math> est un polynôme homogène 
+donc se factorise au moins numériquement
+(en remplaçant une des variables par 1, on est ramené en dimension 1),
+et on montre qu’il y a <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>m</mi></mrow><annotation encoding='application/x-tex'>m</annotation></semantics></math> arcs de courbe complexes tangents
+aux droites d’équations ces <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>m</mi></mrow><annotation encoding='application/x-tex'>m</annotation></semantics></math> facteurs (et au plus
+<math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>m</mi></mrow><annotation encoding='application/x-tex'>m</annotation></semantics></math> arcs de courbe réels si on ne garde
+que les racines réelles). En effet, on pose <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>y</mi><mo>=</mo><mi>x</mi><mi>Y</mi></mrow><annotation encoding='application/x-tex'>y=xY</annotation></semantics></math> et on 
+est amené à résoudre
+<math xmlns='http://www.w3.org/1998/Math/MathML' display='block'><semantics><mrow><mi>f</mi><mo stretchy="false">(</mo><mi>x</mi><mo>,</mo><mi>x</mi><mi>Y</mi><mo stretchy="false">)</mo><mo>=</mo><mn>0</mn><mo>=</mo><msup><mi>x</mi> <mi>m</mi></msup><msub><mi>P</mi> <mi>m</mi></msub><mo stretchy="false">(</mo><mn>1</mn><mo>,</mo><mi>Y</mi><mo stretchy="false">)</mo><mo>+</mo><msup><mi>x</mi> <mrow><mi>m</mi><mo>+</mo><mn>1</mn></mrow></msup><mi>g</mi><mo stretchy="false">(</mo><mi>x</mi><mo>,</mo><mi>Y</mi><mo stretchy="false">)</mo></mrow><annotation encoding='application/x-tex'>f(x,xY)=0=x^mP_m(1,Y) + x^{m+1} g(x,Y) </annotation></semantics></math>
+où <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>g</mi></mrow><annotation encoding='application/x-tex'>g</annotation></semantics></math> est un polynôme si <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>f</mi></mrow><annotation encoding='application/x-tex'>f</annotation></semantics></math> est un polynôme 
+(plus généralement a la même régularité que <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>f</mi></mrow><annotation encoding='application/x-tex'>f</annotation></semantics></math>). 
+Après simplification par <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><msup><mi>x</mi> <mi>m</mi></msup></mrow><annotation encoding='application/x-tex'>x^m</annotation></semantics></math>, on peut appliquer le théorème des
+fonctions implicites pour déterminer <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>Y</mi></mrow><annotation encoding='application/x-tex'>Y</annotation></semantics></math> en fonction de <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>x</mi></mrow><annotation encoding='application/x-tex'>x</annotation></semantics></math> au
+voisinage de <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>x</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding='application/x-tex'>x=0</annotation></semantics></math> et de chacune des racines de <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><msub><mi>P</mi> <mi>m</mi></msub><mo stretchy="false">(</mo><mn>1</mn><mo>,</mo><mi>Y</mi><mo stretchy="false">)</mo></mrow><annotation encoding='application/x-tex'>P_m(1,Y)</annotation></semantics></math> en <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>Y</mi></mrow><annotation encoding='application/x-tex'>Y</annotation></semantics></math>
+(puisque les racines sont simples).
+Le point 
+est dit <span style="font-weight:bold">singulier-régulier</span><a id="hevea_default121"></a> ou
+singulier ordinaire<a id="hevea_default122"></a>. 
+C’est ce que fait la commande <code>implicitplot</code><a id="hevea_default123"></a><a id="hevea_default124"></a> de Xcas
+(affichage des informations intermédiaires).</p><p>Si le point singulier n’est pas ordinaire, l’équation devient
+<math xmlns='http://www.w3.org/1998/Math/MathML' display='block'><semantics><mrow><mo stretchy="false">(</mo><mi>Y</mi><mo>&minus;</mo><mi>t</mi><msup><mo stretchy="false">)</mo> <mi>k</mi></msup><munder><mo lspace="thinmathspace" rspace="thinmathspace">&prod;</mo> <mi>i</mi></munder><mo stretchy="false">(</mo><mi>Y</mi><mo>&minus;</mo><msub><mi>t</mi> <mi>i</mi></msub><mo stretchy="false">)</mo><mo>+</mo><mi>x</mi><mi>g</mi><mo stretchy="false">(</mo><mi>x</mi><mo>,</mo><mi>Y</mi><mo stretchy="false">)</mo><mo>=</mo><mn>0</mn><mo>,</mo><mspace width="1em"/><mi>k</mi><mi>&gt;</mi><mn>1</mn></mrow><annotation encoding='application/x-tex'>(Y&#x2d;t)^k \prod_i (Y&#x2d;t_i) + xg(x,Y)=0, \quad k&amp;gt;1 </annotation></semantics></math>
+et il faut faire intervenir des puissances fractionnaires en <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>x</mi></mrow><annotation encoding='application/x-tex'>x</annotation></semantics></math>
+(dépendant de termes supérieurs du développement de Taylor
+de <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>f</mi></mrow><annotation encoding='application/x-tex'>f</annotation></semantics></math> en <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mo stretchy="false">(</mo><mn>0</mn><mo>,</mo><mn>0</mn><mo stretchy="false">)</mo></mrow><annotation encoding='application/x-tex'>(0,0)</annotation></semantics></math>)
+pour désingulariser les <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>k</mi></mrow><annotation encoding='application/x-tex'>k</annotation></semantics></math> arcs de courbes ayant même tangente
+<math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>y</mi><mo>=</mo><mi>t</mi><mi>x</mi></mrow><annotation encoding='application/x-tex'>y=tx</annotation></semantics></math> en <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mo stretchy="false">(</mo><mn>0</mn><mo>,</mo><mn>0</mn><mo stretchy="false">)</mo></mrow><annotation encoding='application/x-tex'>(0,0)</annotation></semantics></math>. Par exemple si <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>g</mi><mo stretchy="false">(</mo><mn>0</mn><mo>,</mo><mi>t</mi><mo stretchy="false">)</mo><mo>&ne;</mo><mn>0</mn></mrow><annotation encoding='application/x-tex'>g(0,t) \neq 0</annotation></semantics></math>, 
+on pose <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>X</mi><mo>=</mo><msup><mi>x</mi> <mrow><mn>1</mn><mo stretchy="false">/</mo><mi>k</mi></mrow></msup><mo>,</mo><mi>Y</mi><mo>=</mo><mi>t</mi><mo>+</mo><mi>X</mi><mi>Z</mi></mrow><annotation encoding='application/x-tex'>X=x^{1/k}, Y=t+XZ</annotation></semantics></math>
+qui donne 
+<math xmlns='http://www.w3.org/1998/Math/MathML' display='block'><semantics><mrow><msup><mi>Z</mi> <mi>k</mi></msup><munder><mo lspace="thinmathspace" rspace="thinmathspace">&prod;</mo> <mi>i</mi></munder><mo stretchy="false">(</mo><mi>t</mi><mo>&minus;</mo><msub><mi>t</mi> <mi>i</mi></msub><mo>+</mo><mi>X</mi><mi>Z</mi><mo stretchy="false">)</mo><mo>+</mo><mi>g</mi><mo stretchy="false">(</mo><msup><mi>X</mi> <mi>k</mi></msup><mo>,</mo><mi>t</mi><mo>+</mo><mi>X</mi><mi>Z</mi><mo stretchy="false">)</mo><mo>=</mo><mn>0</mn></mrow><annotation encoding='application/x-tex'>Z^k \prod_i (t&#x2d;t_i+XZ) + g(X^k,t+XZ)=0 </annotation></semantics></math>
+pour <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>X</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding='application/x-tex'>X=0</annotation></semantics></math> on a alors <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>k</mi></mrow><annotation encoding='application/x-tex'>k</annotation></semantics></math> solutions non nulles <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>Z</mi></mrow><annotation encoding='application/x-tex'>Z</annotation></semantics></math> qui
+se prolongent au voisinage de <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>X</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding='application/x-tex'>X=0</annotation></semantics></math> par le théorème des
+fonctions implicites.</p><p>Certains cas particuliers peuvent être traités en
+transformant la courbe implicite en courbe paramétrique,
+c’est le cas des courbes algébriques de degré 2, qui
+sont des <span style="font-weight:bold">coniques</span><a id="hevea_default125"></a>. On peut les paramétrer rationnellement
+si on en connait un point (en prenant la droite passant par ce point
+de pente <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>m</mi></mrow><annotation encoding='application/x-tex'>m</annotation></semantics></math> et en cherchant l’autre point d’intersection
+avec la conique (il y en a forcément un et un seul autre,
+parce que l’équation correspondant aux points
+d’intersection est de degré 2
+et on connait déjà une solution), cette paramétrisation
+est intéressante pour faire du calcul formel, mais moins
+pour des représentations graphiques, on lui préferera
+une paramétrisation trigonométrique pour une conique
+ou exponentielle pour une hypebole, par exemple
+<math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mo stretchy="false">(</mo><mi>cos</mi><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo><mo>,</mo><mi>sin</mi><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo><mo stretchy="false">)</mo></mrow><annotation encoding='application/x-tex'>(\cos(t),\sin(t))</annotation></semantics></math> plutot que <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mfrac><mrow><mn>1</mn><mo>+</mo><mi>i</mi><mi>t</mi></mrow><mrow><mn>1</mn><mo>&minus;</mo><mi>i</mi><mi>t</mi></mrow></mfrac></mrow><annotation encoding='application/x-tex'>\frac{1+it}{1&#x2d;it}</annotation></semantics></math> pour
+le cercle unité, paramétrisation obtenue en calculant
+les éléments propres de la conique (<code>conique_reduite</code>). 
+Pour les courbes algébriques de degré
+plus grand, on commence par factoriser le polynôme,
+c’est une factorisation absolue (section <a href="#sec%3Afactorisation_absolue">18.7</a>) qui est nécessaire (ou
+au moins numérique dans <math xmlns='http://www.w3.org/1998/Math/MathML' display='inline'><semantics><mrow><mi>&Copf;</mi><mo stretchy="false">[</mo><mi>x</mi><mo>,</mo><mi>y</mi><mo stretchy="false">]</mo></mrow><annotation encoding='application/x-tex'>\mathbb{C}[x,y]</annotation></semantics></math>). Pour le moment,
+Xcas fait simplement une factorisation sur le corps
+des coefficients, et repère les équations de coniques.</p>
+<!--TOC chapter id="sec108" Formes différentielles et intégrales curvilignes-->
+</html>
