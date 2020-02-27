@@ -1,0 +1,281 @@
+<html>
+<head>
+<!--
+<script type="text/javascript" async
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+-->
+
+ <title>Calculus I</title>
+</head>
+
+<body>
+
+<center>
+<table width=100% bgcolor=blue>
+<tr>
+  <td align=left>
+    <a href="../../index.html">
+      <font color=white>
+        <b>Home</b>
+      </font>
+    </a>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  </td>
+  <td align=center>
+    <font color=white size=+2>
+      <b>Calculus I</b>
+    </font>
+  </td>
+  <td align=right>
+    <a href="../index.html">
+      <font color=white>
+        <b>Academics</b>
+      </font>
+    </a>
+  </td>
+</tr>
+</table>
+</center>
+
+<center>
+<big>
+  <b>
+    MT 198 <br>
+    VH 1212 <br>
+    MTWTh: 10:50-12:55 <br>
+  </b>
+</big>
+</center>
+
+<br><b>Instructor: </b> Jay Belanger
+<br><b>Office: </b> VH 2136
+<br><b>Email:</b><a href="mailto:<t>belanger@truman.edu</t>" ><t>belanger@truman.edu</t></a>
+<br><b>Phone: </b><t>660-216-0121</t>
+
+
+<p><b><font size=+1>Textbook: </font></b><br>
+<i>Calculus: Early Transcendentals (Third Edition)</i> by Rogawski<br>
+
+We will cover limits, derivatives, integrals and their applications;
+namely chapters 2 through 6 of the textbook.
+
+<p><b><font size=+1>Homeworks: </font></b><br>
+<ul>
+<li><b>2.2: Limits.</b> p. 70:
+1,3,4,5,6,17,19,21,23,25,27,28,29,40,49,50,55
+<li><b>2.3: Limit Laws.</b> p. 74:
+27,28,29,30,31,33,34,35
+<li><b>2.4: Continuity.</b> p. 82:
+3,7,9,11,13,15,49,55,67,69,75,79
+<li><b>2.5: Evaluating Limits.</b> p. 88:
+1,3,5,7,13,15,17,21,23,25,27,28,29,37,38
+<li><b>2.6: Trig Limits.</b> p. 92:
+7,8,9,17,18,19,20,26,27,28,29,30,31
+<li><b>2.7: Limits at Infinity.</b> p. 98:
+7-19 odd,35,37,38
+<li><b>2.8: The Intermediate Value Theorem.</b> p. 102:
+1,2,5,7,21,22,23
+<li><b>3.1: The Definition of the Derivative.</b> p. 118:
+29,31,33,35,37,38,39,40,53,55,57
+<li><b>3.2: The Derivative Function.</b> p. 132:
+1,2,3,15,16,17,21,23,24,26,27,30,43,44,66
+<li><b>3.3: Product and Quotient Rules</b>p.139, HW:1,3,7,8,11,12,17,21,27,33,39,40,41
+<li><b>3.5: Higher Order Derivatives</b>p.154, HW:1,3,5,7,17,18,23,39,40
+<li><b>3.6: Trig Functions</b>p.158, HW:1,3,5,7,9,15,19,21,25,27,35,36
+<li><b>3.7: Chain Rule</b>p.164, HW:5,6,11,13,17,18,29,30,31,36,39,40,46,49,50
+<li><b>3.8A: Implicit Differentiation</b>p.172, HW:9,11,15,21,23,53,55,66,77,79
+<li><b>3.8B: Inverse Trig Functions</b>p.172, HW:31,33,37,39,41,45
+<li><b>3.9A: Exponents and Logs</b>p.180, HW:1,3,5,7,9,11,19,20
+<li><b>3.9B: Logarithmic Differentiation</b>p.180, HW:15,16,39,41,43,45,49
+<li><b>3.10: Related Rates</b>p.186: 9,11,16,17,19,23,25,33
+<li><b>4.1: Linear Approximations</b>p.198: 34,45,47,49,57
+<li><b>4.2: Extrema.</b> p.206: 1,3,5,9,17,21,22,23,24,29,33,39
+<li><b>4.2B: Rolle's Theorem.</b> p.207: 65,67,69
+<li><b>4.3: The Mean Value Theorem.</b> p.215: 1,35,64,65
+<li><b>4.3B: The First Derivative Test.</b> p.216: 23,25,29,37,39,41,58,59
+<li><b>4.4: Concavity.</b> p.221: 1,2,3,5,13,22,23,24,27,29,33
+<li><b>4.5: L'Hopital's Rule.</b> p.229: 1,3,4,9,27,31,32,36,43,44
+<li><b>4.6: Graphs.</b> p.237: 1,2,11,12,15,18
+<li><b>4.7: Max/Min.</b> p.244: 1,2,7,8,9,13,21,22,30
+<li><b>4.8: Newton's Method.</b> p.254: 1,3,5,7,9,20,29,30
+<li><b>5.1A: Sums.</b> p.268: 23,25,26,29,33
+<li><b>5.1B: Approximating Areas.</b> p.268: 5,6,7,9,10,15,18,35,36
+<li><b>5.1C: Areas.</b> p.268: 55,56,57
+<li><b>5.2: Definite Integrals.</b> p.278: 1,3,15,23,55,57,59,61
+<li><b>5.3: Indefinite Integrals.</b> p.286: 1,3,5,7,11,13,17,19,25,36,47,49,51
+<li><b>5.4: First Fundamental Theorem.</b> p.293: 5,7,9,11,13,17,21,23,25,33
+<li><b>5.5: Second Fundamental Theorem.</b> p.298: 3,7,9,11,13,21,23
+<li><b>5.7: Substitution.</b> p.311: 7,9,11,13,21,29,33,35,41,83,85,87,95
+<li><b>5.8: More Integrals.</b> p.: 7,8,9,11,12,13,14,45
+<li><b>6.1: Area Between Curves.</b> p.338: 1,3,9,10,23,31
+<li><b>6.2A: Mass.</b> p.349: 25,26,27,28
+<li><b>6.3: Volume (disks).</b> p.: 1,3,5,7,9
+<li><b>6.4: Volume (shells).</b> p.363: 1,3,5,7,9 
+</ul> 
+
+<p><b><font size=+1>Grade: </font></b><br>
+Your grade will be determined by:
+
+&nbsp;&nbsp;
+<table>
+<tr>
+<td>
+<b>Test</b> </td>
+  <td> <b>Date</b> </td>
+  <td> <b>Points</b> </td>
+</tr>
+<tr>
+  <td>
+
+<b>Test 1</b> </td>
+  <td> June 22 </td>
+  <td> 50</td>
+</tr>
+<tr>
+  <td>
+<b>Test 2</b> </td>
+  <td> July 13 </td>
+  <td> 50</td>
+</tr>
+<tr>
+  <td>
+<b>Test 3</b> </td>
+  <td> July 27 </td>
+  <td> 50</td>
+</tr>
+<tr>
+  <td>
+<b>Quizzes</b> </td>
+  <td> Sporadic </td>
+  <td> Up to 30</td>
+</tr>
+<tr>
+  <td>
+</td>
+</tr>
+</table>
+<tr>
+<td>
+
+<br>
+Your grade will follow the guidelines:<br>
+A 90% and above will guarantee an A.<br>
+A 80% and above will guarantee a B.<br>
+A 70% and above will guarantee a C.<br>
+A 60% and above will guarantee a D.
+
+
+
+<p><b><font size=+1>Solutions: </font></b><br>
+
+<br>
+When solving a problem, be sure to understand what you are being asked
+and be sure to <b>answer the question</b> explicitly.
+
+Be sure to write up your solution appropriately and understand what you are writing down.
+For example:
+<ul>
+<li>
+The solution to a math problem isn't simply a result, but rather the
+process of getting to the proper result.
+
+<li> 
+All necessary steps should be justified.
+
+<li>
+Do not include unnecessary information.
+
+<li>
+Your solutions are not scratch work, they are written for other
+people to read.
+
+<li>
+Solutions should be written the way that most people read; left to
+right, top to bottom.  The writing should not jump around the page.
+
+<li> 
+Everything should be identified.<br>
+(Never write an isolated expression; if you want to indicate that
+<i>x</i> is equal to eight, you shouldn't just write <i>8</i> or even
+<i>x &nbsp;&nbsp; 8</i>, you should write <i>x = 8</i>.)
+
+<li>
+Mathematical notation should be used appropriately and properly.<br>
+For example:
+<ul>
+<li>
+When solving <i>x^3 = 8</i>, should should <b>not</b> write
+<i>x^3 = 8 = x = 2</i>, since the middle equal sign is incorrect.
+<li>
+To indicate that <i>x</i> is equal to 2, you should <b>not</b> write 
+<i>x &rarr; 2</i>, the symbol <i>&rarr;</i> does not mean &ldquo;equals&rdquo;.
+</ul>
+</ul>
+A solution which is not properly written down is not correct.
+
+<p><b><font size=+1>Homework: </font></b><br>
+
+<br>
+Homework will be assigned but not collected.  They should be done
+regularly to learn the material.  You should also practice writing up
+nice solutions when you are doing the homeworks.
+
+<p><b><font size=+1>Tests: </font></b><br>
+
+<br>
+For tests and quizzes, you can bring a calculator and standard pen or
+pencil.  
+
+The tests will not be made up of homework problems, but the
+test problems will be based on the homework problems. Thus, the best
+way to learn the material is to understand how to do the homework
+problems.  You are expected to keep up with the work, not cram before
+a test. I will not discuss several sections at once, and I will not
+answer questions about tests and quizzes on the days they are given.
+
+<p><b><font size=+1>Attendance: </font></b><br>
+
+<br>
+Attendance is not taken, but you are responsible for whatever
+information that you missed.  
+
+If you will be missing a test, you need a good reason (as
+determined by the professor) and arrangements for a make-up test must
+be made before the actual test.
+
+<p><b><font size=+1>Disabilities: </font></b><br>
+
+<br>
+If you have a letter from the Disability Services Office, you should
+discuss it with me the first week of class.
+
+<p><b><font size=+1>Academic dishonesty: </font></b><br>
+
+<br>
+You know the difference between right and wrong. Be honest, don't cheat.
+The Truman Catalog states:
+<blockquote>
+<br>
+Students are expected to do their own academic work. Any student
+involved in cheating on a paper, an examination or in any 
+other form of academic dishonesty is subject to disciplinary action,
+including suspension or expulsion from the class, the student's
+academic program, or the University.
+</blockquote>
+On tests and quizzes, you must do your work yourself without looking
+at other people's work or using any equipment or material not explicitly
+allowed. Anyone caught cheating will have their grade affected, and may
+even fail the class.
+
+<p><b><font size=+1>Calculators: </font></b><br>
+
+<br>
+You may use calculators (including graphing calculators) on tests and
+quizzes.  However, if you are expected to justify a result, simply
+referring to the calculator is not sufficient.
+
+
+<hr size=24 color=blue></body>
+</html>
+
