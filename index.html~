@@ -15,7 +15,7 @@
 <h1>Jay Belanger's Web Page</h1>
 
 <img width=320 alt="A picture of me (you're not missing much)." 
-     src="Pics/Jay.png"/>
+     src="Pics/Jay.jpg"/>
 
 <table border>
   <tr>
@@ -40,6 +40,5 @@
 </menu>
 
 <hr size=24 color=blue>
-
 </center></body>
 </html>
