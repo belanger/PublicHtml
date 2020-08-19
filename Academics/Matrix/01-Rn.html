@@ -1,0 +1,1532 @@
+<!DOCTYPE html>
+<html >
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII">
+<meta name="generator" content="hevea 2.34">
+<style type="text/css">
+.li-itemize{margin:1ex 0ex;}
+.li-enumerate{margin:1ex 0ex;}
+.dd-description{margin:0ex 0ex 1ex 4ex;}
+.dt-description{margin:0ex;}
+.toc{list-style:none;}
+.footnotetext{margin:0ex; padding:0ex;}
+div.footnotetext P{margin:0px; text-indent:1em;}
+.thefootnotes{text-align:left;margin:0ex;}
+.dt-thefootnotes{margin:0em;}
+.dd-thefootnotes{margin:0em 0em 0em 2em;}
+.footnoterule{margin:1em auto 1em 0px;width:50%;}
+.caption{padding-left:2ex; padding-right:2ex; margin-left:auto; margin-right:auto}
+.title{margin:2ex auto;text-align:center}
+.titlemain{margin:1ex 2ex 2ex 1ex;}
+.titlerest{margin:0ex 2ex;}
+.center{text-align:center;margin-left:auto;margin-right:auto;}
+.flushleft{text-align:left;margin-left:0ex;margin-right:auto;}
+.flushright{text-align:right;margin-left:auto;margin-right:0ex;}
+div table{margin-left:inherit;margin-right:inherit;margin-bottom:2px;margin-top:2px}
+td table{margin:auto;}
+table{border-collapse:collapse;}
+td{padding:0;}
+.cellpadding0 tr td{padding:0;}
+.cellpadding1 tr td{padding:1px;}
+pre{text-align:left;margin-left:0ex;margin-right:auto;}
+blockquote{margin-left:4ex;margin-right:4ex;text-align:left;}
+td p{margin:0px;}
+.boxed{border:1px solid black}
+.textboxed{border:1px solid black}
+.vbar{border:none;width:2px;background-color:black;}
+.hbar{border:none;height:2px;width:100%;background-color:black;}
+.hfill{border:none;height:1px;width:200%;background-color:black;}
+.vdisplay{border-collapse:separate;border-spacing:2px;width:auto; empty-cells:show; border:2px solid red;}
+.vdcell{white-space:nowrap;padding:0px; border:2px solid green;}
+.display{border-collapse:separate;border-spacing:2px;width:auto; border:none;}
+.dcell{white-space:nowrap;padding:0px; border:none;}
+.dcenter{margin:0ex auto;}
+.vdcenter{border:solid #FF8000 2px; margin:0ex auto;}
+.minipage{text-align:left; margin-left:0em; margin-right:auto;}
+.marginpar{border:solid thin black; width:20%; text-align:left;}
+.marginparleft{float:left; margin-left:0ex; margin-right:1ex;}
+.marginparright{float:right; margin-left:1ex; margin-right:0ex;}
+.theorem{text-align:left;margin:1ex auto 1ex 0ex;}
+.part{margin:2ex auto;text-align:center}
+.lstlisting{font-family:monospace;white-space:pre;margin-right:auto;margin-left:0pt;text-align:left}
+</style>
+<script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+<title>01-Rn</title>
+</head>
+<body >
+<!--HEVEA command line is: hevea -I /home/belanger/JBerd/Config/TeX/Sty/ 01-Rn.tex -->
+<!--CUT STYLE article--><!--CUT DEF section 1 --><p>
+
+<div>
+<div id="maindiv" style="max-height: 500px; overflow:auto">
+
+
+
+\(
+\newcommand{\vect}[1]
+{\mathbf{#1}}
+\newcommand{\vectr}[1]
+{\begin{pmatrix} #1 \end{pmatrix}}
+\)
+
+
+
+</p><div class="center">
+<span style="font-weight:bold"><span style="font-size:x-large">Section 1<br>
+ </span></span>\(\mathbb{R}^{n}\)<span style="font-weight:bold"><span style="font-size:x-large">
+</span></span></div><p>If you&#X2019;ve had Calculus, you may have come across vectors and \(\mathbb{R}^{n}\), but
+even so a brief reminder may be helpful.</p>
+<!--TOC subsection id="sec1" Definition of \(\mathbb{R}^{n}\)-->
+<h3 id="sec1" class="subsection">0.1&#XA0;&#XA0;Definition of \(\mathbb{R}^{n}\)</h3><!--SEC END --><p><br>
+</p><p><span style="font-weight:bold"><span style="font-variant:small-caps">Definition </span></span><br>
+ An element of \(\mathbb{R}^{n}\) is an ordered list of \(n\) real numbers.
+
+<div><hr style="text-align:left;margin-left:0;width:10&#37;;height:2"></div>
+
+</p><p>We will write the ordered lists as columns. So, for example,
+\(\mathchoice{\begin{pmatrix} 1\\2 \end{pmatrix}}{\small \begin{pmatrix} 1\\2 \end{pmatrix}}{}{}\) is an element of \(\mathbb{R}^{2}\), and \(\mathchoice{\begin{pmatrix} 3\\2\\5 \end{pmatrix}}{\small \begin{pmatrix} 3\\2\\5 \end{pmatrix}}{}{}\)
+is an element of \(\mathbb{R}^{3}\). If you learned about
+\(\mathbb{R}^{n}\)
+in Calculus, the elements were probably given as rows rather than
+columns; an element of \(\mathbb{R}^{2}\) would be written \((x,y)\) rather than
+\(\mathchoice{\begin{pmatrix} x\\y \end{pmatrix}}{\small \begin{pmatrix} x\\y \end{pmatrix}}{}{}\). While you should be familiar with both ways of
+representing elements of \(\mathbb{R}^{n}\), when dealing with matrices it is
+usually more useful to think of elements of \(\mathbb{R}{n}\) as columns.</p><p>An element of \(\mathbb{R}^{n}\) is often represented by \(\vect{x} = \begin{pmatrix}
+  x_{1} \\ x_{2} \\ \vdots \\ x_{n}\end{pmatrix}\), although, to avoid
+subscripts, elements of \(\mathbb{R}^{2}\) are usually represented as \(\mathchoice{\begin{pmatrix} x\\y \end{pmatrix}}{\small \begin{pmatrix} x\\y \end{pmatrix}}{}{}\),
+and elements of \(\mathbb{R}^{3}\) by \(\mathchoice{\begin{pmatrix} x\\y\\z \end{pmatrix}}{\small \begin{pmatrix} x\\y\\z \end{pmatrix}}{}{}\). The numbers \(x_1\), \(x_2\),
+&#X2026;, \(x_n\) (or \(x\), \(y\), \(z\)) are called the <em>coordinates</em>.</p>
+<!--TOC subsection id="sec2" Points-->
+<h3 id="sec2" class="subsection">0.2&#XA0;&#XA0;Points</h3><!--SEC END --><p>The set \(\mathbb{R}^{1}\) is simply the set of real numbers, which is 
+viewed geometrically as a line. The line is then called the
+<span style="font-style:italic"><span style="font-weight:bold">real line</span></span>. 
+To make the identification between \(\mathbb{R}^{1}\) and a line, we need a special
+point on the line, called the <span style="font-style:italic"><span style="font-weight:bold">origin</span></span>, a unit length, and a
+positive direction. (Normally, the line is drawn horizontally and the
+positive direction is to the right.) Any real number \(x\) is
+associated with the following point on the line (see figure
+</p><ul class="itemize"><li class="li-itemize">
+If \(x = 0\), then \(x\) is associated with the origin.
+</li><li class="li-itemize">If \(x > 0\), then \(x\) is associated with the point which is \(x\)
+units from the origin in the positive direction.
+</li><li class="li-itemize">If \(x < 0\), then \(x\) is associated with the point which is
+\(|x|\) units from the origin in the negative direction (i.e., the
+opposite direction from the positive direction).
+</li></ul><p>The set \(\mathbb{R}^{2}\) can be viewed geometrically as a plane. This
+identification needs two copies of the real line which intersect at
+right angles at their origins. One copy of the real line is the
+\(x\)<span style="font-family:monospace">-axis</span>, one is the \(y\)<span style="font-family:monospace">-axis</span>, and they are oriented
+so that going about the origin from the positive \(x\)-axis to the
+positive \(y\)-axis is counterclockwise. (This is called the
+<em>positive orientation</em>.) The \(x\)-axis is usually drawn
+horizontally with the positive \(x\) direction to the right, meaning the
+\(y\)-axis is vertical and the positive \(y\) direction is up. (See
+figure <a href="#fig%3ARn-2daxes">??</a>.) 
+</p><blockquote class="figure"><div class="center"><div class="center"><hr style="width:80%;height:2"></div>
+<img src="01-Rn001.png">
+<div class="caption"><table style="border-spacing:6px;border-collapse:separate;" class="cellpading0"><tr><td style="vertical-align:top;text-align:left;" >Figure 1: The \(x\)- and \(y\)-axes.</td></tr>
+</table></div>
+<a id="fig:Rn-2daxes"></a>
+<div class="center"><hr style="width:80%;height:2"></div></div></blockquote><p>An element \(\mathchoice{\begin{pmatrix} x\\y \end{pmatrix}}{\small \begin{pmatrix} x\\y \end{pmatrix}}{}{}\) in \(\mathbb{R}^{2}\) is associated with the point in the
+plane which is \(x\) units from the origin in the \(x\) direction and \(y\)
+units from the origin in the \(y\) direction. (See figure
+<a href="#fig%3ARn-pt">??</a>.)</p><blockquote class="figure"><div class="center"><div class="center"><hr style="width:80%;height:2"></div>
+<img src="01-Rn002.png">
+<div class="caption"><table style="border-spacing:6px;border-collapse:separate;" class="cellpading0"><tr><td style="vertical-align:top;text-align:left;" >Figure 2: An element of \(\mathbb{R}^{2}\) is associated with a point in the plane.</td></tr>
+</table></div>
+<a id="fig:Rn-pt"></a>
+<div class="center"><hr style="width:80%;height:2"></div></div></blockquote><p>Continuing, the set \(\mathbb{R}^{3}\) can be viewed geometrically as space. This
+identification needs three copies of the real line which intersect at
+right angles at their origins. One copy of the real line is the
+\(x\)<span style="font-family:monospace">-axis</span>, one is the \(y\)<span style="font-family:monospace">-axis</span>, and one is the
+\(z\)<span style="font-family:monospace">-axis</span>. They are oriented according to the
+<span style="font-family:monospace">right-hand rule</span>, namely if you point the fingers on your
+right hand in the positive \(x\) direction so they bend in the positive
+\(y\) direction, your thumb will point in the positive \(z\) direction.
+(This is called the <em>positive orientation</em>.) The \(x\)-axis is
+usually indicated so that it is coming out the page, the \(y\)-axis is
+going to the right and the \(z\) axis is going up. (See figure
+<a href="#fig%3ARn-3daxes">??</a>.)
+</p><blockquote class="figure"><div class="center"><div class="center"><hr style="width:80%;height:2"></div>
+<img src="01-Rn003.png">
+<div class="caption"><table style="border-spacing:6px;border-collapse:separate;" class="cellpading0"><tr><td style="vertical-align:top;text-align:left;" >Figure 3: The \(x\), \(y\) and \(z\) axes in space; the \(x\) axis is supposed to be
+coming out of the page.</td></tr>
+</table></div>
+<a id="fig:Rn-3daxes"></a>
+<div class="center"><hr style="width:80%;height:2"></div></div></blockquote><p>An element \(\mathchoice{\begin{pmatrix} x\\y\\z \end{pmatrix}}{\small \begin{pmatrix} x\\y\\z \end{pmatrix}}{}{}\) in \(\mathbb{R}^{3}\) is associated with the point in
+space which is \(x\) units from the origin in the \(x\) direction, \(y\)
+units from the origin in the \(y\) direction and \(z\) units from the
+origin in the \(z\) direction. (See figure <a href="#fig%3ARn-3dpt">??</a>.)</p><blockquote class="figure"><div class="center"><hr style="width:80%;height:2"></div>
+<img src="01-Rn004.png">
+<div class="caption"><table style="border-spacing:6px;border-collapse:separate;" class="cellpading0"><tr><td style="vertical-align:top;text-align:left;" >Figure 4: An element of \(\mathbb{R}^{3}\) is associated with a point in space.</td></tr>
+</table></div>
+<a id="fig:Rn-3dpt"></a>
+<div class="center"><hr style="width:80%;height:2"></div></blockquote><p>This geometric association can be continued, but for \(n > 3\), \(\mathbb{R}^{n}\)
+becomes hard to visualize and even harder to draw. Because of this,
+when pictures are helpful, they will typically be in \(\mathbb{R}^{2}\).</p>
+<!--TOC subsection id="sec3" Vectors-->
+<h3 id="sec3" class="subsection">0.3&#XA0;&#XA0;Vectors</h3><!--SEC END --><p>The coordinates of an element of \(\mathbb{R}^{n}\) can be thought of as directions
+to the point, starting at the origin. To get to the point in the
+plane given by \(\mathchoice{\begin{pmatrix} 2\\3 \end{pmatrix}}{\small \begin{pmatrix} 2\\3 \end{pmatrix}}{}{}\) from the origin, go \(2\) units in the \(x\)
+direction and \(3\) units in the \(y\) direction. These directions make
+sense even if we don&#X2019;t start at the origin; starting at the point
+given by \(\mathchoice{\begin{pmatrix} 5\\7 \end{pmatrix}}{\small \begin{pmatrix} 5\\7 \end{pmatrix}}{}{}\), after going \(2\) units in the \(x\) direction and
+\(3\) units in the \(y\) direction, we will end up at the point given by
+\(\vectr{5+2\\ 7+3} = \vectr{7\\ 10}\).</p><p>Viewed as directions, an element of \(\mathbb{R}^{n}\) is called a <span style="font-family:monospace">vector</span>.
+Vectors are often represented by an arrow from the origin to the point.
+Any arrows with the same direction and length represent the same
+vector (see figure <a href="#fig%3ARn-vector">??</a>), and so they don&#X2019;t need to
+begin at the origin.
+</p><blockquote class="figure"><div class="center"><div class="center"><hr style="width:80%;height:2"></div>
+<img src="01-Rn005.png">
+<div class="caption"><table style="border-spacing:6px;border-collapse:separate;" class="cellpading0"><tr><td style="vertical-align:top;text-align:left;" >Figure 5: Both arrows represent the same vector in \(\mathbb{R}^{n}\).</td></tr>
+</table></div>
+<a id="fig:Rn-vector"></a>
+<div class="center"><hr style="width:80%;height:2"></div></div></blockquote><p>
+When written by hand, a vector is typically written with an arrow over
+it, as \(\vec{x}\), but when typeset they are usually written in
+boldface, as \(\mathbf{x}\).</p><p>The vector from \(\vect{x} = \vectr{x_{1} \\ x_{2} \\ \vdots \\ x_{n}}\)
+to \(\vect{y} = \vectr{y_{1} \\ y_{2} \\ \vdots \\ y_{n}}\) is given by 
+\(\vect{v} = \vectr{y_1 - x_{1} \\ y_2 - x_{2} \\ \vdots \\ y_n -
+x_{n}}\), abbreviated \(\vect{v} = \vect{y} - \vect{x}\). For example,
+in \(\mathbb{R}^{2}\), the vector from \(\mathchoice{\begin{pmatrix} 4\\2 \end{pmatrix}}{\small \begin{pmatrix} 4\\2 \end{pmatrix}}{}{}\) to \(\mathchoice{\begin{pmatrix} 3\\4 \end{pmatrix}}{\small \begin{pmatrix} 3\\4 \end{pmatrix}}{}{}\) is \(\vect{v} =
+\vectr{3 - 4\\4-2} = \vectr{-1\\2}\) (see figure
+<a href="#fig%3ARn-vectorasdiff">??</a>).
+</p><blockquote class="figure"><div class="center"><div class="center"><hr style="width:80%;height:2"></div>
+<img src="01-Rn006.png">
+<div class="caption"><table style="border-spacing:6px;border-collapse:separate;" class="cellpading0"><tr><td style="vertical-align:top;text-align:left;" >Figure 6: The vector between two points.</td></tr>
+</table></div>
+<a id="fig:Rn-vectorasdiff"></a>
+<div class="center"><hr style="width:80%;height:2"></div></div></blockquote>
+<!--TOC subsection id="sec4" Vector operations-->
+<h3 id="sec4" class="subsection">0.4&#XA0;&#XA0;Vector operations</h3><!--SEC END --><p>Two elements of \(\mathbb{R}^{n}\) can be added by adding the corresponding
+elements.</p><p><br>
+</p><p><span style="font-weight:bold"><span style="font-variant:small-caps">Example </span></span><br>
+The sum of the two elements \(\mathchoice{\begin{pmatrix} 2\\3\\5 \end{pmatrix}}{\small \begin{pmatrix} 2\\3\\5 \end{pmatrix}}{}{}\) and \(\mathchoice{\begin{pmatrix} 3\\1\\7 \end{pmatrix}}{\small \begin{pmatrix} 3\\1\\7 \end{pmatrix}}{}{}\) in \(\mathbb{R}^{3}\)
+is
+\(\vectr{2\\3\\5}+\vectr{3\\1\\7}=\vectr{2+3\\3+1\\5+7}=\vectr{5\\4\\12}\).
+
+<div><hr style="text-align:left;margin-left:0;width:10&#37;;height:2"></div>
+
+</p><p>The sum \(\vect{x}+\vect{y}\) of two vectors in \(\mathbb{R}^{n}\) can
+be thought of as following the directions given by \(\vect{x}\) and then
+following the directions given by \(\vect{y}\). Geometrically, to
+add \(\vect{x}+\vect{y}\), take the tail of an arrow representing
+\(\vect{y}\) and place it on the tip of an arrow representing \(\vect{x}\)
+(see figure <a href="#fig%3ARn-addvectors1">??</a>).</p><blockquote class="figure"><div class="center"><div class="center"><hr style="width:80%;height:2"></div>
+<img src="01-Rn007.png">
+<div class="caption"><table style="border-spacing:6px;border-collapse:separate;" class="cellpading0"><tr><td style="vertical-align:top;text-align:left;" >Figure 7: Placing vectors in \(\mathbb{R}^{n}\) tip to tail.</td></tr>
+</table></div>
+<a id="fig:Rn-addvectors1"></a>
+<div class="center"><hr style="width:80%;height:2"></div></div></blockquote><p>The arrow representing \(\vect{x}+\vect{y}\) is then the arrow from the
+tail of the \(\vect{x}\) arrow to the tip of the \(\vect{y}\) arrow
+(see figure <a href="#fig%3ARn-addvectors2">??</a>).</p><blockquote class="figure"><div class="center"><div class="center"><hr style="width:80%;height:2"></div>
+<img src="01-Rn008.png">
+<div class="caption"><table style="border-spacing:6px;border-collapse:separate;" class="cellpading0"><tr><td style="vertical-align:top;text-align:left;" >Figure 8: Adding two vectors in \(\mathbb{R}^{n}\).</td></tr>
+</table></div>
+<a id="fig:Rn-addvectors2"></a>
+<div class="center"><hr style="width:80%;height:2"></div></div></blockquote><p>Notice that \(\mathbb{R}^{n}\) has the special element
+\(\vect{0}=\vectr{0\\ \vdots\\0}\) which is the additive identity:
+\(\vect{v}+\vect{0} = \vect{v}\) for any \(\vect{v} \in \mathbb{R}^{n}\).</p><p>Vectors can also be multiplied by numbers; this is done by multiplying each element
+of the vector by the number.</p><p><br>
+</p><p><span style="font-weight:bold"><span style="font-variant:small-caps">Example </span></span><br>
+ The product of \(5\) and the element \(\mathchoice{\begin{pmatrix} 2\\1\\2\\3 \end{pmatrix}}{\small \begin{pmatrix} 2\\1\\2\\3 \end{pmatrix}}{}{}\) of \(\mathbb{R}^{4}\) is
+\(\vectr{5\cdot 2\\ 5\cdot1\\ 5\cdot2\\ 5\cdot3}=\vectr{10\\5\\10\\15}\).
+
+<div><hr style="text-align:left;margin-left:0;width:10&#37;;height:2"></div>
+
+</p><p>Multiplying a vector \(\vect{x}\) by a number \(c\) can be thought of as
+following the directions given by \(\vect{x}\), but going \(c\) times as
+far. Geometrically, multiplying \(\vect{x}\) by \(c\) results in an arrow
+with the same direction as the arrow representing \(\vect{x}\) (or
+reversing the direction, if \(c\) is negative), but changing the length
+by a factor of \(c\) (see figure <a href="#fig%3ARn-scalarmult">??</a>).</p><blockquote class="figure"><div class="center"><div class="center"><hr style="width:80%;height:2"></div>
+<img src="01-Rn009.png">
+<div class="caption"><table style="border-spacing:6px;border-collapse:separate;" class="cellpading0"><tr><td style="vertical-align:top;text-align:left;" >Figure 9: Multiplying a vector by a number.</td></tr>
+</table></div>
+<a id="fig:Rn-scalarmult"></a>
+<div class="center"><hr style="width:80%;height:2"></div></div></blockquote><p>Since multiplying a vector by a number serves to scale the length of
+the vector, this type of multiplication is called <span style="font-style:italic"><span style="font-weight:bold">scalar
+multiplication</span></span>, and numbers are called <span style="font-style:italic"><span style="font-weight:bold">scalars</span></span>.</p><p>Addition and scalar multiplication of vectors satisfy the following
+properties.
+<br>
+</p><p><span style="font-weight:bold"><span style="font-variant:small-caps">Proposition Properties of addition and scalar multiplication</span></span><span style="font-style:italic"><br>
+</span></p><dl class="description"><dt class="dt-description"><span style="font-style:italic">
+</span><span style="font-style:italic"><span style="font-weight:bold">Commutivity of addition.</span></span></dt><dd class="dd-description"><span style="font-style:italic"> For all vectors </span>\(\mathbf{x}\)<span style="font-style:italic"> and </span>\(\mathbf{y}\)<span style="font-style:italic">,
+we have </span>\(\vect{x} + \vect{y} = \vect{y} + \vect{x}\)<span style="font-style:italic">.
+</span></dd><dt class="dt-description"><span style="font-style:italic"><span style="font-weight:bold">Associativity of addition.</span></span></dt><dd class="dd-description"><span style="font-style:italic"> For all vectors </span>\(\mathbf{x}\)<span style="font-style:italic">, </span>\(\mathbf{y}\)<span style="font-style:italic">
+and </span>\(\mathbf{z}\)<span style="font-style:italic">, we have </span>\((\vect{x} + \vect{y}) + \vect{z} = \vect{x} + 
+  (\vect{y} + \vect{z})\)<span style="font-style:italic">.
+</span></dd><dt class="dt-description"><span style="font-style:italic"><span style="font-weight:bold">Additive identity.</span></span></dt><dd class="dd-description"><span style="font-style:italic"> For the vector </span>\(\mathbf{0}\)<span style="font-style:italic">, we have
+</span>\(\vect{x} + \vect{0} = \vect{x}\)<span style="font-style:italic"> for all vectors </span>\(\mathbf{x}\)<span style="font-style:italic">.
+</span></dd><dt class="dt-description"><span style="font-style:italic"><span style="font-weight:bold">Additive inverses.</span></span></dt><dd class="dd-description"><span style="font-style:italic"> For any vector </span>\(\mathbf{x}\)<span style="font-style:italic">, there is a vector 
+</span>\(-\vect{x}\)<span style="font-style:italic"> such that </span>\(\vect{x} + -\vect{x} = \vect{0}\)<span style="font-style:italic">.
+</span></dd><dt class="dt-description"><span style="font-style:italic"><span style="font-weight:bold">Associativity of multiplication.</span></span></dt><dd class="dd-description"><span style="font-style:italic"> For any vector </span>\(\mathbf{x}\)<span style="font-style:italic"> and
+scalars </span>\(a\)<span style="font-style:italic"> and </span>\(b\)<span style="font-style:italic">, we have </span>\(a(b\vect{x}) = (a b)\vect{x}\)<span style="font-style:italic">.
+</span></dd><dt class="dt-description"><span style="font-style:italic"><span style="font-weight:bold">Multiplicative identity.</span></span></dt><dd class="dd-description"><span style="font-style:italic"> For any vector </span>\(\mathbf{x}\)<span style="font-style:italic">, we have
+</span>\(1 \vect{x} = \vect{x}\)<span style="font-style:italic">.
+</span></dd><dt class="dt-description"><span style="font-style:italic"><span style="font-weight:bold">Distributivity I.</span></span></dt><dd class="dd-description"><span style="font-style:italic"> For any scalar </span>\(a\)<span style="font-style:italic"> and vectors </span>\(\mathbf{x}\)<span style="font-style:italic"> and
+</span>\(\mathbf{y}\)<span style="font-style:italic">, we have </span>\(a (\vect{x} + \vect{y}) = a \vect{x} + a \vect{y}\)<span style="font-style:italic">.
+</span></dd><dt class="dt-description"><span style="font-style:italic"><span style="font-weight:bold">Distributivity II.</span></span></dt><dd class="dd-description"><span style="font-style:italic"> For any scalars </span>\(a\)<span style="font-style:italic"> and </span>\(b\)<span style="font-style:italic"> and vector
+</span>\(\mathbf{x}\)<span style="font-style:italic">,we have </span>\((a + b)\vect{x} = a \vect{x} + b \vect{x}\)<span style="font-style:italic">.
+</span></dd></dl><p><span style="font-style:italic">
+</span><span style="font-style:italic">
+<div><hr style="text-align:left;margin-left:0;width:10&#37;;height:2"></div>
+</span><span style="font-style:italic">
+</span></p><p>Addition and scalar multiplication are the two <span style="font-style:italic"><span style="font-weight:bold">vector space
+operations</span></span>. Although we will (mostly) restrict our attention to
+\(\mathbb{R}^{n}\), any set in which there is defined addition and scalar
+multiplication is called a <span style="font-style:italic"><span style="font-weight:bold">vector space</span></span>.</p><p><br>
+</p><p><span style="font-weight:bold"><span style="font-variant:small-caps">Definition </span></span><br>
+ A <span style="font-style:italic"><span style="font-weight:bold">vector space</span></span> is a set \(V\) on which there are two
+operations:
+</p><ol class="enumerate" type=1><li class="li-enumerate">
+Addition: if \(\vect{x},\vect{y} \in V\), then
+\(\vect{x}+\vect{y} \in V\).
+</li><li class="li-enumerate">Scalar multiplication: if \(\vect{x}\in V\) and \(c \in \mathbb{R}\),
+then \(c\vect{x} \in V\).
+</li></ol><p>
+These operations must satisfy the properties of
+addition and scalar multiplication listed above.
+
+<div><hr style="text-align:left;margin-left:0;width:10&#37;;height:2"></div>
+
+</p><p>An example of a vector space (besides \(\mathbb{R}^{n}\)) is the set of all
+polynomials. Any two polynomials can be added to get another
+polynomial, and a polynomial can be multiplied by a number to get
+another polynomial. For any fixed positive integer \(n\), the set
+\(\mathcal{P}_{n}\) of polynomials of degree \(n\) or less &#X2014; the set of
+polynomials of the form \(p(x) = a_{n}x^{n} + \dots + a_{0}\) &#X2014; is
+also a vector space. What&#X2019;s more, the set \(\mathcal{P}_{n}\) can be
+identified with \(\mathbb{R}^{n+1}\); the element \(\vectr{a_{n} \\ a_{n-1} \\
+\vdots \\ a_{0}}\)
+of \(\mathbb{R}^{n+1}\) can be considered an alternate way of writing the polynomial
+\(p(x) = a_{n}x^{n} + \dots + a_{0}\). Under this association, addition
+and scalar multiplication behave properly. For example, adding two
+polynomials in \(\mathcal{P}_{2}\),
+\((a_{1}x^{2}+b_{1}x+c_{1})+(a_{2}x^{2}+b_{2}x+c_{2})
+=(a_{1}+a_{2})x^{2}+(b_{1}+b_{2})x+(c_{1}+c_{2})\), corresponds to
+addition in \(\mathbb{R}^{3}\), \((a_{1} \quad b_{1} \quad c_{1})^{T} + (a_{2} \quad
+b_{2} \quad c_{2})^{T} = (a_{1}+a_{2} \quad b_{1} + b_{2} \quad
+c_{1}+c_{2})^{T}\). Similarly, scalar multiplication in
+\(\mathcal{P}_{2}\) corresponds to scalar multiplication in \(\mathbb{R}^{3}\).</p>
+<!--TOC subsection id="sec5" Length and direction of vectors-->
+<h3 id="sec5" class="subsection">0.5&#XA0;&#XA0;Length and direction of vectors</h3><!--SEC END --><p>Vectors in \(\mathbb{R}^{n}\) can be used to indicate distance and direction. The
+distance indicated by a vector is called its <em>length</em>.
+Using the Pythagorean Theorem, we can show that the distance from the
+tail to the tip of a vector \(\vect{x} = \vectr{x\\y}\) in \(\mathbb{R}^{2}\) is
+\(\sqrt{x^2 + y^2}\). (See figure <a href="#fig%3ARn-PythThm">??</a>.)</p><blockquote class="figure"><div class="center"><div class="center"><hr style="width:80%;height:2"></div>
+<img src="01-Rn010.png">
+<div class="caption"><table style="border-spacing:6px;border-collapse:separate;" class="cellpading0"><tr><td style="vertical-align:top;text-align:left;" >Figure 10: The length of \(\mathbf{x}\).</td></tr>
+</table></div>
+<a id="fig:Rn-PythThm"></a>
+<div class="center"><hr style="width:80%;height:2"></div></div></blockquote><p><br>
+</p><p><span style="font-weight:bold"><span style="font-variant:small-caps">Definition </span></span><br>
+ The <span style="font-style:italic"><span style="font-weight:bold">length</span></span> of a vector
+\[\vect{x} = \vectr{x_1 \\ x_2 \\ \vdots \\ x_n}\]
+in \(\mathbb{R}^{n}\) is
+\[ \|\vect{x}\| = \sqrt{x_1^2 + x_2^2 + \dots + x_n^2}.\]
+
+<div><hr style="text-align:left;margin-left:0;width:10&#37;;height:2"></div>
+
+</p><p><br>
+</p><p><span style="font-weight:bold"><span style="font-variant:small-caps">Example </span></span><br>
+ Let \(\vect{x} = \vectr{2\\1\\3}\). Then
+\(\vect{x} = \sqrt{2^2 + 1^2 + 3^2} = \sqrt{14}\).
+
+<div><hr style="text-align:left;margin-left:0;width:10&#37;;height:2"></div>
+
+</p><p>Related to the length of a vector is the <em>dot product</em>. 
+(Since the result of the dot product is a scalar, this is also called
+the <em>scalar product</em>.) </p><p><br>
+</p><p><span style="font-weight:bold"><span style="font-variant:small-caps">Definition </span></span><br>
+ The <span style="font-style:italic"><span style="font-weight:bold">dot product</span></span> (or <span style="font-style:italic"><span style="font-weight:bold">scalar product</span></span>) of two vectors
+\[ \vect{x} = \vectr{x_1\\x_2\\ \vdots \\ x_n} \text{ and }
+    \vect{y} = \vectr{y_1\\ y_2 \\ \vdots \\ y_n}\]
+is
+\[\vect{x}\cdot \vect{y} = x_1 y_1 + x_2 y_2 + \dots + x_n y_n.\]
+
+<div><hr style="text-align:left;margin-left:0;width:10&#37;;height:2"></div>
+
+</p><p><br>
+</p><p><span style="font-weight:bold"><span style="font-variant:small-caps">Example </span></span><br>
+ Let 
+\[\vect{x} = \vectr{1\\2\\1}, \vect{y}=\vectr{3\\2\\1} \in
+    \mathbb{R}^{n}.\]
+Then
+\[ \vect{x}\cdot\vect{y} = 1\cdot 3 + 2\cdot 2 + 1\cdot 1 = 8.\]
+
+<div><hr style="text-align:left;margin-left:0;width:10&#37;;height:2"></div>
+
+</p><p>Note that for any \(\vect{x}\in\mathbb{R}^{n}\), \(\|\vect{x}\| =
+\sqrt{\vect{x}\cdot\vect{x}}\).</p><p>The dot product has a geometric interpretation. If \(\mathbf{x}\) and
+\(\mathbf{y}\) are two vectors in \(\mathbb{R}^{n}\), let \(\theta\) be the angle between
+them. (See figure <a href="#fig%3Aangle">??</a>.)</p><blockquote class="figure"><div class="center"><div class="center"><hr style="width:80%;height:2"></div>
+<img src="01-Rn011.png">
+<div class="caption"><table style="border-spacing:6px;border-collapse:separate;" class="cellpading0"><tr><td style="vertical-align:top;text-align:left;" >Figure 11: The angle between two vectors.</td></tr>
+</table></div>
+<a id="fig:angle"></a>
+<div class="center"><hr style="width:80%;height:2"></div></div></blockquote><p>Then
+\[ \vect{x}\cdot\vect{y} = \|\vect{x}\| \|\vect{y}\| \cos(\theta).\]
+Note that when the angle is \(\theta = 90^\circ\), then
+\(\cos(\theta) = 0\) and so \(\vect{x}\cdot\vect{y} = 0\). This is
+a useful characterization of what it means for two vectors
+to be perpendicular.</p><p><br>
+</p><p><span style="font-weight:bold"><span style="font-variant:small-caps">Remark </span></span><br>
+Two vectors \(\vect{x},\vect{y}\in\mathbb{R}^{n}\) are <span style="font-style:italic"><span style="font-weight:bold">orthogonal</span></span> (or
+<span style="font-style:italic"><span style="font-weight:bold">perpendicular</span></span>) if \(\vect{x}\cdot\vect{y} = 0\)
+
+<div><hr style="text-align:left;margin-left:0;width:10&#37;;height:2"></div>
+
+</p><p><br>
+</p><p><span style="font-weight:bold"><span style="font-variant:small-caps">Example </span></span><br>
+ The vectors \(\vect{x} = \vectr{1\\2}\) and \(\vect{y} =
+    \vectr{-2\\1}\) in \(\mathbb{R}^{2}\) are orthogonal, since
+\(\vect{x}\cdot\vect{y} = 1\cdot (-2) + 2\cdot 1 = 0\).
+(See figure <a href="#fig%3ARn-orth">??</a>.)
+
+<div><hr style="text-align:left;margin-left:0;width:10&#37;;height:2"></div>
+
+</p><blockquote class="figure"><div class="center"><div class="center"><hr style="width:80%;height:2"></div>
+<img src="01-Rn012.png">
+<div class="caption"><table style="border-spacing:6px;border-collapse:separate;" class="cellpading0"><tr><td style="vertical-align:top;text-align:left;" >Figure 12: Orthogonal vectors.</td></tr>
+</table></div>
+<a id="fig:Rn-orth"></a>
+<div class="center"><hr style="width:80%;height:2"></div></div></blockquote><p>The dot product satisfies the following
+properties.
+<br>
+</p><p><span style="font-weight:bold"><span style="font-variant:small-caps">Proposition Properties of the dot product</span></span><span style="font-style:italic"><br>
+</span></p><dl class="description"><dt class="dt-description"><span style="font-style:italic">
+</span><span style="font-style:italic"><span style="font-weight:bold">Commutivity.</span></span></dt><dd class="dd-description"><span style="font-style:italic"> For all vectors </span>\(\mathbf{x}\)<span style="font-style:italic"> and </span>\(\mathbf{y}\)<span style="font-style:italic">,
+we have </span>\(\vect{x} \cdot \vect{y} = \vect{y} \cdot \vect{x}\)<span style="font-style:italic">.
+</span></dd><dt class="dt-description"><span style="font-style:italic"><span style="font-weight:bold">Distributivity.</span></span></dt><dd class="dd-description"><span style="font-style:italic"> For any scalar </span>\(a\)<span style="font-style:italic"> and vectors </span>\(\mathbf{x}\)<span style="font-style:italic"> and
+</span>\(\mathbf{y}\)<span style="font-style:italic">, we have </span>\(a (\vect{x} \cdot \vect{y}) = (a \vect{x}) \cdot \vect{y}
+  = \vect{x}\cdot (a \vect{y})\)<span style="font-style:italic">.
+</span></dd><dt class="dt-description"><span style="font-style:italic"><span style="font-weight:bold">Distributivity II.</span></span></dt><dd class="dd-description"><span style="font-style:italic"> For any vector </span>\(\mathbf{x}\)<span style="font-style:italic">, we have
+</span>\(\vect{x}\cdot\vect{x} \ge 0\)<span style="font-style:italic">, and </span>\(\vect{x}\cdot\vect{x} = 0\)<span style="font-style:italic">
+exactly when </span>\(\vect{x} = \vect{0}\)<span style="font-style:italic">.
+</span></dd></dl><p><span style="font-style:italic">
+</span><span style="font-style:italic">
+<div><hr style="text-align:left;margin-left:0;width:10&#37;;height:2"></div>
+</span><span style="font-style:italic">
+</span></p><p>Any vector space with an operation which satisfies these properties is
+called an <span style="font-style:italic"><span style="font-weight:bold">inner product space</span></span>, since the dot product is
+sometimes called the inner product. (We are just using real numbers;
+if we were using complex numbers the definition of the inner
+product would be slightly different, but we won&#X2019;t worry about that.)</p>
+<!--TOC subsection id="sec6" Subspaces of \(\mathbb{R}^{n}\)-->
+<h3 id="sec6" class="subsection">0.6&#XA0;&#XA0;Subspaces of \(\mathbb{R}^{n}\)</h3><!--SEC END --><p>Even when we restrict our attention to \(\mathbb{R}^{n}\), we will come across more
+vector spaces than \(\mathbb{R}^{n}\) itself. A subset of \(\mathbb{R}^{n}\) will have a
+special status if addition and scalar multiplication will preserve it.
+Specifically:
+<br>
+</p><p><span style="font-weight:bold"><span style="font-variant:small-caps">Definition </span></span><br>
+ A non-empty subset \(S\) of a vector space is a <span style="font-style:italic"><span style="font-weight:bold">subspace</span></span> if:
+</p><ol class="enumerate" type=1><li class="li-enumerate">
+For any \(\vect{x}, \vect{y} \in S\), their sum \(\vect{x}+\vect{y}\)
+is also in \(S\). (We say that \(S\) is <span style="font-style:italic"><span style="font-weight:bold">closed under addition</span></span>.)
+</li><li class="li-enumerate">For any \(\vect{x} \in S\), \(c \in \mathbb{R}\), the scalar product
+\(c\vect{x}\) is also in \(S\). (We say that \(S\) is <span style="font-style:italic"><span style="font-weight:bold">closed under
+scalar multiplication</span></span>.)
+</li></ol><p>
+
+<div><hr style="text-align:left;margin-left:0;width:10&#37;;height:2"></div>
+
+</p><p>Every \(\mathbb{R}^{n}\) has two somewhat trivial subspaces. The entire
+space \(\mathbb{R}^{n}\) is a subspace of itself, and the one element subset
+\(\left\{\vect{0}\right\}\) is also a subspace of \(\mathbb{R}^{n}\). Every other subspace is
+between these two: If \(S\) is a subspace of \(\mathbb{R}^{n}\), then by definition
+\(S\) must be contained in \(\mathbb{R}^{n}\), but also the element \(\vect{0}\) must be
+an element of \(S\).</p><p><br>
+</p><p><span style="font-weight:bold"><span style="font-variant:small-caps">Example </span></span><br>
+ The set of vectors in \(\mathbb{R}^{3}\) whose second component is \(0\) (i.e.,
+elements of the form \(\vectr{a\\0\\b}\)) is a subspace of \(\mathbb{R}^{3}\). This is
+straightforward to check:
+</p><ol class="enumerate" type=1><li class="li-enumerate">
+We can add two elements of this type
+\[\vectr{a_{1}\\0\\b_{1}} + \vectr{a_{2}\\0\\b_{2}} =
+    \vectr{a_{1}+a_{2}\\0\\b_{1}+b_{2}}\]
+to get another element of this type. So this set is closed under
+addition. 
+</li><li class="li-enumerate">We can multiply an element of this type by a number
+\[c\vectr{a\\0\\b} = \vectr{ca\\0\\cb}\]
+to get another element of this type. So this set is closed under
+scalar multiplication.
+</li></ol><p>
+So this is indeed a subspace.
+
+<div><hr style="text-align:left;margin-left:0;width:10&#37;;height:2"></div>
+
+</p><p><br>
+</p><p><span style="font-weight:bold"><span style="font-variant:small-caps">Example </span></span><br>
+ The set of vectors in \(\mathbb{R}^{4}\) whose first element is \(1\) (i.e.,
+elements of the form \(\vectr{1\\a\\b\\c}\)) is not a subspace of \(\mathbb{R}^{4}\), since
+the zero element \(\vectr{0}=\vectr{0\\0\\0\\0}\) is not in this set.
+
+<div><hr style="text-align:left;margin-left:0;width:10&#37;;height:2"></div>
+
+</p><p><br>
+</p><p><span style="font-weight:bold"><span style="font-variant:small-caps">Example </span></span><br>
+ Let \(\mathcal{S}\) be the set of vectors in \(\mathbb{R}^{3}\) in which the first
+<em>or</em> second component is \(0\) (i.e., the set of vectors of the
+form \(\vectr{a\\b\\c}\) where either \(a=0\) or \(b=0\)).</p><p>This set \(\mathcal{S}\) is not a subspace of \(\mathbb{R}^{3}\). Note that
+\(\mathcal{S}\) contains the zero vector, but that is not enough to
+ensure the set is a subspace. In this case,
+we can add two elements of this set and get an element not in this
+set:
+\[\vectr{0\\1\\1}+\vectr{1\\0\\0}=\vectr{1\\1\\1},\]
+so the set is not closed under addition, and so is not a subspace of
+\(\mathbb{R}^{3}\).
+
+<div><hr style="text-align:left;margin-left:0;width:10&#37;;height:2"></div>
+
+</p><p>We will later discuss a convenient way of characterizing subspaces of
+\(\mathbb{R}^{n}\).</p><p>If we want to visualize the subspaces of \(\mathbb{R}^{n}\), let&#X2019;s start with
+\(\mathbb{R}^{2}\). 
+</p><ol class="enumerate" type=1><li class="li-enumerate">
+The trivial subspace \(\{\vect{0}\}\) is itself a subspace.
+</li><li class="li-enumerate">If a subspace contains \(\vect{x} \not=0\), then it must contain
+all multiples of \(\vect{x}\), \(\{c\vect{x}: c \in \mathbb{R}\}\). The set 
+\(\vect{x}\), \(\{c\vect{x}: c \in \mathbb{R}\}\) is itself a subspace of
+\(\mathbb{R}^{2}\), corresponding to a line through the origin.
+</li><li class="li-enumerate">If a subspace contains \(\vect{x} \not=0\) and \(\vect{y}\) which is
+not a multiple of \(\vect{x}\), then it will have to be all of \(\mathbb{R}^{2}\).
+</li></ol><p>
+So, geometrically, the subspaces of \(\mathbb{R}^{2}\) are:
+</p><ol class="enumerate" type=1><li class="li-enumerate">
+The trivial subspace
+\(\left\{\vect{0}\right\}=\left\{\vectr{0\\0}\right\}\)
+</li><li class="li-enumerate">Lines through the origin
+</li><li class="li-enumerate">\(\mathbb{R}^{2}\) itself.
+</li></ol><p>
+Similarly, the subspaces of \(\mathbb{R}^{3}\) are:
+</p><ol class="enumerate" type=1><li class="li-enumerate">
+The trivial subspace
+\(\left\{\vect{0}\right\}=\left\{\vectr{0\\0\\0}\right\}\)
+</li><li class="li-enumerate">Lines through the origin.
+</li><li class="li-enumerate">Planes through the origin.
+</li><li class="li-enumerate">\(\mathbb{R}^{3}\) itself.
+</li></ol><!--TOC section id="sec7" Xcas-->
+<h2 id="sec7" class="section">Xcas</h2><!--SEC END --><p><span style="font-family:monospace">Xcas/giac</span>
+(<a href="https://www-fourier.ujf-grenoble.fr/~parisse/giac.html"><span style="font-family:monospace">https://www-fourier.ujf-grenoble.fr/~parisse/giac.html</span></a>) is a
+computer algebra system freely available and easily installable on
+most computer operating systems and smartphones. (Windows, Mac OSX,
+Linux, Android, iOS, for example.) What&#X2019;s more, it can be run inside
+a javascript enabled browser (it works well with Firefox). </p><p>Computers and smartphones are not usually allowed on tests, but
+<span style="font-family:monospace">Xcas</span> is also available on some calculators. It is the
+built-in computer algebra system for the HP Prime, and can be
+installed on some other calculators, such as the TI Nspire calculator
+and the lower end and less expensive Casio fx-CG50 (see
+<a href="https://www-fourier.ujf-grenoble.fr/~parisse/casio/khicasioen.html"><span style="font-family:monospace">https://www-fourier.ujf-grenoble.fr/~parisse/casio/khicasioen.html</span></a>),
+which is roughly equivalent to the TI-84+.</p><p>These notes will discuss how to use <span style="font-family:monospace">Xcas</span> to do the matrix
+operations that we discuss in class. To find more about the
+capabilities of <span style="font-family:monospace">Xcas</span>, see the manual
+(<a href="https://www-fourier.ujf-grenoble.fr/~parisse/giac.html#doc"><span style="font-family:monospace">https://www-fourier.ujf-grenoble.fr/~parisse/giac.html#doc</span></a>).</p><p><span style="font-family:monospace">XCas</span> can function as a simple calculator. If you start the program,
+you will be met with a prompt
+</p><pre class="verbatim">&gt;&gt;
+</pre><p>
+You can evaluate a mathematical expression by typing it in and
+hitting enter.
+<br><textarea onkeypress="UI.ckenter(event,this,2)" 
+style="width:400px;font-size:large">2+4 
+</textarea><button onclick="previousSibling.style.display='inherit';var tmp=UI.caseval(previousSibling.value); tmp=UI.latexeval(tmp);nextSibling.innerHTML='&nbsp;'+tmp; if (UI.usemathjax) MathJax.Hub.Queue(['Typeset',MathJax.Hub,nextSibling])">exe</button><span></span><br>
+
+You can enter more than one expression on the same line by separating
+any expressions with semicolons; the results will be separated by
+commas.
+<br><textarea onkeypress="UI.ckenter(event,this,2)" 
+style="width:400px;font-size:large">2+4; 5*3 
+</textarea><button onclick="previousSibling.style.display='inherit';var tmp=UI.caseval(previousSibling.value); tmp=UI.latexeval(tmp);nextSibling.innerHTML='&nbsp;'+tmp; if (UI.usemathjax) MathJax.Hub.Queue(['Typeset',MathJax.Hub,nextSibling])">exe</button><span></span><br>
+
+</p><p>Giac has all of the usual operators (<span style="font-family:monospace">+</span>, <span style="font-family:monospace">-</span>,
+<span style="font-family:monospace">*</span>, <span style="font-family:monospace">/</span>,<span style="font-family:monospace">^</span>, etc.), functions
+(<span style="font-family:monospace">sin</span>, <span style="font-family:monospace">cos</span>, <span style="font-family:monospace">tan</span>, <span style="font-family:monospace">exp</span>, <span style="font-family:monospace">ln</span>, etc.) and
+constants (<span style="font-family:monospace">e</span>, <span style="font-family:monospace">pi</span>, etc.). 
+<br><textarea onkeypress="UI.ckenter(event,this,2)" 
+style="width:400px;font-size:large">2^10 
+</textarea><button onclick="previousSibling.style.display='inherit';var tmp=UI.caseval(previousSibling.value); tmp=UI.latexeval(tmp);nextSibling.innerHTML='&nbsp;'+tmp; if (UI.usemathjax) MathJax.Hub.Queue(['Typeset',MathJax.Hub,nextSibling])">exe</button><span></span><br>
+
+<br><textarea onkeypress="UI.ckenter(event,this,2)" 
+style="width:400px;font-size:large">sin(pi/4) 
+</textarea><button onclick="previousSibling.style.display='inherit';var tmp=UI.caseval(previousSibling.value); tmp=UI.latexeval(tmp);nextSibling.innerHTML='&nbsp;'+tmp; if (UI.usemathjax) MathJax.Hub.Queue(['Typeset',MathJax.Hub,nextSibling])">exe</button><span></span><br>
+
+</p><p><span style="font-family:monospace">Xcas</span> will give you exact results when possible. 
+If the input is approximate (as indicated by a number with a decimal
+point), you will get a decimal approximation.
+<br><textarea onkeypress="UI.ckenter(event,this,2)" 
+style="width:400px;font-size:large">sin(pi/4) 
+</textarea><button onclick="previousSibling.style.display='inherit';var tmp=UI.caseval(previousSibling.value); tmp=UI.latexeval(tmp);nextSibling.innerHTML='&nbsp;'+tmp; if (UI.usemathjax) MathJax.Hub.Queue(['Typeset',MathJax.Hub,nextSibling])">exe</button><span></span><br>
+
+<br><textarea onkeypress="UI.ckenter(event,this,2)" 
+style="width:400px;font-size:large">sin(pi/4.0) 
+</textarea><button onclick="previousSibling.style.display='inherit';var tmp=UI.caseval(previousSibling.value); tmp=UI.latexeval(tmp);nextSibling.innerHTML='&nbsp;'+tmp; if (UI.usemathjax) MathJax.Hub.Queue(['Typeset',MathJax.Hub,nextSibling])">exe</button><span></span><br>
+
+</p><p>You can also ensure a decimal approximation by using the
+<span style="font-family:monospace">evalf</span> function.
+<br><textarea onkeypress="UI.ckenter(event,this,2)" 
+style="width:400px;font-size:large">evalf(sin(pi/4)) 
+</textarea><button onclick="previousSibling.style.display='inherit';var tmp=UI.caseval(previousSibling.value); tmp=UI.latexeval(tmp);nextSibling.innerHTML='&nbsp;'+tmp; if (UI.usemathjax) MathJax.Hub.Queue(['Typeset',MathJax.Hub,nextSibling])">exe</button><span></span><br>
+
+The <span style="font-family:monospace">evalf</span> function takes a second argument indicating the
+desired precision. For example, you can get a decimal approximation
+for \(\pi\):
+<br><textarea onkeypress="UI.ckenter(event,this,2)" 
+style="width:400px;font-size:large">evalf(pi) 
+</textarea><button onclick="previousSibling.style.display='inherit';var tmp=UI.caseval(previousSibling.value); tmp=UI.latexeval(tmp);nextSibling.innerHTML='&nbsp;'+tmp; if (UI.usemathjax) MathJax.Hub.Queue(['Typeset',MathJax.Hub,nextSibling])">exe</button><span></span><br>
+
+or you can get a decimal approximation with 50 digits to \(\pi\):
+<br><textarea onkeypress="UI.ckenter(event,this,2)" 
+style="width:400px;font-size:large">evalf(pi,50) 
+</textarea><button onclick="previousSibling.style.display='inherit';var tmp=UI.caseval(previousSibling.value); tmp=UI.latexeval(tmp);nextSibling.innerHTML='&nbsp;'+tmp; if (UI.usemathjax) MathJax.Hub.Queue(['Typeset',MathJax.Hub,nextSibling])">exe</button><span></span><br>
+
+(The default number of decimals for <span style="font-family:monospace">evalf</span> is configurable;
+see the manual for more details.)</p><p>You can assign values to variable names with the <span style="font-family:monospace">:=</span>
+operator.
+<br><textarea onkeypress="UI.ckenter(event,this,2)" 
+style="width:400px;font-size:large">a := 5 
+</textarea><button onclick="previousSibling.style.display='inherit';var tmp=UI.caseval(previousSibling.value); tmp=UI.latexeval(tmp);nextSibling.innerHTML='&nbsp;'+tmp; if (UI.usemathjax) MathJax.Hub.Queue(['Typeset',MathJax.Hub,nextSibling])">exe</button><span></span><br>
+
+<br><textarea onkeypress="UI.ckenter(event,this,2)" 
+style="width:400px;font-size:large">a^2 
+</textarea><button onclick="previousSibling.style.display='inherit';var tmp=UI.caseval(previousSibling.value); tmp=UI.latexeval(tmp);nextSibling.innerHTML='&nbsp;'+tmp; if (UI.usemathjax) MathJax.Hub.Queue(['Typeset',MathJax.Hub,nextSibling])">exe</button><span></span><br>
+
+</p><p>You can create a list of objects (such as numbers, variables or
+expressions) by putting them between square brackets, separated by
+commas.
+<br><textarea onkeypress="UI.ckenter(event,this,2)" 
+style="width:400px;font-size:large">[1,2.3,x,x+y] 
+</textarea><button onclick="previousSibling.style.display='inherit';var tmp=UI.caseval(previousSibling.value); tmp=UI.latexeval(tmp);nextSibling.innerHTML='&nbsp;'+tmp; if (UI.usemathjax) MathJax.Hub.Queue(['Typeset',MathJax.Hub,nextSibling])">exe</button><span></span><br>
+
+The number of elements in a list is given by the <span style="font-family:monospace">size</span> command.
+<br><textarea onkeypress="UI.ckenter(event,this,2)" 
+style="width:400px;font-size:large">size([1,2.3,x,x+y]) 
+</textarea><button onclick="previousSibling.style.display='inherit';var tmp=UI.caseval(previousSibling.value); tmp=UI.latexeval(tmp);nextSibling.innerHTML='&nbsp;'+tmp; if (UI.usemathjax) MathJax.Hub.Queue(['Typeset',MathJax.Hub,nextSibling])">exe</button><span></span><br>
+
+</p><p>If you have a list, you can extract an element from the list by
+following the list with the index within square brackets. Indexing
+begins at 0, so to get the first element of the list, you can enter it
+followed with <span style="font-family:monospace">[0]</span>.
+<br><textarea onkeypress="UI.ckenter(event,this,2)" 
+style="width:400px;font-size:large">a := [5,10,15,20] 
+</textarea><button onclick="previousSibling.style.display='inherit';var tmp=UI.caseval(previousSibling.value); tmp=UI.latexeval(tmp);nextSibling.innerHTML='&nbsp;'+tmp; if (UI.usemathjax) MathJax.Hub.Queue(['Typeset',MathJax.Hub,nextSibling])">exe</button><span></span><br>
+
+<br><textarea onkeypress="UI.ckenter(event,this,2)" 
+style="width:400px;font-size:large">a[0] 
+</textarea><button onclick="previousSibling.style.display='inherit';var tmp=UI.caseval(previousSibling.value); tmp=UI.latexeval(tmp);nextSibling.innerHTML='&nbsp;'+tmp; if (UI.usemathjax) MathJax.Hub.Queue(['Typeset',MathJax.Hub,nextSibling])">exe</button><span></span><br>
+
+<br><textarea onkeypress="UI.ckenter(event,this,2)" 
+style="width:400px;font-size:large">a[2] 
+</textarea><button onclick="previousSibling.style.display='inherit';var tmp=UI.caseval(previousSibling.value); tmp=UI.latexeval(tmp);nextSibling.innerHTML='&nbsp;'+tmp; if (UI.usemathjax) MathJax.Hub.Queue(['Typeset',MathJax.Hub,nextSibling])">exe</button><span></span><br>
+
+Indexing typically begins with 0 in computer programs, but normally in
+mathematics it begins with 1. You can use indices beginning with 1 in
+<span style="font-family:monospace">Xcas</span> by enclosing the index in double square brackets,
+meaning that you can get the first element of a list by following it
+with <span style="font-family:monospace">[[1]]</span>.
+<br><textarea onkeypress="UI.ckenter(event,this,2)" 
+style="width:400px;font-size:large">a := [5,10,15,20] 
+</textarea><button onclick="previousSibling.style.display='inherit';var tmp=UI.caseval(previousSibling.value); tmp=UI.latexeval(tmp);nextSibling.innerHTML='&nbsp;'+tmp; if (UI.usemathjax) MathJax.Hub.Queue(['Typeset',MathJax.Hub,nextSibling])">exe</button><span></span><br>
+
+<br><textarea onkeypress="UI.ckenter(event,this,2)" 
+style="width:400px;font-size:large">a[[1]] 
+</textarea><button onclick="previousSibling.style.display='inherit';var tmp=UI.caseval(previousSibling.value); tmp=UI.latexeval(tmp);nextSibling.innerHTML='&nbsp;'+tmp; if (UI.usemathjax) MathJax.Hub.Queue(['Typeset',MathJax.Hub,nextSibling])">exe</button><span></span><br>
+
+<br><textarea onkeypress="UI.ckenter(event,this,2)" 
+style="width:400px;font-size:large">a[[3]] 
+</textarea><button onclick="previousSibling.style.display='inherit';var tmp=UI.caseval(previousSibling.value); tmp=UI.latexeval(tmp);nextSibling.innerHTML='&nbsp;'+tmp; if (UI.usemathjax) MathJax.Hub.Queue(['Typeset',MathJax.Hub,nextSibling])">exe</button><span></span><br>
+
+</p><p>A row vector can be represented by a list of numbers. For reasons
+that will come up later, to represent a column vector, you use a list
+where each number is in square brackets. 
+<br><textarea onkeypress="UI.ckenter(event,this,2)" 
+style="width:400px;font-size:large">[1,2,3] 
+</textarea><button onclick="previousSibling.style.display='inherit';var tmp=UI.caseval(previousSibling.value); tmp=UI.latexeval(tmp);nextSibling.innerHTML='&nbsp;'+tmp; if (UI.usemathjax) MathJax.Hub.Queue(['Typeset',MathJax.Hub,nextSibling])">exe</button><span></span><br>
+
+<br><textarea onkeypress="UI.ckenter(event,this,2)" 
+style="width:400px;font-size:large">[[1],[2],[3]] 
+</textarea><button onclick="previousSibling.style.display='inherit';var tmp=UI.caseval(previousSibling.value); tmp=UI.latexeval(tmp);nextSibling.innerHTML='&nbsp;'+tmp; if (UI.usemathjax) MathJax.Hub.Queue(['Typeset',MathJax.Hub,nextSibling])">exe</button><span></span><br>
+
+</p><p>To find the length of a vector, you can use the <span style="font-family:monospace">norm</span> command.
+(The <span style="font-family:monospace">length</span> command will give you the number of elements in
+the list. The length of a vector is also called the <span style="font-style:italic"><span style="font-weight:bold">norm</span></span>, so
+the <span style="font-family:monospace">norm</span> command returns the length/norm.)
+<br><textarea onkeypress="UI.ckenter(event,this,2)" 
+style="width:400px;font-size:large">A := [1,2,3] 
+</textarea><button onclick="previousSibling.style.display='inherit';var tmp=UI.caseval(previousSibling.value); tmp=UI.latexeval(tmp);nextSibling.innerHTML='&nbsp;'+tmp; if (UI.usemathjax) MathJax.Hub.Queue(['Typeset',MathJax.Hub,nextSibling])">exe</button><span></span><br>
+
+<br><textarea onkeypress="UI.ckenter(event,this,2)" 
+style="width:400px;font-size:large">norm(A) 
+</textarea><button onclick="previousSibling.style.display='inherit';var tmp=UI.caseval(previousSibling.value); tmp=UI.latexeval(tmp);nextSibling.innerHTML='&nbsp;'+tmp; if (UI.usemathjax) MathJax.Hub.Queue(['Typeset',MathJax.Hub,nextSibling])">exe</button><span></span><br>
+
+<br><textarea onkeypress="UI.ckenter(event,this,2)" 
+style="width:400px;font-size:large">B := [[1],[2],[3]] 
+</textarea><button onclick="previousSibling.style.display='inherit';var tmp=UI.caseval(previousSibling.value); tmp=UI.latexeval(tmp);nextSibling.innerHTML='&nbsp;'+tmp; if (UI.usemathjax) MathJax.Hub.Queue(['Typeset',MathJax.Hub,nextSibling])">exe</button><span></span><br>
+
+<br><textarea onkeypress="UI.ckenter(event,this,2)" 
+style="width:400px;font-size:large">norm(B) 
+</textarea><button onclick="previousSibling.style.display='inherit';var tmp=UI.caseval(previousSibling.value); tmp=UI.latexeval(tmp);nextSibling.innerHTML='&nbsp;'+tmp; if (UI.usemathjax) MathJax.Hub.Queue(['Typeset',MathJax.Hub,nextSibling])">exe</button><span></span><br>
+
+</p><p>The <span style="font-family:monospace">dot</span> command will find the dot product of two vectors.
+<br><textarea onkeypress="UI.ckenter(event,this,2)" 
+style="width:400px;font-size:large">dot([1,2,2],[3,2,1]) 
+</textarea><button onclick="previousSibling.style.display='inherit';var tmp=UI.caseval(previousSibling.value); tmp=UI.latexeval(tmp);nextSibling.innerHTML='&nbsp;'+tmp; if (UI.usemathjax) MathJax.Hub.Queue(['Typeset',MathJax.Hub,nextSibling])">exe</button><span></span><br>
+
+<br><textarea onkeypress="UI.ckenter(event,this,2)" 
+style="width:400px;font-size:large">dot([[2],[3],[2]],[[3],[1],[1]]) 
+</textarea><button onclick="previousSibling.style.display='inherit';var tmp=UI.caseval(previousSibling.value); tmp=UI.latexeval(tmp);nextSibling.innerHTML='&nbsp;'+tmp; if (UI.usemathjax) MathJax.Hub.Queue(['Typeset',MathJax.Hub,nextSibling])">exe</button><span></span><br>
+
+To find the dot product of two row vectors, you can also simply
+multiply them.
+<br><textarea onkeypress="UI.ckenter(event,this,2)" 
+style="width:400px;font-size:large">[1,2,2]*[3,2,1] 
+</textarea><button onclick="previousSibling.style.display='inherit';var tmp=UI.caseval(previousSibling.value); tmp=UI.latexeval(tmp);nextSibling.innerHTML='&nbsp;'+tmp; if (UI.usemathjax) MathJax.Hub.Queue(['Typeset',MathJax.Hub,nextSibling])">exe</button><span></span><br>
+
+</p><p>Vectors can be added and multiplied by scalars using the ordinary
+addition and multiplication operators.
+<br><textarea onkeypress="UI.ckenter(event,this,2)" 
+style="width:400px;font-size:large">[2,3,4] + [5,3,2] 
+</textarea><button onclick="previousSibling.style.display='inherit';var tmp=UI.caseval(previousSibling.value); tmp=UI.latexeval(tmp);nextSibling.innerHTML='&nbsp;'+tmp; if (UI.usemathjax) MathJax.Hub.Queue(['Typeset',MathJax.Hub,nextSibling])">exe</button><span></span><br>
+
+<br><textarea onkeypress="UI.ckenter(event,this,2)" 
+style="width:400px;font-size:large">3*[[2],[4],[6]] 
+</textarea><button onclick="previousSibling.style.display='inherit';var tmp=UI.caseval(previousSibling.value); tmp=UI.latexeval(tmp);nextSibling.innerHTML='&nbsp;'+tmp; if (UI.usemathjax) MathJax.Hub.Queue(['Typeset',MathJax.Hub,nextSibling])">exe</button><span></span><br>
+
+</p><p>
+
+</div>
+<div id="controldiv" style="max-height: 400px; overflow:auto">
+<span id="controlindex"></span>
+<button title="Clone last command to Xcas for Firefox" onclick="UI.clone()">Clone</button>
+<button title="Clear console" onclick="document.getElementById('output').innerHTML='';">Clear</button>
+<button title="Increase console size" onclick="var field=document.getElementById('output'); var s=field.style.maxHeight; s=s.substr(0,s.length-2);s=eval(s)+20 ;if(s<innerHeight/2){s=s+'px';field.style.maxHeight=s; field=document.getElementById('maindiv'); s=field.style.maxHeight; s=s.substr(0,s.length-2);s=eval(s)-20; s=s+'px';field.style.maxHeight=s;}">+</button>
+<button title="Decrease console size" onclick="var field=document.getElementById('output'); var s=field.style.maxHeight; s=s.substr(0,s.length-2);s=eval(s)-20 ; if(s>80){s=s+'px';field.style.maxHeight =s;field=document.getElementById('maindiv'); s=field.style.maxHeight; s=s.substr(0,s.length-2);s=eval(s)+20; s=s+'px';field.style.maxHeight=s;}">-</button>
+<textarea title="Commandline for a quick computation" onkeypress="UI.ckenter(event,this,3);" style="width:400px;height:20px;font-size:large"></textarea><button  title="Eval previous cell" onclick="UI.quick(this);">-></button><span></span>
+&nbsp;&nbsp;<button onclick="var s=UI.caseval('restart;'); Module.print(s);" title="Reset CAS computing kernel">Restart</button>
+<button onclick="UI.exec(document.documentElement);" title='Click here to exec all commands (maybe be long!)'>Exec. all</button>
+<canvas id='canvas' width=0 height=0   onmousedown="UI.canvas_pushed=true;UI.canvas_lastx=event.clientX; UI.canvas_lasty=event.clientY;"  onmouseup="UI.canvas_pushed=false;" onmousemove="UI.canvas_mousemove(event,'')"></canvas>
+<div id="output" style="max-height: 80px; overflow:auto"></div>
+</div>
+</div>
+
+
+<script language="javascript"> 
+var Module = { 
+        htmlcheck:true,
+        htmlbuffer:'',
+        preRun: [],
+        postRun: [],
+        ready:false,
+        print: (function() {
+          var element = document.getElementById('output');
+          element.innerHTML='';// element.value = ''; // clear browser cache
+          return function(text) {
+            //console.log(text.charCodeAt(0));
+            if (text.length==1 && text.charCodeAt(0)==12){ element.innerHTML=''; return; }
+            if (text.length>=1 && text.charCodeAt(0)==2) {console.log('STX');Module.htmlcheck=false; htmlbuffer='';return;}
+            if (text.length>=1 && text.charCodeAt(0)==3) {console.log('ETX');Module.htmlcheck=true; element.style.display='inherit'; element.innerHTML += htmlbuffer;htmlbuffer='';element.scrollTop = 99999; return;}
+            if (Module.htmlcheck){
+            // These replacements are necessary if you render to raw HTML 
+             text = text.replace(/&/g, "&amp;");
+             text = text.replace(/</g, "&lt;");
+             text = text.replace(/>/g, "&gt;");
+             text = text.replace('\n', '<br>', 'g');
+             text += '<br>'
+             element.style.display='inherit';
+             element.innerHTML += text; // element.value += text + "\n";
+             element.scrollTop = 99999; // focus on bottom
+            } else htmlbuffer += text;
+          };
+        })(),
+     canvas: document.getElementById('canvas'),};
+Module['onRuntimeInitialized']=function(){ console.log('UI is ready'); Module.ready=true;}
+</script>
+
+
+
+<script async>
+  var UI={
+   detectmob:function() { 
+    if( navigator.userAgent.match(/Android/i)
+	|| navigator.userAgent.match(/webOS/i)
+	|| navigator.userAgent.match(/iPhone/i)
+	|| navigator.userAgent.match(/iPad/i)
+	|| navigator.userAgent.match(/iPod/i)
+	|| navigator.userAgent.match(/BlackBerry/i)
+	|| navigator.userAgent.match(/Windows Phone/i)
+      ) return true;
+    else 
+      return false;
+   },
+   readCookie:function(name) {
+    if (window.localStorage){
+      var tmp=localStorage.getItem(name);
+      if (tmp!=null) return tmp;
+    }
+    var nameEQ = name + "=";
+    var ca = document.cookie.split(';');
+    for(var i=0;i < ca.length;i++) {
+      var c = ca[i];
+      while (c.charAt(0)==' ') c = c.substring(1,c.length);
+      if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
+    }
+    return null;
+   },
+  }
+  var script = document.createElement("script");
+  script.type = "text/javascript";
+  var webAssemblyAvailable = true; // false;
+  if (Boolean(window.chrome)){
+    if (!UI.detectmob()) webAssemblyAvailable =  window.location.href.substr(0,4)!='file';
+  }
+  else {
+    var ua = window.navigator.userAgent;
+    var old_ie = ua.indexOf('MSIE ');
+    var new_ie = ua.indexOf('Trident/');
+    if (!UI.detectmob() && old_ie<=-1 && new_ie<=-1)
+      webAssemblyAvailable =!!window.WebAssembly;
+  }
+  if (webAssemblyAvailable){
+    var ck=UI.readCookie('xcas_wasm');
+    if (ck)
+      webAssemblyAvailable=(ck=='1');
+  }
+  if (webAssemblyAvailable) // fixme: enable
+    script.src =""+"giacwasm.js";
+  else
+    script.src  =""+"giac.js";
+  document.getElementsByTagName("head")[0].appendChild(script);
+</script>
+
+
+
+
+<script language="javascript"> 
+ var UI = {
+  Datestart:Date.now(),
+  n2d:0,
+  python:0,
+  histcount:0,
+  usemathjax:false,
+  lastcmd:'',
+  clone:function(){
+    if (UI.lastcmd.length){
+       var tmp=UI.giaceval('VARS(-1)');
+       tmp=encodeURIComponent(tmp);
+       var url='https://www-fourier.univ-grenoble-alpes.fr/~parisse/xcasen.html'+String.fromCharCode(35)+'+'+tmp+':;&+'+UI.lastcmd;
+       console.log(url);
+       window.open(url,'_blank');
+    }
+  },
+  canvas_pushed:false,
+  canvas_lastx:0,
+  canvas_lasty:0,
+  canvas_mousemove:function(event,no){
+    if (UI.canvas_pushed){
+      // Module.print(event.clientX);
+      if (UI.canvas_lastx!=event.clientX){
+        if (event.clientX>UI.canvas_lastx)
+          giac3d('r'+no);
+        else
+          giac3d('l'+no);
+        UI.canvas_lastx=event.clientX;
+      }
+      if (UI.canvas_lasty!=event.clientY){
+        if (event.clientY>UI.canvas_lasty)
+          giac3d('d'+no);
+        else
+          giac3d('u'+no);
+        UI.canvas_lasty=event.clientY;
+      }
+    }
+  },  
+  count_newline:function(s){
+    var ss=s.length,i,res=1;
+    for (i=0;i<ss;i++){
+      if (s[i]=='\n') res++;
+    }
+    return res;
+  },
+  ltgt:function(s){
+    var ss=s.length,i,res='',c=0;
+    for (i=0;i<ss-4;i++){
+      if (s[i]=='\n') c++;      
+      if (s[i]!='&' || s[i+2]!='t' || s[i+3]!=';'){
+        res += s[i];
+        continue;
+      }
+      if (s[i+1]=='l'){
+        res += '<';
+        i +=3;
+        continue;
+      }
+      if (s[i+1]=='g'){
+        res += '>';
+        i +=3;
+        continue;
+      }
+      res += s[i];
+    }
+    for (;i<ss;i++) res+=s[i];
+    return [res,c];
+  },
+  rmquote:function(tmp){
+    var s=tmp.length;
+    if (s>2 && tmp.charCodeAt(0)==34 && tmp.charCodeAt(s-1)==34)
+      tmp=tmp.substr(1,s-2);
+    return tmp;
+  },
+  renderhelp: function (s) {
+    var pos0 = s.search("</b>");
+    //console.log(s);
+    var found = (s.substr(pos0 + 7, 20) != "Best match has score");
+    var lh = s.substr(3, pos0 - 3);
+    var unlocalized_cmd = lh;
+    var sorig = s;
+    pos1 = s.search("<br>");
+    if (pos1 < 0) return sorig;
+    var explication = s.substr(0, pos1);
+    s = s.substr(pos1 + 4, s.length - pos1 - 4);
+    pos1 = s.search("<br>");
+    if (pos1 < 0) return sorig;
+    var syntaxe = s.substr(0, pos1);
+    s = s.substr(pos1 + 4, s.length - pos1 - 4);
+    pos1 = s.search("<br>");
+    if (pos1 < 0) return sorig;
+    var voiraussi = s.substr(0, pos1);
+    var examples = s.substr(pos1 + 4, s.length - pos1 - 4);
+    s = '';//'<b>'+unlocalized_cmd+':</b> ';
+    if (found)
+      s += explication + '<br>See also: ' +voiraussi+'<br><b>Examples : </b>'+examples;
+    else
+      s += explication.substr(0, pos0);
+    return s;
+  },   
+  quick:function(field){
+    var tmp1=field.previousSibling.value;
+    var tmp=UI.caseval(tmp1);
+    tmp=UI.rmquote(tmp); 
+    tmp=UI.latexeval(tmp);
+    Module.print(String.fromCharCode(2));
+    Module.print("<tt>");
+    Module.print(tmp1);
+    Module.print("</tt><br>&nbsp;&nbsp;");
+    if (tmp.length>3 && tmp.substr(0,3)=='<b>'){ 
+       Module.print(UI.renderhelp(tmp)); tmp='';
+    } else Module.print(tmp);
+    Module.print("<br>");
+    Module.print(String.fromCharCode(3));
+    field.nextSibling.innerHTML='&nbsp;'+tmp;
+   //UI.render_canvas(nextSibling);  
+  },
+  giaceval:function(text){
+     if (UI.python) text='@@'+text;
+     if (!Module.ready){ window.setTimeout(UI.giaceval,100,text); return " ... ";}
+     var dogiaceval=Module.cwrap('caseval',  'string', ['string']);
+     return dogiaceval(text);
+  },
+  caseval:function(text){
+    UI.lastcmd=text;
+    var s="not evaled",err;
+    try {
+       s= UI.giaceval(text);
+    } catch (err) { s=err.message;}
+    var is_2d=s.length>4 && s.substr(0,4)=='gr2d';
+    if (is_2d){
+      s = '<canvas id="gr2d_'+UI.n2d+'" width=400 height=250>'+s+'</canvas>';
+      //console.log(UI.n2d,s);
+      UI.n2d++;
+    }
+    var is_3d=s.length>5 && s.substr(0,5)=='gl3d ';
+    if (is_3d){
+	var n3d=s.substr(5,s.length-5);
+	s = '<canvas id="gl3d_'+n3d+'" onmousedown="UI.canvas_pushed=true;UI.canvas_lastx=event.clientX; UI.canvas_lasty=event.clientY;" onmouseup="UI.canvas_pushed=false;" onmousemove="UI.canvas_mousemove(event,'+n3d+')" width=400 height=250></canvas>';
+    }
+   //console.log(s);
+    return s;
+  },
+  pourcentmod:function(a,b){
+    return a-Math.floor(a/b)*b;
+  },
+  color_list: ['black',
+    'red',
+    'green',
+    'yellow',
+    'blue',
+    'magenta',
+    'cyan',
+    'white',
+    'silver',
+    'gray',
+    'maroon',
+    'purple',
+    'fuchsia',
+    'lime',
+    'olive',
+    'navy',
+    'teal',
+    'aqua',
+    'antiquewhite',
+    'aquamarine',
+    'azure',
+    'beige',
+    'bisque',
+    'blanchedalmond',
+    'blueviolet',
+    'brown',
+    'burlywood',
+    'cadetblue',
+    'chartreuse',
+    'chocolate',
+    'coral',
+    'cornflowerblue',
+    'cornsilk',
+    'crimson',
+    'cyan',
+    'darkblue',
+    'darkcyan',
+    'darkgoldenrod',
+    'darkgray',
+    'darkgreen',
+    'darkgrey',
+    'darkkhaki',
+    'darkmagenta',
+    'darkolivegreen',
+    'darkorange',
+    'darkorchid',
+    'darkred',
+    'darksalmon',
+    'darkseagreen',
+    'darkslateblue',
+    'darkslategray',
+    'darkslategrey',
+    'darkturquoise',
+    'darkviolet',
+    'deeppink',
+    'deepskyblue',
+    'dimgray',
+    'dimgrey',
+    'dodgerblue',
+    'firebrick',
+    'floralwhite',
+    'forestgreen',
+    'gainsboro',
+    'ghostwhite',
+    'gold',
+    'goldenrod',
+    'greenyellow',
+    'grey',
+    'honeydew',
+    'hotpink',
+    'indianred',
+    'indigo',
+    'ivory',
+    'khaki',
+    'lavender',
+    'lavenderblush',
+    'lawngreen',
+    'lemonchiffon',
+    'lightblue',
+    'lightcoral',
+    'lightcyan',
+    'lightgoldenrodyellow',
+    'lightgray',
+    'lightgreen',
+    'lightgrey',
+    'lightpink',
+    'lightsalmon',
+    'lightseagreen',
+    'lightskyblue',
+    'lightslategray',
+    'lightslategrey',
+    'lightsteelblue',
+    'lightyellow',
+    'limegreen',
+    'linen',
+    'mediumaquamarine',
+    'mediumblue',
+    'mediumorchid',
+    'mediumpurple',
+    'mediumseagreen',
+    'mediumslateblue',
+    'mediumspringgreen',
+    'mediumturquoise',
+    'mediumvioletred',
+    'midnightblue',
+    'mintcream',
+    'mistyrose',
+    'moccasin',
+    'navajowhite',
+    'oldlace',
+    'olivedrab',
+    'orangered',
+    'orchid',
+    'palegoldenrod',
+    'palegreen',
+    'paleturquoise',
+    'palevioletred',
+    'papayawhip',
+    'peachpuff',
+    'peru',
+    'pink',
+    'plum',
+    'powderblue',
+    'rosybrown',
+    'royalblue',
+    'saddlebrown',
+    'salmon',
+    'sandybrown',
+    'seagreen',
+    'seashell',
+    'sienna',
+    'skyblue',
+    'slateblue',
+    'slategray',
+    'slategrey',
+    'snow',
+    'springgreen',
+    'steelblue',
+    'tan',
+    'thistle',
+    'tomato',
+    'turquoise',
+    'violet',
+    'wheat',
+    'whitesmoke',
+    'yellowgreen'],
+  arc_en_ciel: function (k) {
+    var r, g, b;
+    k += 21;
+    k = pourcentmod(k,126);
+    if (k < 0)
+      k += 126;
+    if (k < 21) {
+      r = 251;
+      g = 0;
+      b = 12 * k;
+    }
+    if (k >= 21 && k < 42) {
+      r = 251 - (12 * (k - 21));
+      g = 0;
+      b = 251;
+    }
+    if (k >= 42 && k < 63) {
+      r = 0;
+      g = (k - 42) * 12;
+      b = 251;
+    }
+    if (k >= 63 && k < 84) {
+      r = 0;
+      g = 251;
+      b = 251 - (k - 63) * 12;
+    }
+    if (k >= 84 && k < 105) {
+      r = (k - 84) * 12;
+      g = 251;
+      b = 0;
+    }
+    if (k >= 105 && k < 126) {
+      r = 251;
+      g = 251 - (k - 105) * 12;
+      b = 0;
+    }
+    return 'rgb(' + r + ',' + g + ',' + b + ')';
+  },
+  turtle_color: function (c) {
+    if (c >= 0x100) {
+      if (c < 0x17e)
+        return UI.arc_en_ciel(c);
+      var r=8*((c>>11) & 0x1f);
+      var g=4*((c>>5) & 0x3f);
+      var b=8*(c & 0x1f);
+      return 'rgb(' + r + ',' + g + ',' + b + ')';
+    }
+    return UI.color_list[c];
+  },
+  pixon_draw: function (id, s) {
+    var v = eval(s);
+    if (!Array.isArray(v)) return;
+    //console.log(v[0], v.length);
+    var canvas = document.getElementById(id);
+    var l = v.length, w = 0, h = 0;
+    if (l < 2) return;
+    var scale = v[0];
+    for (var k = 1; k < l; k++) {
+      var cur = v[k];
+      var x = cur[0], y = cur[1];
+      if (cur.length==3 && typeof cur[2]!="number"){
+	x+=100;
+	y+=16;
+      }
+      if (cur.length==4) {
+        var tmp = cur[3];
+	if (typeof tmp=="number"){
+          if (tmp > 0) y += tmp; else x -= tmp;
+	} else {
+	  x+=100;
+	  y+=16;
+	}
+      }
+      //console.log(cur,x,y);
+      if (x > w) w = x;
+      if (y > h) h = y;
+    }
+    w = (w + 1) * scale;
+    h = (h + 1) * scale;
+    canvas.width = w;
+    canvas.height = h;
+    //console.log(h,w);
+    if (canvas.getContext) {
+      var ctx = canvas.getContext('2d');
+      for (var k = 1; k < l; k++) {
+        var cur = v[k], cl;
+        //console.log(cur);
+        if (!Array.isArray(cur) || (cl = cur.length) < 2) continue;
+        // cur[0]=x, cur[1]=y, cur[2]=color, cur[3]=w if +, h if -
+        var x = cur[0] * scale;
+        var y = cur[1] * scale;
+	if (cl>2 && typeof cur[2]=="string"){
+	  console.log(cur[2]);
+	  ctx.font = '16px serif';
+	  ctx.fillStyle = 'black';
+	  ctx.fillText(cur[2],x,y+16,100);
+	  continue;
+	}
+        ctx.fillStyle = (cl > 2) ? UI.turtle_color(cur[2]) : 'black';
+        if (cl < 4) {
+          ctx.fillRect(x, y, scale, scale);
+          continue;
+        }
+	if (typeof cur[3]=="string"){
+	  ctx.font = '16px serif';
+	  ctx.fillText(cur[3],x,y+16,100);
+	  continue;
+	}
+        var h = cur[3] * scale, w = scale;
+        if (h < 0) {
+          w = -h;
+          h = scale;
+        }
+        ctx.fillRect(x, y, w, h);
+      }
+    }
+  },
+  turtle_dx: 0, // shift frame
+  turtle_dy: 0,
+  turtle_z: 1,  // zoom factor
+  turtle_maillage: 1,
+  turtle_draw: function (id, s) {
+    if (s.length < 7) return;
+    s = s.substr(5, s.length - 6);
+    if (s.length > 7 && s.substr(s, 6) == "pixon(") {
+      UI.pixon_draw(id, s.substr(6, s.length - 7));
+      return;
+    }
+    if (s.length < 6 || s.substr(s, 5) != "logo(")
+      return;
+    s = s.substr(5, s.length - 6);
+    //console.log(s);
+    var v = eval(s);
+    if (!Array.isArray(v)) return;
+    //console.log(v[0]);
+    var canvas = document.getElementById(id);
+    var w = canvas.width, h = canvas.height;
+    if (canvas.getContext) {
+      var ctx = canvas.getContext('2d');
+      var turtlezoom = UI.turtle_z, turtlex = UI.turtle_dx, turtley = UI.turtle_dy;
+      // maillage
+      if (UI.turtle_maillage & 3) {
+        ctx.fillStyle = 'black';
+        var xdecal = Math.floor(turtlex / 10.0) * 10;
+        var ydecal = Math.floor(turtley / 10.0) * 10;
+        if ((UI.turtle_maillage & 0x3) == 1) {
+          for (var i = xdecal; i < w + xdecal; i += 10) {
+            for (var j = ydecal; j < h + ydecal; j += 10) {
+              var X = Math.floor((i - turtlex) * turtlezoom + .5);
+              var Y = Math.floor((j - turtley) * turtlezoom + .5);
+              // console.log(X,Y);
+              ctx.fillRect(X, h - Y, 1, 1);
+            }
+          }
+        } else {
+          var dj = Math.sqrt(3.0) * 10, i0 = xdecal;
+          for (var j = ydecal; j < h + ydecal; j += dj) {
+            var J = Math.floor(h - (j - turtley) * turtlezoom);
+            for (var i = i0; i < w + xdecal; i += 10) {
+              ctx.fillRect(Math.floor((i - turtlex) * turtlezoom + .5), J, 1, 1);
+            }
+            i0 += dj;
+            while (i0 >= 10)
+              i0 -= 10;
+          }
+        }
+      }
+      var l = v.length, i;
+      // montre la position et le cap (v[l-1])
+      var prec = v[l - 1];
+      ctx.font = '16px serif';
+      ctx.fillStyle = 'yellow';
+      ctx.fillRect(w - 40, 0, 40, 50);
+      ctx.fillStyle = 'black';
+      ctx.fillText('x:' + prec[0], w - 40, 15);
+      ctx.fillText('y:' + prec[1], w - 40, 31);
+      ctx.fillText('t:' + prec[2], w - 40, 49);
+      // v[i]=[x(0),y(1),cap(2),status(3),r(4),chaine(5)],
+      // couleur=status >> 11
+      // longueur_tortue= (status>>3)&0xff
+      // direct=status&4 (vrai si angle dans le sens trigo)
+      // visible=status&2
+      // crayon baisse=status&1
+      // si r>0 arc/disque rayon=r & 0x1ff, theta1=(r >> 9) & 0x1ff, theta2=(r >> 18) & 0x1ff
+      //        rempli=(r>>27)&0x1
+      // si r<0 ligne polygonale extremite v[i] origine v[i+r] (r<0)
+      for (k = 1; k < l; k++) {
+        prec = v[k - 1];
+        var cur = v[k];
+        var preccouleur = prec[3] >> 11; // -> FIXME colors
+        var curcouleur = prec[3] >> 11; // -> FIXME colors
+        if (cur[5].length) {
+          ctx.font = cur[4] + 'px serif';
+          ctx.strokeStyle = ctx.fillStyle = UI.turtle_color(curcouleur);
+          ctx.fillText(cur[5], turtlezoom * (cur[0] - turtlex), h - turtlezoom * (cur[1] - turtley));
+          continue;
+        }
+        var radius = cur[4], precradius = prec[4];
+        var x1 = Math.floor(turtlezoom * (prec[0] - turtlex) + .5),
+            y1 = Math.floor(turtlezoom * (prec[1] - turtley) + .5),
+            x2 = Math.floor(turtlezoom * (cur[0] - turtlex) + .5),
+            y2 = Math.floor(turtlezoom * (cur[1] - turtley) + .5);
+        if (radius > 0) {
+          var r = radius & 0x1ff, theta1, theta2, rempli, x, y, R, angle;
+          theta1 = prec[2]+ ((radius >> 9) & 0x1ff);
+          theta2 = prec[2] + ((radius >> 18) & 0x1ff);
+          rempli = (radius >> 27) & 1;
+	  var seg = (radius >> 28) & 1;
+          R = Math.floor(turtlezoom * r + .5);
+          angle1 = Math.PI / 180 * (theta1 - 90);
+          angle2 = Math.PI / 180 * (theta2 - 90);
+          x = Math.floor(turtlezoom * (cur[0] - turtlex - r * Math.cos(angle2)) + .5);
+          y = Math.floor(turtlezoom * (cur[1] - turtley - r * Math.sin(angle2)) + .5);
+          ctx.beginPath();
+	  if (seg)
+            ctx.moveTo(x2, h - y2);
+	  else {
+            ctx.moveTo(x, h - y);
+            ctx.lineTo(x2, h - y2);
+	  }
+	  //console.log(x,y,x1,y1,angle1,angle2);
+          ctx.arc(x, h - y, R, -angle2,-angle1);
+          ctx.closePath();
+          ctx.strokeStyle = ctx.fillStyle = UI.turtle_color(curcouleur);
+          if (rempli)
+            ctx.fill();
+          else
+            ctx.stroke();
+          continue;
+        }
+        if (prec[3] & 1) {
+          ctx.strokeStyle = ctx.fillStyle = UI.turtle_color(preccouleur);
+          ctx.beginPath();
+          ctx.moveTo(x1, h - y1);
+          ctx.lineTo(x2, h - y2);
+          ctx.closePath();
+          ctx.stroke();
+        }
+        if (radius < -1 && k + radius >= 0) {
+          ctx.strokeStyle = ctx.fillStyle = UI.turtle_color(curcouleur);
+          ctx.beginPath();
+          var x0 = Math.floor(turtlezoom * (cur[0] - turtlex) + .5), y0 = Math.floor(turtlezoom * (cur[1] - turtley) + .5);
+          //console.log('begin',x0,y0);
+          ctx.moveTo(x0, h - y0);
+          for (var i = -1; i >= radius; i--) {
+            prec = v[k + i];
+            var x = Math.floor(turtlezoom * (prec[0] - turtlex) + .5);
+            var y = Math.floor(turtlezoom * (prec[1] - turtley) + .5);
+            //console.log(i,x,y);
+            ctx.lineTo(x, h - y);
+          }
+          //console.log('end',x0,y0);
+          //ctx.lineTo(x0,h-y0);
+          ctx.closePath();
+          ctx.fill(); // automatically close path
+        }
+      }
+      var cur = v[l - 1];
+      if (cur[3] & 2) {
+        // dessin de la tortue
+        var x = Math.floor(turtlezoom * (cur[0] - turtlex) + .5);
+        var y = Math.floor(turtlezoom * (cur[1] - turtley) + .5);
+        var cost = Math.cos(cur[2] * Math.PI / 180);
+        var sint = Math.sin(cur[2] * Math.PI / 180);
+        var turtle_length = (cur[3] >> 3) & 0xff;
+        var Dx = Math.floor(turtlezoom * turtle_length * cost / 2 + .5);
+        var Dy = Math.floor(turtlezoom * turtle_length * sint / 2 + .5);
+        //console.log('tortue',cur,w,h,turtlezoom,x,y,Dx,Dy);
+        ctx.strokeStyle = ctx.fillStyle = UI.turtle_color(curcouleur);
+        ctx.beginPath();
+        ctx.moveTo(x + Dy, h - (y - Dx));
+        ctx.lineTo(x - Dy, h - (y + Dx));
+        ctx.closePath();
+        ctx.stroke();
+        if (!(cur[3] & 1))
+          ctx.strokeStyle = ctx.fillStyle = UI.turtle_color(curcouleur + 1);
+        ctx.beginPath();
+        ctx.moveTo(x + Dy, h - (y - Dx));
+        ctx.lineTo(x + 3 * Dx, h - (y + 3 * Dy));
+        ctx.closePath();
+        ctx.stroke();
+        ctx.beginPath();
+        ctx.moveTo(x - Dy, h - (y + Dx));
+        ctx.lineTo(x + 3 * Dx, h - (y + 3 * Dy));
+        ctx.closePath();
+        ctx.stroke();
+      }
+    }
+  },
+  render_canvas:function(field){
+   var n=field.id;
+   if (n && n.length>4 && n.substr(0,4)=='gr2d'){
+     var s=field.innerHTML;
+     //console.log(s);
+     UI.turtle_draw(n, s);
+   }
+   if (n && n.length>5 && n.substr(0,5)=='gl3d_'){
+    Module.print(n);
+    var n3d=n.substr(5,n.length-5);
+    giac3d(n3d);
+    return;
+   }
+   var f=field.firstChild;
+   for (;f;f=f.nextSibling){
+     UI.render_canvas(f);
+   }
+  },
+  eval_form: function(field){
+    UI.giaceval('assume('+field.name.value+'=round('+field.valname.value+',12))');
+    var s=UI.caseval(field.prog.value);
+    var is_svg=s.substr(1,4)=='<svg';
+    if (is_svg) field.parentNode.lastChild.innerHTML=s.substr(1,s.length-2);
+    else field.parentNode.lastChild.innerHTML=s;
+   UI.render_canvas(field.parentNode.lastChild);
+  },
+  latexeval:function(text){
+    var tmp=text;
+    if (tmp.length>10 && tmp.substr(0,10)=='GIAC_ERROR') return '"'+tmp.substr(11,tmp.length-11)+'"';
+    if (tmp.length>5 && tmp.substr(0,5)=='gl3d_') return tmp;
+    if (tmp.length>5 && tmp.substr(1,4)=='<svg') return tmp.substr(1,tmp.length-2);
+    if (tmp.length>5 && tmp.substr(0,4)=='<svg') return tmp;
+    if (tmp.length>3 && tmp.substr(0,3)=='<b>') return tmp;
+     if (UI.usemathjax){
+       tmp=UI.giaceval('latex(quote('+tmp+'))');
+       var dollar=String.fromCharCode(36);
+       tmp=dollar+dollar+tmp.substr(1,tmp.length-2)+dollar+dollar;
+       return tmp;
+     }
+     tmp=UI.giaceval('mathml(quote('+tmp+',1))');
+     tmp=tmp.substr(1,tmp.length-2);
+    return tmp;   
+  },
+  ckenter:function(event,field,mode){
+    var key = event.keyCode;
+    if (key != 13 || event.shiftKey) return true;
+   if (mode==3){ UI.quick(field.nextSibling); event.preventDefault(); field.select(); return true; }
+    var tmp=field.value;
+   Module.print(tmp);
+    tmp=UI.caseval(tmp);
+    if (mode==1){
+      tmp=UI.rmquote(tmp); 
+   }
+   if (mode==2){
+     tmp=UI.latexeval(tmp);
+   }
+   field.nextSibling.nextSibling.innerHTML=tmp;
+   UI.render_canvas(field.nextSibling.nextSibling);
+   if (UI.usemathjax) MathJax.Hub.Queue(["Typeset",MathJax.Hub,field.nextSibling.nextSibling]);
+   if (event.preventDefault) event.preventDefault();
+    return false;
+  },
+   exec: function(field){
+     if (field.nodeName=="BUTTON" && field.innerHTML!='Clone' && field.innerHTML!='Restart' && field.innerHTML!='Exec. all'){
+        field.click();
+        return;
+     }
+     if (field.nodeName=="FORM"){
+        UI.eval_form(field);
+        return;
+     }
+     var f=field.firstChild;
+     while (f){
+       UI.exec(f);
+       f=f.nextSibling;
+     }
+   },
+  execonload: function(field){
+     if (!Module.ready){ window.setTimeout(UI.execonload, 100, field); }
+     var f=field.nextSibling;
+     if (f && f.innerHTML=="onload" && field.nodeName=="BUTTON"){
+        field.click();
+        return;
+     }
+     f=field.firstChild;
+     while (f){
+       UI.execonload(f);
+       f=f.nextSibling;
+     }
+   },
+  textarealtgt: function(field){
+     if (field.nodeName=="TEXTAREA"){
+        var tmp=UI.ltgt(field.value);
+        field.value=tmp[0];
+        //field.style.height=20*(tmp[1]+1)+'px';
+        field.rows=tmp[1]+1;
+        return;
+     }
+     var f=field.firstChild;
+     while (f){
+       UI.textarealtgt(f);
+       f=f.nextSibling;
+     }
+   }
+ };
+ window.onload = function(e){
+   var isFirefox = typeof InstallTrigger !== 'undefined';   // Firefox 1.0+
+   var isSafari = Object.prototype.toString.call(window.HTMLElement).indexOf('Constructor') > 0;
+  var ua = window.navigator.userAgent;
+  var old_ie = ua.indexOf('MSIE ');
+  var new_ie = ua.indexOf('Trident/');
+  if ((!isFirefox && !isSafari) || (old_ie > -1) || (new_ie > -1) || window.chrome){
+     UI.usemathjax=true;
+     alert("Your browser does not support MathML, using MathJax for 2d rendering. Consider switching to Firefox for better rendering and faster results");
+  }
+  if (UI.usemathjax){
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  }
+  var elem= document.getElementById('controlindex');
+  elem.innerHTML='<hr><a href="'+String.fromCharCode(35)+'sec1">Table</a>, <a href="'+String.fromCharCode(35)+'sec2">Index</a>,'+elem.innerHTML;
+  if (elem.style.maxHeight=='500px')
+    elem.style.maxHeight=(window.innerHeight-120)+'px';
+  elem= document.getElementById('maindiv');
+  elem.style.maxHeight=(window.innerHeight-150)+'px';
+  // Module.print(elem.innerHTML);
+  //elem.parentNode.insertBefore(elem,null);
+  giac3d = Module.cwrap('_ZN4giac13giac_rendererEPKc','number', ['string']);
+  UI.giaceval('set_language(1);');
+  //UI.giaceval('factor(x^4-1)');
+  //UI.giaceval('sin(x+y)+f(t)');
+  UI.textarealtgt(document.documentElement);
+  window.setTimeout(UI.execonload, 1000, document.documentElement); // UI.execonload(document.documentElement);
+  document.getElementById('output').innerHTML='';
+ // if (confirm('Exec commands?')) UI.exec(document.documentElement);
+ };
+</script>
+
+
+</p><!--CUT END -->
+<!--HTMLFOOT-->
+<!--ENDHTML-->
+<!--FOOTER-->
+<hr style="height:2"><blockquote class="quote"><em>This document was translated from L<sup>A</sup>T<sub>E</sub>X by
+</em><a href="http://hevea.inria.fr/index.html"><em>H</em><em><span style="font-size:small"><sup>E</sup></span></em><em>V</em><em><span style="font-size:small"><sup>E</sup></span></em><em>A</em></a><em>.</em></blockquote></body>
+</html>

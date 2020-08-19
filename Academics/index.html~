@@ -1,0 +1,137 @@
+<html>
+<head>
+  <title>Jay Belanger's Webpage -- Academic Schedule</title>
+</head>
+<body><center>
+
+<table width=100% bgcolor=blue>
+<tr>
+  <td align=left>
+    <a href="../index.html">
+      <font color=white>
+        <b>Home</b>
+      </font>
+    </a>
+  </td>
+  <td align=center>
+    <font color=white size=+1>
+      <b>Jay Belanger's Web Page</b>
+    </font>
+  </td>
+  <td align=right>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp
+  </td>
+</tr>
+</table>
+
+<h1>Classes</h1>
+
+<menu>
+  <li><a href="EssCalc/index.html">Essentials of Calculus</a></li>
+  <li><a href="CalcI/index.html">Calculus I</a></li>
+</menu>
+
+<!--
+<h1>Academic Schedule</h1>
+
+<table border="1">
+  <tr align=center>
+    <td></td>
+    <th>Monday</th>
+    <th>Tuesday</th>
+    <th>Wednesday</th>
+    <th>Thursday</th>
+    <th>Friday</th>
+  </tr>
+  <tr align=center>
+    <th>
+      11:00-11:30
+    </th>
+    <td>
+      Office
+    </td>
+    <td rowspan="2">
+      Matrix<br />
+      Algebra
+    </td> 
+    <td rowspan="2">
+     &nbsp;
+    </td>
+    <td>
+      Office
+    </td>
+    <td rowspan="2">
+      &nbsp;
+    </td>
+    <td>
+      Office
+    </td>
+  </tr>
+  <tr align=center>
+    <th rowspan="2">
+      11:30-12:30<br />
+      &nbsp;
+    </th>
+    <td rowspan="2">
+      Office
+    </td>
+    <td rowspan="2">
+      Office
+    </td>
+    <td rowspan="2">
+      Office
+    </td>
+  </tr>
+  <tr align=center>
+    <td rowspan="2">
+      Matrix<br>
+      Algebra
+    </td>
+    <td rowspan="2">
+      Matrix<br>
+      Algebra
+    </td>
+  </tr>
+  <tr align=center>
+    <th>
+      12:30-1:30<br />
+      &nbsp;
+    </th>
+    <td>
+      Office
+    </td>
+    <td>
+      Office
+    </td>
+    <td>
+      Office
+    </td>
+  </tr>
+  <tr align=center>
+    <th>
+      1:30-2:30<br />
+      &nbsp;
+    </th>
+    <td>
+      Office
+    </td>
+    <td>
+      Office
+    </td>
+    <td>
+      Office
+    </td>
+    <td>
+      Office
+    </td>
+    <td>
+      Office
+    </td>
+  </tr>
+</table>
+-->
+
+<hr size=24 color=blue>
+</center></body>
+</html>
+

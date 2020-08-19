@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html >
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII">
+<meta name="generator" content="hevea 2.34">
+<style type="text/css">
+.li-itemize{margin:1ex 0ex;}
+.li-enumerate{margin:1ex 0ex;}
+.dd-description{margin:0ex 0ex 1ex 4ex;}
+.dt-description{margin:0ex;}
+.toc{list-style:none;}
+.footnotetext{margin:0ex; padding:0ex;}
+div.footnotetext P{margin:0px; text-indent:1em;}
+.thefootnotes{text-align:left;margin:0ex;}
+.dt-thefootnotes{margin:0em;}
+.dd-thefootnotes{margin:0em 0em 0em 2em;}
+.footnoterule{margin:1em auto 1em 0px;width:50%;}
+.caption{padding-left:2ex; padding-right:2ex; margin-left:auto; margin-right:auto}
+.title{margin:2ex auto;text-align:center}
+.titlemain{margin:1ex 2ex 2ex 1ex;}
+.titlerest{margin:0ex 2ex;}
+.center{text-align:center;margin-left:auto;margin-right:auto;}
+.flushleft{text-align:left;margin-left:0ex;margin-right:auto;}
+.flushright{text-align:right;margin-left:auto;margin-right:0ex;}
+div table{margin-left:inherit;margin-right:inherit;margin-bottom:2px;margin-top:2px}
+td table{margin:auto;}
+table{border-collapse:collapse;}
+td{padding:0;}
+.cellpadding0 tr td{padding:0;}
+.cellpadding1 tr td{padding:1px;}
+pre{text-align:left;margin-left:0ex;margin-right:auto;}
+blockquote{margin-left:4ex;margin-right:4ex;text-align:left;}
+td p{margin:0px;}
+.boxed{border:1px solid black}
+.textboxed{border:1px solid black}
+.vbar{border:none;width:2px;background-color:black;}
+.hbar{border:none;height:2px;width:100%;background-color:black;}
+.hfill{border:none;height:1px;width:200%;background-color:black;}
+.vdisplay{border-collapse:separate;border-spacing:2px;width:auto; empty-cells:show; border:2px solid red;}
+.vdcell{white-space:nowrap;padding:0px; border:2px solid green;}
+.display{border-collapse:separate;border-spacing:2px;width:auto; border:none;}
+.dcell{white-space:nowrap;padding:0px; border:none;}
+.dcenter{margin:0ex auto;}
+.vdcenter{border:solid #FF8000 2px; margin:0ex auto;}
+.minipage{text-align:left; margin-left:0em; margin-right:auto;}
+.marginpar{border:solid thin black; width:20%; text-align:left;}
+.marginparleft{float:left; margin-left:0ex; margin-right:1ex;}
+.marginparright{float:right; margin-left:1ex; margin-right:0ex;}
+.theorem{text-align:left;margin:1ex auto 1ex 0ex;}
+.part{margin:2ex auto;text-align:center}
+</style>
+<title>HW01-RatesOfChange</title>
+</head>
+<body >
+<!--HEVEA command line is: hevea -I /home/belanger/JBerd/Config/TeX/Sty/ HW01-RatesOfChange.tex -->
+<!--CUT STYLE article--><!--CUT DEF section 1 --><div class="center">
+<span style="font-weight:bold"><span style="font-size:x-large">LAS Calculus</span></span><br>
+<span style="font-weight:bold"><span style="font-size:large">Average Rates of Change</span></span><br>
+<span style="font-weight:bold">Homework 1</span>
+</div><ol class="enumerate" type=1><li class="li-enumerate">Find the average rate of change of 
+<span style="font-style:italic">y</span>=<span style="font-style:italic">f</span>(<span style="font-style:italic">x</span>)=2<span style="font-style:italic">x</span><sup>2</sup> from <span style="font-style:italic">x</span>=1 to <span style="font-style:italic">x</span>=3.
+
+
+<br>
+<button onclick="answerafn()">Answer</button>
+<div id="answera" style="display:none">
+
+&#X394; <span style="font-style:italic">y</span>/&#X394; <span style="font-style:italic">x</span> = 8.
+
+</div>
+<script>
+function answerafn() {
+  var x = document.getElementById("answera");
+  if (x.style.display === "none") {
+    x.style.display = "block";
+  } else {
+    x.style.display = "none";
+  }
+}
+</script>
+
+
+</li><li class="li-enumerate">Find the average rate of change of 
+<span style="font-style:italic">y</span>=<span style="font-style:italic">f</span>(<span style="font-style:italic">x</span>)=&#X221A;<span style="text-decoration:overline"><span style="font-style:italic">x</span></span> from <span style="font-style:italic">x</span>=1 to <span style="font-style:italic">x</span>=9.
+
+
+<br>
+<button onclick="answerbfn()">Answer</button>
+<div id="answerb" style="display:none">
+
+&#X394; <span style="font-style:italic">y</span>/&#X394; <span style="font-style:italic">x</span> = 1/4.
+
+</div>
+<script>
+function answerbfn() {
+  var x = document.getElementById("answerb");
+  if (x.style.display === "none") {
+    x.style.display = "block";
+  } else {
+    x.style.display = "none";
+  }
+}
+</script>
+
+
+</li><li class="li-enumerate">To buy <span style="font-style:italic">x</span> pounds of new, improved, Stuff, it costs
+<span style="font-style:italic">f</span>(<span style="font-style:italic">x</span>)=3&#X221A;<span style="text-decoration:overline"><span style="font-style:italic">x</span></span> dollars. What is the average rate of change of the
+price (with respect to the number of pounds bought) from <span style="font-style:italic">x</span>=1 pound
+to <span style="font-style:italic">x</span>=4 pounds?
+
+
+<br>
+<button onclick="answercfn()">Answer</button>
+<div id="answerc" style="display:none">
+
+The average rate of change is 1 dollar/pound.
+
+</div>
+<script>
+function answercfn() {
+  var x = document.getElementById("answerc");
+  if (x.style.display === "none") {
+    x.style.display = "block";
+  } else {
+    x.style.display = "none";
+  }
+}
+</script>
+
+
+</li><li class="li-enumerate">An object is traveling so that in <span style="font-style:italic">t</span> minutes, its position
+will be <span style="font-style:italic">f</span>(<span style="font-style:italic">t</span>)=2<span style="font-style:italic">t</span><sup>2</sup>&#X2212;4<span style="font-style:italic">t</span>+3 feet away. What is the average velocity of
+the object from <span style="font-style:italic">t</span>=2 to <span style="font-style:italic">t</span>=5 minutes?
+
+
+<br>
+<button onclick="answerdfn()">Answer</button>
+<div id="answerd" style="display:none">
+
+The average velocity will be 10 feet/minute.
+
+</div>
+<script>
+function answerdfn() {
+  var x = document.getElementById("answerd");
+  if (x.style.display === "none") {
+    x.style.display = "block";
+  } else {
+    x.style.display = "none";
+  }
+}
+</script>
+
+
+</li><li class="li-enumerate">A car is traveling away so that in <span style="font-style:italic">t</span> hours, it will
+be <span style="font-style:italic">f</span>(<span style="font-style:italic">t</span>)=45 + 2<span style="font-style:italic">t</span><sup>2</sup> miles away. What is the average velocity of the
+car from now (<span style="font-style:italic">t</span>=0) to <span style="font-style:italic">t</span>=2 hours?
+
+
+<br>
+<button onclick="answerefn()">Answer</button>
+<div id="answere" style="display:none">
+
+The average velocity will be 4 miles/hour.
+
+</div>
+<script>
+function answerefn() {
+  var x = document.getElementById("answere");
+  if (x.style.display === "none") {
+    x.style.display = "block";
+  } else {
+    x.style.display = "none";
+  }
+}
+</script>
+
+
+</li><li class="li-enumerate">An object is travelling so that in <span style="font-style:italic">t</span> minutes, it&#X2019;s position will
+be <span style="font-style:italic">f</span>(<span style="font-style:italic">t</span>) = 2<span style="font-style:italic">t</span><sup>2</sup>&#X2212;4<span style="font-style:italic">t</span>+3 feet away. What is the average velocity of
+the object from <span style="font-style:italic">t</span>=2 to <span style="font-style:italic">t</span>=5 minutes?
+
+
+<br>
+<button onclick="answerffn()">Answer</button>
+<div id="answerf" style="display:none">
+
+The average velocity will be 10 feet/minute.
+
+</div>
+<script>
+function answerffn() {
+  var x = document.getElementById("answerf");
+  if (x.style.display === "none") {
+    x.style.display = "block";
+  } else {
+    x.style.display = "none";
+  }
+}
+</script>
+
+
+<p>item To buy <span style="font-style:italic">x</span> pounds of new, improved Stuff, it costs <span style="font-style:italic">f</span>(<span style="font-style:italic">x</span>) =
+3&#X221A;<span style="text-decoration:overline"><span style="font-style:italic">x</span></span> dollars. What is the average rate of change of the price
+(with respect to the number of pounds bought) from <span style="font-style:italic">x</span>=1 pound to
+<span style="font-style:italic">x</span>=4 pounds?
+
+
+<br>
+<button onclick="answergfn()">Answer</button>
+<div id="answerg" style="display:none">
+
+The average rate of change will be 1 dollar/pound.
+
+</div>
+<script>
+function answergfn() {
+  var x = document.getElementById("answerg");
+  if (x.style.display === "none") {
+    x.style.display = "block";
+  } else {
+    x.style.display = "none";
+  }
+}
+</script>
+
+
+</p></li><li class="li-enumerate">As <span style="font-style:italic">x</span> increases from 3 to 7, the average rate of change of
+<span style="font-style:italic">y</span> with respect to <span style="font-style:italic">x</span> is 5. How much does <span style="font-style:italic">y</span> increase? (In
+other words, what is &#X394; <span style="font-style:italic">y</span>?)
+
+
+<br>
+<button onclick="answerhfn()">Answer</button>
+<div id="answerh" style="display:none">
+
+&#X394; <span style="font-style:italic">y</span> = 20.
+
+</div>
+<script>
+function answerhfn() {
+  var x = document.getElementById("answerh");
+  if (x.style.display === "none") {
+    x.style.display = "block";
+  } else {
+    x.style.display = "none";
+  }
+}
+</script>
+
+
+
+</li><li class="li-enumerate">As <span style="font-style:italic">x</span> increases from 2 to 5, the average rate of change of
+<span style="font-style:italic">y</span>=<span style="font-style:italic">f</span>(<span style="font-style:italic">x</span>) with respect to <span style="font-style:italic">x</span> is 3.
+<ol class="enumerate" type=a><li class="li-enumerate">
+What is &#X394; <span style="font-style:italic">y</span>?
+
+
+<br>
+<button onclick="answerifn()">Answer</button>
+<div id="answeri" style="display:none">
+
+&#X394; <span style="font-style:italic">y</span> = 9.
+
+</div>
+<script>
+function answerifn() {
+  var x = document.getElementById("answeri");
+  if (x.style.display === "none") {
+    x.style.display = "block";
+  } else {
+    x.style.display = "none";
+  }
+}
+</script>
+
+
+
+</li><li class="li-enumerate">If <span style="font-style:italic">f</span>(2)=7, what is <span style="font-style:italic">f</span>(5)?
+
+
+<br>
+<button onclick="answerjfn()">Answer</button>
+<div id="answerj" style="display:none">
+
+<span style="font-style:italic">f</span>(5)= 16.
+
+</div>
+<script>
+function answerjfn() {
+  var x = document.getElementById("answerj");
+  if (x.style.display === "none") {
+    x.style.display = "block";
+  } else {
+    x.style.display = "none";
+  }
+}
+</script>
+
+
+
+</li></ol>
+</li><li class="li-enumerate">From time 2 hours from now until 4 hours from now, a car&#X2019;s
+average velocity is 45 miles per hour.
+<ol class="enumerate" type=a><li class="li-enumerate">
+How far does the car travel during this time?
+
+
+<br>
+<button onclick="answerkfn()">Answer</button>
+<div id="answerk" style="display:none">
+
+The car will travel 90 miles.
+
+</div>
+<script>
+function answerkfn() {
+  var x = document.getElementById("answerk");
+  if (x.style.display === "none") {
+    x.style.display = "block";
+  } else {
+    x.style.display = "none";
+  }
+}
+</script>
+
+
+
+</li><li class="li-enumerate">If the car is 100 miles away in 2 hours, how far away is
+it in 4 hours?
+
+
+<br>
+<button onclick="answerlfn()">Answer</button>
+<div id="answerl" style="display:none">
+
+The car will be 190 miles (assuming it is traveling away.)
+
+</div>
+<script>
+function answerlfn() {
+  var x = document.getElementById("answerl");
+  if (x.style.display === "none") {
+    x.style.display = "block";
+  } else {
+    x.style.display = "none";
+  }
+}
+</script>
+
+
+
+</li></ol>
+</li></ol><!--CUT END -->
+<!--HTMLFOOT-->
+<!--ENDHTML-->
+<!--FOOTER-->
+<hr style="height:2"><blockquote class="quote"><em>This document was translated from L<sup>A</sup>T<sub>E</sub>X by
+</em><a href="http://hevea.inria.fr/index.html"><em>H</em><em><span style="font-size:small"><sup>E</sup></span></em><em>V</em><em><span style="font-size:small"><sup>E</sup></span></em><em>A</em></a><em>.</em></blockquote></body>
+</html>
