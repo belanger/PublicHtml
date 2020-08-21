@@ -1,0 +1,1459 @@
+<!DOCTYPE html>
+<html >
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII">
+<meta name="generator" content="hevea 2.34">
+<style type="text/css">
+.li-itemize{margin:1ex 0ex;}
+.li-enumerate{margin:1ex 0ex;}
+.dd-description{margin:0ex 0ex 1ex 4ex;}
+.dt-description{margin:0ex;}
+.toc{list-style:none;}
+.footnotetext{margin:0ex; padding:0ex;}
+div.footnotetext P{margin:0px; text-indent:1em;}
+.thefootnotes{text-align:left;margin:0ex;}
+.dt-thefootnotes{margin:0em;}
+.dd-thefootnotes{margin:0em 0em 0em 2em;}
+.footnoterule{margin:1em auto 1em 0px;width:50%;}
+.caption{padding-left:2ex; padding-right:2ex; margin-left:auto; margin-right:auto}
+.title{margin:2ex auto;text-align:center}
+.titlemain{margin:1ex 2ex 2ex 1ex;}
+.titlerest{margin:0ex 2ex;}
+.center{text-align:center;margin-left:auto;margin-right:auto;}
+.flushleft{text-align:left;margin-left:0ex;margin-right:auto;}
+.flushright{text-align:right;margin-left:auto;margin-right:0ex;}
+div table{margin-left:inherit;margin-right:inherit;margin-bottom:2px;margin-top:2px}
+td table{margin:auto;}
+table{border-collapse:collapse;}
+td{padding:0;}
+.cellpadding0 tr td{padding:0;}
+.cellpadding1 tr td{padding:1px;}
+pre{text-align:left;margin-left:0ex;margin-right:auto;}
+blockquote{margin-left:4ex;margin-right:4ex;text-align:left;}
+td p{margin:0px;}
+.boxed{border:1px solid black}
+.textboxed{border:1px solid black}
+.vbar{border:none;width:2px;background-color:black;}
+.hbar{border:none;height:2px;width:100%;background-color:black;}
+.hfill{border:none;height:1px;width:200%;background-color:black;}
+.vdisplay{border-collapse:separate;border-spacing:2px;width:auto; empty-cells:show; border:2px solid red;}
+.vdcell{white-space:nowrap;padding:0px; border:2px solid green;}
+.display{border-collapse:separate;border-spacing:2px;width:auto; border:none;}
+.dcell{white-space:nowrap;padding:0px; border:none;}
+.dcenter{margin:0ex auto;}
+.vdcenter{border:solid #FF8000 2px; margin:0ex auto;}
+.minipage{text-align:left; margin-left:0em; margin-right:auto;}
+.marginpar{border:solid thin black; width:20%; text-align:left;}
+.marginparleft{float:left; margin-left:0ex; margin-right:1ex;}
+.marginparright{float:right; margin-left:1ex; margin-right:0ex;}
+.theorem{text-align:left;margin:1ex auto 1ex 0ex;}
+.part{margin:2ex auto;text-align:center}
+.lstlisting{font-family:monospace;white-space:pre;margin-right:auto;margin-left:0pt;text-align:left}
+</style>
+<script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+<title>02-Anatomy</title>
+</head>
+<body >
+<!--HEVEA command line is: hevea -I /home/belanger/JBerd/Config/TeX/Sty/ 02-Anatomy.tex -->
+<!--CUT STYLE article--><!--CUT DEF section 1 --><p>
+
+<div>
+<div id="maindiv" style="max-height: 500px; overflow:auto">
+
+
+
+\(
+\newcommand{\vect}[1]
+{\mathbf{#1}}
+\newcommand{\vectr}[1]
+{\begin{pmatrix} #1 \end{pmatrix}}
+\)
+
+</p><div class="center">
+<span style="font-weight:bold"><span style="font-size:x-large">Section 2<br>
+ Anatomy of a Matrix
+</span></span></div><p>
+
+Tables of values are often given to us as rectangular arrays of
+numbers. The multiplication table is an example, and the results of
+many surveys are given as such arrays (see Table <a href="#fig%3Asurvey">1</a>,
+where the unitalicized numbers form the rectangular array).
+Typically, each row and each column in such a table has a special
+meaning; in Table <a href="#fig%3Asurvey">1</a>, each column represents a physical
+measurement and each row represents a person. </p><blockquote class="table"><div class="center"><div class="center"><hr style="width:80%;height:2"></div>
+<table border=1  style="border-spacing:0;" class="cellpadding1"><tr><td style="text-align:center;border:solid 1px;white-space:nowrap" > <span style="font-style:italic">Name</span></td><td style="text-align:center;border:solid 1px;white-space:nowrap" ><span style="font-style:italic">Height (in)</span></td><td style="text-align:center;border:solid 1px;white-space:nowrap" ><span style="font-style:italic">Weight (lbs)</span></td></tr>
+<tr><td style="text-align:center;border:solid 1px;white-space:nowrap" > <span style="font-style:italic">Alan</span></td><td style="text-align:center;border:solid 1px;white-space:nowrap" >66</td><td style="text-align:center;border:solid 1px;white-space:nowrap" >150 </td></tr>
+<tr><td style="text-align:center;border:solid 1px;white-space:nowrap" > <span style="font-style:italic">Bob</span></td><td style="text-align:center;border:solid 1px;white-space:nowrap" >70</td><td style="text-align:center;border:solid 1px;white-space:nowrap" >210 </td></tr>
+<tr><td style="text-align:center;border:solid 1px;white-space:nowrap" > <span style="font-style:italic">Carl</span></td><td style="text-align:center;border:solid 1px;white-space:nowrap" >69</td><td style="text-align:center;border:solid 1px;white-space:nowrap" >200
+</td></tr>
+</table>
+<div class="caption"><table style="border-spacing:6px;border-collapse:separate;" class="cellpading0"><tr><td style="vertical-align:top;text-align:left;" >Table 1: Survey results</td></tr>
+</table></div>
+<a id="fig:survey"></a>
+<div class="center"><hr style="width:80%;height:2"></div></div></blockquote><p>A rectangular array of numbers is called a <span style="font-style:italic"><span style="font-weight:bold">matrix</span></span>. In
+applications, each column and each row usually have a special meaning,
+such as in the survey results table. Later we shall see that matrices
+have more structure than this, but this is a good starting point.</p><p>To get things started, let&#X2019;s define the objects we&#X2019;ll be discussing.
+As we begin to use these objects, their value will become apparent.</p><p><br>
+</p><p><span style="font-weight:bold"><span style="font-variant:small-caps">Definition </span></span><br>
+ An \(m\times n\) <span style="font-style:italic"><span style="font-weight:bold">matrix</span></span> is an array of numbers with \(m\) rows
+and \(n\) columns.
+
+<div><hr style="text-align:left;margin-left:0;width:10&#37;;height:2"></div>
+
+</p><p>The pair \(m\times n\) is called the <span style="font-style:italic"><span style="font-weight:bold">size</span></span> or <span style="font-style:italic"><span style="font-weight:bold">order</span></span> of the
+matrix. The numbers that make up a matrix are called the
+<span style="font-style:italic"><span style="font-weight:bold">elements</span></span> of the matrix.
+The array is typically written between large parentheses; we will
+consistently follow that convention.</p><p><br>
+</p><p><span style="font-weight:bold"><span style="font-variant:small-caps">Example </span></span><br>
+ The array
+\[
+  \begin{pmatrix}
+    1 & 2 & 3 \\
+    3 & 2 & 1 \\
+    4 & 8 & 9 \\
+    \frac{1}{2} & \pi & 4
+  \end{pmatrix}
+  \]
+is a \(4\times 3\) matrix.
+
+<div><hr style="text-align:left;margin-left:0;width:10&#37;;height:2"></div>
+
+</p><p>Matrices are usually denoted by capital letters, with their elements
+denoted by lower case letters.</p><p><br>
+</p><p><span style="font-weight:bold"><span style="font-variant:small-caps">Example </span></span><br>
+ \[
+  A = 
+  \begin{pmatrix}
+    a & b\\
+    c & d
+  \end{pmatrix}
+  \]
+
+<div><hr style="text-align:left;margin-left:0;width:10&#37;;height:2"></div>
+
+</p><p>It is convenient, particularly for larger matrices, to denote the
+elements using subscripts. If the matrix is \(A\), then the element in
+the \(i\)th row and \(j\)th column is usually denoted \(a_{ij}\):
+\[ 
+A = 
+\begin{pmatrix}
+  a_{11} & a_{12} & \dots & a_{1n} \\
+  a_{21} & a_{22} & \dots & a_{2n} \\
+  \vdots & \vdots &  & \vdots \\
+  a_{m1} & a_{m2} & \dots & a_{mn}
+\end{pmatrix}
+\]</p><p>Two matrices are equal exactly when they are the same size and their
+corresponding elements are equal.</p><p><br>
+</p><p><span style="font-weight:bold"><span style="font-variant:small-caps">Example </span></span><br>
+ The matrices
+\[
+  \begin{pmatrix}
+    1 & 1 & 1\\
+    1 & 1 & 1
+  \end{pmatrix}
+  \]
+and
+\[
+  \begin{pmatrix}
+    1 & 1 \\
+    1 & 1 \\
+    1 & 1
+  \end{pmatrix}
+  \]
+are not equal, since the first is a \(2\times 3\) matrix and the
+second is a \(3 \times 2\) matrix.
+
+<div><hr style="text-align:left;margin-left:0;width:10&#37;;height:2"></div>
+
+</p><p><br>
+</p><p><span style="font-weight:bold"><span style="font-variant:small-caps">Example </span></span><br>
+ The matrices
+\[
+  \begin{pmatrix}
+    1 & 2\\
+    1 & 1
+  \end{pmatrix}
+  \]
+and
+\[
+  \begin{pmatrix}
+    1 & 1\\
+    2 & 1
+  \end{pmatrix}
+  \]
+are not equal, since the corresponding elements aren&#X2019;t all equal.
+
+<div><hr style="text-align:left;margin-left:0;width:10&#37;;height:2"></div>
+
+</p><p><br>
+</p><p><span style="font-weight:bold"><span style="font-variant:small-caps">Example </span></span><br>
+ The matrices
+\[
+  \begin{pmatrix}
+    1 & 2\\
+    3 & 4
+  \end{pmatrix}
+  \]
+and
+\[
+  \begin{pmatrix}
+    1 & 2\\
+    3 & 4
+  \end{pmatrix}
+  \]
+are equal.
+
+<div><hr style="text-align:left;margin-left:0;width:10&#37;;height:2"></div>
+
+</p><p><br>
+</p><p><span style="font-weight:bold"><span style="font-variant:small-caps">Example </span></span><br>
+ The equation
+\[
+  \begin{pmatrix}
+    x & y\\
+    a & b
+  \end{pmatrix}
+  =
+  \begin{pmatrix}
+    1 & 2\\
+    3 & 4
+  \end{pmatrix}
+  \]
+means exactly that
+\begin{align*}
+  x&=1 \\
+  y&=2 \\
+  a&=3 \\
+  b&=4.
+  \end{align*}
+
+<div><hr style="text-align:left;margin-left:0;width:10&#37;;height:2"></div>
+
+</p><p>Recall that a row vector in \(\mathbb{R}^{n}\) is an ordered \(n\)-tuple of
+numbers,
+\[ (x_{1}\quad x_{2}\quad \cdots \quad x_{n}),\]
+which is a \(1\times n\) matrix.
+A <span style="font-style:italic"><span style="font-weight:bold">column vector</span></span>
+\[
+\begin{pmatrix}
+  x_1\\
+  x_2\\
+ \vdots\\
+ x_n
+\end{pmatrix}
+\]
+is an \(n\times 1\) matrix.</p><p>It is often useful to think of an \(m\times n\) matrix as being made up
+of \(m\) row vectors and \(n\) column vectors.</p><p><br>
+</p><p><span style="font-weight:bold"><span style="font-variant:small-caps">Example </span></span><br>
+ The \(2\times3\) matrix
+\[  
+  \begin{pmatrix}
+    1 & 2 & 3\\
+    4 & 5 & 6
+  \end{pmatrix}
+  \]
+is composed of the 2 row vectors
+\[ \begin{pmatrix} 1 & 2 & 3\end{pmatrix} \text{~and~}
+   \begin{pmatrix} 4 & 5 & 6\end{pmatrix}\]
+and the 3 column vectors
+\[ \begin{pmatrix} 1\\4\end{pmatrix},
+   \begin{pmatrix}2\\5\end{pmatrix} \text{~and~}
+   \begin{pmatrix} 3\\6\end{pmatrix}.\]
+
+<div><hr style="text-align:left;margin-left:0;width:10&#37;;height:2"></div>
+
+</p><p>If \(A\) is an \(m\times n\) matrix, then it is made up of several 
+\(m \times 1\) column vectors. If we have another \(m \times 1\) column
+vector \(\mathbf{b}\), we could create a new matrix by placing \(\mathbf{b}\) at
+the end of \(A\). This is called <span style="font-style:italic"><span style="font-weight:bold">augmenting</span></span> the matrix \(A\) by
+the column vector \(\mathbf{b}\), and can be denoted 
+\(\big( A \mid \vect{b} \big)\).</p><p><br>
+</p><p><span style="font-weight:bold"><span style="font-variant:small-caps">Example </span></span><br>
+ If the matrix
+\[
+  A = 
+  \begin{pmatrix}
+    1 & 2 \\
+    3 & 4 \\
+    5 & 6
+  \end{pmatrix}
+  \]
+is augmented with
+\[
+  \vect{b}
+  =
+  \begin{pmatrix}
+    7\\
+    8\\
+    9
+  \end{pmatrix},
+  \]
+the result will be
+\[
+  \big( A \mid \vect{b} \big)= 
+\begin{pmatrix}  
+  1 & 2 & 7\\
+    3 & 4 & 8\\
+    5 & 6 & 9
+  \end{pmatrix}.
+  \]
+
+<div><hr style="text-align:left;margin-left:0;width:10&#37;;height:2"></div>
+
+</p><p>We may sometimes want to switch the information in the columns and the
+rows. For this, we have the transpose.</p><p><br>
+</p><p><span style="font-weight:bold"><span style="font-variant:small-caps">Definition </span></span><br>
+ Let \(B\) be an \(m\times n\) matrix. The <span style="font-style:italic"><span style="font-weight:bold">transpose</span></span> of \(B\),
+denoted \(B^{T}\), is the \(n\times m\) matrix formed by taking the rows
+of \(B\) and making them the corresponding columns of \(B^{T}\).
+
+<div><hr style="text-align:left;margin-left:0;width:10&#37;;height:2"></div>
+
+</p><p><br>
+</p><p><span style="font-weight:bold"><span style="font-variant:small-caps">Example </span></span><br>
+ If
+\[
+  B=
+  \begin{pmatrix}
+    1 & 2 & 3\\
+    4 & 5 & 6
+  \end{pmatrix},
+  \]
+then
+\[
+  B^{T}=
+  \begin{pmatrix}
+    1 & 4\\
+    2 & 5\\
+    3 & 6
+  \end{pmatrix}.
+  \]
+
+<div><hr style="text-align:left;margin-left:0;width:10&#37;;height:2"></div>
+
+</p><p>Some types of matrices will play important roles in matrix algebra.
+A <span style="font-style:italic"><span style="font-weight:bold">zero matrix</span></span> is simply a matrix consisting of all \(0\)s. The
+matrix
+\[
+\begin{pmatrix}
+0 & 0 & 0\\
+0 & 0 & 0
+\end{pmatrix}
+\]
+is the \(2\times 3\) zero matrix.</p><p>The other special matrices are <span style="font-style:italic"><span style="font-weight:bold">square</span></span> matrices; matrices
+which have the same number of rows as columns.</p><p><br>
+</p><p><span style="font-weight:bold"><span style="font-variant:small-caps">Example </span></span><br>
+ The \(2\times2\) matrix
+\[
+  \begin{pmatrix}
+    1 & 2 \\
+    3 & 2   \end{pmatrix}
+  \]
+is a square matrix.
+
+<div><hr style="text-align:left;margin-left:0;width:10&#37;;height:2"></div>
+
+</p><p>An important square matrix is the following.</p><p><br>
+</p><p><span style="font-weight:bold"><span style="font-variant:small-caps">Definition </span></span><br>
+ The matrix 
+\[ I_{n} = 
+  \begin{pmatrix}
+    1 & 0 & 0 & \cdots & 0\\
+    0 & 1 & 0 & \cdots & 0\\
+    0 & 0 & 1 & \cdots & 0\\
+    \vdots & \vdots & \vdots &  & \vdots\\
+    0 & 0 & 0 & \cdots & 1
+  \end{pmatrix}
+  \]
+is called the \(n\times n\) <span style="font-style:italic"><span style="font-weight:bold">identity matrix</span></span>. When the size is
+implicit, the identity matrix is also simply written \(I\).
+
+<div><hr style="text-align:left;margin-left:0;width:10&#37;;height:2"></div>
+
+</p><p>The \(1\)s in an identity matrix go from the upper-left to the
+lower-right. Elements on this diagonal (the only diagonal that we
+care about) are called diagonal elements.</p><p><br>
+</p><p><span style="font-weight:bold"><span style="font-variant:small-caps">Definition </span></span><br>
+ If \(A\) is a square matrix, the elements \(a_{11}\), \(a_{22}\), \(\dots\)
+are called the <span style="font-style:italic"><span style="font-weight:bold">diagonal elements</span></span>.
+\[
+\begin{pmatrix}
+  *a_{11}* & a_{12} & a_{13} & \dots & a_{1n} \\
+  a_{21} & *a_{22}* & a_{23} & \dots & a_{2n} \\
+  a_{31} & a_{32} & *a_{33}* & \dots & a_{3n} \\
+  \vdots & \vdots &  &*\ddots* & \vdots \\
+  a_{n1} & a_{n2} & a_{n3}& \dots & *{a_{nn}}*
+\end{pmatrix}
+\]
+
+<div><hr style="text-align:left;margin-left:0;width:10&#37;;height:2"></div>
+
+</p><p><br>
+</p><p><span style="font-weight:bold"><span style="font-variant:small-caps">Definition </span></span><br>
+ A <span style="font-style:italic"><span style="font-weight:bold">diagonal matrix</span></span> is a square matrix in which all elements
+<em>not</em> on the diagonal are \(0\); i.e., a matrix of the form
+\[
+  \begin{pmatrix}
+    d_{11} & 0 & 0 & \cdots & 0\\
+    0 & d_{22} & 0 & \cdots & 0\\
+    0 & 0 & d_{33} & \cdots & 0\\
+    \vdots & \vdots & \vdots & & \vdots\\
+    0 & 0 & 0 & \cdots & d_{nn}
+  \end{pmatrix}
+  \]
+
+<div><hr style="text-align:left;margin-left:0;width:10&#37;;height:2"></div>
+
+</p><p>The diagonal elements of a diagonal matrix could be zero or non-zero.</p><p><br>
+</p><p><span style="font-weight:bold"><span style="font-variant:small-caps">Example </span></span><br>
+ The matrices
+\[
+  \begin{pmatrix}
+    1 & 0\\
+    0 & 2
+  \end{pmatrix},
+  \quad
+  \begin{pmatrix}
+    1 & 0 & 0\\
+    0 & 2 & 0\\
+    0 & 0 & 3
+  \end{pmatrix}
+  \text{~and~}
+  \begin{pmatrix}
+    0 & 0 & 0 \\
+    0 & 0 & 0 \\
+    0 & 0 & 1
+  \end{pmatrix}
+  \]
+are all diagonal matrices.
+
+<div><hr style="text-align:left;margin-left:0;width:10&#37;;height:2"></div>
+
+</p><p>Related to the diagonal matrices are the triangular matrices.</p><p><br>
+</p><p><span style="font-weight:bold"><span style="font-variant:small-caps">Definition </span></span><br>
+ An <span style="font-style:italic"><span style="font-weight:bold">upper triangular matrix</span></span> is a square matrix in which all elements
+<em>below</em> the diagonal are \(0\); i.e., a matrix of the form
+\[
+  \begin{pmatrix}
+    t_{11} & t_{12} & t_{13} & \cdots & t_{1n}\\
+    0 & t_{22} & t_{23} & \cdots & t_{2n}\\
+    0 & 0 & t_{33} & \cdots & t_{3n}\\
+    \vdots & \vdots & \vdots & & \vdots\\
+    0 & 0 & 0 & \cdots & t_{nn}
+  \end{pmatrix}
+  \]
+
+<div><hr style="text-align:left;margin-left:0;width:10&#37;;height:2"></div>
+
+</p><p><br>
+</p><p><span style="font-weight:bold"><span style="font-variant:small-caps">Example </span></span><br>
+ The matrices
+\[
+  \begin{pmatrix}
+    1 & 2\\
+    0 & 3
+  \end{pmatrix},
+  \quad
+  \begin{pmatrix}
+    1 & 3 & 5\\
+    0 & -1 & 4\\
+    0 & 0 & 3
+  \end{pmatrix}
+  \text{~and~}
+  \begin{pmatrix}
+    0 & 0 & 0 \\
+    0 & 0 & 0 \\
+    0 & 0 & 1
+  \end{pmatrix}
+  \]
+are all upper triangular matrices.
+
+<div><hr style="text-align:left;margin-left:0;width:10&#37;;height:2"></div>
+
+</p><p><br>
+</p><p><span style="font-weight:bold"><span style="font-variant:small-caps">Definition </span></span><br>
+ A <span style="font-style:italic"><span style="font-weight:bold">lower triangular matrix</span></span> is a square matrix in which all elements
+<em>above</em> the diagonal are \(0\); i.e., a matrix of the form
+\[
+  \begin{pmatrix}
+    t_{11} & 0 & 0 & \cdots & 0\\
+    t_{21} & t_{22} & 0 & \cdots & 0\\
+    t_{31} & t_{32} & t_{33} & \cdots & 0\\
+    \vdots & \vdots & \vdots & & \vdots\\
+    t_{n1} & t_{n2} & t_{n3} & \cdots & t_{nn}
+  \end{pmatrix}
+  \]
+
+<div><hr style="text-align:left;margin-left:0;width:10&#37;;height:2"></div>
+
+</p><p><br>
+</p><p><span style="font-weight:bold"><span style="font-variant:small-caps">Example </span></span><br>
+ The matrices
+\[
+  \begin{pmatrix}
+    1 & 0\\
+    2 & 3
+  \end{pmatrix},
+  \quad
+  \begin{pmatrix}
+    1 & 0 & 0\\
+    2 & -1 & 0\\
+    4 & 5 & 3
+  \end{pmatrix}
+  \text{~and~}
+  \begin{pmatrix}
+    0 & 0 & 0 \\
+    0 & 0 & 0 \\
+    0 & 0 & 1
+  \end{pmatrix}
+  \]
+are all lower triangular matrices.
+
+<div><hr style="text-align:left;margin-left:0;width:10&#37;;height:2"></div>
+
+</p><p>This is the &#X201C;Matrix&#X201D; part of Matrix Algebra, so we must be halfway
+done with the course. Before we get to the &#X201C;Algebra&#X201D; part, we
+should discuss some useful techniques that will play a role in the
+rest of the semester. These techniques will be introduced in the
+context of solving linear systems of equations.</p><!--TOC section id="sec1" Xcas-->
+<h2 id="sec1" class="section">Xcas</h2><!--SEC END --><p>A row of a matrix in <span style="font-family:monospace">Xcas</span> is simply a list, and the matrix
+itself is a list of its rows. The matrix
+\[
+\begin{pmatrix}
+1 & 2 & 3\\
+4 & 5 & 6
+\end{pmatrix}
+\]
+can be entered with
+<br><textarea onkeypress="UI.ckenter(event,this,2)" 
+style="width:400px;font-size:large">[[1,2,3],[4,5,6]] 
+</textarea><button onclick="previousSibling.style.display='inherit';var tmp=UI.caseval(previousSibling.value); tmp=UI.latexeval(tmp);nextSibling.innerHTML='&nbsp;'+tmp; if (UI.usemathjax) MathJax.Hub.Queue(['Typeset',MathJax.Hub,nextSibling])">exe</button><span></span><br>
+</p><p>The number of rows and columns in a matrix are given by the
+<span style="font-family:monospace">nrows</span> and <span style="font-family:monospace">ncols</span> commands.
+<br><textarea onkeypress="UI.ckenter(event,this,2)" 
+style="width:400px;font-size:large">A := [[1,2,3],[4,5,6]] 
+</textarea><button onclick="previousSibling.style.display='inherit';var tmp=UI.caseval(previousSibling.value); tmp=UI.latexeval(tmp);nextSibling.innerHTML='&nbsp;'+tmp; if (UI.usemathjax) MathJax.Hub.Queue(['Typeset',MathJax.Hub,nextSibling])">exe</button><span></span><br>
+
+<br><textarea onkeypress="UI.ckenter(event,this,2)" 
+style="width:400px;font-size:large">nrows(A) 
+</textarea><button onclick="previousSibling.style.display='inherit';var tmp=UI.caseval(previousSibling.value); tmp=UI.latexeval(tmp);nextSibling.innerHTML='&nbsp;'+tmp; if (UI.usemathjax) MathJax.Hub.Queue(['Typeset',MathJax.Hub,nextSibling])">exe</button><span></span><br>
+
+<br><textarea onkeypress="UI.ckenter(event,this,2)" 
+style="width:400px;font-size:large">ncols(A) 
+</textarea><button onclick="previousSibling.style.display='inherit';var tmp=UI.caseval(previousSibling.value); tmp=UI.latexeval(tmp);nextSibling.innerHTML='&nbsp;'+tmp; if (UI.usemathjax) MathJax.Hub.Queue(['Typeset',MathJax.Hub,nextSibling])">exe</button><span></span><br>
+
+The dimension \(m\times n\) is given as a list by the <span style="font-family:monospace">dim</span>
+command.
+<br><textarea onkeypress="UI.ckenter(event,this,2)" 
+style="width:400px;font-size:large">dim(A) 
+</textarea><button onclick="previousSibling.style.display='inherit';var tmp=UI.caseval(previousSibling.value); tmp=UI.latexeval(tmp);nextSibling.innerHTML='&nbsp;'+tmp; if (UI.usemathjax) MathJax.Hub.Queue(['Typeset',MathJax.Hub,nextSibling])">exe</button><span></span><br>
+
+</p><p>Recall that you can get the row of a matrix \(A\) by specifying the row
+number in brackets; where the indexing starts at 0. You can then
+choose a specific element of the row by specifying that index in
+brackets, where again the indexing starts at 0. So you can get the
+element in row \(i\) and column \(j\) with <span style="font-family:monospace">A[[</span>\(i\)<span style="font-family:monospace">]][[</span>\(j\)<span style="font-family:monospace">]]</span> or
+simply <span style="font-family:monospace">A[[</span>\(i,j\)<span style="font-family:monospace">]]</span>.
+With the matrix
+<br><textarea onkeypress="UI.ckenter(event,this,2)" 
+style="width:400px;font-size:large">A 
+</textarea><button onclick="previousSibling.style.display='inherit';var tmp=UI.caseval(previousSibling.value); tmp=UI.latexeval(tmp);nextSibling.innerHTML='&nbsp;'+tmp; if (UI.usemathjax) MathJax.Hub.Queue(['Typeset',MathJax.Hub,nextSibling])">exe</button><span></span><br>
+
+you can get the element in the first row, second column
+<br><textarea onkeypress="UI.ckenter(event,this,2)" 
+style="width:400px;font-size:large">A[[1,2]] 
+</textarea><button onclick="previousSibling.style.display='inherit';var tmp=UI.caseval(previousSibling.value); tmp=UI.latexeval(tmp);nextSibling.innerHTML='&nbsp;'+tmp; if (UI.usemathjax) MathJax.Hub.Queue(['Typeset',MathJax.Hub,nextSibling])">exe</button><span></span><br>
+
+Another way to get an entire row is with the <span style="font-family:monospace">row</span> command,
+which uses indices starting at 0. The first row of <span style="font-family:monospace">A</span> is
+<br><textarea onkeypress="UI.ckenter(event,this,2)" 
+style="width:400px;font-size:large">row(A,0) 
+</textarea><button onclick="previousSibling.style.display='inherit';var tmp=UI.caseval(previousSibling.value); tmp=UI.latexeval(tmp);nextSibling.innerHTML='&nbsp;'+tmp; if (UI.usemathjax) MathJax.Hub.Queue(['Typeset',MathJax.Hub,nextSibling])">exe</button><span></span><br>
+
+Similarly, you can get an entire column (as a list) with the
+<span style="font-family:monospace">col</span> command. 
+<br><textarea onkeypress="UI.ckenter(event,this,2)" 
+style="width:400px;font-size:large">col(A,1) 
+</textarea><button onclick="previousSibling.style.display='inherit';var tmp=UI.caseval(previousSibling.value); tmp=UI.latexeval(tmp);nextSibling.innerHTML='&nbsp;'+tmp; if (UI.usemathjax) MathJax.Hub.Queue(['Typeset',MathJax.Hub,nextSibling])">exe</button><span></span><br>
+
+</p><p>If the matrices <span style="font-family:monospace">A</span> and <span style="font-family:monospace">B</span> have the same number of
+rows, then the <span style="font-family:monospace">augment</span> command will augment them. 
+With <span style="font-family:monospace">A</span> as above:
+<br><textarea onkeypress="UI.ckenter(event,this,2)" 
+style="width:400px;font-size:large">augment(A,[[5],[10]]) 
+</textarea><button onclick="previousSibling.style.display='inherit';var tmp=UI.caseval(previousSibling.value); tmp=UI.latexeval(tmp);nextSibling.innerHTML='&nbsp;'+tmp; if (UI.usemathjax) MathJax.Hub.Queue(['Typeset',MathJax.Hub,nextSibling])">exe</button><span></span><br>
+
+</p><p>Finally, the transpose of a matrix is computed with the 
+<span style="font-family:monospace">transpose</span> command.
+<br><textarea onkeypress="UI.ckenter(event,this,2)" 
+style="width:400px;font-size:large">transpose(A) 
+</textarea><button onclick="previousSibling.style.display='inherit';var tmp=UI.caseval(previousSibling.value); tmp=UI.latexeval(tmp);nextSibling.innerHTML='&nbsp;'+tmp; if (UI.usemathjax) MathJax.Hub.Queue(['Typeset',MathJax.Hub,nextSibling])">exe</button><span></span><br>
+
+</p><p>Special types of matrices have special ways of being entered, saving you
+the trouble of typing out each element.</p><p>The <span style="font-family:monospace">matrix</span> command will create a zero matrix of a specified
+size; to create the \(2 \times 3\) zero matrix, you can enter
+<br><textarea onkeypress="UI.ckenter(event,this,2)" 
+style="width:400px;font-size:large">matrix(2,3) 
+</textarea><button onclick="previousSibling.style.display='inherit';var tmp=UI.caseval(previousSibling.value); tmp=UI.latexeval(tmp);nextSibling.innerHTML='&nbsp;'+tmp; if (UI.usemathjax) MathJax.Hub.Queue(['Typeset',MathJax.Hub,nextSibling])">exe</button><span></span><br>
+
+</p><p>The <span style="font-family:monospace">idn</span> command will create an \(n \times n\) identity matrix,
+where \(n\) is the argument. To create the \(2\times 2\) identity matrix,
+you can enter
+<br><textarea onkeypress="UI.ckenter(event,this,2)" 
+style="width:400px;font-size:large">idn(2) 
+</textarea><button onclick="previousSibling.style.display='inherit';var tmp=UI.caseval(previousSibling.value); tmp=UI.latexeval(tmp);nextSibling.innerHTML='&nbsp;'+tmp; if (UI.usemathjax) MathJax.Hub.Queue(['Typeset',MathJax.Hub,nextSibling])">exe</button><span></span><br>
+
+</p><p>The <span style="font-family:monospace">diag</span> command will take a list and return a diagonal
+matrix whose diagonal elements are the elements of the list. You can
+enter
+<br><textarea onkeypress="UI.ckenter(event,this,2)" 
+style="width:400px;font-size:large">diag([1,2,3]) 
+</textarea><button onclick="previousSibling.style.display='inherit';var tmp=UI.caseval(previousSibling.value); tmp=UI.latexeval(tmp);nextSibling.innerHTML='&nbsp;'+tmp; if (UI.usemathjax) MathJax.Hub.Queue(['Typeset',MathJax.Hub,nextSibling])">exe</button><span></span><br>
+
+If you give <span style="font-family:monospace">diag</span> a square matrix as an argument, then it will
+return a list of the diagonal elements. You can enter
+<br><textarea onkeypress="UI.ckenter(event,this,2)" 
+style="width:400px;font-size:large">diag([[1,2,3],[4,5,6],[7,8,9]]) 
+</textarea><button onclick="previousSibling.style.display='inherit';var tmp=UI.caseval(previousSibling.value); tmp=UI.latexeval(tmp);nextSibling.innerHTML='&nbsp;'+tmp; if (UI.usemathjax) MathJax.Hub.Queue(['Typeset',MathJax.Hub,nextSibling])">exe</button><span></span><br>
+
+</p><p>
+
+</div>
+<div id="controldiv" style="max-height: 400px; overflow:auto">
+<span id="controlindex"></span>
+<button title="Clone last command to Xcas for Firefox" onclick="UI.clone()">Clone</button>
+<button title="Clear console" onclick="document.getElementById('output').innerHTML='';">Clear</button>
+<button title="Increase console size" onclick="var field=document.getElementById('output'); var s=field.style.maxHeight; s=s.substr(0,s.length-2);s=eval(s)+20 ;if(s<innerHeight/2){s=s+'px';field.style.maxHeight=s; field=document.getElementById('maindiv'); s=field.style.maxHeight; s=s.substr(0,s.length-2);s=eval(s)-20; s=s+'px';field.style.maxHeight=s;}">+</button>
+<button title="Decrease console size" onclick="var field=document.getElementById('output'); var s=field.style.maxHeight; s=s.substr(0,s.length-2);s=eval(s)-20 ; if(s>80){s=s+'px';field.style.maxHeight =s;field=document.getElementById('maindiv'); s=field.style.maxHeight; s=s.substr(0,s.length-2);s=eval(s)+20; s=s+'px';field.style.maxHeight=s;}">-</button>
+<textarea title="Commandline for a quick computation" onkeypress="UI.ckenter(event,this,3);" style="width:400px;height:20px;font-size:large"></textarea><button  title="Eval previous cell" onclick="UI.quick(this);">-></button><span></span>
+&nbsp;&nbsp;<button onclick="var s=UI.caseval('restart;'); Module.print(s);" title="Reset CAS computing kernel">Restart</button>
+<button onclick="UI.exec(document.documentElement);" title='Click here to exec all commands (maybe be long!)'>Exec. all</button>
+<canvas id='canvas' width=0 height=0   onmousedown="UI.canvas_pushed=true;UI.canvas_lastx=event.clientX; UI.canvas_lasty=event.clientY;"  onmouseup="UI.canvas_pushed=false;" onmousemove="UI.canvas_mousemove(event,'')"></canvas>
+<div id="output" style="max-height: 80px; overflow:auto"></div>
+</div>
+</div>
+
+
+<script language="javascript"> 
+var Module = { 
+        htmlcheck:true,
+        htmlbuffer:'',
+        preRun: [],
+        postRun: [],
+        ready:false,
+        print: (function() {
+          var element = document.getElementById('output');
+          element.innerHTML='';// element.value = ''; // clear browser cache
+          return function(text) {
+            //console.log(text.charCodeAt(0));
+            if (text.length==1 && text.charCodeAt(0)==12){ element.innerHTML=''; return; }
+            if (text.length>=1 && text.charCodeAt(0)==2) {console.log('STX');Module.htmlcheck=false; htmlbuffer='';return;}
+            if (text.length>=1 && text.charCodeAt(0)==3) {console.log('ETX');Module.htmlcheck=true; element.style.display='inherit'; element.innerHTML += htmlbuffer;htmlbuffer='';element.scrollTop = 99999; return;}
+            if (Module.htmlcheck){
+            // These replacements are necessary if you render to raw HTML 
+             text = text.replace(/&/g, "&amp;");
+             text = text.replace(/</g, "&lt;");
+             text = text.replace(/>/g, "&gt;");
+             text = text.replace('\n', '<br>', 'g');
+             text += '<br>'
+             element.style.display='inherit';
+             element.innerHTML += text; // element.value += text + "\n";
+             element.scrollTop = 99999; // focus on bottom
+            } else htmlbuffer += text;
+          };
+        })(),
+     canvas: document.getElementById('canvas'),};
+Module['onRuntimeInitialized']=function(){ console.log('UI is ready'); Module.ready=true;}
+</script>
+
+
+
+<script async>
+  var UI={
+   detectmob:function() { 
+    if( navigator.userAgent.match(/Android/i)
+	|| navigator.userAgent.match(/webOS/i)
+	|| navigator.userAgent.match(/iPhone/i)
+	|| navigator.userAgent.match(/iPad/i)
+	|| navigator.userAgent.match(/iPod/i)
+	|| navigator.userAgent.match(/BlackBerry/i)
+	|| navigator.userAgent.match(/Windows Phone/i)
+      ) return true;
+    else 
+      return false;
+   },
+   readCookie:function(name) {
+    if (window.localStorage){
+      var tmp=localStorage.getItem(name);
+      if (tmp!=null) return tmp;
+    }
+    var nameEQ = name + "=";
+    var ca = document.cookie.split(';');
+    for(var i=0;i < ca.length;i++) {
+      var c = ca[i];
+      while (c.charAt(0)==' ') c = c.substring(1,c.length);
+      if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
+    }
+    return null;
+   },
+  }
+  var script = document.createElement("script");
+  script.type = "text/javascript";
+  var webAssemblyAvailable = true; // false;
+  if (Boolean(window.chrome)){
+    if (!UI.detectmob()) webAssemblyAvailable =  window.location.href.substr(0,4)!='file';
+  }
+  else {
+    var ua = window.navigator.userAgent;
+    var old_ie = ua.indexOf('MSIE ');
+    var new_ie = ua.indexOf('Trident/');
+    if (!UI.detectmob() && old_ie<=-1 && new_ie<=-1)
+      webAssemblyAvailable =!!window.WebAssembly;
+  }
+  if (webAssemblyAvailable){
+    var ck=UI.readCookie('xcas_wasm');
+    if (ck)
+      webAssemblyAvailable=(ck=='1');
+  }
+  if (webAssemblyAvailable) // fixme: enable
+    script.src =""+"giacwasm.js";
+  else
+    script.src  =""+"giac.js";
+  document.getElementsByTagName("head")[0].appendChild(script);
+</script>
+
+
+
+
+<script language="javascript"> 
+ var UI = {
+  Datestart:Date.now(),
+  n2d:0,
+  python:0,
+  histcount:0,
+  usemathjax:false,
+  lastcmd:'',
+  clone:function(){
+    if (UI.lastcmd.length){
+       var tmp=UI.giaceval('VARS(-1)');
+       tmp=encodeURIComponent(tmp);
+       var url='https://www-fourier.univ-grenoble-alpes.fr/~parisse/xcasen.html'+String.fromCharCode(35)+'+'+tmp+':;&+'+UI.lastcmd;
+       console.log(url);
+       window.open(url,'_blank');
+    }
+  },
+  canvas_pushed:false,
+  canvas_lastx:0,
+  canvas_lasty:0,
+  canvas_mousemove:function(event,no){
+    if (UI.canvas_pushed){
+      // Module.print(event.clientX);
+      if (UI.canvas_lastx!=event.clientX){
+        if (event.clientX>UI.canvas_lastx)
+          giac3d('r'+no);
+        else
+          giac3d('l'+no);
+        UI.canvas_lastx=event.clientX;
+      }
+      if (UI.canvas_lasty!=event.clientY){
+        if (event.clientY>UI.canvas_lasty)
+          giac3d('d'+no);
+        else
+          giac3d('u'+no);
+        UI.canvas_lasty=event.clientY;
+      }
+    }
+  },  
+  count_newline:function(s){
+    var ss=s.length,i,res=1;
+    for (i=0;i<ss;i++){
+      if (s[i]=='\n') res++;
+    }
+    return res;
+  },
+  ltgt:function(s){
+    var ss=s.length,i,res='',c=0;
+    for (i=0;i<ss-4;i++){
+      if (s[i]=='\n') c++;      
+      if (s[i]!='&' || s[i+2]!='t' || s[i+3]!=';'){
+        res += s[i];
+        continue;
+      }
+      if (s[i+1]=='l'){
+        res += '<';
+        i +=3;
+        continue;
+      }
+      if (s[i+1]=='g'){
+        res += '>';
+        i +=3;
+        continue;
+      }
+      res += s[i];
+    }
+    for (;i<ss;i++) res+=s[i];
+    return [res,c];
+  },
+  rmquote:function(tmp){
+    var s=tmp.length;
+    if (s>2 && tmp.charCodeAt(0)==34 && tmp.charCodeAt(s-1)==34)
+      tmp=tmp.substr(1,s-2);
+    return tmp;
+  },
+  renderhelp: function (s) {
+    var pos0 = s.search("</b>");
+    //console.log(s);
+    var found = (s.substr(pos0 + 7, 20) != "Best match has score");
+    var lh = s.substr(3, pos0 - 3);
+    var unlocalized_cmd = lh;
+    var sorig = s;
+    pos1 = s.search("<br>");
+    if (pos1 < 0) return sorig;
+    var explication = s.substr(0, pos1);
+    s = s.substr(pos1 + 4, s.length - pos1 - 4);
+    pos1 = s.search("<br>");
+    if (pos1 < 0) return sorig;
+    var syntaxe = s.substr(0, pos1);
+    s = s.substr(pos1 + 4, s.length - pos1 - 4);
+    pos1 = s.search("<br>");
+    if (pos1 < 0) return sorig;
+    var voiraussi = s.substr(0, pos1);
+    var examples = s.substr(pos1 + 4, s.length - pos1 - 4);
+    s = '';//'<b>'+unlocalized_cmd+':</b> ';
+    if (found)
+      s += explication + '<br>See also: ' +voiraussi+'<br><b>Examples : </b>'+examples;
+    else
+      s += explication.substr(0, pos0);
+    return s;
+  },   
+  quick:function(field){
+    var tmp1=field.previousSibling.value;
+    var tmp=UI.caseval(tmp1);
+    tmp=UI.rmquote(tmp); 
+    tmp=UI.latexeval(tmp);
+    Module.print(String.fromCharCode(2));
+    Module.print("<tt>");
+    Module.print(tmp1);
+    Module.print("</tt><br>&nbsp;&nbsp;");
+    if (tmp.length>3 && tmp.substr(0,3)=='<b>'){ 
+       Module.print(UI.renderhelp(tmp)); tmp='';
+    } else Module.print(tmp);
+    Module.print("<br>");
+    Module.print(String.fromCharCode(3));
+    field.nextSibling.innerHTML='&nbsp;'+tmp;
+   //UI.render_canvas(nextSibling);  
+  },
+  giaceval:function(text){
+     if (UI.python) text='@@'+text;
+     if (!Module.ready){ window.setTimeout(UI.giaceval,100,text); return " ... ";}
+     var dogiaceval=Module.cwrap('caseval',  'string', ['string']);
+     return dogiaceval(text);
+  },
+  caseval:function(text){
+    UI.lastcmd=text;
+    var s="not evaled",err;
+    try {
+       s= UI.giaceval(text);
+    } catch (err) { s=err.message;}
+    var is_2d=s.length>4 && s.substr(0,4)=='gr2d';
+    if (is_2d){
+      s = '<canvas id="gr2d_'+UI.n2d+'" width=400 height=250>'+s+'</canvas>';
+      //console.log(UI.n2d,s);
+      UI.n2d++;
+    }
+    var is_3d=s.length>5 && s.substr(0,5)=='gl3d ';
+    if (is_3d){
+	var n3d=s.substr(5,s.length-5);
+	s = '<canvas id="gl3d_'+n3d+'" onmousedown="UI.canvas_pushed=true;UI.canvas_lastx=event.clientX; UI.canvas_lasty=event.clientY;" onmouseup="UI.canvas_pushed=false;" onmousemove="UI.canvas_mousemove(event,'+n3d+')" width=400 height=250></canvas>';
+    }
+   //console.log(s);
+    return s;
+  },
+  pourcentmod:function(a,b){
+    return a-Math.floor(a/b)*b;
+  },
+  color_list: ['black',
+    'red',
+    'green',
+    'yellow',
+    'blue',
+    'magenta',
+    'cyan',
+    'white',
+    'silver',
+    'gray',
+    'maroon',
+    'purple',
+    'fuchsia',
+    'lime',
+    'olive',
+    'navy',
+    'teal',
+    'aqua',
+    'antiquewhite',
+    'aquamarine',
+    'azure',
+    'beige',
+    'bisque',
+    'blanchedalmond',
+    'blueviolet',
+    'brown',
+    'burlywood',
+    'cadetblue',
+    'chartreuse',
+    'chocolate',
+    'coral',
+    'cornflowerblue',
+    'cornsilk',
+    'crimson',
+    'cyan',
+    'darkblue',
+    'darkcyan',
+    'darkgoldenrod',
+    'darkgray',
+    'darkgreen',
+    'darkgrey',
+    'darkkhaki',
+    'darkmagenta',
+    'darkolivegreen',
+    'darkorange',
+    'darkorchid',
+    'darkred',
+    'darksalmon',
+    'darkseagreen',
+    'darkslateblue',
+    'darkslategray',
+    'darkslategrey',
+    'darkturquoise',
+    'darkviolet',
+    'deeppink',
+    'deepskyblue',
+    'dimgray',
+    'dimgrey',
+    'dodgerblue',
+    'firebrick',
+    'floralwhite',
+    'forestgreen',
+    'gainsboro',
+    'ghostwhite',
+    'gold',
+    'goldenrod',
+    'greenyellow',
+    'grey',
+    'honeydew',
+    'hotpink',
+    'indianred',
+    'indigo',
+    'ivory',
+    'khaki',
+    'lavender',
+    'lavenderblush',
+    'lawngreen',
+    'lemonchiffon',
+    'lightblue',
+    'lightcoral',
+    'lightcyan',
+    'lightgoldenrodyellow',
+    'lightgray',
+    'lightgreen',
+    'lightgrey',
+    'lightpink',
+    'lightsalmon',
+    'lightseagreen',
+    'lightskyblue',
+    'lightslategray',
+    'lightslategrey',
+    'lightsteelblue',
+    'lightyellow',
+    'limegreen',
+    'linen',
+    'mediumaquamarine',
+    'mediumblue',
+    'mediumorchid',
+    'mediumpurple',
+    'mediumseagreen',
+    'mediumslateblue',
+    'mediumspringgreen',
+    'mediumturquoise',
+    'mediumvioletred',
+    'midnightblue',
+    'mintcream',
+    'mistyrose',
+    'moccasin',
+    'navajowhite',
+    'oldlace',
+    'olivedrab',
+    'orangered',
+    'orchid',
+    'palegoldenrod',
+    'palegreen',
+    'paleturquoise',
+    'palevioletred',
+    'papayawhip',
+    'peachpuff',
+    'peru',
+    'pink',
+    'plum',
+    'powderblue',
+    'rosybrown',
+    'royalblue',
+    'saddlebrown',
+    'salmon',
+    'sandybrown',
+    'seagreen',
+    'seashell',
+    'sienna',
+    'skyblue',
+    'slateblue',
+    'slategray',
+    'slategrey',
+    'snow',
+    'springgreen',
+    'steelblue',
+    'tan',
+    'thistle',
+    'tomato',
+    'turquoise',
+    'violet',
+    'wheat',
+    'whitesmoke',
+    'yellowgreen'],
+  arc_en_ciel: function (k) {
+    var r, g, b;
+    k += 21;
+    k = pourcentmod(k,126);
+    if (k < 0)
+      k += 126;
+    if (k < 21) {
+      r = 251;
+      g = 0;
+      b = 12 * k;
+    }
+    if (k >= 21 && k < 42) {
+      r = 251 - (12 * (k - 21));
+      g = 0;
+      b = 251;
+    }
+    if (k >= 42 && k < 63) {
+      r = 0;
+      g = (k - 42) * 12;
+      b = 251;
+    }
+    if (k >= 63 && k < 84) {
+      r = 0;
+      g = 251;
+      b = 251 - (k - 63) * 12;
+    }
+    if (k >= 84 && k < 105) {
+      r = (k - 84) * 12;
+      g = 251;
+      b = 0;
+    }
+    if (k >= 105 && k < 126) {
+      r = 251;
+      g = 251 - (k - 105) * 12;
+      b = 0;
+    }
+    return 'rgb(' + r + ',' + g + ',' + b + ')';
+  },
+  turtle_color: function (c) {
+    if (c >= 0x100) {
+      if (c < 0x17e)
+        return UI.arc_en_ciel(c);
+      var r=8*((c>>11) & 0x1f);
+      var g=4*((c>>5) & 0x3f);
+      var b=8*(c & 0x1f);
+      return 'rgb(' + r + ',' + g + ',' + b + ')';
+    }
+    return UI.color_list[c];
+  },
+  pixon_draw: function (id, s) {
+    var v = eval(s);
+    if (!Array.isArray(v)) return;
+    //console.log(v[0], v.length);
+    var canvas = document.getElementById(id);
+    var l = v.length, w = 0, h = 0;
+    if (l < 2) return;
+    var scale = v[0];
+    for (var k = 1; k < l; k++) {
+      var cur = v[k];
+      var x = cur[0], y = cur[1];
+      if (cur.length==3 && typeof cur[2]!="number"){
+	x+=100;
+	y+=16;
+      }
+      if (cur.length==4) {
+        var tmp = cur[3];
+	if (typeof tmp=="number"){
+          if (tmp > 0) y += tmp; else x -= tmp;
+	} else {
+	  x+=100;
+	  y+=16;
+	}
+      }
+      //console.log(cur,x,y);
+      if (x > w) w = x;
+      if (y > h) h = y;
+    }
+    w = (w + 1) * scale;
+    h = (h + 1) * scale;
+    canvas.width = w;
+    canvas.height = h;
+    //console.log(h,w);
+    if (canvas.getContext) {
+      var ctx = canvas.getContext('2d');
+      for (var k = 1; k < l; k++) {
+        var cur = v[k], cl;
+        //console.log(cur);
+        if (!Array.isArray(cur) || (cl = cur.length) < 2) continue;
+        // cur[0]=x, cur[1]=y, cur[2]=color, cur[3]=w if +, h if -
+        var x = cur[0] * scale;
+        var y = cur[1] * scale;
+	if (cl>2 && typeof cur[2]=="string"){
+	  console.log(cur[2]);
+	  ctx.font = '16px serif';
+	  ctx.fillStyle = 'black';
+	  ctx.fillText(cur[2],x,y+16,100);
+	  continue;
+	}
+        ctx.fillStyle = (cl > 2) ? UI.turtle_color(cur[2]) : 'black';
+        if (cl < 4) {
+          ctx.fillRect(x, y, scale, scale);
+          continue;
+        }
+	if (typeof cur[3]=="string"){
+	  ctx.font = '16px serif';
+	  ctx.fillText(cur[3],x,y+16,100);
+	  continue;
+	}
+        var h = cur[3] * scale, w = scale;
+        if (h < 0) {
+          w = -h;
+          h = scale;
+        }
+        ctx.fillRect(x, y, w, h);
+      }
+    }
+  },
+  turtle_dx: 0, // shift frame
+  turtle_dy: 0,
+  turtle_z: 1,  // zoom factor
+  turtle_maillage: 1,
+  turtle_draw: function (id, s) {
+    if (s.length < 7) return;
+    s = s.substr(5, s.length - 6);
+    if (s.length > 7 && s.substr(s, 6) == "pixon(") {
+      UI.pixon_draw(id, s.substr(6, s.length - 7));
+      return;
+    }
+    if (s.length < 6 || s.substr(s, 5) != "logo(")
+      return;
+    s = s.substr(5, s.length - 6);
+    //console.log(s);
+    var v = eval(s);
+    if (!Array.isArray(v)) return;
+    //console.log(v[0]);
+    var canvas = document.getElementById(id);
+    var w = canvas.width, h = canvas.height;
+    if (canvas.getContext) {
+      var ctx = canvas.getContext('2d');
+      var turtlezoom = UI.turtle_z, turtlex = UI.turtle_dx, turtley = UI.turtle_dy;
+      // maillage
+      if (UI.turtle_maillage & 3) {
+        ctx.fillStyle = 'black';
+        var xdecal = Math.floor(turtlex / 10.0) * 10;
+        var ydecal = Math.floor(turtley / 10.0) * 10;
+        if ((UI.turtle_maillage & 0x3) == 1) {
+          for (var i = xdecal; i < w + xdecal; i += 10) {
+            for (var j = ydecal; j < h + ydecal; j += 10) {
+              var X = Math.floor((i - turtlex) * turtlezoom + .5);
+              var Y = Math.floor((j - turtley) * turtlezoom + .5);
+              // console.log(X,Y);
+              ctx.fillRect(X, h - Y, 1, 1);
+            }
+          }
+        } else {
+          var dj = Math.sqrt(3.0) * 10, i0 = xdecal;
+          for (var j = ydecal; j < h + ydecal; j += dj) {
+            var J = Math.floor(h - (j - turtley) * turtlezoom);
+            for (var i = i0; i < w + xdecal; i += 10) {
+              ctx.fillRect(Math.floor((i - turtlex) * turtlezoom + .5), J, 1, 1);
+            }
+            i0 += dj;
+            while (i0 >= 10)
+              i0 -= 10;
+          }
+        }
+      }
+      var l = v.length, i;
+      // montre la position et le cap (v[l-1])
+      var prec = v[l - 1];
+      ctx.font = '16px serif';
+      ctx.fillStyle = 'yellow';
+      ctx.fillRect(w - 40, 0, 40, 50);
+      ctx.fillStyle = 'black';
+      ctx.fillText('x:' + prec[0], w - 40, 15);
+      ctx.fillText('y:' + prec[1], w - 40, 31);
+      ctx.fillText('t:' + prec[2], w - 40, 49);
+      // v[i]=[x(0),y(1),cap(2),status(3),r(4),chaine(5)],
+      // couleur=status >> 11
+      // longueur_tortue= (status>>3)&0xff
+      // direct=status&4 (vrai si angle dans le sens trigo)
+      // visible=status&2
+      // crayon baisse=status&1
+      // si r>0 arc/disque rayon=r & 0x1ff, theta1=(r >> 9) & 0x1ff, theta2=(r >> 18) & 0x1ff
+      //        rempli=(r>>27)&0x1
+      // si r<0 ligne polygonale extremite v[i] origine v[i+r] (r<0)
+      for (k = 1; k < l; k++) {
+        prec = v[k - 1];
+        var cur = v[k];
+        var preccouleur = prec[3] >> 11; // -> FIXME colors
+        var curcouleur = prec[3] >> 11; // -> FIXME colors
+        if (cur[5].length) {
+          ctx.font = cur[4] + 'px serif';
+          ctx.strokeStyle = ctx.fillStyle = UI.turtle_color(curcouleur);
+          ctx.fillText(cur[5], turtlezoom * (cur[0] - turtlex), h - turtlezoom * (cur[1] - turtley));
+          continue;
+        }
+        var radius = cur[4], precradius = prec[4];
+        var x1 = Math.floor(turtlezoom * (prec[0] - turtlex) + .5),
+            y1 = Math.floor(turtlezoom * (prec[1] - turtley) + .5),
+            x2 = Math.floor(turtlezoom * (cur[0] - turtlex) + .5),
+            y2 = Math.floor(turtlezoom * (cur[1] - turtley) + .5);
+        if (radius > 0) {
+          var r = radius & 0x1ff, theta1, theta2, rempli, x, y, R, angle;
+          theta1 = prec[2]+ ((radius >> 9) & 0x1ff);
+          theta2 = prec[2] + ((radius >> 18) & 0x1ff);
+          rempli = (radius >> 27) & 1;
+	  var seg = (radius >> 28) & 1;
+          R = Math.floor(turtlezoom * r + .5);
+          angle1 = Math.PI / 180 * (theta1 - 90);
+          angle2 = Math.PI / 180 * (theta2 - 90);
+          x = Math.floor(turtlezoom * (cur[0] - turtlex - r * Math.cos(angle2)) + .5);
+          y = Math.floor(turtlezoom * (cur[1] - turtley - r * Math.sin(angle2)) + .5);
+          ctx.beginPath();
+	  if (seg)
+            ctx.moveTo(x2, h - y2);
+	  else {
+            ctx.moveTo(x, h - y);
+            ctx.lineTo(x2, h - y2);
+	  }
+	  //console.log(x,y,x1,y1,angle1,angle2);
+          ctx.arc(x, h - y, R, -angle2,-angle1);
+          ctx.closePath();
+          ctx.strokeStyle = ctx.fillStyle = UI.turtle_color(curcouleur);
+          if (rempli)
+            ctx.fill();
+          else
+            ctx.stroke();
+          continue;
+        }
+        if (prec[3] & 1) {
+          ctx.strokeStyle = ctx.fillStyle = UI.turtle_color(preccouleur);
+          ctx.beginPath();
+          ctx.moveTo(x1, h - y1);
+          ctx.lineTo(x2, h - y2);
+          ctx.closePath();
+          ctx.stroke();
+        }
+        if (radius < -1 && k + radius >= 0) {
+          ctx.strokeStyle = ctx.fillStyle = UI.turtle_color(curcouleur);
+          ctx.beginPath();
+          var x0 = Math.floor(turtlezoom * (cur[0] - turtlex) + .5), y0 = Math.floor(turtlezoom * (cur[1] - turtley) + .5);
+          //console.log('begin',x0,y0);
+          ctx.moveTo(x0, h - y0);
+          for (var i = -1; i >= radius; i--) {
+            prec = v[k + i];
+            var x = Math.floor(turtlezoom * (prec[0] - turtlex) + .5);
+            var y = Math.floor(turtlezoom * (prec[1] - turtley) + .5);
+            //console.log(i,x,y);
+            ctx.lineTo(x, h - y);
+          }
+          //console.log('end',x0,y0);
+          //ctx.lineTo(x0,h-y0);
+          ctx.closePath();
+          ctx.fill(); // automatically close path
+        }
+      }
+      var cur = v[l - 1];
+      if (cur[3] & 2) {
+        // dessin de la tortue
+        var x = Math.floor(turtlezoom * (cur[0] - turtlex) + .5);
+        var y = Math.floor(turtlezoom * (cur[1] - turtley) + .5);
+        var cost = Math.cos(cur[2] * Math.PI / 180);
+        var sint = Math.sin(cur[2] * Math.PI / 180);
+        var turtle_length = (cur[3] >> 3) & 0xff;
+        var Dx = Math.floor(turtlezoom * turtle_length * cost / 2 + .5);
+        var Dy = Math.floor(turtlezoom * turtle_length * sint / 2 + .5);
+        //console.log('tortue',cur,w,h,turtlezoom,x,y,Dx,Dy);
+        ctx.strokeStyle = ctx.fillStyle = UI.turtle_color(curcouleur);
+        ctx.beginPath();
+        ctx.moveTo(x + Dy, h - (y - Dx));
+        ctx.lineTo(x - Dy, h - (y + Dx));
+        ctx.closePath();
+        ctx.stroke();
+        if (!(cur[3] & 1))
+          ctx.strokeStyle = ctx.fillStyle = UI.turtle_color(curcouleur + 1);
+        ctx.beginPath();
+        ctx.moveTo(x + Dy, h - (y - Dx));
+        ctx.lineTo(x + 3 * Dx, h - (y + 3 * Dy));
+        ctx.closePath();
+        ctx.stroke();
+        ctx.beginPath();
+        ctx.moveTo(x - Dy, h - (y + Dx));
+        ctx.lineTo(x + 3 * Dx, h - (y + 3 * Dy));
+        ctx.closePath();
+        ctx.stroke();
+      }
+    }
+  },
+  render_canvas:function(field){
+   var n=field.id;
+   if (n && n.length>4 && n.substr(0,4)=='gr2d'){
+     var s=field.innerHTML;
+     //console.log(s);
+     UI.turtle_draw(n, s);
+   }
+   if (n && n.length>5 && n.substr(0,5)=='gl3d_'){
+    Module.print(n);
+    var n3d=n.substr(5,n.length-5);
+    giac3d(n3d);
+    return;
+   }
+   var f=field.firstChild;
+   for (;f;f=f.nextSibling){
+     UI.render_canvas(f);
+   }
+  },
+  eval_form: function(field){
+    UI.giaceval('assume('+field.name.value+'=round('+field.valname.value+',12))');
+    var s=UI.caseval(field.prog.value);
+    var is_svg=s.substr(1,4)=='<svg';
+    if (is_svg) field.parentNode.lastChild.innerHTML=s.substr(1,s.length-2);
+    else field.parentNode.lastChild.innerHTML=s;
+   UI.render_canvas(field.parentNode.lastChild);
+  },
+  latexeval:function(text){
+    var tmp=text;
+    if (tmp.length>10 && tmp.substr(0,10)=='GIAC_ERROR') return '"'+tmp.substr(11,tmp.length-11)+'"';
+    if (tmp.length>5 && tmp.substr(0,5)=='gl3d_') return tmp;
+    if (tmp.length>5 && tmp.substr(1,4)=='<svg') return tmp.substr(1,tmp.length-2);
+    if (tmp.length>5 && tmp.substr(0,4)=='<svg') return tmp;
+    if (tmp.length>3 && tmp.substr(0,3)=='<b>') return tmp;
+     if (UI.usemathjax){
+       tmp=UI.giaceval('latex(quote('+tmp+'))');
+       var dollar=String.fromCharCode(36);
+       tmp=dollar+dollar+tmp.substr(1,tmp.length-2)+dollar+dollar;
+       return tmp;
+     }
+     tmp=UI.giaceval('mathml(quote('+tmp+',1))');
+     tmp=tmp.substr(1,tmp.length-2);
+    return tmp;   
+  },
+  ckenter:function(event,field,mode){
+    var key = event.keyCode;
+    if (key != 13 || event.shiftKey) return true;
+   if (mode==3){ UI.quick(field.nextSibling); event.preventDefault(); field.select(); return true; }
+    var tmp=field.value;
+   Module.print(tmp);
+    tmp=UI.caseval(tmp);
+    if (mode==1){
+      tmp=UI.rmquote(tmp); 
+   }
+   if (mode==2){
+     tmp=UI.latexeval(tmp);
+   }
+   field.nextSibling.nextSibling.innerHTML=tmp;
+   UI.render_canvas(field.nextSibling.nextSibling);
+   if (UI.usemathjax) MathJax.Hub.Queue(["Typeset",MathJax.Hub,field.nextSibling.nextSibling]);
+   if (event.preventDefault) event.preventDefault();
+    return false;
+  },
+   exec: function(field){
+     if (field.nodeName=="BUTTON" && field.innerHTML!='Clone' && field.innerHTML!='Restart' && field.innerHTML!='Exec. all'){
+        field.click();
+        return;
+     }
+     if (field.nodeName=="FORM"){
+        UI.eval_form(field);
+        return;
+     }
+     var f=field.firstChild;
+     while (f){
+       UI.exec(f);
+       f=f.nextSibling;
+     }
+   },
+  execonload: function(field){
+     if (!Module.ready){ window.setTimeout(UI.execonload, 100, field); }
+     var f=field.nextSibling;
+     if (f && f.innerHTML=="onload" && field.nodeName=="BUTTON"){
+        field.click();
+        return;
+     }
+     f=field.firstChild;
+     while (f){
+       UI.execonload(f);
+       f=f.nextSibling;
+     }
+   },
+  textarealtgt: function(field){
+     if (field.nodeName=="TEXTAREA"){
+        var tmp=UI.ltgt(field.value);
+        field.value=tmp[0];
+        //field.style.height=20*(tmp[1]+1)+'px';
+        field.rows=tmp[1]+1;
+        return;
+     }
+     var f=field.firstChild;
+     while (f){
+       UI.textarealtgt(f);
+       f=f.nextSibling;
+     }
+   }
+ };
+ window.onload = function(e){
+   var isFirefox = typeof InstallTrigger !== 'undefined';   // Firefox 1.0+
+   var isSafari = Object.prototype.toString.call(window.HTMLElement).indexOf('Constructor') > 0;
+  var ua = window.navigator.userAgent;
+  var old_ie = ua.indexOf('MSIE ');
+  var new_ie = ua.indexOf('Trident/');
+  if ((!isFirefox && !isSafari) || (old_ie > -1) || (new_ie > -1) || window.chrome){
+     UI.usemathjax=true;
+     alert("Your browser does not support MathML, using MathJax for 2d rendering. Consider switching to Firefox for better rendering and faster results");
+  }
+  if (UI.usemathjax){
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  }
+  var elem= document.getElementById('controlindex');
+  elem.innerHTML='<hr><a href="'+String.fromCharCode(35)+'sec1">Table</a>, <a href="'+String.fromCharCode(35)+'sec2">Index</a>,'+elem.innerHTML;
+  if (elem.style.maxHeight=='500px')
+    elem.style.maxHeight=(window.innerHeight-120)+'px';
+  elem= document.getElementById('maindiv');
+  elem.style.maxHeight=(window.innerHeight-150)+'px';
+  // Module.print(elem.innerHTML);
+  //elem.parentNode.insertBefore(elem,null);
+  giac3d = Module.cwrap('_ZN4giac13giac_rendererEPKc','number', ['string']);
+  UI.giaceval('set_language(1);');
+  //UI.giaceval('factor(x^4-1)');
+  //UI.giaceval('sin(x+y)+f(t)');
+  UI.textarealtgt(document.documentElement);
+  window.setTimeout(UI.execonload, 1000, document.documentElement); // UI.execonload(document.documentElement);
+  document.getElementById('output').innerHTML='';
+ // if (confirm('Exec commands?')) UI.exec(document.documentElement);
+ };
+</script>
+
+
+</p><!--CUT END -->
+<!--HTMLFOOT-->
+<!--ENDHTML-->
+<!--FOOTER-->
+<hr style="height:2"><blockquote class="quote"><em>This document was translated from L<sup>A</sup>T<sub>E</sub>X by
+</em><a href="http://hevea.inria.fr/index.html"><em>H</em><em><span style="font-size:small"><sup>E</sup></span></em><em>V</em><em><span style="font-size:small"><sup>E</sup></span></em><em>A</em></a><em>.</em></blockquote></body>
+</html>
