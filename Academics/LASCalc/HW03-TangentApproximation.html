@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html >
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII">
+<meta name="generator" content="hevea 2.34">
+<style type="text/css">
+.li-itemize{margin:1ex 0ex;}
+.li-enumerate{margin:1ex 0ex;}
+.dd-description{margin:0ex 0ex 1ex 4ex;}
+.dt-description{margin:0ex;}
+.toc{list-style:none;}
+.footnotetext{margin:0ex; padding:0ex;}
+div.footnotetext P{margin:0px; text-indent:1em;}
+.thefootnotes{text-align:left;margin:0ex;}
+.dt-thefootnotes{margin:0em;}
+.dd-thefootnotes{margin:0em 0em 0em 2em;}
+.footnoterule{margin:1em auto 1em 0px;width:50%;}
+.caption{padding-left:2ex; padding-right:2ex; margin-left:auto; margin-right:auto}
+.title{margin:2ex auto;text-align:center}
+.titlemain{margin:1ex 2ex 2ex 1ex;}
+.titlerest{margin:0ex 2ex;}
+.center{text-align:center;margin-left:auto;margin-right:auto;}
+.flushleft{text-align:left;margin-left:0ex;margin-right:auto;}
+.flushright{text-align:right;margin-left:auto;margin-right:0ex;}
+div table{margin-left:inherit;margin-right:inherit;margin-bottom:2px;margin-top:2px}
+td table{margin:auto;}
+table{border-collapse:collapse;}
+td{padding:0;}
+.cellpadding0 tr td{padding:0;}
+.cellpadding1 tr td{padding:1px;}
+pre{text-align:left;margin-left:0ex;margin-right:auto;}
+blockquote{margin-left:4ex;margin-right:4ex;text-align:left;}
+td p{margin:0px;}
+.boxed{border:1px solid black}
+.textboxed{border:1px solid black}
+.vbar{border:none;width:2px;background-color:black;}
+.hbar{border:none;height:2px;width:100%;background-color:black;}
+.hfill{border:none;height:1px;width:200%;background-color:black;}
+.vdisplay{border-collapse:separate;border-spacing:2px;width:auto; empty-cells:show; border:2px solid red;}
+.vdcell{white-space:nowrap;padding:0px; border:2px solid green;}
+.display{border-collapse:separate;border-spacing:2px;width:auto; border:none;}
+.dcell{white-space:nowrap;padding:0px; border:none;}
+.dcenter{margin:0ex auto;}
+.vdcenter{border:solid #FF8000 2px; margin:0ex auto;}
+.minipage{text-align:left; margin-left:0em; margin-right:auto;}
+.marginpar{border:solid thin black; width:20%; text-align:left;}
+.marginparleft{float:left; margin-left:0ex; margin-right:1ex;}
+.marginparright{float:right; margin-left:1ex; margin-right:0ex;}
+.theorem{text-align:left;margin:1ex auto 1ex 0ex;}
+.part{margin:2ex auto;text-align:center}
+</style>
+<script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+<title>HW03-TangentApproximation</title>
+</head>
+<body >
+<!--HEVEA command line is: hevea -I /home/belanger/JBerd/Config/TeX/Sty/ HW03-TangentApproximation.tex -->
+<!--CUT STYLE article--><!--CUT DEF section 1 --><p>
+\(
+\newcommand{\vect}[1]
+{\mathbf{#1}}
+\newcommand{\vectr}[1]
+{\begin{pmatrix} #1 \end{pmatrix}}
+\)
+
+</p><div class="center">
+<span style="font-weight:bold"><span style="font-size:x-large">LAS Calculus</span></span><br>
+<span style="font-weight:bold"><span style="font-size:large">The Tangent Approximation</span></span><br>
+<span style="font-weight:bold">Homework 3</span>
+</div><ol class="enumerate" type=1><li class="li-enumerate">
+For the next 1/2 hour, a car travels at an average velocity of 
+40 miles/hour. If it is currently 100 miles away and moving away, how far away will it
+be in 1/2 hour?
+
+
+<br>
+<button onclick="answerafn()">Answer</button>
+<div id="answera" style="display:none">
+
+The car will be \(120\) miles away.
+
+</div>
+<script>
+function answerafn() {
+  var x = document.getElementById("answera");
+  if (x.style.display === "none") {
+    x.style.display = "block";
+  } else {
+    x.style.display = "none";
+  }
+}
+</script>
+
+
+</li><li class="li-enumerate">A car currently has an instantaneous velocity of 40 miles per
+hour.
+<ol class="enumerate" type=a><li class="li-enumerate">
+If it is currently 10 miles away and moving away, about how
+far will it be in 5 minutes?
+
+
+<br>
+<button onclick="answerbfn()">Answer</button>
+<div id="answerb" style="display:none">
+
+It will be about \(13 \frac{1}{3}\) miles away.
+
+</div>
+<script>
+function answerbfn() {
+  var x = document.getElementById("answerb");
+  if (x.style.display === "none") {
+    x.style.display = "block";
+  } else {
+    x.style.display = "none";
+  }
+}
+</script>
+
+
+
+</li><li class="li-enumerate">Why can&#X2019;t we get a good estimate of how far it travels in the
+next hour?
+
+
+<br>
+<button onclick="answercfn()">Answer</button>
+<div id="answerc" style="display:none">
+
+Because 1 hour is too long a time; we can only use the
+instantaneous velocity to approximate average velocities for
+short time periods. Since we don&#X2019;t know how fast it is going
+for that time, we can&#X2019;t approximate how far it travels.
+
+</div>
+<script>
+function answercfn() {
+  var x = document.getElementById("answerc");
+  if (x.style.display === "none") {
+    x.style.display = "block";
+  } else {
+    x.style.display = "none";
+  }
+}
+</script>
+
+
+
+</li></ol></li><li class="li-enumerate">A function \(y=f(x)\) satisfies \(f'(5)=3\).
+If \(f(5) = 10\), what is the approximate values of \(f(5.2)\)?
+
+
+<br>
+<button onclick="answerdfn()">Answer</button>
+<div id="answerd" style="display:none">
+
+\(f(5.2)\approx 10.6\).
+
+</div>
+<script>
+function answerdfn() {
+  var x = document.getElementById("answerd");
+  if (x.style.display === "none") {
+    x.style.display = "block";
+  } else {
+    x.style.display = "none";
+  }
+}
+</script>
+
+
+</li><li class="li-enumerate">A function \(y=f(x)\) satisfies \(f(3) = 10\) and \(f'(3) = 4\).
+Approximately what is \(f(3.25)\)?
+
+
+<br>
+<button onclick="answerefn()">Answer</button>
+<div id="answere" style="display:none">
+
+\(f(3.25)\approx 11\).
+
+</div>
+<script>
+function answerefn() {
+  var x = document.getElementById("answere");
+  if (x.style.display === "none") {
+    x.style.display = "block";
+  } else {
+    x.style.display = "none";
+  }
+}
+</script>
+
+
+</li><li class="li-enumerate">A function \(f(x)\) satisfies \(f(10) = 50\) and \(f'(10) = 2\).
+Approximate:
+<ol class="enumerate" type=a><li class="li-enumerate">
+\(f(11)\)
+
+
+<br>
+<button onclick="answerffn()">Answer</button>
+<div id="answerf" style="display:none">
+
+\(f(11)\approx 52\).
+
+</div>
+<script>
+function answerffn() {
+  var x = document.getElementById("answerf");
+  if (x.style.display === "none") {
+    x.style.display = "block";
+  } else {
+    x.style.display = "none";
+  }
+}
+</script>
+
+
+
+</li><li class="li-enumerate">\(f(10.5)\)
+
+
+<br>
+<button onclick="answergfn()">Answer</button>
+<div id="answerg" style="display:none">
+
+\(f(10.5)\approx 51\).
+
+</div>
+<script>
+function answergfn() {
+  var x = document.getElementById("answerg");
+  if (x.style.display === "none") {
+    x.style.display = "block";
+  } else {
+    x.style.display = "none";
+  }
+}
+</script>
+
+
+
+</li><li class="li-enumerate">\(f(9.5)\)
+
+
+<br>
+<button onclick="answerhfn()">Answer</button>
+<div id="answerh" style="display:none">
+
+\(f(9.5)\approx 49\).
+
+</div>
+<script>
+function answerhfn() {
+  var x = document.getElementById("answerh");
+  if (x.style.display === "none") {
+    x.style.display = "block";
+  } else {
+    x.style.display = "none";
+  }
+}
+</script>
+
+
+
+</li></ol></li><li class="li-enumerate">A function \(f(x)\) satisfies \(f(7) = 10\) and \(f'(7) = -2\).
+Approximate:
+<ol class="enumerate" type=a><li class="li-enumerate">
+\(f(8)\)
+
+
+<br>
+<button onclick="answerifn()">Answer</button>
+<div id="answeri" style="display:none">
+
+\(f(8)\approx 8\).
+
+</div>
+<script>
+function answerifn() {
+  var x = document.getElementById("answeri");
+  if (x.style.display === "none") {
+    x.style.display = "block";
+  } else {
+    x.style.display = "none";
+  }
+}
+</script>
+
+
+
+</li><li class="li-enumerate">\(f(7.5)\)
+
+
+<br>
+<button onclick="answerjfn()">Answer</button>
+<div id="answerj" style="display:none">
+
+\(f(7.5)\approx 9\).
+
+</div>
+<script>
+function answerjfn() {
+  var x = document.getElementById("answerj");
+  if (x.style.display === "none") {
+    x.style.display = "block";
+  } else {
+    x.style.display = "none";
+  }
+}
+</script>
+
+
+
+</li><li class="li-enumerate">\(f(6.8)\)
+
+
+<br>
+<button onclick="answerkfn()">Answer</button>
+<div id="answerk" style="display:none">
+
+\(f(6.8)\approx 10.4\).
+
+</div>
+<script>
+function answerkfn() {
+  var x = document.getElementById("answerk");
+  if (x.style.display === "none") {
+    x.style.display = "block";
+  } else {
+    x.style.display = "none";
+  }
+}
+</script>
+
+
+
+</li></ol></li><li class="li-enumerate">A function \(f(x)\) satisfies \(f(2) = 10\).
+<ol class="enumerate" type=a><li class="li-enumerate">
+If \(f'(2)=3\), use the tangent approximation to approximate \(f(2.5)\).
+
+
+<br>
+<button onclick="answerlfn()">Answer</button>
+<div id="answerl" style="display:none">
+
+\(f(2.5)\approx 11.5\).
+
+</div>
+<script>
+function answerlfn() {
+  var x = document.getElementById("answerl");
+  if (x.style.display === "none") {
+    x.style.display = "block";
+  } else {
+    x.style.display = "none";
+  }
+}
+</script>
+
+
+
+</li><li class="li-enumerate">If \(f'(2.5)=3.5\), use your answer to (a) and the tangent approximation centered
+at \(2.5\) to approximate \(f(3)\).
+
+
+<br>
+<button onclick="answermfn()">Answer</button>
+<div id="answerm" style="display:none">
+
+\(f(3)\approx 13.25\).
+
+</div>
+<script>
+function answermfn() {
+  var x = document.getElementById("answerm");
+  if (x.style.display === "none") {
+    x.style.display = "block";
+  } else {
+    x.style.display = "none";
+  }
+}
+</script>
+
+
+
+</li></ol></li><li class="li-enumerate">A function \(f(x)\) satisfies \(f(5) = 12\).
+<ol class="enumerate" type=a><li class="li-enumerate">
+If \(f'(5)=2\), use the tangent approximation to approximate \(f(5.1)\).
+
+
+<br>
+<button onclick="answernfn()">Answer</button>
+<div id="answern" style="display:none">
+
+\(f(5.1)\approx 12.2\).
+
+</div>
+<script>
+function answernfn() {
+  var x = document.getElementById("answern");
+  if (x.style.display === "none") {
+    x.style.display = "block";
+  } else {
+    x.style.display = "none";
+  }
+}
+</script>
+
+
+
+</li><li class="li-enumerate">If \(f'(5.1)=1.5\), use your answer to (a) and the tangent approximation centered
+at \(5.1\) to approximate \(f(5.2)\).
+
+
+<br>
+<button onclick="answerofn()">Answer</button>
+<div id="answero" style="display:none">
+
+\(f(5.2)\approx 12.35\).
+
+</div>
+<script>
+function answerofn() {
+  var x = document.getElementById("answero");
+  if (x.style.display === "none") {
+    x.style.display = "block";
+  } else {
+    x.style.display = "none";
+  }
+}
+</script>
+
+
+
+</li></ol></li></ol><!--CUT END -->
+<!--HTMLFOOT-->
+<!--ENDHTML-->
+<!--FOOTER-->
+<hr style="height:2"><blockquote class="quote"><em>This document was translated from L<sup>A</sup>T<sub>E</sub>X by
+</em><a href="http://hevea.inria.fr/index.html"><em>H</em><em><span style="font-size:small"><sup>E</sup></span></em><em>V</em><em><span style="font-size:small"><sup>E</sup></span></em><em>A</em></a><em>.</em></blockquote></body>
+</html>

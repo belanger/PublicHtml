@@ -1,0 +1,1799 @@
+<!DOCTYPE html>
+<html >
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII">
+<meta name="generator" content="hevea 2.34">
+<style type="text/css">
+.li-itemize{margin:1ex 0ex;}
+.li-enumerate{margin:1ex 0ex;}
+.dd-description{margin:0ex 0ex 1ex 4ex;}
+.dt-description{margin:0ex;}
+.toc{list-style:none;}
+.footnotetext{margin:0ex; padding:0ex;}
+div.footnotetext P{margin:0px; text-indent:1em;}
+.thefootnotes{text-align:left;margin:0ex;}
+.dt-thefootnotes{margin:0em;}
+.dd-thefootnotes{margin:0em 0em 0em 2em;}
+.footnoterule{margin:1em auto 1em 0px;width:50%;}
+.caption{padding-left:2ex; padding-right:2ex; margin-left:auto; margin-right:auto}
+.title{margin:2ex auto;text-align:center}
+.titlemain{margin:1ex 2ex 2ex 1ex;}
+.titlerest{margin:0ex 2ex;}
+.center{text-align:center;margin-left:auto;margin-right:auto;}
+.flushleft{text-align:left;margin-left:0ex;margin-right:auto;}
+.flushright{text-align:right;margin-left:auto;margin-right:0ex;}
+div table{margin-left:inherit;margin-right:inherit;margin-bottom:2px;margin-top:2px}
+td table{margin:auto;}
+table{border-collapse:collapse;}
+td{padding:0;}
+.cellpadding0 tr td{padding:0;}
+.cellpadding1 tr td{padding:1px;}
+pre{text-align:left;margin-left:0ex;margin-right:auto;}
+blockquote{margin-left:4ex;margin-right:4ex;text-align:left;}
+td p{margin:0px;}
+.boxed{border:1px solid black}
+.textboxed{border:1px solid black}
+.vbar{border:none;width:2px;background-color:black;}
+.hbar{border:none;height:2px;width:100%;background-color:black;}
+.hfill{border:none;height:1px;width:200%;background-color:black;}
+.vdisplay{border-collapse:separate;border-spacing:2px;width:auto; empty-cells:show; border:2px solid red;}
+.vdcell{white-space:nowrap;padding:0px; border:2px solid green;}
+.display{border-collapse:separate;border-spacing:2px;width:auto; border:none;}
+.dcell{white-space:nowrap;padding:0px; border:none;}
+.dcenter{margin:0ex auto;}
+.vdcenter{border:solid #FF8000 2px; margin:0ex auto;}
+.minipage{text-align:left; margin-left:0em; margin-right:auto;}
+.marginpar{border:solid thin black; width:20%; text-align:left;}
+.marginparleft{float:left; margin-left:0ex; margin-right:1ex;}
+.marginparright{float:right; margin-left:1ex; margin-right:0ex;}
+.theorem{text-align:left;margin:1ex auto 1ex 0ex;}
+.part{margin:2ex auto;text-align:center}
+.lstlisting{font-family:monospace;white-space:pre;margin-right:auto;margin-left:0pt;text-align:left}
+</style>
+<script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+<title>03-Gaussian_Elim</title>
+</head>
+<body >
+<!--HEVEA command line is: hevea -I /home/belanger/JBerd/Config/TeX/Sty/ 03-Gaussian_Elim.tex -->
+<!--CUT STYLE article--><!--CUT DEF section 1 --><p>
+
+<div>
+<div id="maindiv" style="max-height: 500px; overflow:auto">
+
+
+
+\(
+\newcommand{\vect}[1]
+{\mathbf{#1}}
+\newcommand{\vectr}[1]
+{\begin{pmatrix} #1 \end{pmatrix}}
+\newcommand{\rowstep}[1]{<#1>}
+\)
+
+</p><div class="center">
+<span style="font-weight:bold"><span style="font-size:x-large">Section 3<br>
+ Gaussian Elimination
+</span></span></div><p>Photosynthesis is a process that takes molecules of carbon dioxide
+(\(\mathrm{CO}_2\)) and water (\(\mathrm{H}_2\mathrm{O}\)) (and a dash of
+sunlight) and produces glucose
+(\(\mathrm{C}_6\mathrm{H}_{12}\mathrm{O}_6\)) and oxygen (\(\mathrm{O}_2\)).
+How many molecules of each compound are needed? Suppose that
+\(x\) carbon molecules and \(y\) water molecules are used to produce \(z\)
+glucose molecules and \(w\) oxygen molecules. By keeping track of the number
+of atoms in the process, we can determine how many molecules are
+required.<br>
+</p><table border=1  style="border-spacing:0;" class="cellpadding1"><tr><td style="text-align:left;border:solid 1px;white-space:nowrap" >&nbsp;</td><td style="text-align:center;border:solid 1px;white-space:nowrap" >INPUT</td><td style="text-align:center;border:solid 1px;white-space:nowrap" >&nbsp;</td><td style="text-align:center;border:solid 1px;white-space:nowrap" >OUTPUT</td><td style="text-align:center;border:solid 1px;white-space:nowrap" >&nbsp;</td></tr>
+<tr><td style="text-align:left;border:solid 1px;white-space:nowrap" > <span style="font-weight:bold">Molecules</span></td><td style="text-align:center;border:solid 1px;white-space:nowrap" >Carbon dioxide</td><td style="text-align:center;border:solid 1px;white-space:nowrap" >Water</td><td style="text-align:center;border:solid 1px;white-space:nowrap" >Glucose</td><td style="text-align:center;border:solid 1px;white-space:nowrap" >Oxygen</td></tr>
+<tr><td style="text-align:left;border:solid 1px;white-space:nowrap" > <span style="font-weight:bold">Carbon atoms</span></td><td style="text-align:center;border:solid 1px;white-space:nowrap" >1</td><td style="text-align:center;border:solid 1px;white-space:nowrap" >0</td><td style="text-align:center;border:solid 1px;white-space:nowrap" >6</td><td style="text-align:center;border:solid 1px;white-space:nowrap" >0</td></tr>
+<tr><td style="text-align:left;border:solid 1px;white-space:nowrap" > <span style="font-weight:bold">Oxygen atoms</span></td><td style="text-align:center;border:solid 1px;white-space:nowrap" >2</td><td style="text-align:center;border:solid 1px;white-space:nowrap" >1</td><td style="text-align:center;border:solid 1px;white-space:nowrap" >6</td><td style="text-align:center;border:solid 1px;white-space:nowrap" >2 </td></tr>
+<tr><td style="text-align:left;border:solid 1px;white-space:nowrap" > <span style="font-weight:bold">Hydrogen atoms</span></td><td style="text-align:center;border:solid 1px;white-space:nowrap" >0</td><td style="text-align:center;border:solid 1px;white-space:nowrap" >2</td><td style="text-align:center;border:solid 1px;white-space:nowrap" >12</td><td style="text-align:center;border:solid 1px;white-space:nowrap" >0</td></tr>
+</table><p><br>
+If we look at the number of carbon atoms in the process, we get
+\[ 1\cdot x + 0 \cdot y = 6\cdot z + 0\cdot w.\]
+The number of oxygen atoms gives us
+\[ 2\cdot x + 1\cdot y = 6\cdot z + 2\cdot w,\]
+and the number of hydrogen atoms gives us
+\[ 0\cdot x + 2\cdot y = 12\cdot z + 0\cdot w.\]
+Altogether, we get the simulaneous equations
+</p><div class="center">
+
+<img src="03-Gaussian_Elim001.png"></div><p>
+We can solve this system (and get that for every glucose molecule that
+six oxygen molecules are also produced and it requires six carbon
+dioxide molecules and six carbon dioxide molecules), but this is a
+type of common and important system, and we should discuss how to
+methodically solve them.</p><p>Since we will be dealing with systems of equations with
+several variables, we need some consistent way of denoting these
+variables. For \(n\) variables, we will typically use
+\(x_{1},x_{2},x_{3},\dots,x_{n}\). If we only have two or three
+variables, to avoid subscripts we will typically use \(x,y\) or \(x,y,z\).</p><p><br>
+</p><p><span style="font-weight:bold"><span style="font-variant:small-caps">Definition </span></span><br>
+ A <span style="font-style:italic"><span style="font-weight:bold">linear equation</span></span> in \(n\) variables is an equation of the form
+\[ a_{1}x_{1}+a_{2}x_{2}+\dots+a_{n}x_{n}=b.\]
+
+<div><hr style="text-align:center;margin-left:25vw;width:25vw;height:2"></div><br>
+
+</p><p><br>
+</p><p><span style="font-weight:bold"><span style="font-variant:small-caps">Example </span></span><br>
+ \[2x_{1}+x_{2}-4x_{3}+x_{4}=5.\]
+
+<div><hr style="text-align:center;margin-left:25vw;width:25vw;height:2"></div><br>
+
+</p><p><br>
+</p><p><span style="font-weight:bold"><span style="font-variant:small-caps">Example </span></span><br>
+ \[x+2y-z=7.\]
+
+<div><hr style="text-align:center;margin-left:25vw;width:25vw;height:2"></div><br>
+
+</p><p>We will be interested in several simultaneous equations. A
+<span style="font-style:italic"><span style="font-weight:bold">linear system of </span></span>\(m\)<span style="font-style:italic"><span style="font-weight:bold"> equations in </span></span>\(n\)<span style="font-style:italic"><span style="font-weight:bold"> unknowns</span></span> is a system of
+the form
+</p><div class="center">
+
+<img src="03-Gaussian_Elim002.png"></div><p><br>
+</p><p><span style="font-weight:bold"><span style="font-variant:small-caps">Example </span></span><br>
+ The system
+</p><div class="center">
+
+<img src="03-Gaussian_Elim003.png"></div><p>
+is a system of \(4\) equations in \(3\) unknowns.
+
+<div><hr style="text-align:center;margin-left:25vw;width:25vw;height:2"></div><br>
+
+</p><p><br>
+</p><p><span style="font-weight:bold"><span style="font-variant:small-caps">Definition </span></span><br>
+ A linear system is <span style="font-style:italic"><span style="font-weight:bold">homogeneous</span></span> if all the constants are \(0\);
+i.e., if it is of the form
+</p><div class="center">
+
+<img src="03-Gaussian_Elim004.png"></div><p>
+
+<div><hr style="text-align:center;margin-left:25vw;width:25vw;height:2"></div><br>
+
+</p><p><br>
+</p><p><span style="font-weight:bold"><span style="font-variant:small-caps">Definition </span></span><br>
+ A <span style="font-style:italic"><span style="font-weight:bold">solution</span></span> to a system of \(m\) equations in \(n\) unknowns is a
+set of \(n\) numbers
+\[x_{1}=c_{1},\quad x_{2}=c_{2},\quad \cdots,\quad x_{n}=c_{n}\]
+which simultaneously satisfy all \(m\) equations.
+
+<div><hr style="text-align:center;margin-left:25vw;width:25vw;height:2"></div><br>
+
+</p><p><br>
+</p><p><span style="font-weight:bold"><span style="font-variant:small-caps">Example </span></span><br>
+ The values \(x=1, y=4, z=2\) is a solution of
+</p><div class="center">
+
+<img src="03-Gaussian_Elim005.png"></div><p>
+since
+</p><div class="center">
+
+<img src="03-Gaussian_Elim006.png"></div><p>
+
+<div><hr style="text-align:center;margin-left:25vw;width:25vw;height:2"></div><br>
+
+</p><p>To <span style="font-style:italic"><span style="font-weight:bold">solve</span></span> a system of equations is to find the solution set;
+i.e., the set of all solutions. There are three possibilities; a
+linear system of equations will have either 
+</p><ul class="itemize"><li class="li-itemize">
+exactly \(0\) solutions
+</li><li class="li-itemize">exactly \(1\) solution
+</li><li class="li-itemize">infinitely many solutions.
+</li></ul><p>
+(Note that a homogeneous system always has at least one solution;
+namely, \(x_{1}=0\), \(x_{2}=0\),&#X2026;,\(x_{n}=0\). So for a homogeneous
+system, this will be the only solution or there will be infinitely many
+solutions.)</p><p>Here are some examples of each possibility.</p><p><br>
+</p><p><span style="font-weight:bold"><span style="font-variant:small-caps">Example </span></span><br>
+ 
+Exactly \(0\) solutions.
+
+<div><hr style="text-align:center;margin-left:25vw;width:25vw;height:2"></div><br>
+
+
+</p><div class="center">
+
+<img src="03-Gaussian_Elim007.png"></div><p>
+
+<div><hr style="text-align:center;margin-left:25vw;width:25vw;height:2"></div><br>
+
+</p><p><br>
+</p><p><span style="font-weight:bold"><span style="font-variant:small-caps">Example </span></span><br>
+ 
+Exactly \(1\) solution.
+
+<div><hr style="text-align:center;margin-left:25vw;width:25vw;height:2"></div><br>
+
+
+</p><div class="center">
+
+<img src="03-Gaussian_Elim008.png"></div><p>
+Finding \(z\) and working our way backwards (this is called
+<span style="font-style:italic"><span style="font-weight:bold">back-substitution</span></span>), we get
+\begin{align*}
+    z &= 4\\
+    y &= z+3 = 4+3 = 7\\
+    x &= -y + 2z + 2 = -7 +2\cdot4 + 2 = 3
+  \end{align*}
+
+<div><hr style="text-align:center;margin-left:25vw;width:25vw;height:2"></div><br>
+
+</p><p><br>
+</p><p><span style="font-weight:bold"><span style="font-variant:small-caps">Example </span></span><br>
+ 
+Infinitely many solutions.
+
+<div><hr style="text-align:center;margin-left:25vw;width:25vw;height:2"></div><br>
+
+
+</p><div class="center">
+
+<img src="03-Gaussian_Elim009.png"></div><p>
+Finding \(z\) and working our way backwards, we see that \(z=2\). We
+would next find \(y\), but we can&#X2019;t solve for \(y\) in terms of already
+determined values. The variable \(y\) is called a <span style="font-style:italic"><span style="font-weight:bold">free
+variable</span></span>. Next, \(x=y-2z+3 = y-2\cdot2+3 = y-1\). So the
+solutions look like
+\begin{align*}
+    x &= y-1\\
+    y &= y\\
+    z &= 2
+  \end{align*}
+This describes the solution set.
+
+<div><hr style="text-align:center;margin-left:25vw;width:25vw;height:2"></div><br>
+
+</p><p>These examples were given to us in a particularly nice form; we would
+like every system to end up like one of these.</p><p><br>
+</p><p><span style="font-weight:bold"><span style="font-variant:small-caps">Definition </span></span><br>
+ Two systems of equations are <span style="font-style:italic"><span style="font-weight:bold">equivalent</span></span> if they have the same
+solution set.
+
+<div><hr style="text-align:center;margin-left:25vw;width:25vw;height:2"></div><br>
+
+</p><p>Given a system of equations, we would like to find an equivalent
+system in a nice form. There are three basic ways to manipulate a
+system to get an equivalent system:
+</p><ul class="itemize"><li class="li-itemize">
+Switch two equations.
+<br>
+<p><span style="font-weight:bold"><span style="font-variant:small-caps">Example </span></span><br>
+ </p><div class="center">
+
+<img src="03-Gaussian_Elim010.png"></div><p>
+is equivalent to
+</p><div class="center">
+
+<img src="03-Gaussian_Elim011.png"></div><p>
+
+<div><hr style="text-align:center;margin-left:25vw;width:25vw;height:2"></div><br>
+
+
+</p></li><li class="li-itemize">Multiply an equation by a non-zero number.
+<br>
+<p><span style="font-weight:bold"><span style="font-variant:small-caps">Example </span></span><br>
+ </p><div class="center">
+
+<img src="03-Gaussian_Elim012.png"></div><p>
+is equivalent to (multiplying the top equation by \(2\))
+</p><div class="center">
+
+<img src="03-Gaussian_Elim013.png"></div><p>
+
+<div><hr style="text-align:center;margin-left:25vw;width:25vw;height:2"></div><br>
+
+
+</p></li><li class="li-itemize">Add a multiple of one equation to another.
+<br>
+<p><span style="font-weight:bold"><span style="font-variant:small-caps">Example </span></span><br>
+ </p><div class="center">
+
+<img src="03-Gaussian_Elim014.png"></div><p>
+is equivalent to (adding twice the first equation to the second)
+</p><div class="center">
+
+<img src="03-Gaussian_Elim015.png"></div><p>
+
+<div><hr style="text-align:center;margin-left:25vw;width:25vw;height:2"></div><br>
+
+
+</p></li></ul><p>A system of equations
+</p><div class="center">
+
+<img src="03-Gaussian_Elim016.png"></div><p>
+has two matrices connected with it. The matrix of coefficients:
+\[
+\begin{pmatrix}
+  a_{11} & a_{12} & \cdots & a_{1n} \\
+  a_{21} & a_{22} & \cdots & a_{2n} \\
+  \vdots &      &         & \vdots\\
+  a_{m1} & a_{m2} & \cdots & a_{mn}
+\end{pmatrix},
+\]
+called the coefficient matrix, and matrix consisting of the
+coefficients and constants:
+\[
+\begin{pmatrix}
+  a_{11} & a_{12} & \cdots & a_{1n} & b_{1}\\
+  a_{21} & a_{22} & \cdots & a_{2n} & b_{2}\\
+  \vdots &      &         &       & \vdots\\
+  a_{m1} & a_{m2} & \cdots & a_{mn} & b_{m}
+\end{pmatrix},
+\]
+which is simply called the matrix of the system.
+Note that this second matrix is the coefficient matrix augmented with
+the column vector of the constants of the equations, and contains all
+the information of the system of equations. Each row of the matrix
+represents an equation; the numbers in the first column represent the
+\(x_{1}\) coefficients, the numbers in the second column represent the
+\(x_{2}\) coefficients, etc., and the numbers in the last column
+represent the constants to the right of the equal signs.</p><p><br>
+</p><p><span style="font-weight:bold"><span style="font-variant:small-caps">Example </span></span><br>
+ The system
+</p><div class="center">
+
+<img src="03-Gaussian_Elim017.png"></div><p>
+has matrix
+\[
+  \begin{pmatrix}
+    1 & -2 & 3 & -1 & 1\\
+    1 & 0  & -3 & 9 & 0\\
+    1 & 9 & 0 & -1 & 3
+  \end{pmatrix}
+  \]
+and coefficient matrix
+\[
+  \begin{pmatrix}
+    1 & -2 & 3 & -1\\
+    1 & 0  & -3 & 9 \\
+    1 & 9 & 0 & -1
+  \end{pmatrix}.
+  \]
+
+<div><hr style="text-align:center;margin-left:25vw;width:25vw;height:2"></div><br>
+
+</p><p>In terms of matrices, the three operations which transform a system
+into an equivalent system are called the <span style="font-style:italic"><span style="font-weight:bold">elementary row
+operations</span></span>. If we want to keep track of these operations, we can
+draw an arrow from the original matrix to the transformed matrix
+with an indication of what was done.
+</p><ul class="itemize"><li class="li-itemize">
+Switch any two rows.<br>
+We can indicate that we are switching rows \(i\) and \(j\) with
+\(\rho_{i} \leftrightarrow \rho_{j}\).
+<br>
+<p><span style="font-weight:bold"><span style="font-variant:small-caps">Example </span></span><br>
+ (Switch rows 2 and 3.) 
+\[
+      \begin{pmatrix}
+      1 & 2 & 3\\
+      4 & 5 & 6\\
+      7 & 8 & 9
+    \end{pmatrix}
+    \rowstep{\rho_2 \leftrightarrow \rho_3}
+    \begin{pmatrix}
+      1 & 2 & 3\\
+      7 & 8 & 9\\
+      4 & 5 & 6
+    \end{pmatrix}
+    \]
+
+<div><hr style="text-align:center;margin-left:25vw;width:25vw;height:2"></div><br>
+
+
+</p></li><li class="li-itemize">Multiply a row by a non-zero number.<br>
+We can indicate that we are multiplying row \(i\) by the number \(c\) with
+\(c\rho_i\).
+<br>
+<p><span style="font-weight:bold"><span style="font-variant:small-caps">Example </span></span><br>
+ (Multiply row 2 by 5.)
+\[
+    \begin{pmatrix}
+      1 & 2 & 3\\
+      4 & 5 & 6\\
+      7 & 8 & 9
+    \end{pmatrix}
+    \rowstep{5\rho_2}
+    \begin{pmatrix}
+      1 & 2 & 3\\
+      20 & 25 & 30\\
+      7 & 8 & 9
+    \end{pmatrix}
+    \]
+
+<div><hr style="text-align:center;margin-left:25vw;width:25vw;height:2"></div><br>
+
+
+</p></li><li class="li-itemize">Add a multiple of one row to another.<br>
+We can indicate that we are adding \(c\) times row \(i\) to row \(j\) with
+\(c\rho_i + \rho_j\). (Note that the matrix being changed is at the end.)
+<br>
+<p><span style="font-weight:bold"><span style="font-variant:small-caps">Example </span></span><br>
+ (Add 4 times row 2 to row 1.)
+\[
+    \begin{pmatrix}
+      1 & 2 & 3\\
+      4 & 5 & 6\\
+      7 & 8 & 9
+    \end{pmatrix}
+    \rowstep{4\rho_2 + \rho 1}
+    \begin{pmatrix}
+      17 & 22 & 27\\
+      4 & 5 & 6\\
+      7 & 8 & 9
+    \end{pmatrix}
+    \]
+
+<div><hr style="text-align:center;margin-left:25vw;width:25vw;height:2"></div><br>
+
+
+</p></li></ul><p>We want to use the elementary row operations to reduce a system of
+equations to an equivalent system which is easier to solve. The idea
+is this: it is easier to solve a system of equations if there are
+fewer variables and equations. So given a system of \(m\) equations and
+\(n\) variables, we want to get rid of one of the variables from all but
+one of the equations. The equations which don&#X2019;t involve this variable
+will then be a system of \(m-1\) equations with \(n-1\) variables.</p><p>The procedure we use is called <span style="font-style:italic"><span style="font-weight:bold">Gaussian Elimination</span></span>. While
+there are different variations of Gaussian elimination that put a
+matrix in a convenient form, the specific method given here will be
+the version that we mean when we talk about Gaussian elimination.<br>
+Given the matrix of a linear system of equations, start with the top
+row.
+</p><ol class="enumerate" type=1><li class="li-enumerate">
+Look at the leftmost non-zero element in the row. If this is
+also the leftmost non-zero element including any lower rows, don&#X2019;t do
+anything for this step. Otherwise, switch the current row with a 
+lower row so that the leftmost non-zero element in the current row is
+as far left as possible. The position of this non-zero element is
+called a <span style="font-style:italic"><span style="font-weight:bold">pivot</span></span>. 
+</li><li class="li-enumerate">Add multiples of the current row the lower rows it
+to get 0s below the pivot.
+</li><li class="li-enumerate">If the current row is not the bottom row, go to the next row and
+repeat these steps. If the current row is the bottom row, this
+procedure is finished.
+</li></ol><p><br>
+</p><p><span style="font-weight:bold"><span style="font-variant:small-caps">Example </span></span><br>
+ Starting with the system of equations
+</p><div class="center">
+
+<img src="03-Gaussian_Elim018.png"></div><p>
+we get the (augmented) matrix
+\[
+\begin{pmatrix}
+  \boldsymbol{2} & 4 & 2 & 6 & 2 & 6\\
+  1 & 2 & 1 & 3 & 2 & 5\\
+  2 & 4 & 1 & 4 & 1 & 5
+\end{pmatrix}
+\]
+There is a 2 on the far left of the first row; this is the first pivot.
+To get zeros below this pivot, add \(-1/2\) times the first row to the
+second row, and then add \(-1\) times the first row to the third row.
+\[
+\begin{pmatrix}
+  \boldsymbol{2} & 4 & 2 & 6 & 2 & 6\\
+  1 & 2 & 1 & 3 & 2 & 5\\
+  2 & 4 & 1 & 4 & 1 & 5
+\end{pmatrix}
+\rowstep{\substack{(-1/2)\rho_1 + \rho_2 \\ (-1)\rho_1 + \rho3}}
+\begin{pmatrix}
+  \boldsymbol{2} & 4 & 2 & 6 & 2 & 6\\
+  \boldsymbol{0} & 0 & 0 & 0 & 1 & 2\\
+  \boldsymbol{0} & 0 & -1 & -2 & -1 & -1
+\end{pmatrix}
+\]
+There are now 0s below the first pivot. Moving to the
+second row, we would like a non-zero term as far to the left as
+possible. There is a zero in the second column, but there are also 0s
+in the second column of all lower rows. There is a zero in the third
+column and a non-zero term in the third column of the third row. To
+get a non-zero term as far to the left as possible in the second row,
+we will switch the second and third rows.
+\[
+ \begin{pmatrix}
+  \boldsymbol{2} & 4 & 2 & 6 & 2 & 6\\
+  \boldsymbol{0} & 0 & 0 & 0 & 1 & 2\\
+  \boldsymbol{0} & 0 & -1 & -2 & -1 & -1
+\end{pmatrix}
+\rowstep{\rho_2 \leftrightarrow \rho_3}
+ \begin{pmatrix}
+  2 & 4 & 2 & 6 & 2 & 6\\
+  0 & 0 & \boldsymbol{-1} & -2 & -1 & -1\\
+  0 & 0 & 0 & 0 & 1 & 2
+\end{pmatrix}
+\]
+The \(\boldsymbol{-1}\) in the second row is now the second pivot. There is
+only a zero below it, so that&#X2019;s taken care of.
+There is nothing to do with the third row, the \(\boldsymbol{1}\) in the
+fifth column of the third row is the third pivot. We are done with
+Gaussian elimination.
+
+<div><hr style="text-align:center;margin-left:25vw;width:25vw;height:2"></div><br>
+
+</p><p>The specific operations used in the previous example weren&#X2019;t the only
+ones we could have used for Gaussian elimination. For example, to
+avoid beginning by dividing the first row by 2, we could have started
+by switching the first two rows to get our leading 1 in the first row.</p><p>After Gaussian elimination, a matrix will be in a specific form, called
+row-echelon form.</p><p><br>
+</p><p><span style="font-weight:bold"><span style="font-variant:small-caps">Definition </span></span><br>
+ A matrix is in <span style="font-style:italic"><span style="font-weight:bold">row-echelon form</span></span> if:
+</p><ol class="enumerate" type=1><li class="li-enumerate">
+The leftmost non-zero element in any row is further to the right than the
+leftmost non-zero element of any higher row.<br>
+ The position of this leftmost non-zero element is called a pivot.
+</li><li class="li-enumerate">Any rows with all 0s are at the bottom.
+</li></ol><p>
+
+<div><hr style="text-align:center;margin-left:25vw;width:25vw;height:2"></div><br>
+
+</p><p>If a matrix \(A\) can be reduced to the row-echelon matrix \(E\) using
+elementary row operations, we write \(A \rightsquigarrow E\). Note that
+the row-echelon form of a matrix is not unique: it is possible to have
+\(A \rightsquigarrow E_{1}\) and \(A \rightsquigarrow E_{2}\) with
+\(E_{1}\not= E_{2}\).</p><p>Once a matrix is in row-echelon form, the system can be solved with 
+<span style="font-style:italic"><span style="font-weight:bold">back-substitution</span></span>:
+</p><ul class="itemize"><li class="li-itemize">
+Start with the last equation and find the value of the last
+variable \(x_{n}\).
+</li><li class="li-itemize">Go up to the next equation and solve for \(x_{n-1}\), using our
+value for \(x_{n}\). Continue.
+</li><li class="li-itemize">If the column corresponding to a variable doesn&#X2019;t have a leading
+1, the equations don&#X2019;t determine a value for that variable. That
+variable can take on any value, and is called a <span style="font-style:italic"><span style="font-weight:bold">free variable</span></span>.
+</li></ul><p><br>
+</p><p><span style="font-weight:bold"><span style="font-variant:small-caps">Example </span></span><br>
+ To finish our example, our matrix after Gaussian elimination is
+\[
+\begin{pmatrix}
+  2 & 4 & 2 & 6 & 2 & 6\\
+  0 & 0 & -1 & -2 & -1 & -1\\
+  0 & 0 & 0 & 0 & 1 & 2
+\end{pmatrix}
+\]
+The corresponding equations are
+</p><div class="center">
+
+<img src="03-Gaussian_Elim019.png"></div><p>
+From the last equation, we get \(x_{5}=2\). The variable \(x_{4}\) is a
+free variable. From the second equation from the bottom,
+\(x_{3}=1-2x_{4}-x_{5}=1-2x_{4}-2 = -1-2x_{4}\). The variable \(x_{2}\)
+is a free variable. From the top equation, we get
+\(x_{1}=3 - 2x_{2}-x_{3}-3x_{4}-x_{5} = 3 -2x_{2}-(-1-2x_{4})-3x_{4}-2
+= 2-2x_{2}-x_{4}\).</p><p>It is a good idea to write the solution(s) as a vector, so we will do
+that. The solutions are
+\[\vectr{x_1\\x_2\\x_3\\x_4\\x_5}
+  = \vectr{2 - 2x_2 - x_4\\x_2\\-1-2x_4\\x_4\\2}
+  = \vectr{2\\0\\-1\\0\\2} + x_2\vectr{-2\\1\\0\\0\\0} +
+  x_4\vectr{-1\\0\\-2\\1\\0}\]
+
+<div><hr style="text-align:center;margin-left:25vw;width:25vw;height:2"></div><br>
+
+</p><p><br>
+</p><p><span style="font-weight:bold"><span style="font-variant:small-caps">Remark </span></span><br>
+ The back-substitution can be done as part of the elimination
+process, while in matrix form, by multiplying the rows by
+appropriate numbers to put a \(1\) in each pivot and getting 0s above
+as well as below the pivots. This is called 
+<span style="font-style:italic"><span style="font-weight:bold">Gauss-Jordan Elimination</span></span>.
+<br>
+</p><p><span style="font-weight:bold"><span style="font-variant:small-caps">Example </span></span><br>
+ 
+Perform back-substitution for the matrix in the previous example.
+
+<div><hr style="text-align:center;margin-left:25vw;width:25vw;height:2"></div><br>
+
+
+The matrix in row-echelon form is:
+\[
+    \begin{pmatrix}
+      2 & 4 & 2 & 6 & 2 & 6\\
+      0 & 0 & -1 & -2 & -1 & -1\\
+      0 & 0 & 0 & 0 & 1 & 2
+    \end{pmatrix}
+    \]
+Multiplying the first row by \(1/2\) and the second row by \(-1\),
+\begin{align*}
+    &\begin{pmatrix}
+      2 & 4 & 2 & 6 & 2 & 6\\
+      0 & 0 & -1 & -2 & -1 & -1\\
+      0 & 0 & 0 & 0 & 1 & 2
+    \end{pmatrix}
+    \rowstep{(1/2)\rho_1}\\
+    &\begin{pmatrix}
+      1 & 2 & 1 & 3 & 1 & 3\\
+      0 & 0 & -1 & -2 & -1 & -1\\
+      0 & 0 & 0 & 0 & 1 & 2
+    \end{pmatrix}
+    \rowstep{(-1)\rho_2}\\
+    &\begin{pmatrix}
+      1 & 2 & 1 & 3 & 1 & 3\\
+      0 & 0 & 1 & 2 & 1 & 1\\
+      0 & 0 & 0 & 0 & 1 & 2
+    \end{pmatrix}
+    \end{align*}
+gives us \(1\)s in the pivot positions. </p><p>There are no rows above the first pivot, so we&#X2019;ll look at the
+pivot in the second row. We want a 0 above that, so we&#X2019;ll
+subtract row 2 from row 1 (i.e., add \(-1\) times row 2 to row 1):
+\[
+    \begin{pmatrix}
+      1 & 2 & 1 & 3 & 1 & 3\\
+      0 & 0 & 1 & 2 & 1 & 1\\
+      0 & 0 & 0 & 0 & 1 & 2
+    \end{pmatrix}
+    \rowstep{(-1)\rho_2 + \rho_1}
+    \begin{pmatrix}
+      1 & 2 & 0 & 1 & 0 & 2\\
+      0 & 0 & 1 & 2 & 1 & 1\\
+      0 & 0 & 0 & 0 & 1 & 2
+    \end{pmatrix}
+  \]
+Next, we want zeros above the leading 1 in the third row. We only
+have to take care of the second row for this example, so we&#X2019;ll
+subtract row 3 from row 2:
+\[
+    \begin{pmatrix}
+      1 & 2 & 0 & 1 & 0 & 2\\
+      0 & 0 & 1 & 2 & 1 & 1\\
+      0 & 0 & 0 & 0 & 1 & 2
+    \end{pmatrix}
+    \rowstep{(-1)\rho_3 + \rho_2}   
+    \begin{pmatrix}
+      1 & 2 & 0 & 1 & 0 & 2\\
+      0 & 0 & 1 & 2 & 0 & -1\\
+      0 & 0 & 0 & 0 & 1 & 2
+    \end{pmatrix}
+    \]
+This finishes the Gauss-Jordan elimination. This matrix
+corresponds to the equations:
+</p><div class="center">
+
+<img src="03-Gaussian_Elim020.png"></div><p>
+Without any more substitution, these give us
+\begin{align*}
+      x_{1} &= 2 - 2x_{2} - x_{4}\\
+      x_{3} &= -1 - 2x_{4} \\
+      x_{5} &= 2
+    \end{align*}
+which are in terms of the free variables \(x_{2}\) and \(x_{4}\).
+Again, we can write this as
+\[
+    \vectr{x_1\\x_2\\x_3\\x_4\\x_5} =
+    \vectr{2 - 2x_2 - x_4\\x_2\\-1-2x_4\\x_4\\2} =
+    \vectr{2\\0\\-1\\0\\2} + x_2\vectr{-2\\1\\0\\0\\0} +
+    x_4\vectr{-1\\0\\-2\\1\\0}\]
+where \(x_2\) and \(x_4\) can be anything.
+
+<div><hr style="text-align:center;margin-left:25vw;width:25vw;height:2"></div><br>
+
+
+
+<div><hr style="text-align:center;margin-left:25vw;width:25vw;height:2"></div><br>
+
+</p><p><br>
+</p><p><span style="font-weight:bold"><span style="font-variant:small-caps">Remark </span></span><br>
+ So far, all of our calculations have been exact. When approximate
+calculations are used, errors can accumulate the computed answer can
+be far from the actual answer.
+<br>
+</p><p><span style="font-weight:bold"><span style="font-variant:small-caps">Example </span></span><br>
+ 
+Solve the system
+</p><div class="center">
+
+<img src="03-Gaussian_Elim021.png"></div><p>
+where the result of each calculation is rounded to 4 significant
+digits.
+
+<div><hr style="text-align:center;margin-left:25vw;width:25vw;height:2"></div><br>
+
+
+We can tell by inspection that \(x=1\), \(y=1\) is a solution. (It
+is, in fact, the only solution.) However, let&#X2019;s solve this with
+Gaussian elimination. Our matrix is
+\[
+    \begin{pmatrix}
+      .4000 & 561.6 & 562.0 \\
+      73.03 & -43.03 & 30.00
+    \end{pmatrix}
+    \]
+Dividing row 1 by \(.4000\), we get
+\[
+    \begin{pmatrix}
+      1.000 & 1404 & 1405 \\
+      73.03 & -43.03 & 30.00
+    \end{pmatrix}
+    \]
+Subtracting \(73.03\) times row 1 from row 2, we get
+\[
+    \begin{pmatrix}
+      1.000 & 1404 & 1405 \\
+      0.000 & -43.03 - 102500 & 30.00 - 102600
+    \end{pmatrix}
+    \]
+or
+\[
+    \begin{pmatrix}
+      1.000 & 1404 & 1405 \\
+      0.000 & -102500 & -102600
+    \end{pmatrix}
+    \]
+Dividing row 2 by \(-102500\), we get
+\[
+    \begin{pmatrix}
+      1.000 & 1404  & 1405 \\
+      0.000 & 1.000 & 1.001
+    \end{pmatrix}
+    \]
+This corresponds to the equations
+</p><div class="center">
+
+<img src="03-Gaussian_Elim022.png"></div><p>
+So our computed solution would be
+\begin{align*}
+      y &= 1.001\\
+      x &= 1405 - 1404y = 1405-1404\cdot 1.001 = 1405 - 1405 = 0
+    \end{align*}
+The computed \(y\) value is close to the \(y\) value of the true
+solution, but the computer \(x\) value is not close.
+
+<div><hr style="text-align:center;margin-left:25vw;width:25vw;height:2"></div><br>
+
+</p><p>One way to reduce this type of error in Gaussian elimination is
+with <span style="font-style:italic"><span style="font-weight:bold">pivotal condensation</span></span>, where each leading 1 is obtained
+from the largest term in the corresponding column.</p><p><br>
+</p><p><span style="font-weight:bold"><span style="font-variant:small-caps">Example </span></span><br>
+ The original matrix from the previous example was
+\[
+    \begin{pmatrix}
+      .4000 & 561.6 & 562.0 \\
+      73.03 & -43.03 & 30.00
+    \end{pmatrix}
+    \]
+We start by getting a leading 1 for the first row. This 1 will be
+in the first column, so instead of automatically dividing the
+first row by \(.4000\), we look for the largest number in the first
+column. This is the \(73.03\) in the second row, so we switch the
+second row with the first to get
+\[
+    \begin{pmatrix}
+      73.03 & -43.03 & 30.00\\
+      .4000 & 561.6 & 562.0 
+    \end{pmatrix}
+    \]
+We now get the leading 1 for the first row by dividing by a
+larger, rather than smaller, number. Completing the problem as
+before, we get the solution \(x=1.001\), \(y=1.001\). This is a much
+better approximate solution than before.
+
+<div><hr style="text-align:center;margin-left:25vw;width:25vw;height:2"></div><br>
+
+</p><p>While this is an important practical concern, in the future we will
+pretend that all calculations are exact.
+
+<div><hr style="text-align:center;margin-left:25vw;width:25vw;height:2"></div><br>
+
+</p><p>Let&#X2019;s do some more examples of Gaussian elimination. We will solve a
+system with exactly one solution, and one with no solutions.</p><p><br>
+</p><p><span style="font-weight:bold"><span style="font-variant:small-caps">Example </span></span><br>
+ 
+Solve
+</p><div class="center">
+
+<img src="03-Gaussian_Elim023.png"></div><p>
+
+<div><hr style="text-align:center;margin-left:25vw;width:25vw;height:2"></div><br>
+
+
+The matrix for this system is
+\[
+  \begin{pmatrix}
+    1 & 1 & 2 & 9\\
+    3 & 1 & 2 & 11\\
+    0 & 2 & 1 & 7
+  \end{pmatrix}
+  \]
+The Gaussian elimination will proceed as follows:<br>
+ \begin{align*}
+  &\begin{pmatrix}
+    1 & 1 & 2 & 9\\
+    0 & -2 & -4 & -16\\
+    0 & 2 & 1 & 7
+  \end{pmatrix}\\
+  \rowstep{(-1/2)\rho_{2}}\\
+  &\begin{pmatrix}
+    1 & 1 & 2 & 9\\
+    0 & 1 & 2 & 8\\
+    0 & 2 & 1 & 7
+  \end{pmatrix}
+  \rowstep{-2\rho_{2} + \rho_{3}}\\
+  &\begin{pmatrix}
+    1 & 1 & 2 & 9\\
+    0 & 1 & 2 & 8\\
+    0 & 0 & -3 & -9
+  \end{pmatrix}
+  \end{align*}
+This is now in row-echelon form, and corresponds to the equations
+</p><div class="center">
+
+<img src="03-Gaussian_Elim024.png"></div><p>
+Back substitution gives us:
+\begin{align*}
+    z &= 3\\
+    y &= 8-2z = 8-2\cdot3 = 2\\
+    x &= 9-y-2z = 9-2-2\cdot3 = 1
+  \end{align*}
+So the solution is
+\[ \vectr{x\\y\\z} = \vectr{1\\2\\3}\]
+
+<div><hr style="text-align:center;margin-left:25vw;width:25vw;height:2"></div><br>
+
+</p><p><br>
+</p><p><span style="font-weight:bold"><span style="font-variant:small-caps">Example </span></span><br>
+ 
+Solve
+</p><div class="center">
+
+<img src="03-Gaussian_Elim025.png"></div><p> 
+
+<div><hr style="text-align:center;margin-left:25vw;width:25vw;height:2"></div><br>
+
+
+Our matrix is
+\begin{align*}
+  &\begin{pmatrix}
+    2 & 2 & 4 & 12\\
+    1 & 1 & 1 & 8\\
+    3 & 3 & 2 & 19
+  \end{pmatrix}
+  \rowstep{\substack{-(1/2)\rho_{1} + \rho{2}\\ (-3/2)\rho_1 +
+  \rho_3}}\\
+  &\begin{pmatrix}
+    2 & 2 & 4 & 12\\
+    0 & 0 & -1 & 2\\
+    0 & 0 & -4 & 1
+  \end{pmatrix}
+  \rowstep{-4\rho_{2} + \rho_{3}}  \\
+  &\begin{pmatrix}
+    2 & 2 & 4 & 12\\
+    0 & 0 & -1 & 2\\
+    0 & 0 & 0 & -7
+  \end{pmatrix}
+  \end{align*}
+We can see that the last row corresponds to the equation \(0=-7\),
+which is never true. So this system has no solutions.
+
+<div><hr style="text-align:center;margin-left:25vw;width:25vw;height:2"></div><br>
+
+</p><!--TOC section id="sec1" Xcas-->
+<h2 id="sec1" class="section">Xcas</h2><!--SEC END --><p><span style="font-family:monospace">Xcas</span> can solve systems of equations with the <span style="font-family:monospace">solve</span>
+command. The equations and variables to solve for need to be given as
+lists. So to solve the system
+</p><div class="center">
+
+<img src="03-Gaussian_Elim026.png"></div><p>
+you can use the command
+<br><textarea onkeypress="UI.ckenter(event,this,2)" 
+style="width:400px;font-size:large">solve([x+y+z=6, 2*x-y+4*z=7, x+y-z=2],[x,y,z]) 
+</textarea><button onclick="previousSibling.style.display='inherit';var tmp=UI.caseval(previousSibling.value); tmp=UI.latexeval(tmp);nextSibling.innerHTML='&nbsp;'+tmp; if (UI.usemathjax) MathJax.Hub.Queue(['Typeset',MathJax.Hub,nextSibling])">exe</button><span></span><br>
+
+where the result is a list with the values of \(x\), \(y\) and \(z\).
+To solve the system
+</p><div class="center">
+
+<img src="03-Gaussian_Elim027.png"></div><p>
+you can use the command
+<br><textarea onkeypress="UI.ckenter(event,this,2)" 
+style="width:400px;font-size:large">solve([x + y + z = 1, x - y - z = 2],[x,y,z]) 
+</textarea><button onclick="previousSibling.style.display='inherit';var tmp=UI.caseval(previousSibling.value); tmp=UI.latexeval(tmp);nextSibling.innerHTML='&nbsp;'+tmp; if (UI.usemathjax) MathJax.Hub.Queue(['Typeset',MathJax.Hub,nextSibling])">exe</button><span></span><br>
+
+where the values of \(x\), \(y\) and \(z\) are given in terms of the free
+variable \(z\).</p><p>We are interested in more than solving equations, and 
+<span style="font-family:monospace">Xcas</span> has commands for each elementary row operation.</p><p>The <span style="font-family:monospace">rowSwap</span> can be used to switch two rows of a matrix. It
+takes as input a matrix and the indices (beginning at 0) of the two
+rows to switch. For example, for the matrix
+\[
+A=
+\begin{pmatrix}
+1 & 2 & 3 \\
+4 & 5 & 6 \\
+7 & 8 & 9
+\end{pmatrix}
+\]
+<br><textarea onkeypress="UI.ckenter(event,this,2)" 
+style="width:400px;font-size:large">A := [[1,2,3],[4,5,6],[7,8,9]] 
+</textarea><button onclick="previousSibling.style.display='inherit';var tmp=UI.caseval(previousSibling.value); tmp=UI.latexeval(tmp);nextSibling.innerHTML='&nbsp;'+tmp; if (UI.usemathjax) MathJax.Hub.Queue(['Typeset',MathJax.Hub,nextSibling])">exe</button><span></span><br>
+
+you can switch rows 1 and 2 (which have indices 0 and 1) with the
+command
+<br><textarea onkeypress="UI.ckenter(event,this,2)" 
+style="width:400px;font-size:large">rowSwap(A,0,1) 
+</textarea><button onclick="previousSibling.style.display='inherit';var tmp=UI.caseval(previousSibling.value); tmp=UI.latexeval(tmp);nextSibling.innerHTML='&nbsp;'+tmp; if (UI.usemathjax) MathJax.Hub.Queue(['Typeset',MathJax.Hub,nextSibling])">exe</button><span></span><br>
+ 
+</p><p>Note that these commands will return the transformed matrix, but will
+not change the value of the given matrix; \(A\) will be the same matrix
+as before. 
+<br><textarea onkeypress="UI.ckenter(event,this,2)" 
+style="width:400px;font-size:large">A 
+</textarea><button onclick="previousSibling.style.display='inherit';var tmp=UI.caseval(previousSibling.value); tmp=UI.latexeval(tmp);nextSibling.innerHTML='&nbsp;'+tmp; if (UI.usemathjax) MathJax.Hub.Queue(['Typeset',MathJax.Hub,nextSibling])">exe</button><span></span><br>
+
+To change the matrix, you will need to assign it to the
+new matrix.
+<br><textarea onkeypress="UI.ckenter(event,this,2)" 
+style="width:400px;font-size:large">A := rowSwap(A,0,1) 
+</textarea><button onclick="previousSibling.style.display='inherit';var tmp=UI.caseval(previousSibling.value); tmp=UI.latexeval(tmp);nextSibling.innerHTML='&nbsp;'+tmp; if (UI.usemathjax) MathJax.Hub.Queue(['Typeset',MathJax.Hub,nextSibling])">exe</button><span></span><br>
+
+<br><textarea onkeypress="UI.ckenter(event,this,2)" 
+style="width:400px;font-size:large">A 
+</textarea><button onclick="previousSibling.style.display='inherit';var tmp=UI.caseval(previousSibling.value); tmp=UI.latexeval(tmp);nextSibling.innerHTML='&nbsp;'+tmp; if (UI.usemathjax) MathJax.Hub.Queue(['Typeset',MathJax.Hub,nextSibling])">exe</button><span></span><br>
+
+</p><p>The <span style="font-family:monospace">mRow</span> command will multiply a row by
+a given number. It takes as input a number (the multiplier), a
+matrix, and the index of the row to be multiplied. 
+Resetting \(A\),
+<br><textarea onkeypress="UI.ckenter(event,this,2)" 
+style="width:400px;font-size:large">A := [[1,2,3],[4,5,6],[7,8,9]] 
+</textarea><button onclick="previousSibling.style.display='inherit';var tmp=UI.caseval(previousSibling.value); tmp=UI.latexeval(tmp);nextSibling.innerHTML='&nbsp;'+tmp; if (UI.usemathjax) MathJax.Hub.Queue(['Typeset',MathJax.Hub,nextSibling])">exe</button><span></span><br>
+
+to multiply row 2 (index 1) by 7, you can use the command
+<br><textarea onkeypress="UI.ckenter(event,this,2)" 
+style="width:400px;font-size:large">mRow(7,A,1) 
+</textarea><button onclick="previousSibling.style.display='inherit';var tmp=UI.caseval(previousSibling.value); tmp=UI.latexeval(tmp);nextSibling.innerHTML='&nbsp;'+tmp; if (UI.usemathjax) MathJax.Hub.Queue(['Typeset',MathJax.Hub,nextSibling])">exe</button><span></span><br>
+
+</p><p>The <span style="font-family:monospace">mRowAdd</span> command will add a multiple of one row to
+another. It takes as input a number (the multiplier), a matrix, the
+index of the row to be multiplied, and the index of the row the
+multiple is added to. With \(A\) as above, 
+to add 5 times row 2 (index 1) to row 3 (index 2), you can use the
+command 
+<br><textarea onkeypress="UI.ckenter(event,this,2)" 
+style="width:400px;font-size:large">mRowAdd(5,A,1,2) 
+</textarea><button onclick="previousSibling.style.display='inherit';var tmp=UI.caseval(previousSibling.value); tmp=UI.latexeval(tmp);nextSibling.innerHTML='&nbsp;'+tmp; if (UI.usemathjax) MathJax.Hub.Queue(['Typeset',MathJax.Hub,nextSibling])">exe</button><span></span><br>
+
+</p><p><span style="font-family:monospace">Xcas</span> can of course simply put a matrix in reduced echelon
+form for you, with the command <span style="font-family:monospace">rref</span>.
+<br><textarea onkeypress="UI.ckenter(event,this,2)" 
+style="width:400px;font-size:large">A := [[1,2,3],[4,5,6],[7,8,9]] 
+</textarea><button onclick="previousSibling.style.display='inherit';var tmp=UI.caseval(previousSibling.value); tmp=UI.latexeval(tmp);nextSibling.innerHTML='&nbsp;'+tmp; if (UI.usemathjax) MathJax.Hub.Queue(['Typeset',MathJax.Hub,nextSibling])">exe</button><span></span><br>
+
+<br><textarea onkeypress="UI.ckenter(event,this,2)" 
+style="width:400px;font-size:large">rref(A) 
+</textarea><button onclick="previousSibling.style.display='inherit';var tmp=UI.caseval(previousSibling.value); tmp=UI.latexeval(tmp);nextSibling.innerHTML='&nbsp;'+tmp; if (UI.usemathjax) MathJax.Hub.Queue(['Typeset',MathJax.Hub,nextSibling])">exe</button><span></span><br>
+
+
+
+</div>
+<div id="controldiv" style="max-height: 400px; overflow:auto">
+<span id="controlindex"></span>
+<button title="Clone last command to Xcas for Firefox" onclick="UI.clone()">Clone</button>
+<button title="Clear console" onclick="document.getElementById('output').innerHTML='';">Clear</button>
+<button title="Increase console size" onclick="var field=document.getElementById('output'); var s=field.style.maxHeight; s=s.substr(0,s.length-2);s=eval(s)+20 ;if(s<innerHeight/2){s=s+'px';field.style.maxHeight=s; field=document.getElementById('maindiv'); s=field.style.maxHeight; s=s.substr(0,s.length-2);s=eval(s)-20; s=s+'px';field.style.maxHeight=s;}">+</button>
+<button title="Decrease console size" onclick="var field=document.getElementById('output'); var s=field.style.maxHeight; s=s.substr(0,s.length-2);s=eval(s)-20 ; if(s>80){s=s+'px';field.style.maxHeight =s;field=document.getElementById('maindiv'); s=field.style.maxHeight; s=s.substr(0,s.length-2);s=eval(s)+20; s=s+'px';field.style.maxHeight=s;}">-</button>
+<textarea title="Commandline for a quick computation" onkeypress="UI.ckenter(event,this,3);" style="width:400px;height:20px;font-size:large"></textarea><button  title="Eval previous cell" onclick="UI.quick(this);">-></button><span></span>
+&nbsp;&nbsp;<button onclick="var s=UI.caseval('restart;'); Module.print(s);" title="Reset CAS computing kernel">Restart</button>
+<button onclick="UI.exec(document.documentElement);" title='Click here to exec all commands (maybe be long!)'>Exec. all</button>
+<canvas id='canvas' width=0 height=0   onmousedown="UI.canvas_pushed=true;UI.canvas_lastx=event.clientX; UI.canvas_lasty=event.clientY;"  onmouseup="UI.canvas_pushed=false;" onmousemove="UI.canvas_mousemove(event,'')"></canvas>
+<div id="output" style="max-height: 80px; overflow:auto"></div>
+</div>
+</div>
+
+
+<script language="javascript"> 
+var Module = { 
+        htmlcheck:true,
+        htmlbuffer:'',
+        preRun: [],
+        postRun: [],
+        ready:false,
+        print: (function() {
+          var element = document.getElementById('output');
+          element.innerHTML='';// element.value = ''; // clear browser cache
+          return function(text) {
+            //console.log(text.charCodeAt(0));
+            if (text.length==1 && text.charCodeAt(0)==12){ element.innerHTML=''; return; }
+            if (text.length>=1 && text.charCodeAt(0)==2) {console.log('STX');Module.htmlcheck=false; htmlbuffer='';return;}
+            if (text.length>=1 && text.charCodeAt(0)==3) {console.log('ETX');Module.htmlcheck=true; element.style.display='inherit'; element.innerHTML += htmlbuffer;htmlbuffer='';element.scrollTop = 99999; return;}
+            if (Module.htmlcheck){
+            // These replacements are necessary if you render to raw HTML 
+             text = text.replace(/&/g, "&amp;");
+             text = text.replace(/</g, "&lt;");
+             text = text.replace(/>/g, "&gt;");
+             text = text.replace('\n', '<br>', 'g');
+             text += '<br>'
+             element.style.display='inherit';
+             element.innerHTML += text; // element.value += text + "\n";
+             element.scrollTop = 99999; // focus on bottom
+            } else htmlbuffer += text;
+          };
+        })(),
+     canvas: document.getElementById('canvas'),};
+Module['onRuntimeInitialized']=function(){ console.log('UI is ready'); Module.ready=true;}
+</script>
+
+
+
+<script async>
+  var UI={
+   detectmob:function() { 
+    if( navigator.userAgent.match(/Android/i)
+	|| navigator.userAgent.match(/webOS/i)
+	|| navigator.userAgent.match(/iPhone/i)
+	|| navigator.userAgent.match(/iPad/i)
+	|| navigator.userAgent.match(/iPod/i)
+	|| navigator.userAgent.match(/BlackBerry/i)
+	|| navigator.userAgent.match(/Windows Phone/i)
+      ) return true;
+    else 
+      return false;
+   },
+   readCookie:function(name) {
+    if (window.localStorage){
+      var tmp=localStorage.getItem(name);
+      if (tmp!=null) return tmp;
+    }
+    var nameEQ = name + "=";
+    var ca = document.cookie.split(';');
+    for(var i=0;i < ca.length;i++) {
+      var c = ca[i];
+      while (c.charAt(0)==' ') c = c.substring(1,c.length);
+      if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
+    }
+    return null;
+   },
+  }
+  var script = document.createElement("script");
+  script.type = "text/javascript";
+  var webAssemblyAvailable = true; // false;
+  if (Boolean(window.chrome)){
+    if (!UI.detectmob()) webAssemblyAvailable =  window.location.href.substr(0,4)!='file';
+  }
+  else {
+    var ua = window.navigator.userAgent;
+    var old_ie = ua.indexOf('MSIE ');
+    var new_ie = ua.indexOf('Trident/');
+    if (!UI.detectmob() && old_ie<=-1 && new_ie<=-1)
+      webAssemblyAvailable =!!window.WebAssembly;
+  }
+  if (webAssemblyAvailable){
+    var ck=UI.readCookie('xcas_wasm');
+    if (ck)
+      webAssemblyAvailable=(ck=='1');
+  }
+  if (webAssemblyAvailable) // fixme: enable
+    script.src =""+"giacwasm.js";
+  else
+    script.src  =""+"giac.js";
+  document.getElementsByTagName("head")[0].appendChild(script);
+</script>
+
+
+
+
+<script language="javascript"> 
+ var UI = {
+  Datestart:Date.now(),
+  n2d:0,
+  python:0,
+  histcount:0,
+  usemathjax:false,
+  lastcmd:'',
+  clone:function(){
+    if (UI.lastcmd.length){
+       var tmp=UI.giaceval('VARS(-1)');
+       tmp=encodeURIComponent(tmp);
+       var url='https://www-fourier.univ-grenoble-alpes.fr/~parisse/xcasen.html'+String.fromCharCode(35)+'+'+tmp+':;&+'+UI.lastcmd;
+       console.log(url);
+       window.open(url,'_blank');
+    }
+  },
+  canvas_pushed:false,
+  canvas_lastx:0,
+  canvas_lasty:0,
+  canvas_mousemove:function(event,no){
+    if (UI.canvas_pushed){
+      // Module.print(event.clientX);
+      if (UI.canvas_lastx!=event.clientX){
+        if (event.clientX>UI.canvas_lastx)
+          giac3d('r'+no);
+        else
+          giac3d('l'+no);
+        UI.canvas_lastx=event.clientX;
+      }
+      if (UI.canvas_lasty!=event.clientY){
+        if (event.clientY>UI.canvas_lasty)
+          giac3d('d'+no);
+        else
+          giac3d('u'+no);
+        UI.canvas_lasty=event.clientY;
+      }
+    }
+  },  
+  count_newline:function(s){
+    var ss=s.length,i,res=1;
+    for (i=0;i<ss;i++){
+      if (s[i]=='\n') res++;
+    }
+    return res;
+  },
+  ltgt:function(s){
+    var ss=s.length,i,res='',c=0;
+    for (i=0;i<ss-4;i++){
+      if (s[i]=='\n') c++;      
+      if (s[i]!='&' || s[i+2]!='t' || s[i+3]!=';'){
+        res += s[i];
+        continue;
+      }
+      if (s[i+1]=='l'){
+        res += '<';
+        i +=3;
+        continue;
+      }
+      if (s[i+1]=='g'){
+        res += '>';
+        i +=3;
+        continue;
+      }
+      res += s[i];
+    }
+    for (;i<ss;i++) res+=s[i];
+    return [res,c];
+  },
+  rmquote:function(tmp){
+    var s=tmp.length;
+    if (s>2 && tmp.charCodeAt(0)==34 && tmp.charCodeAt(s-1)==34)
+      tmp=tmp.substr(1,s-2);
+    return tmp;
+  },
+  renderhelp: function (s) {
+    var pos0 = s.search("</b>");
+    //console.log(s);
+    var found = (s.substr(pos0 + 7, 20) != "Best match has score");
+    var lh = s.substr(3, pos0 - 3);
+    var unlocalized_cmd = lh;
+    var sorig = s;
+    pos1 = s.search("<br>");
+    if (pos1 < 0) return sorig;
+    var explication = s.substr(0, pos1);
+    s = s.substr(pos1 + 4, s.length - pos1 - 4);
+    pos1 = s.search("<br>");
+    if (pos1 < 0) return sorig;
+    var syntaxe = s.substr(0, pos1);
+    s = s.substr(pos1 + 4, s.length - pos1 - 4);
+    pos1 = s.search("<br>");
+    if (pos1 < 0) return sorig;
+    var voiraussi = s.substr(0, pos1);
+    var examples = s.substr(pos1 + 4, s.length - pos1 - 4);
+    s = '';//'<b>'+unlocalized_cmd+':</b> ';
+    if (found)
+      s += explication + '<br>See also: ' +voiraussi+'<br><b>Examples : </b>'+examples;
+    else
+      s += explication.substr(0, pos0);
+    return s;
+  },   
+  quick:function(field){
+    var tmp1=field.previousSibling.value;
+    var tmp=UI.caseval(tmp1);
+    tmp=UI.rmquote(tmp); 
+    tmp=UI.latexeval(tmp);
+    Module.print(String.fromCharCode(2));
+    Module.print("<tt>");
+    Module.print(tmp1);
+    Module.print("</tt><br>&nbsp;&nbsp;");
+    if (tmp.length>3 && tmp.substr(0,3)=='<b>'){ 
+       Module.print(UI.renderhelp(tmp)); tmp='';
+    } else Module.print(tmp);
+    Module.print("<br>");
+    Module.print(String.fromCharCode(3));
+    field.nextSibling.innerHTML='&nbsp;'+tmp;
+   //UI.render_canvas(nextSibling);  
+  },
+  giaceval:function(text){
+     if (UI.python) text='@@'+text;
+     if (!Module.ready){ window.setTimeout(UI.giaceval,100,text); return " ... ";}
+     var dogiaceval=Module.cwrap('caseval',  'string', ['string']);
+     return dogiaceval(text);
+  },
+  caseval:function(text){
+    UI.lastcmd=text;
+    var s="not evaled",err;
+    try {
+       s= UI.giaceval(text);
+    } catch (err) { s=err.message;}
+    var is_2d=s.length>4 && s.substr(0,4)=='gr2d';
+    if (is_2d){
+      s = '<canvas id="gr2d_'+UI.n2d+'" width=400 height=250>'+s+'</canvas>';
+      //console.log(UI.n2d,s);
+      UI.n2d++;
+    }
+    var is_3d=s.length>5 && s.substr(0,5)=='gl3d ';
+    if (is_3d){
+	var n3d=s.substr(5,s.length-5);
+	s = '<canvas id="gl3d_'+n3d+'" onmousedown="UI.canvas_pushed=true;UI.canvas_lastx=event.clientX; UI.canvas_lasty=event.clientY;" onmouseup="UI.canvas_pushed=false;" onmousemove="UI.canvas_mousemove(event,'+n3d+')" width=400 height=250></canvas>';
+    }
+   //console.log(s);
+    return s;
+  },
+  pourcentmod:function(a,b){
+    return a-Math.floor(a/b)*b;
+  },
+  color_list: ['black',
+    'red',
+    'green',
+    'yellow',
+    'blue',
+    'magenta',
+    'cyan',
+    'white',
+    'silver',
+    'gray',
+    'maroon',
+    'purple',
+    'fuchsia',
+    'lime',
+    'olive',
+    'navy',
+    'teal',
+    'aqua',
+    'antiquewhite',
+    'aquamarine',
+    'azure',
+    'beige',
+    'bisque',
+    'blanchedalmond',
+    'blueviolet',
+    'brown',
+    'burlywood',
+    'cadetblue',
+    'chartreuse',
+    'chocolate',
+    'coral',
+    'cornflowerblue',
+    'cornsilk',
+    'crimson',
+    'cyan',
+    'darkblue',
+    'darkcyan',
+    'darkgoldenrod',
+    'darkgray',
+    'darkgreen',
+    'darkgrey',
+    'darkkhaki',
+    'darkmagenta',
+    'darkolivegreen',
+    'darkorange',
+    'darkorchid',
+    'darkred',
+    'darksalmon',
+    'darkseagreen',
+    'darkslateblue',
+    'darkslategray',
+    'darkslategrey',
+    'darkturquoise',
+    'darkviolet',
+    'deeppink',
+    'deepskyblue',
+    'dimgray',
+    'dimgrey',
+    'dodgerblue',
+    'firebrick',
+    'floralwhite',
+    'forestgreen',
+    'gainsboro',
+    'ghostwhite',
+    'gold',
+    'goldenrod',
+    'greenyellow',
+    'grey',
+    'honeydew',
+    'hotpink',
+    'indianred',
+    'indigo',
+    'ivory',
+    'khaki',
+    'lavender',
+    'lavenderblush',
+    'lawngreen',
+    'lemonchiffon',
+    'lightblue',
+    'lightcoral',
+    'lightcyan',
+    'lightgoldenrodyellow',
+    'lightgray',
+    'lightgreen',
+    'lightgrey',
+    'lightpink',
+    'lightsalmon',
+    'lightseagreen',
+    'lightskyblue',
+    'lightslategray',
+    'lightslategrey',
+    'lightsteelblue',
+    'lightyellow',
+    'limegreen',
+    'linen',
+    'mediumaquamarine',
+    'mediumblue',
+    'mediumorchid',
+    'mediumpurple',
+    'mediumseagreen',
+    'mediumslateblue',
+    'mediumspringgreen',
+    'mediumturquoise',
+    'mediumvioletred',
+    'midnightblue',
+    'mintcream',
+    'mistyrose',
+    'moccasin',
+    'navajowhite',
+    'oldlace',
+    'olivedrab',
+    'orangered',
+    'orchid',
+    'palegoldenrod',
+    'palegreen',
+    'paleturquoise',
+    'palevioletred',
+    'papayawhip',
+    'peachpuff',
+    'peru',
+    'pink',
+    'plum',
+    'powderblue',
+    'rosybrown',
+    'royalblue',
+    'saddlebrown',
+    'salmon',
+    'sandybrown',
+    'seagreen',
+    'seashell',
+    'sienna',
+    'skyblue',
+    'slateblue',
+    'slategray',
+    'slategrey',
+    'snow',
+    'springgreen',
+    'steelblue',
+    'tan',
+    'thistle',
+    'tomato',
+    'turquoise',
+    'violet',
+    'wheat',
+    'whitesmoke',
+    'yellowgreen'],
+  arc_en_ciel: function (k) {
+    var r, g, b;
+    k += 21;
+    k = pourcentmod(k,126);
+    if (k < 0)
+      k += 126;
+    if (k < 21) {
+      r = 251;
+      g = 0;
+      b = 12 * k;
+    }
+    if (k >= 21 && k < 42) {
+      r = 251 - (12 * (k - 21));
+      g = 0;
+      b = 251;
+    }
+    if (k >= 42 && k < 63) {
+      r = 0;
+      g = (k - 42) * 12;
+      b = 251;
+    }
+    if (k >= 63 && k < 84) {
+      r = 0;
+      g = 251;
+      b = 251 - (k - 63) * 12;
+    }
+    if (k >= 84 && k < 105) {
+      r = (k - 84) * 12;
+      g = 251;
+      b = 0;
+    }
+    if (k >= 105 && k < 126) {
+      r = 251;
+      g = 251 - (k - 105) * 12;
+      b = 0;
+    }
+    return 'rgb(' + r + ',' + g + ',' + b + ')';
+  },
+  turtle_color: function (c) {
+    if (c >= 0x100) {
+      if (c < 0x17e)
+        return UI.arc_en_ciel(c);
+      var r=8*((c>>11) & 0x1f);
+      var g=4*((c>>5) & 0x3f);
+      var b=8*(c & 0x1f);
+      return 'rgb(' + r + ',' + g + ',' + b + ')';
+    }
+    return UI.color_list[c];
+  },
+  pixon_draw: function (id, s) {
+    var v = eval(s);
+    if (!Array.isArray(v)) return;
+    //console.log(v[0], v.length);
+    var canvas = document.getElementById(id);
+    var l = v.length, w = 0, h = 0;
+    if (l < 2) return;
+    var scale = v[0];
+    for (var k = 1; k < l; k++) {
+      var cur = v[k];
+      var x = cur[0], y = cur[1];
+      if (cur.length==3 && typeof cur[2]!="number"){
+	x+=100;
+	y+=16;
+      }
+      if (cur.length==4) {
+        var tmp = cur[3];
+	if (typeof tmp=="number"){
+          if (tmp > 0) y += tmp; else x -= tmp;
+	} else {
+	  x+=100;
+	  y+=16;
+	}
+      }
+      //console.log(cur,x,y);
+      if (x > w) w = x;
+      if (y > h) h = y;
+    }
+    w = (w + 1) * scale;
+    h = (h + 1) * scale;
+    canvas.width = w;
+    canvas.height = h;
+    //console.log(h,w);
+    if (canvas.getContext) {
+      var ctx = canvas.getContext('2d');
+      for (var k = 1; k < l; k++) {
+        var cur = v[k], cl;
+        //console.log(cur);
+        if (!Array.isArray(cur) || (cl = cur.length) < 2) continue;
+        // cur[0]=x, cur[1]=y, cur[2]=color, cur[3]=w if +, h if -
+        var x = cur[0] * scale;
+        var y = cur[1] * scale;
+	if (cl>2 && typeof cur[2]=="string"){
+	  console.log(cur[2]);
+	  ctx.font = '16px serif';
+	  ctx.fillStyle = 'black';
+	  ctx.fillText(cur[2],x,y+16,100);
+	  continue;
+	}
+        ctx.fillStyle = (cl > 2) ? UI.turtle_color(cur[2]) : 'black';
+        if (cl < 4) {
+          ctx.fillRect(x, y, scale, scale);
+          continue;
+        }
+	if (typeof cur[3]=="string"){
+	  ctx.font = '16px serif';
+	  ctx.fillText(cur[3],x,y+16,100);
+	  continue;
+	}
+        var h = cur[3] * scale, w = scale;
+        if (h < 0) {
+          w = -h;
+          h = scale;
+        }
+        ctx.fillRect(x, y, w, h);
+      }
+    }
+  },
+  turtle_dx: 0, // shift frame
+  turtle_dy: 0,
+  turtle_z: 1,  // zoom factor
+  turtle_maillage: 1,
+  turtle_draw: function (id, s) {
+    if (s.length < 7) return;
+    s = s.substr(5, s.length - 6);
+    if (s.length > 7 && s.substr(s, 6) == "pixon(") {
+      UI.pixon_draw(id, s.substr(6, s.length - 7));
+      return;
+    }
+    if (s.length < 6 || s.substr(s, 5) != "logo(")
+      return;
+    s = s.substr(5, s.length - 6);
+    //console.log(s);
+    var v = eval(s);
+    if (!Array.isArray(v)) return;
+    //console.log(v[0]);
+    var canvas = document.getElementById(id);
+    var w = canvas.width, h = canvas.height;
+    if (canvas.getContext) {
+      var ctx = canvas.getContext('2d');
+      var turtlezoom = UI.turtle_z, turtlex = UI.turtle_dx, turtley = UI.turtle_dy;
+      // maillage
+      if (UI.turtle_maillage & 3) {
+        ctx.fillStyle = 'black';
+        var xdecal = Math.floor(turtlex / 10.0) * 10;
+        var ydecal = Math.floor(turtley / 10.0) * 10;
+        if ((UI.turtle_maillage & 0x3) == 1) {
+          for (var i = xdecal; i < w + xdecal; i += 10) {
+            for (var j = ydecal; j < h + ydecal; j += 10) {
+              var X = Math.floor((i - turtlex) * turtlezoom + .5);
+              var Y = Math.floor((j - turtley) * turtlezoom + .5);
+              // console.log(X,Y);
+              ctx.fillRect(X, h - Y, 1, 1);
+            }
+          }
+        } else {
+          var dj = Math.sqrt(3.0) * 10, i0 = xdecal;
+          for (var j = ydecal; j < h + ydecal; j += dj) {
+            var J = Math.floor(h - (j - turtley) * turtlezoom);
+            for (var i = i0; i < w + xdecal; i += 10) {
+              ctx.fillRect(Math.floor((i - turtlex) * turtlezoom + .5), J, 1, 1);
+            }
+            i0 += dj;
+            while (i0 >= 10)
+              i0 -= 10;
+          }
+        }
+      }
+      var l = v.length, i;
+      // montre la position et le cap (v[l-1])
+      var prec = v[l - 1];
+      ctx.font = '16px serif';
+      ctx.fillStyle = 'yellow';
+      ctx.fillRect(w - 40, 0, 40, 50);
+      ctx.fillStyle = 'black';
+      ctx.fillText('x:' + prec[0], w - 40, 15);
+      ctx.fillText('y:' + prec[1], w - 40, 31);
+      ctx.fillText('t:' + prec[2], w - 40, 49);
+      // v[i]=[x(0),y(1),cap(2),status(3),r(4),chaine(5)],
+      // couleur=status >> 11
+      // longueur_tortue= (status>>3)&0xff
+      // direct=status&4 (vrai si angle dans le sens trigo)
+      // visible=status&2
+      // crayon baisse=status&1
+      // si r>0 arc/disque rayon=r & 0x1ff, theta1=(r >> 9) & 0x1ff, theta2=(r >> 18) & 0x1ff
+      //        rempli=(r>>27)&0x1
+      // si r<0 ligne polygonale extremite v[i] origine v[i+r] (r<0)
+      for (k = 1; k < l; k++) {
+        prec = v[k - 1];
+        var cur = v[k];
+        var preccouleur = prec[3] >> 11; // -> FIXME colors
+        var curcouleur = prec[3] >> 11; // -> FIXME colors
+        if (cur[5].length) {
+          ctx.font = cur[4] + 'px serif';
+          ctx.strokeStyle = ctx.fillStyle = UI.turtle_color(curcouleur);
+          ctx.fillText(cur[5], turtlezoom * (cur[0] - turtlex), h - turtlezoom * (cur[1] - turtley));
+          continue;
+        }
+        var radius = cur[4], precradius = prec[4];
+        var x1 = Math.floor(turtlezoom * (prec[0] - turtlex) + .5),
+            y1 = Math.floor(turtlezoom * (prec[1] - turtley) + .5),
+            x2 = Math.floor(turtlezoom * (cur[0] - turtlex) + .5),
+            y2 = Math.floor(turtlezoom * (cur[1] - turtley) + .5);
+        if (radius > 0) {
+          var r = radius & 0x1ff, theta1, theta2, rempli, x, y, R, angle;
+          theta1 = prec[2]+ ((radius >> 9) & 0x1ff);
+          theta2 = prec[2] + ((radius >> 18) & 0x1ff);
+          rempli = (radius >> 27) & 1;
+	  var seg = (radius >> 28) & 1;
+          R = Math.floor(turtlezoom * r + .5);
+          angle1 = Math.PI / 180 * (theta1 - 90);
+          angle2 = Math.PI / 180 * (theta2 - 90);
+          x = Math.floor(turtlezoom * (cur[0] - turtlex - r * Math.cos(angle2)) + .5);
+          y = Math.floor(turtlezoom * (cur[1] - turtley - r * Math.sin(angle2)) + .5);
+          ctx.beginPath();
+	  if (seg)
+            ctx.moveTo(x2, h - y2);
+	  else {
+            ctx.moveTo(x, h - y);
+            ctx.lineTo(x2, h - y2);
+	  }
+	  //console.log(x,y,x1,y1,angle1,angle2);
+          ctx.arc(x, h - y, R, -angle2,-angle1);
+          ctx.closePath();
+          ctx.strokeStyle = ctx.fillStyle = UI.turtle_color(curcouleur);
+          if (rempli)
+            ctx.fill();
+          else
+            ctx.stroke();
+          continue;
+        }
+        if (prec[3] & 1) {
+          ctx.strokeStyle = ctx.fillStyle = UI.turtle_color(preccouleur);
+          ctx.beginPath();
+          ctx.moveTo(x1, h - y1);
+          ctx.lineTo(x2, h - y2);
+          ctx.closePath();
+          ctx.stroke();
+        }
+        if (radius < -1 && k + radius >= 0) {
+          ctx.strokeStyle = ctx.fillStyle = UI.turtle_color(curcouleur);
+          ctx.beginPath();
+          var x0 = Math.floor(turtlezoom * (cur[0] - turtlex) + .5), y0 = Math.floor(turtlezoom * (cur[1] - turtley) + .5);
+          //console.log('begin',x0,y0);
+          ctx.moveTo(x0, h - y0);
+          for (var i = -1; i >= radius; i--) {
+            prec = v[k + i];
+            var x = Math.floor(turtlezoom * (prec[0] - turtlex) + .5);
+            var y = Math.floor(turtlezoom * (prec[1] - turtley) + .5);
+            //console.log(i,x,y);
+            ctx.lineTo(x, h - y);
+          }
+          //console.log('end',x0,y0);
+          //ctx.lineTo(x0,h-y0);
+          ctx.closePath();
+          ctx.fill(); // automatically close path
+        }
+      }
+      var cur = v[l - 1];
+      if (cur[3] & 2) {
+        // dessin de la tortue
+        var x = Math.floor(turtlezoom * (cur[0] - turtlex) + .5);
+        var y = Math.floor(turtlezoom * (cur[1] - turtley) + .5);
+        var cost = Math.cos(cur[2] * Math.PI / 180);
+        var sint = Math.sin(cur[2] * Math.PI / 180);
+        var turtle_length = (cur[3] >> 3) & 0xff;
+        var Dx = Math.floor(turtlezoom * turtle_length * cost / 2 + .5);
+        var Dy = Math.floor(turtlezoom * turtle_length * sint / 2 + .5);
+        //console.log('tortue',cur,w,h,turtlezoom,x,y,Dx,Dy);
+        ctx.strokeStyle = ctx.fillStyle = UI.turtle_color(curcouleur);
+        ctx.beginPath();
+        ctx.moveTo(x + Dy, h - (y - Dx));
+        ctx.lineTo(x - Dy, h - (y + Dx));
+        ctx.closePath();
+        ctx.stroke();
+        if (!(cur[3] & 1))
+          ctx.strokeStyle = ctx.fillStyle = UI.turtle_color(curcouleur + 1);
+        ctx.beginPath();
+        ctx.moveTo(x + Dy, h - (y - Dx));
+        ctx.lineTo(x + 3 * Dx, h - (y + 3 * Dy));
+        ctx.closePath();
+        ctx.stroke();
+        ctx.beginPath();
+        ctx.moveTo(x - Dy, h - (y + Dx));
+        ctx.lineTo(x + 3 * Dx, h - (y + 3 * Dy));
+        ctx.closePath();
+        ctx.stroke();
+      }
+    }
+  },
+  render_canvas:function(field){
+   var n=field.id;
+   if (n && n.length>4 && n.substr(0,4)=='gr2d'){
+     var s=field.innerHTML;
+     //console.log(s);
+     UI.turtle_draw(n, s);
+   }
+   if (n && n.length>5 && n.substr(0,5)=='gl3d_'){
+    Module.print(n);
+    var n3d=n.substr(5,n.length-5);
+    giac3d(n3d);
+    return;
+   }
+   var f=field.firstChild;
+   for (;f;f=f.nextSibling){
+     UI.render_canvas(f);
+   }
+  },
+  eval_form: function(field){
+    UI.giaceval('assume('+field.name.value+'=round('+field.valname.value+',12))');
+    var s=UI.caseval(field.prog.value);
+    var is_svg=s.substr(1,4)=='<svg';
+    if (is_svg) field.parentNode.lastChild.innerHTML=s.substr(1,s.length-2);
+    else field.parentNode.lastChild.innerHTML=s;
+   UI.render_canvas(field.parentNode.lastChild);
+  },
+  latexeval:function(text){
+    var tmp=text;
+    if (tmp.length>10 && tmp.substr(0,10)=='GIAC_ERROR') return '"'+tmp.substr(11,tmp.length-11)+'"';
+    if (tmp.length>5 && tmp.substr(0,5)=='gl3d_') return tmp;
+    if (tmp.length>5 && tmp.substr(1,4)=='<svg') return tmp.substr(1,tmp.length-2);
+    if (tmp.length>5 && tmp.substr(0,4)=='<svg') return tmp;
+    if (tmp.length>3 && tmp.substr(0,3)=='<b>') return tmp;
+     if (UI.usemathjax){
+       tmp=UI.giaceval('latex(quote('+tmp+'))');
+       var dollar=String.fromCharCode(36);
+       tmp=dollar+dollar+tmp.substr(1,tmp.length-2)+dollar+dollar;
+       return tmp;
+     }
+     tmp=UI.giaceval('mathml(quote('+tmp+',1))');
+     tmp=tmp.substr(1,tmp.length-2);
+    return tmp;   
+  },
+  ckenter:function(event,field,mode){
+    var key = event.keyCode;
+    if (key != 13 || event.shiftKey) return true;
+   if (mode==3){ UI.quick(field.nextSibling); event.preventDefault(); field.select(); return true; }
+    var tmp=field.value;
+   Module.print(tmp);
+    tmp=UI.caseval(tmp);
+    if (mode==1){
+      tmp=UI.rmquote(tmp); 
+   }
+   if (mode==2){
+     tmp=UI.latexeval(tmp);
+   }
+   field.nextSibling.nextSibling.innerHTML=tmp;
+   UI.render_canvas(field.nextSibling.nextSibling);
+   if (UI.usemathjax) MathJax.Hub.Queue(["Typeset",MathJax.Hub,field.nextSibling.nextSibling]);
+   if (event.preventDefault) event.preventDefault();
+    return false;
+  },
+   exec: function(field){
+     if (field.nodeName=="BUTTON" && field.innerHTML!='Clone' && field.innerHTML!='Restart' && field.innerHTML!='Exec. all'){
+        field.click();
+        return;
+     }
+     if (field.nodeName=="FORM"){
+        UI.eval_form(field);
+        return;
+     }
+     var f=field.firstChild;
+     while (f){
+       UI.exec(f);
+       f=f.nextSibling;
+     }
+   },
+  execonload: function(field){
+     if (!Module.ready){ window.setTimeout(UI.execonload, 100, field); }
+     var f=field.nextSibling;
+     if (f && f.innerHTML=="onload" && field.nodeName=="BUTTON"){
+        field.click();
+        return;
+     }
+     f=field.firstChild;
+     while (f){
+       UI.execonload(f);
+       f=f.nextSibling;
+     }
+   },
+  textarealtgt: function(field){
+     if (field.nodeName=="TEXTAREA"){
+        var tmp=UI.ltgt(field.value);
+        field.value=tmp[0];
+        //field.style.height=20*(tmp[1]+1)+'px';
+        field.rows=tmp[1]+1;
+        return;
+     }
+     var f=field.firstChild;
+     while (f){
+       UI.textarealtgt(f);
+       f=f.nextSibling;
+     }
+   }
+ };
+ window.onload = function(e){
+   var isFirefox = typeof InstallTrigger !== 'undefined';   // Firefox 1.0+
+   var isSafari = Object.prototype.toString.call(window.HTMLElement).indexOf('Constructor') > 0;
+  var ua = window.navigator.userAgent;
+  var old_ie = ua.indexOf('MSIE ');
+  var new_ie = ua.indexOf('Trident/');
+  if ((!isFirefox && !isSafari) || (old_ie > -1) || (new_ie > -1) || window.chrome){
+     UI.usemathjax=true;
+     alert("Your browser does not support MathML, using MathJax for 2d rendering. Consider switching to Firefox for better rendering and faster results");
+  }
+  if (UI.usemathjax){
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  }
+  var elem= document.getElementById('controlindex');
+  elem.innerHTML='<hr><a href="'+String.fromCharCode(35)+'sec1">Table</a>, <a href="'+String.fromCharCode(35)+'sec2">Index</a>,'+elem.innerHTML;
+  if (elem.style.maxHeight=='500px')
+    elem.style.maxHeight=(window.innerHeight-120)+'px';
+  elem= document.getElementById('maindiv');
+  elem.style.maxHeight=(window.innerHeight-150)+'px';
+  // Module.print(elem.innerHTML);
+  //elem.parentNode.insertBefore(elem,null);
+  giac3d = Module.cwrap('_ZN4giac13giac_rendererEPKc','number', ['string']);
+  UI.giaceval('set_language(1);');
+  //UI.giaceval('factor(x^4-1)');
+  //UI.giaceval('sin(x+y)+f(t)');
+  UI.textarealtgt(document.documentElement);
+  window.setTimeout(UI.execonload, 1000, document.documentElement); // UI.execonload(document.documentElement);
+  document.getElementById('output').innerHTML='';
+ // if (confirm('Exec commands?')) UI.exec(document.documentElement);
+ };
+</script>
+
+
+</p><!--CUT END -->
+<!--HTMLFOOT-->
+<!--ENDHTML-->
+<!--FOOTER-->
+<hr style="height:2"><blockquote class="quote"><em>This document was translated from L<sup>A</sup>T<sub>E</sub>X by
+</em><a href="http://hevea.inria.fr/index.html"><em>H</em><em><span style="font-size:small"><sup>E</sup></span></em><em>V</em><em><span style="font-size:small"><sup>E</sup></span></em><em>A</em></a><em>.</em></blockquote></body>
+</html>
