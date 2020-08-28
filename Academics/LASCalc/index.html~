@@ -162,12 +162,22 @@ A 60&percnt; and above for a D.
 </li>
 <li>04: Computing Derivatives
   <ul>
-  <li><a href="03-TangentApproximation.html">html</a></li>
-  <li><a href="03-TangentApproximation.pdf">pdf</a></li>  
+  <li><a href="04-ComputingDerivatives.html">html</a></li>
+  <li><a href="04-ComputingDerivatives.pdf">pdf</a></li>  
   <li>Homeworks
   <ul>
-  <li><a href="HW03-TangentApproximation.html">html</a></li>
-  <li><a href="HW03-TangentApproximation.pdf">pdf</a></li>  
+  <li><a href="HW04-ComputingDerivatives.html">html</a></li>
+  <li><a href="HW04-ComputingDerivatives.pdf">pdf</a></li>  
+</ul>
+</li>
+<li>05: Transcendental Functions
+  <ul>
+  <li><a href="05-TranscendentalFunctions.html">html</a></li>
+  <li><a href="05-TranscendentalFunctions.pdf">pdf</a></li>  
+  <li>Homeworks
+  <ul>
+  <li><a href="HW05-TranscendentalFunctions.html">html</a></li>
+  <li><a href="HW05-TranscendentalFunctions.pdf">pdf</a></li>  
 </ul>
 </li>
 <hr size=24 color=blue></body>
